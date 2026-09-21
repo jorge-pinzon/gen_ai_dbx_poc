@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASK MARINER (DBX) </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}">
+  </head>
+  <body>
+    <header class="brand-bar">
+      <div class="brand-bar-inner">
+        <img
+          class="brand-logo"
+          src="{{ url_for('static', filename='mariner-logo.png') }}"
+          alt="Mariner Finance"
+          width="274"
+          height="101"
+        >
+        <span class="employee-portal-label">Employee resources</span>
+      </div>
+    </header>
+
+    <main id="app-layout" class="app-layout">
+      <section id="source-workspace" class="source-workspace" aria-label="Source document workspace" hidden>
+        <aside class="source-browser" aria-label="Source folders">
+          <div class="source-browser-header">
+            <p class="source-eyebrow">Document library</p>
+            <h2>Sources</h2>
+          </div>
+          <section class="cited-source-section" aria-labelledby="cited-source-heading">
+            <h3 id="cited-source-heading">Cited in this chat</h3>
+            <ul id="cited-sources" class="source-list"></ul>
+          </section>
+          <nav aria-label="Document folders">
+            <form id="source-search-form" class="source-search" role="search">
+              <label for="source-search">Search documents</label>
+              <div class="source-search-row">
+                <input id="source-search" name="q" type="search" minlength="2" maxlength="80" autocomplete="off" placeholder="Document name…">
+                <button type="submit">Search</button>
+              </div>
+            </form>
+            <section id="source-search-results" class="source-search-results" aria-labelledby="source-search-heading" hidden>
+              <div class="source-results-header">
+                <h3 id="source-search-heading">Search results</h3>
+                <button id="clear-source-search" type="button">Clear</button>
+              </div>
+              <ul id="source-search-list" class="source-list"></ul>
+              <p id="source-search-status" class="source-tree-status" role="status"></p>
+            </section>
+            <h3>All documents</h3>
+            <div id="source-catalogs" class="source-tree"></div>
+            <p id="source-tree-status" class="source-tree-status" role="status"></p>
+          </nav>
+        </aside>
+
+        <section class="document-panel" aria-label="Selected source">
+          <header class="document-toolbar">
+            <div>
+              <p class="source-eyebrow">Selected source</p>
+              <h2 id="document-title">Choose a source</h2>
+            </div>
+            <div class="document-actions">
+              <a id="open-source-tab" class="source-action" href="#" target="_blank" rel="noopener noreferrer" hidden>Open in new tab</a>
+              <button id="close-source" class="source-close" type="button" aria-label="Close source workspace">Close</button>
+            </div>
+          </header>
+          <div id="document-placeholder" class="document-placeholder">
+            Select a cited source or browse the document folders.
+          </div>
+          <iframe id="document-viewer" class="document-viewer" title="Selected source document" referrerpolicy="no-referrer" hidden></iframe>
+        </section>
+      </section>
+
+      <section class="chat-shell">
+        <header class="app-header">
+          <div class="header-copy">
+            <p class="eyebrow">MARINER's MultiAgentic Employee Support</p>
+            <h1>ASK MARINER</h1>
+            <p class="header-description">We help you answer your Mariner related questions.</p>
+          </div>
+          <div class="header-actions">
+            <button id="new-chat" class="secondary-button" type="button">New chat</button>
+            {% if password_mode %}
+              <form method="post" action="{{ url_for('logout') }}">
+                <button class="secondary-button" type="submit">Log out</button>
+              </form>
+            {% endif %}
+          </div>
+          <div class="header-topics">
+            <p class="header-description">Available (<span class="ready-color">green</span>) and pending (<span class="pending-color">yellow</span>) agents</p>
+            <p class="header-description command-help">Enter your question, or click an available agent to use its direct-access command.</p>
+            <ul class="support-topics" aria-label="Supported topics">
+              <li class="topic-ready" data-command="/policy" role="button" tabindex="0" aria-label="Use /policy for Branch operations">Branch operations</li>
+              <li class="topic-ready" data-command="/handbook" role="button" tabindex="0" aria-label="Use /handbook for Employee handbook">Employee handbook</li>
+              <li class="topic-ready" data-command="/benefits" role="button" tabindex="0" aria-label="Use /benefits for Benefits">Benefits</li>
+              <li class="topic-pending" aria-label="Coaching, pending">Coaching 360</li>
+              <li class="topic-pending" aria-label="Security, pending">Security</li>
+              <li class="topic-pending" aria-label="Data, pending">Data</li>
+            </ul>
+          </div>
+          <p class="test-data-warning" role="note">PROTOTYPE — data is synthetic or incomplete and may not represent real company information.</p>
+
+        </header>
+
+        {% if local_mode %}
+          <p class="environment-banner">Local test mode — mock Supervisor and local identity.</p>
+        {% endif %}
+
+        <section id="messages" class="messages" aria-live="polite" aria-label="Chat messages"></section>
+
+        <form id="chat-form" class="chat-form">
+          <div class="composer-row">
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              maxlength="{{ max_message_characters }}"
+              aria-label="Your question"
+              placeholder="Enter an employee support question…"
+              required
+            ></textarea>
+            <button id="send" type="submit">Send</button>
+          </div>
+          <span id="status" role="status"></span>
+        </form>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='chat.js') }}" defer></script>
+  </body>
+</html>

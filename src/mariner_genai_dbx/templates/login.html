@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in — ASK MARINER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}">
+  </head>
+  <body>
+    <header class="brand-bar">
+      <div class="brand-bar-inner">
+        <img
+          class="brand-logo"
+          src="{{ url_for('static', filename='mariner-logo.png') }}"
+          alt="Mariner Finance"
+          width="274"
+          height="101"
+        >
+        <span class="employee-portal-label">Employee resources</span>
+      </div>
+    </header>
+
+    <main class="login-layout">
+      <section class="login-card" aria-labelledby="login-heading">
+        <p class="eyebrow">MARINER employee support</p>
+        <h1 id="login-heading">Sign in to ASK MARINER</h1>
+        <p class="login-description">Enter your prototype access credentials.</p>
+
+        {% if error %}
+          <p class="login-error" role="alert">{{ error }}</p>
+        {% endif %}
+
+        <form class="login-form" method="post" action="{{ url_for('login') }}">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+          <button type="submit">Sign in</button>
+        </form>
+
+        <p class="test-data-warning login-warning" role="note">PROTOTYPE — data is synthetic or incomplete and may not represent real company information.</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+SECRET*.txt
+secrets/
+*.pem
+*.key
+*.p12
+
+# Python environments and generated files
+.venv/
+venv/
+.python-packages/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Packaging and IDE files
+build/
+dist/
+*.egg-info/
+.DS_Store
+.idea/
+.vscode/
