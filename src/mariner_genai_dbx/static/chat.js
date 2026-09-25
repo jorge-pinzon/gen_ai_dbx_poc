@@ -4,6 +4,10 @@ const messages = document.querySelector("#messages");
 const sendButton = document.querySelector("#send");
 const statusText = document.querySelector("#status");
 const newChatButton = document.querySelector("#new-chat");
+const openDocumentsButton = document.querySelector("#open-documents");
+const chatShell = document.querySelector(".chat-shell");
+const agentToggleButton = document.querySelector("#toggle-agents");
+const agentSidebarContent = document.querySelector("#agent-sidebar-content");
 const readyTopics = document.querySelectorAll(".topic-ready[data-command]");
 const appLayout = document.querySelector("#app-layout");
 const sourceWorkspace = document.querySelector("#source-workspace");
@@ -28,6 +32,24 @@ let catalogsLoaded = false;
 let documentLoadVersion = 0;
 const conversationSources = new Map();
 const catalogNodes = new Map();
+
+function setAgentPanelExpanded(expanded) {
+  chatShell.classList.toggle("agent-panel-collapsed", !expanded);
+  agentSidebarContent.hidden = !expanded;
+  agentToggleButton.setAttribute("aria-expanded", String(expanded));
+  agentToggleButton.setAttribute(
+    "aria-label",
+    expanded ? "Hide agents" : "Show agents",
+  );
+  agentToggleButton.title = expanded ? "Hide agents" : "Show agents";
+  agentToggleButton.querySelector("span").textContent = expanded ? "‹" : "›";
+}
+
+agentToggleButton.addEventListener("click", () => {
+  setAgentPanelExpanded(
+    agentToggleButton.getAttribute("aria-expanded") !== "true",
+  );
+});
 
 function populateCommand(topic) {
   input.value = `${topic.dataset.command} `;
@@ -72,9 +94,13 @@ function addMessage(role, text, sources = []) {
   const article = document.createElement("article");
   article.className = `message ${role}-message`;
 
-  const paragraph = document.createElement("p");
-  paragraph.textContent = text;
-  article.appendChild(paragraph);
+  if (role === "assistant" && window.MarinerMarkdown) {
+    window.MarinerMarkdown.render(article, text);
+  } else {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    article.appendChild(paragraph);
+  }
 
   if (sources.length > 0) {
     const heading = document.createElement("h2");
@@ -149,10 +175,16 @@ function setDocument(source) {
   }
 }
 
-async function openSource(source) {
+async function openSourceWorkspace() {
   sourceWorkspace.hidden = false;
   appLayout.classList.add("source-open");
+  openDocumentsButton.setAttribute("aria-expanded", "true");
+  openDocumentsButton.hidden = true;
   await loadCatalogs();
+}
+
+async function openSource(source) {
+  await openSourceWorkspace();
   if (source.catalog) {
     const catalogNode = catalogNodes.get(source.catalog.catalogId);
     if (catalogNode) catalogNode.open = true;
@@ -172,6 +204,8 @@ function closeSourceWorkspace() {
   documentLoadVersion += 1;
   appLayout.classList.remove("source-open");
   sourceWorkspace.hidden = true;
+  openDocumentsButton.setAttribute("aria-expanded", "false");
+  openDocumentsButton.hidden = false;
   documentViewer.src = "about:blank";
 }
 
@@ -368,6 +402,10 @@ async function openCatalogDocument(catalogId, path, page = null) {
 }
 
 closeSourceButton.addEventListener("click", closeSourceWorkspace);
+openDocumentsButton.addEventListener("click", async () => {
+  await openSourceWorkspace();
+  sourceSearchInput.focus();
+});
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !sourceWorkspace.hidden) closeSourceWorkspace();
 });

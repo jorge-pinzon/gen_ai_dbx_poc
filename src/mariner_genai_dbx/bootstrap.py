@@ -6,7 +6,7 @@ from .config import Settings
 from .citation_resolver import DatabricksCitationResolver, NullCitationResolver
 from .conversation_store import ConversationPersistence, InMemoryConversationStore
 from .source_catalog import DatabricksVolumeCatalogService
-from .supervisor_service import (
+from .supervisor_service1 import (
     DatabricksSupervisorService,
     MockSupervisorService,
     create_workspace_client,

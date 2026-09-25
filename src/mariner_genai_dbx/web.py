@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import hmac
+import re
 import secrets
 import time
 from datetime import datetime, timezone
@@ -45,7 +46,7 @@ from .errors import (
     SourceCatalogError,
     SupervisorInvocationError,
 )
-from .models import ConversationTurn
+from .models import ConversationHistory, ConversationTurn
 from .logging_config import configure_logging
 
 
@@ -53,12 +54,188 @@ MAX_REQUEST_BYTES = 16 * 1024
 READINESS_CACHE_SECONDS = 30
 LOCAL_USER_ID = "local-development-user"
 logger = logging.getLogger(__name__)
+BRANCH_OPERATIONS_SPECIALIST = (
+    "Branch Operations specialist named mariner-policy-assistant"
+)
+EMPLOYEE_HANDBOOK_SPECIALIST = (
+    "Employee Handbook specialist named mariner-handbook-assistant"
+)
 SUPERVISOR_ROUTE_COMMANDS = {
-    "/policy": "Branch Operations Agent",
+    "/policy": BRANCH_OPERATIONS_SPECIALIST,
     "/benfits": "Benefits Agent",
     "/benefits": "Benefits Agent",
-    "/handbook": "Employee Handbook Agent",
+    "/handbook": EMPLOYEE_HANDBOOK_SPECIALIST,
+    "/coaching": "Employee Performance Agent",
 }
+
+# Application-layer guardrail configuration. Keep patterns and user-facing
+# responses together so changes can be reviewed without searching route code.
+INPUT_GUARDRAIL_REFUSAL = (
+    "I can help with Mariner employee policies, benefits, branch operations, "
+    "the employee handbook, and performance topics. Please ask a question "
+    "within one of those areas."
+)
+OUTPUT_GUARDRAIL_FALLBACK = (
+    "I’m unable to provide that response. Please rephrase your question or "
+    "contact Human Resources for assistance."
+)
+SELF_HARM_SUPPORT_MESSAGE = (
+    "I’m sorry you’re going through this. If you may act on these thoughts or "
+    "are in immediate danger, call 911 now. In the United States, call or text "
+    "988 to reach the Suicide & Crisis Lifeline. If you can, move away from "
+    "anything you could use to hurt yourself and contact someone you trust who "
+    "can stay with you. This chat is not a crisis service."
+)
+SELF_HARM_INPUT_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\bi\s+(?:want|plan|intend|am\s+going|might|may|could)\s+to\s+(?:kill|hurt|harm)\s+myself\b",
+        r"\bi(?:'m|\s+am)\s+suicidal\b",
+        r"\bi\s+(?:want|wish)\s+to\s+die\b",
+        r"\bi\s+do\s+not\s+want\s+to\s+live\b",
+        r"\b(?:end|take)\s+my\s+(?:own\s+)?life\b",
+        r"\b(?:thinking|thoughts?)\s+(?:about|of)\s+(?:suicide|killing\s+myself|self[- ]?harm)\b",
+        r"\b(?:friend|coworker|employee|manager|someone)\b.{0,60}\b(?:suicidal|suicide|kill(?:ing)?\s+(?:himself|herself|themselves))\b",
+    )
+)
+HATE_OR_ABUSE_INPUT_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"^\s*(?:fuck|screw)\s+(?:you|him|her|them)\b",
+        r"^\s*(?:you|he|she|they)\s+(?:are|is)\s+(?:an?\s+)?(?:fucking\s+)?(?:idiot|moron|asshole|bitch)\b",
+        r"\b(?:write|generate|create|give\s+me)\b.{0,60}\b(?:racist|homophobic|transphobic|antisemitic|sexist)\s+(?:joke|message|insult|slur|rant)\b",
+        r"\b(?:write|generate|create|give\s+me)\b.{0,60}\b(?:hate\s+speech|racial\s+slurs?|ethnic\s+slurs?)\b",
+        r"\b(?:i\s+hate|kill|attack|hurt|get\s+rid\s+of)\s+(?:all\s+)?(?:black\s+people|white\s+people|asians?|latinos?|hispanics?|muslims?|jews?|christians?|gay\s+people|lesbians?|trans\s+people|immigrants?|women|men)\b",
+        r"\bi(?:'m|\s+am)\s+going\s+to\s+(?:kill|shoot|stab|attack|hurt)\s+(?:you|him|her|them|my\s+(?:manager|coworker))\b",
+    )
+)
+PROMPT_INJECTION_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\bignore\s+(?:all\s+)?(?:previous|prior|above)\s+instructions?\b",
+        r"\b(?:disregard|override|bypass)\b.{0,60}\b(?:instructions?|rules?|guardrails?|policy)\b",
+        r"\byou\s+are\s+now\b",
+        r"\b(?:reveal|show|print|repeat|extract|provide)\b.{0,80}\b(?:system|developer|hidden|internal)\s+(?:prompt|instructions?|message)\b",
+        r"\b(?:system|developer)\s+prompt\b",
+        r"\b(?:act|behave|respond)\s+as\b.{0,60}\b(?:without|no)\s+(?:rules?|restrictions?|guardrails?)\b",
+        r"\b(?:change|switch|reassign)\s+(?:your\s+)?role\b",
+        r"\bprompt\s+injection\b",
+    )
+)
+PII_GENERATION_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\b(?:generate|create|invent|make\s+up|provide|give\s+me|list|show\s+me)\b.{0,100}\b(?:ssn|ssns|social\s+security\s+numbers?)\b",
+        r"\b(?:generate|create|invent|make\s+up|provide|give\s+me|list|show\s+me)\b.{0,100}\b(?:credit|debit)\s+card\s+numbers?\b",
+        r"\b(?:generate|create|invent|make\s+up|provide|give\s+me|list|show\s+me)\b.{0,100}\b(?:passwords?|account\s+credentials?|login\s+credentials?)\b",
+    )
+)
+EXPLICIT_OFF_TOPIC_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\b(?:write|debug|fix|refactor|compile|build)\b.{0,80}\b(?:code|program|script|python|javascript|java|sql|html|css)\b",
+        r"\b(?:write|compose|create)\b.{0,60}\b(?:poem|story|song|novel|screenplay|joke)\b",
+        r"\b(?:weather|sports\s+score|stock\s+price|cryptocurrency|recipe)\b",
+        r"\b(?:capital|president|population)\s+of\b",
+    )
+)
+SUPPORTED_DOMAIN_PATTERN = re.compile(
+    r"\b(?:employee|employment|manager|supervisor|human\s+resources|hr|"
+    r"branch|loan|lending|customer\s+complaint|record\s+retention|audit|"
+    r"handbook|attendance|timekeeping|workplace|conduct|dress\s+code|attire|"
+    r"social\s+media|technology\s+use|acceptable\s+use|confidentiality|safety|"
+    r"disciplin(?:e|ary)|password|"
+    r"benefit|benefits|eligibility|enrollment|medical|dental|vision|retirement|"
+    r"insurance|wellness|life\s+event|pto|leave|vacation|ppo|hmo|401k|"
+    r"provider|deductible|copay|fmla|jury\s+duty|business\s+casual|"
+    r"reimburs|expense|travel|mileage|per\s+diem|education\s+assistance|"
+    r"navan|travel\s+account|expense\s+(?:account|management)|corporate\s+card|"
+    r"performance|rating|review|evaluation|competenc|goal|career|coaching|"
+    r"promotion|bonus|compensation|meeting|quarter|target|funded|region)\w*\b",
+    re.IGNORECASE,
+)
+SAFE_CONVERSATIONAL_PATTERN = re.compile(
+    r"^\s*(?:(?:hi|hello|hey|thanks|thank\s+you|good\s+(?:morning|afternoon|evening))"
+    r"[!.\s]*)$|\b(?:above|previous|earlier|that\s+answer|tell\s+me\s+more|"
+    r"explain|clarify|summarize|table|chart|graph|compare)\b",
+    re.IGNORECASE,
+)
+OUTPUT_PII_PATTERNS = (
+    (
+        "ssn",
+        re.compile(r"(?<!\d)\d{3}-\d{2}-\d{4}(?!\d)"),
+        "[REDACTED SSN]",
+    ),
+    (
+        "email",
+        # Approved role-based Mariner mailboxes (for example, travel@...) are
+        # operational contacts rather than personal email addresses. Continue
+        # masking personal Mariner addresses containing a dot in the local part,
+        # as well as every address outside the marinerfinance.com domain.
+        re.compile(
+            r"\b(?![A-Z0-9_%+-]+@marinerfinance\.com\b)"
+            r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b",
+            re.IGNORECASE,
+        ),
+        "[REDACTED EMAIL]",
+    ),
+    (
+        "phone",
+        re.compile(
+            r"(?<!\w)(?:\+?1[\s.-]?)?(?:\(\d{3}\)|\d{3})[\s.-]\d{3}[\s.-]\d{4}(?!\w)"
+        ),
+        "[REDACTED PHONE]",
+    ),
+    (
+        "account_number",
+        re.compile(
+            r"\b(?:account|acct|routing)\s*(?:number|no\.?|#)?\s*[:=-]?\s*\d{6,17}\b",
+            re.IGNORECASE,
+        ),
+        "[REDACTED ACCOUNT NUMBER]",
+    ),
+    (
+        "payment_card",
+        re.compile(r"(?<!\d)(?:\d[ -]?){12,18}\d(?!\d)"),
+        "[REDACTED PAYMENT CARD]",
+    ),
+)
+INTERNAL_DETAIL_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\bmas-[a-z0-9-]+-endpoint\b",
+        r"\b(?:model|serving)\s+endpoint\b",
+        r"\b(?:gpt-?\d[\w.-]*|claude[\w.-]*|llama[\w.-]*|qwen[\w.-]*|dbrx[\w.-]*)\b",
+        r"\b(?:supervisor\s+agent|sub-?agent|agent\s+architecture|knowledge\s+assistant)\b",
+        r"\b(?:tool\s+(?:name|call)|mcp[_ -]|app-agent-[a-z0-9-]+)\b",
+        r"/(?:api(?:/v\d+)?|serving-endpoints|Workspace|Volumes)/[^\s)\]]+",
+        r"\b(?:service\s+principal|client[_ -]?id)\b.{0,80}\b[0-9a-f]{8}-[0-9a-f-]{27,36}\b",
+    )
+)
+BINDING_DECISION_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\b(?:you|the\s+employee)\s+(?:are|is|will\s+be|have\s+been|has\s+been)\s+(?:terminated|fired|promoted|demoted|suspended)\b",
+        r"\b(?:we|mariner|management|human\s+resources|hr|the\s+company)\s+(?:has\s+|have\s+)?(?:decided|determined|approved|will)\b.{0,100}\b(?:terminate|fire|promote|demote|suspend|disciplinary\s+action|bonus|salary|compensation)\b",
+        r"\b(?:your|the\s+employee(?:'s)?)\s+(?:salary|bonus|compensation)\s+(?:is|will\s+be|has\s+been)\s+(?:set\s+(?:at|to)\s*)?\$\s*[\d,]+(?:\.\d{2})?\b",
+    )
+)
+SELF_HARM_OUTPUT_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"\b(?:you\s+should|go\s+ahead\s+and|the\s+best\s+way\s+to)\s+(?:kill|hurt|harm)\s+yourself\b",
+        r"\b(?:instructions?|steps?|methods?|ways?)\b.{0,80}\b(?:commit\s+suicide|kill\s+yourself|self[- ]?harm)\b",
+        r"\b(?:suicide|self[- ]?harm)\b.{0,80}\b(?:instructions?|steps?|methods?)\b",
+    )
+)
+HATE_OR_ABUSE_OUTPUT_PATTERNS = tuple(
+    re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    for pattern in (
+        r"^\s*(?:fuck|screw)\s+(?:you|him|her|them)\b",
+        r"\b(?:kill|attack|hurt|get\s+rid\s+of)\s+(?:all\s+)?(?:black\s+people|white\s+people|asians?|latinos?|hispanics?|muslims?|jews?|christians?|gay\s+people|lesbians?|trans\s+people|immigrants?|women|men)\b",
+        r"\b(?:write|use|repeat)\b.{0,60}\b(?:hate\s+speech|racial\s+slurs?|ethnic\s+slurs?)\b",
+    )
+)
 
 
 class ReadinessCache:
@@ -265,6 +442,27 @@ def create_app(
                 400,
             )
 
+        input_guardrail_reason = _input_guardrail_reason(message)
+        if input_guardrail_reason:
+            logger.warning(
+                "Chat input intercepted; request_id=%s category=%s",
+                request_id,
+                input_guardrail_reason,
+            )
+            if input_guardrail_reason == "self_harm":
+                return jsonify(
+                    conversationId=conversation_id,
+                    requestId=request_id,
+                    answer=SELF_HARM_SUPPORT_MESSAGE,
+                    sources=[],
+                )
+            return _error_response(
+                "MESSAGE_NOT_ALLOWED",
+                INPUT_GUARDRAIL_REFUSAL,
+                request_id,
+                400,
+            )
+
         user_id = identity_provider()
         if not user_id:
             return _error_response(
@@ -312,10 +510,16 @@ def create_app(
             )
 
         try:
+            # Explicit slash commands are authoritative one-shot routes. Do not
+            # let prior cross-domain turns bias the selected specialist's answer;
+            # the completed turn is still persisted in the current conversation.
+            supervisor_history = (
+                ConversationHistory() if _has_direct_route(message) else history
+            )
             result = service.answer(
                 _supervisor_input(message),
                 session_id,
-                history,
+                supervisor_history,
             )
         except InvalidQuestionError:
             record_event("error", error_message="invalid_question")
@@ -354,14 +558,26 @@ def create_app(
                 503,
             )
 
+        safe_answer, output_filter_categories, output_was_blocked = (
+            _apply_output_guardrails(result.answer)
+        )
+        safe_sources = () if output_was_blocked else result.sources
+        if output_filter_categories:
+            logger.warning(
+                "Supervisor output filtered; request_id=%s categories=%s action=%s",
+                request_id,
+                ",".join(output_filter_categories),
+                "replaced" if output_was_blocked else "masked",
+            )
+
         turn = ConversationTurn(
             conversation_id=conversation_id,
             request_id=request_id,
             user_id=user_id,
             created_at=datetime.now(timezone.utc),
             question=message,
-            answer=result.answer,
-            sources=result.sources,
+            answer=safe_answer,
+            sources=safe_sources,
             usage=result.usage,
         )
         try:
@@ -381,16 +597,16 @@ def create_app(
 
         record_event(
             "success",
-            answer=result.answer,
-            sources=result.sources,
+            answer=safe_answer,
+            sources=safe_sources,
             agents_used=result.agents_used,
             usage=_reported_usage(result.usage),
         )
         return jsonify(
             conversationId=conversation_id,
             requestId=request_id,
-            answer=result.answer,
-            sources=[_public_source(source, catalog_service) for source in result.sources],
+            answer=safe_answer,
+            sources=[_public_source(source, catalog_service) for source in safe_sources],
         )
 
     @app.get("/api/v1/sources")
@@ -616,6 +832,77 @@ def _require_identity(identity_provider):
     )
 
 
+def _input_guardrail_reason(message: str) -> str | None:
+    """Return a non-sensitive category when an input should not be forwarded."""
+    for pattern in SELF_HARM_INPUT_PATTERNS:
+        if pattern.search(message):
+            return "self_harm"
+    for pattern in PROMPT_INJECTION_PATTERNS:
+        if pattern.search(message):
+            return "prompt_injection"
+    for pattern in PII_GENERATION_PATTERNS:
+        if pattern.search(message):
+            return "pii_generation"
+    for pattern in HATE_OR_ABUSE_INPUT_PATTERNS:
+        if pattern.search(message):
+            return "hate_or_abuse"
+    for pattern in EXPLICIT_OFF_TOPIC_PATTERNS:
+        if pattern.search(message):
+            return "off_topic"
+
+    command = message.split(maxsplit=1)[0].casefold() if message.split() else ""
+    if command in SUPERVISOR_ROUTE_COMMANDS:
+        return None
+    if SUPPORTED_DOMAIN_PATTERN.search(message):
+        return None
+    if SAFE_CONVERSATIONAL_PATTERN.search(message):
+        return None
+
+    # Preserve short topic phrases such as "PPO" or "jury duty" so the
+    # Supervisor can ask a domain-specific clarification when appropriate.
+    if len(message.split()) <= 2 and re.fullmatch(r"[\w'’&+./? -]+", message):
+        return None
+    # Domain vocabulary is an allow signal, not an exhaustive business-topic
+    # classifier. Forward unmatched or ambiguous requests to the Supervisor;
+    # only the explicit off-topic patterns above are rejected in Flask.
+    return None
+
+
+def _apply_output_guardrails(answer: str) -> tuple[str, tuple[str, ...], bool]:
+    """Mask PII and replace outputs containing prohibited internal or binding content."""
+    filtered_answer = answer
+    categories: list[str] = []
+    for category, pattern, replacement in OUTPUT_PII_PATTERNS:
+        filtered_answer, replacement_count = pattern.subn(replacement, filtered_answer)
+        if replacement_count:
+            categories.append(category)
+
+    if any(pattern.search(filtered_answer) for pattern in INTERNAL_DETAIL_PATTERNS):
+        categories.append("internal_system_details")
+    if any(pattern.search(filtered_answer) for pattern in BINDING_DECISION_PATTERNS):
+        categories.append("binding_decision")
+    if any(pattern.search(filtered_answer) for pattern in SELF_HARM_OUTPUT_PATTERNS):
+        categories.append("unsafe_self_harm")
+    if any(pattern.search(filtered_answer) for pattern in HATE_OR_ABUSE_OUTPUT_PATTERNS):
+        categories.append("hate_or_abuse")
+
+    output_was_blocked = any(
+        category
+        in {
+            "internal_system_details",
+            "binding_decision",
+            "unsafe_self_harm",
+            "hate_or_abuse",
+        }
+        for category in categories
+    )
+    if output_was_blocked:
+        if "unsafe_self_harm" in categories:
+            return SELF_HARM_SUPPORT_MESSAGE, tuple(categories), True
+        return OUTPUT_GUARDRAIL_FALLBACK, tuple(categories), True
+    return filtered_answer, tuple(categories), False
+
+
 def _request_id() -> str:
     return getattr(g, "request_id", str(uuid4()))
 
@@ -658,12 +945,13 @@ def _citation_recovery_message(message: str) -> str:
         "/handbook": '/handbook What does the handbook say about jury duty leave?',
         "/benefits": '/benefits How many PTO hours do full-time employees receive?',
         "/benfits": '/benefits How many PTO hours do full-time employees receive?',
+        "/coaching": '/coaching What do the performance ratings from 1 to 5 mean?',
     }
     example = examples.get(command)
     direct_option = (
         f'1. Ask a more specific question, for example: "{example}"'
         if example
-        else "1. Route directly with /policy, /handbook, or /benefits and ask a specific question."
+        else "1. Route directly with /policy, /handbook, /benefits, or /coaching and ask a specific question."
     )
     return (
         "I found a response, but could not match it to an approved source document, "
@@ -692,18 +980,51 @@ def _supervisor_input(message: str) -> str:
     command, _, question = message.strip().partition(" ")
     specialist = SUPERVISOR_ROUTE_COMMANDS.get(command.casefold())
     if specialist is None:
-        return message
-    employee_question = question.strip() or (
-        "Introduce the topics you support and ask me for my specific question."
-    )
-    return (
-        f"Mandatory application routing directive: Call the {specialist} "
-        "subagent/tool now and wait for it to complete. Return the worker's final "
-        "grounded answer and source information. Do not merely announce that you "
-        "will query, consult, or route to the specialist. Do not answer from general "
-        "model knowledge and do not route to a different specialist. "
-        f"Employee question: {employee_question}"
-    )
+        supervisor_message = message
+    else:
+        employee_question = question.strip() or (
+            "Introduce the topics you support and ask me for my specific question."
+        )
+        supervisor_message = (
+            f"Mandatory application routing directive: Call the {specialist} "
+            "subagent/tool now and wait for it to complete. Return the worker's final "
+            "grounded answer and source information. Do not merely announce that you "
+            "will query, consult, or route to the specialist. Do not answer from general "
+            "model knowledge and do not route to a different specialist. "
+            f"Employee question: {employee_question}"
+        )
+
+    if re.search(
+        r"\b(?:chart|graph|plot|visualize|visualise|visualization)\b",
+        message,
+        re.IGNORECASE,
+    ):
+        supervisor_message += (
+            "\n\nApplication chart format requirement: Include exactly one fenced code "
+            "block whose language is mariner-chart. The block must contain strict JSON "
+            "with this shape: {\"type\":\"bar\",\"title\":\"Chart title\","
+            "\"xLabel\":\"Category label\",\"yLabel\":\"Metric label\","
+            "\"unit\":\"optional unit\",\"labels\":[\"A\",\"B\"],"
+            "\"values\":[1,2]}. Use a bar chart, 1 to 30 labels, finite "
+            "non-negative numeric values, and matching label/value counts. Base the "
+            "chart only on grounded data from the current answer or conversation. Do "
+            "not claim that a chart was created unless this block is present. A short "
+            "written interpretation may follow the block."
+        )
+
+    if re.search(r"\btable\b", message, re.IGNORECASE):
+        supervisor_message += (
+            "\n\nApplication table format requirement: Return a valid Markdown table. "
+            "Put each column heading in its own cell, include a separator row with the "
+            "same number of cells, and keep every data row at that same column count."
+        )
+
+    return supervisor_message
+
+
+def _has_direct_route(message: str) -> bool:
+    command = message.strip().partition(" ")[0].casefold()
+    return command in SUPERVISOR_ROUTE_COMMANDS
 
 
 def _supervisor_session_id(user_id: str, conversation_id: str) -> str:

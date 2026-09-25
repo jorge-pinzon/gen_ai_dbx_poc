@@ -29,8 +29,10 @@ class CitationTableConfig:
     domain: str
     document_title_column: str = "document_title"
     volume_path_column: str = "volume_path"
-    page_number_column: str = "page_start"
+    page_number_column: str | None = "page_start"
     chunk_text_column: str = "chunk_text"
+    page_number_pattern: str | None = None
+    source_label_aliases: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True)

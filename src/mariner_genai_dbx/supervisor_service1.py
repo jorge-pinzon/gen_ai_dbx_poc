@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import logging
 import re
 import threading
@@ -153,6 +152,7 @@ class MockSupervisorService:
 
     def check_readiness(self) -> ReadinessResult:
         return ReadinessResult(ready=True)
+
 
 
 class DatabricksSupervisorService:
@@ -313,34 +313,21 @@ class DatabricksSupervisorService:
         return ReadinessResult(ready=True)
 
     def _invoke(self, url: str, body: dict) -> dict:
-        """Invoke the Supervisor using streaming while preserving the existing app contract."""
         response = self._post_invocation(url, body, self._access_token())
-
         logger.debug(
-            "Supervisor HTTP response received; status=%s headers=%s",
+            "Supervisor HTTP response received; status=%s",
             response.status_code,
-            dict(getattr(response, "headers", {}) or {}),
         )
 
         if response.status_code == 401 and not self.config.token:
             self._invalidate_token()
             response = self._post_invocation(url, body, self._access_token())
             logger.debug(
-                "Supervisor HTTP response received after token refresh; status=%s headers=%s",
+                "Supervisor HTTP response received after token refresh; status=%s",
                 response.status_code,
-                dict(getattr(response, "headers", {}) or {}),
             )
-
         response.raise_for_status()
-
-        # Production requests use the Responses API streaming format. Keep a
-        # JSON fallback so local/unit-test fakes and non-streaming endpoints
-        # continue to work with the existing service.
-        if hasattr(response, "iter_lines"):
-            payload = self._parse_stream_response(response)
-        else:
-            payload = response.json()
-
+        payload = response.json()
         if not isinstance(payload, dict):
             raise SupervisorInvocationError(
                 "The Databricks Supervisor returned invalid JSON"
@@ -348,98 +335,15 @@ class DatabricksSupervisorService:
         return payload
 
     def _post_invocation(self, url: str, body: dict, access_token: str):
-        request_body = dict(body)
-        request_body["stream"] = True
         return self._http.post(
             url,
             headers={
                 "Authorization": f"Bearer {access_token}",
                 "Content-Type": "application/json",
             },
-            json=request_body,
-            stream=True,
+            json=body,
             timeout=self.config.request_timeout_seconds,
         )
-
-    def _parse_stream_response(self, response) -> dict:
-        """Parse Databricks SSE events and return the same dict shape used before streaming."""
-        collected_text: list[str] = []
-        final_response: dict | None = None
-
-        try:
-            for line in response.iter_lines(decode_unicode=True):
-                # This is the raw response line from Databricks. DEBUG logging
-                # is used so it can be enabled during troubleshooting without
-                # making every production request noisy.
-                logger.debug("SUPERVISOR RAW STREAM: %s", line)
-
-                if not line:
-                    continue
-
-                # Some proxies/clients may return bytes despite decode_unicode=True.
-                if isinstance(line, bytes):
-                    line = line.decode("utf-8", errors="replace")
-
-                if not line.startswith("data:"):
-                    continue
-
-                payload_text = line[5:].strip()
-                if not payload_text:
-                    continue
-                if payload_text == "[DONE]":
-                    break
-
-                try:
-                    event = json.loads(payload_text)
-                except ValueError:
-                    logger.debug("Ignoring non-JSON Supervisor stream event")
-                    continue
-
-                event_type = event.get("type", "") if isinstance(event, dict) else ""
-
-                if event_type == "response.output_text.delta":
-                    delta = event.get("delta", "")
-                    if isinstance(delta, str):
-                        collected_text.append(delta)
-
-                elif event_type == "response.output_text.done":
-                    text = event.get("text", "")
-                    if isinstance(text, str) and text and not text.startswith("<name>"):
-                        collected_text = [text]
-
-                elif event_type == "response.done":
-                    response_obj = event.get("response")
-                    if isinstance(response_obj, dict):
-                        final_response = response_obj
-
-            if final_response is not None:
-                return final_response
-
-            final_text = "".join(collected_text).strip()
-            if final_text:
-                return {
-                    "object": "response",
-                    "output": [
-                        {
-                            "type": "message",
-                            "role": "assistant",
-                            "content": [
-                                {
-                                    "type": "output_text",
-                                    "text": final_text,
-                                }
-                            ],
-                        }
-                    ],
-                }
-
-            raise SupervisorInvocationError(
-                "The Databricks Supervisor returned no usable streamed response"
-            )
-        finally:
-            close = getattr(response, "close", None)
-            if callable(close):
-                close()
 
     def _access_token(self) -> str:
         with self._token_lock:

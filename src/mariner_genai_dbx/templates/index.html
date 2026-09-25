@@ -71,7 +71,7 @@
         </section>
       </section>
 
-      <section class="chat-shell">
+      <section class="chat-shell agent-panel-collapsed">
         <header class="app-header">
           <div class="header-copy">
             <p class="eyebrow">MARINER's MultiAgentic Employee Support</p>
@@ -80,27 +80,69 @@
           </div>
           <div class="header-actions">
             <button id="new-chat" class="secondary-button" type="button">New chat</button>
+            <button
+              id="open-documents"
+              class="secondary-button"
+              type="button"
+              aria-controls="source-workspace"
+              aria-expanded="false"
+            >Document reader</button>
             {% if password_mode %}
               <form method="post" action="{{ url_for('logout') }}">
                 <button class="secondary-button" type="submit">Log out</button>
               </form>
             {% endif %}
           </div>
-          <div class="header-topics">
-            <p class="header-description">Available (<span class="ready-color">green</span>) and pending (<span class="pending-color">yellow</span>) agents</p>
-            <p class="header-description command-help">Enter your question, or click an available agent to use its direct-access command.</p>
-            <ul class="support-topics" aria-label="Supported topics">
-              <li class="topic-ready" data-command="/policy" role="button" tabindex="0" aria-label="Use /policy for Branch operations">Branch operations</li>
-              <li class="topic-ready" data-command="/handbook" role="button" tabindex="0" aria-label="Use /handbook for Employee handbook">Employee handbook</li>
-              <li class="topic-ready" data-command="/benefits" role="button" tabindex="0" aria-label="Use /benefits for Benefits">Benefits</li>
-              <li class="topic-pending" aria-label="Coaching, pending">Coaching 360</li>
-              <li class="topic-pending" aria-label="Security, pending">Security</li>
-              <li class="topic-pending" aria-label="Data, pending">Data</li>
-            </ul>
-          </div>
           <p class="test-data-warning" role="note">PROTOTYPE — data is synthetic or incomplete and may not represent real company information.</p>
 
         </header>
+
+        <aside class="agent-sidebar" aria-labelledby="agent-sidebar-heading">
+          <div class="agent-sidebar-header">
+            <div class="agent-sidebar-heading-copy">
+              <p class="agent-sidebar-eyebrow">Direct access</p>
+              <h2 id="agent-sidebar-heading">Agents</h2>
+            </div>
+            <button
+              id="toggle-agents"
+              class="agent-toggle"
+              type="button"
+              aria-controls="agent-sidebar-content"
+              aria-expanded="false"
+              aria-label="Show agents"
+              title="Show agents"
+            ><span aria-hidden="true">›</span></button>
+          </div>
+          <div id="agent-sidebar-content" hidden>
+            <p class="agent-sidebar-description">
+              Ask normally and Mariner will route your question, or select an available agent to add its command.
+            </p>
+            <div class="agent-status-key" aria-label="Agent status key">
+              <span><i class="status-dot status-ready" aria-hidden="true"></i>Available</span>
+              <span><i class="status-dot status-pending" aria-hidden="true"></i>Pending</span>
+            </div>
+            <ul class="support-topics" aria-label="Available and pending agents">
+              <li class="topic-ready" data-command="/policy" role="button" tabindex="0" aria-label="Use /policy for Branch operations">
+                <span>Branch operations</span><code>/policy</code>
+              </li>
+              <li class="topic-ready" data-command="/handbook" role="button" tabindex="0" aria-label="Use /handbook for Employee handbook">
+                <span>Employee handbook</span><code>/handbook</code>
+              </li>
+              <li class="topic-ready" data-command="/benefits" role="button" tabindex="0" aria-label="Use /benefits for Benefits">
+                <span>Benefits</span><code>/benefits</code>
+              </li>
+              <li class="topic-ready" data-command="/coaching" role="button" tabindex="0" aria-label="Use /coaching for Performance">
+                <span>Coaching 360</span><code>/coaching</code>
+              </li>
+              <li class="topic-pending" aria-label="Security, pending">
+                <span>Security</span><small>Coming soon</small>
+              </li>
+              <li class="topic-pending" aria-label="Data, pending">
+                <span>Data</span><small>Coming soon</small>
+              </li>
+            </ul>
+          </div>
+        </aside>
 
         {% if local_mode %}
           <p class="environment-banner">Local test mode — mock Supervisor and local identity.</p>
@@ -125,6 +167,7 @@
         </form>
       </section>
     </main>
+    <script src="{{ url_for('static', filename='markdown.js') }}" defer></script>
     <script src="{{ url_for('static', filename='chat.js') }}" defer></script>
   </body>
 </html>

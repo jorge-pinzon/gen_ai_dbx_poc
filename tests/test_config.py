@@ -86,7 +86,23 @@ class ConfigurationTests(unittest.TestCase):
                 "workspace.default.branch_operations_chunks",
                 "workspace.default.employee_handbook_chunks",
                 "workspace.default.benefits_chunks",
+                "workspace.performance_test.app_policy_chunks",
             ],
+        )
+
+        performance_policy = settings.citation_tables[-1]
+        self.assertEqual(performance_policy.domain, "Employee Performance Policy")
+        self.assertEqual(performance_policy.document_title_column, "document_name")
+        self.assertEqual(performance_policy.volume_path_column, "source_volume_path")
+        self.assertEqual(performance_policy.page_number_column, "page_start")
+        self.assertEqual(performance_policy.chunk_text_column, "chunk_text")
+        self.assertIsNone(performance_policy.page_number_pattern)
+        self.assertIn(
+            (
+                "Employee Performance Management Policy",
+                "INSTRUCTIONS_PERFORMANCE.pdf",
+            ),
+            performance_policy.source_label_aliases,
         )
 
     def test_reads_analytics_configuration(self):

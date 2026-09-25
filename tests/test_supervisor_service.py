@@ -138,6 +138,37 @@ def approval_payload(tool_name="app-agent-mariner-branch-worker"):
     }
 
 
+def performance_payload():
+    payload = successful_payload()
+    payload["output"].insert(
+        1,
+        {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "output_text",
+                    "text": "<name>mariner-performance-assistant</name>",
+                }
+            ],
+        },
+    )
+    payload["output"].insert(
+        2,
+        {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "output_text",
+                    "text": "<name>supervisor-agent-2026-09-17-06-32-38</name>",
+                }
+            ],
+        },
+    )
+    return payload
+
+
 class SupervisorServiceTests(unittest.TestCase):
     @patch("databricks.sdk.WorkspaceClient")
     def test_workspace_client_uses_least_privilege_data_scopes(self, workspace_client):
@@ -174,7 +205,7 @@ class SupervisorServiceTests(unittest.TestCase):
 
         self.assertEqual(
             result.answer,
-            "Paid loan files must be retained.\n\nSource: Record Retention",
+            "Paid loan files must be retained.",
         )
         self.assertEqual(result.usage.total_tokens, 150)
         self.assertEqual(result.sources[0].page, 4)
@@ -242,7 +273,7 @@ class SupervisorServiceTests(unittest.TestCase):
 
         self.assertEqual(
             result.answer,
-            "Paid loan files must be retained.\n\nSource: Record Retention",
+            "Paid loan files must be retained.",
         )
         self.assertEqual(result.usage.input_tokens, 120)
         self.assertEqual(result.usage.output_tokens, 60)
@@ -285,6 +316,84 @@ class SupervisorServiceTests(unittest.TestCase):
                 "app-agent-mariner-branch-worker",
                 "app-agent-mariner-benefits-worker",
             ),
+        )
+
+    def test_records_performance_specialist_from_response_metadata(self):
+        service = DatabricksSupervisorService(
+            config(),
+            http_session=FakeHttpSession(
+                token_response(), FakeResponse(performance_payload())
+            ),
+            citation_resolver=FakeCitationResolver(),
+        )
+
+        result = service.answer("Question", "session", ConversationHistory())
+
+        self.assertEqual(result.agents_used, ("mariner-performance-assistant",))
+
+    def test_merges_approved_worker_and_performance_specialist(self):
+        service = DatabricksSupervisorService(
+            config(),
+            http_session=FakeHttpSession(
+                token_response(),
+                FakeResponse(approval_payload()),
+                FakeResponse(performance_payload()),
+            ),
+            citation_resolver=FakeCitationResolver(),
+        )
+
+        result = service.answer("Question", "session", ConversationHistory())
+
+        self.assertEqual(
+            result.agents_used,
+            (
+                "app-agent-mariner-branch-worker",
+                "mariner-performance-assistant",
+            ),
+        )
+
+    def test_uses_approved_performance_source_when_agent_omits_source_line(self):
+        payload = performance_payload()
+        payload["output"][-1]["content"][0]["text"] = (
+            "Managers must conduct one documented performance meeting per quarter."
+        )
+        resolver = FakeCitationResolver()
+        service = DatabricksSupervisorService(
+            config(),
+            http_session=FakeHttpSession(token_response(), FakeResponse(payload)),
+            citation_resolver=resolver,
+        )
+
+        result = service.answer("Question", "session", ConversationHistory())
+
+        self.assertEqual(resolver.labels, ("INSTRUCTIONS_PERFORMANCE.pdf",))
+        self.assertEqual(result.sources[0].label, "Record Retention.pdf")
+
+    def test_recovers_source_from_specialist_when_final_answer_omits_it(self):
+        payload = successful_payload()
+        payload["output"][-2]["content"][0]["text"] = (
+            "The grounded specialist response.\n\n"
+            "Source: 2026 Employee Handbook v1, Section II.B – Appropriate Attire"
+        )
+        payload["output"][-1]["content"][0]["text"] = (
+            "Employees should follow the documented dress code."
+        )
+        resolver = FakeCitationResolver()
+        service = DatabricksSupervisorService(
+            config(),
+            http_session=FakeHttpSession(token_response(), FakeResponse(payload)),
+            citation_resolver=resolver,
+        )
+
+        result = service.answer("dress code", "session", ConversationHistory())
+
+        self.assertEqual(
+            resolver.labels,
+            ("2026 Employee Handbook v1, Section II.B – Appropriate Attire",),
+        )
+        self.assertEqual(
+            result.answer,
+            "Employees should follow the documented dress code.",
         )
 
     def test_rejects_unknown_worker_tool(self):

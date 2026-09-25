@@ -44,6 +44,18 @@ CITATION_TABLES = (
     CitationTableConfig(
         table_name="workspace.default.branch_operations_chunks",
         domain="Branch Operations",
+        source_label_aliases=(
+            ("Record Retention", "BRANCH_OPERATIONS_RECORD_RETENTION"),
+            ("Record Retention Policy", "BRANCH_OPERATIONS_RECORD_RETENTION"),
+            (
+                "Branch Record Retention Policy",
+                "BRANCH_OPERATIONS_RECORD_RETENTION",
+            ),
+            (
+                "Branch Operations Record Retention Policy",
+                "BRANCH_OPERATIONS_RECORD_RETENTION",
+            ),
+        ),
     ),
     CitationTableConfig(
         table_name="workspace.default.employee_handbook_chunks",
@@ -52,6 +64,21 @@ CITATION_TABLES = (
     CitationTableConfig(
         table_name="workspace.default.benefits_chunks",
         domain="Employee Benefits",
+    ),
+    CitationTableConfig(
+        table_name="workspace.performance_test.app_policy_chunks",
+        domain="Employee Performance Policy",
+        document_title_column="document_name",
+        volume_path_column="source_volume_path",
+        page_number_column="page_start",
+        chunk_text_column="chunk_text",
+        source_label_aliases=(
+            (
+                "Employee Performance Management Policy",
+                "INSTRUCTIONS_PERFORMANCE.pdf",
+            ),
+            ("Employee Performance Policy", "INSTRUCTIONS_PERFORMANCE.pdf"),
+        ),
     ),
 )
 

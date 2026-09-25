@@ -3,6 +3,7 @@ import unittest
 from mariner_genai_dbx.citation_resolver import (
     DatabricksCitationResolver,
     extract_source_labels,
+    remove_source_lines,
 )
 from mariner_genai_dbx.config import CITATION_TABLES
 from mariner_genai_dbx.errors import CitationResolutionError
@@ -35,13 +36,32 @@ def response(rows, state="SUCCEEDED"):
 
 
 class CitationResolverTests(unittest.TestCase):
+    def test_removes_plain_and_markdown_source_lines_from_display_answer(self):
+        answer = (
+            "Managers meet quarterly.\n\n"
+            "**Source:** INSTRUCTIONS_PERFORMANCE.pdf\n\n"
+            "Additional guidance."
+        )
+
+        self.assertEqual(
+            remove_source_lines(answer),
+            "Managers meet quarterly.\n\nAdditional guidance.",
+        )
+
     def test_extracts_plain_and_markdown_source_labels(self):
         self.assertEqual(
             extract_source_labels(
                 "Answer one.\n\nSource: Record Retention\n"
-                "Answer two.\n\n**Source:** Employee Handbook"
+                "Answer two.\n\n**Source:** Employee Handbook\n"
+                "Answer three.\n\n**Source**: Record Retention Policy\n"
+                "Answer four.\n\nSource: **Benefits Guide**"
             ),
-            ("Record Retention", "Employee Handbook"),
+            (
+                "Record Retention",
+                "Employee Handbook",
+                "Record Retention Policy",
+                "Benefits Guide",
+            ),
         )
 
     def test_resolves_label_with_parameterized_union_query(self):
@@ -75,15 +95,66 @@ class CitationResolverTests(unittest.TestCase):
         self.assertNotIn("Record Retention", call["statement"])
         self.assertIn(":source_label", call["statement"])
         self.assertIn("CONCAT", call["statement"])
+        self.assertIn("' %'", call["statement"])
+        self.assertIn("'% '", call["statement"])
         self.assertIn("',%'", call["statement"])
         self.assertIn("' - %'", call["statement"])
         self.assertIn("' – %'", call["statement"])
         self.assertIn("' — %'", call["statement"])
-        self.assertIn("'^[0-9]{4}", call["statement"])
+        self.assertIn("' (%'", call["statement"])
+        self.assertIn("'%, '", call["statement"])
+        self.assertIn("'% - '", call["statement"])
+        self.assertIn("'[0-9]{4}", call["statement"])
+        self.assertIn("'\\\\s+v[0-9]+'", call["statement"])
+        self.assertIn("'[_()-]+'", call["statement"])
+        self.assertIn("policy$", call["statement"])
+        self.assertIn("LOWER(TRIM(:source_label)), '\\\\.pdf', ''", call["statement"])
         self.assertIn("workspace`.`default`.`branch_operations_chunks", call["statement"])
+        self.assertIn(
+            "workspace`.`performance_test`.`app_policy_chunks", call["statement"]
+        )
+        self.assertIn("`document_name` AS document_title", call["statement"])
+        self.assertIn("`source_volume_path` AS volume_path", call["statement"])
+        self.assertIn("TRY_CAST(`page_start` AS INT) AS page_number", call["statement"])
         parameter = call["parameters"][0]
         value = parameter.get("value") if isinstance(parameter, dict) else parameter.value
-        self.assertEqual(value, "Record Retention")
+        self.assertEqual(value, "BRANCH_OPERATIONS_RECORD_RETENTION")
+
+    def test_normalizes_filename_separators_for_human_readable_source_labels(self):
+        client = FakeWorkspaceClient(
+            response(
+                [
+                    [
+                        "Branch Operations",
+                        "EMPLOYEE_REIMBURSEMENT_AND_BUSINESS_TRAVEL_EXPENSES",
+                        "/Volumes/main/branch/EMPLOYEE_REIMBURSEMENT_AND_BUSINESS_TRAVEL_EXPENSES.pdf",
+                        "2",
+                        "To create your Navan account, send an email request.",
+                        "1",
+                    ]
+                ]
+            )
+        )
+        resolver = DatabricksCitationResolver(
+            workspace_client=client,
+            warehouse_id="warehouse",
+            tables=CITATION_TABLES,
+        )
+
+        source = resolver.resolve_labels(
+            ("Employee Reimbursement and Business Travel Expenses",),
+            "To create a Navan account, send an email request.",
+        )[0]
+
+        self.assertEqual(
+            source.label,
+            "EMPLOYEE_REIMBURSEMENT_AND_BUSINESS_TRAVEL_EXPENSES",
+        )
+        self.assertEqual(source.domain, "Branch Operations")
+        self.assertEqual(source.page, 2)
+        statement = client.statement_execution.calls[0]["statement"]
+        self.assertIn("REGEXP_REPLACE", statement)
+        self.assertIn("'[_()-]+'", statement)
 
     def test_omits_page_when_title_matches_chunks_on_multiple_pages(self):
         client = FakeWorkspaceClient(
@@ -151,6 +222,68 @@ class CitationResolverTests(unittest.TestCase):
         )[0]
 
         self.assertEqual(source.page, 3)
+
+    def test_resolves_new_performance_agent_source_alias(self):
+        client = FakeWorkspaceClient(
+            response(
+                [
+                    [
+                        "Employee Performance Policy",
+                        "INSTRUCTIONS_PERFORMANCE.pdf",
+                        "/Volumes/workspace/performance_test/data/INSTRUCTIONS_PERFORMANCE.pdf",
+                        "2",
+                        "The performance rating scale runs from one to five.",
+                        "1",
+                    ]
+                ]
+            )
+        )
+        resolver = DatabricksCitationResolver(
+            workspace_client=client,
+            warehouse_id="warehouse",
+            tables=CITATION_TABLES,
+        )
+
+        source = resolver.resolve_labels(
+            ("Employee Performance Management Policy",)
+        )[0]
+
+        self.assertEqual(source.label, "INSTRUCTIONS_PERFORMANCE.pdf")
+        self.assertEqual(source.domain, "Employee Performance Policy")
+        self.assertEqual(source.page, 2)
+        statement = client.statement_execution.calls[0]["statement"]
+        self.assertIn("`chunk_text`", statement)
+        parameter = client.statement_execution.calls[0]["parameters"][0]
+        value = parameter.get("value") if isinstance(parameter, dict) else parameter.value
+        self.assertEqual(value, "INSTRUCTIONS_PERFORMANCE.pdf")
+
+    def test_canonicalizes_branch_record_retention_agent_alias(self):
+        client = FakeWorkspaceClient(
+            response(
+                [
+                    [
+                        "Branch Operations",
+                        "BRANCH_OPERATIONS_RECORD_RETENTION",
+                        "/Volumes/main/branch/BRANCH_OPERATIONS_RECORD_RETENTION.pdf",
+                        "3",
+                        "Loan records must be retained after payoff.",
+                        "1",
+                    ]
+                ]
+            )
+        )
+        resolver = DatabricksCitationResolver(
+            workspace_client=client,
+            warehouse_id="warehouse",
+            tables=CITATION_TABLES,
+        )
+
+        source = resolver.resolve_labels(("Branch Record Retention Policy",))[0]
+
+        self.assertEqual(source.label, "BRANCH_OPERATIONS_RECORD_RETENTION")
+        parameter = client.statement_execution.calls[0]["parameters"][0]
+        value = parameter.get("value") if isinstance(parameter, dict) else parameter.value
+        self.assertEqual(value, "BRANCH_OPERATIONS_RECORD_RETENTION")
 
     def test_failed_statement_is_sanitized(self):
         resolver = DatabricksCitationResolver(

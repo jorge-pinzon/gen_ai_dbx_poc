@@ -9,7 +9,7 @@ from .errors import CitationResolutionError
 from .models import CitationTableConfig, Source
 
 SOURCE_LINE = re.compile(
-    r"^\s*(?:\*\*)?Source:(?:\*\*)?\s*(?P<label>.+?)\s*$",
+    r"^\s*(?:[-*]\s*)?\*{0,2}Source\*{0,2}\s*:\s*(?P<label>.+?)\s*$",
     re.IGNORECASE | re.MULTILINE,
 )
 SOURCE_MATCH_STOP_WORDS = {
@@ -23,12 +23,22 @@ def extract_source_labels(answer: str) -> tuple[str, ...]:
     labels = []
     seen = set()
     for match in SOURCE_LINE.finditer(answer):
-        label = match.group("label").strip()
+        label = re.sub(
+            r"^[*_`]+|[*_`]+$", "", match.group("label").strip()
+        ).strip()
         key = label.casefold()
         if label and key not in seen:
             labels.append(label)
             seen.add(key)
     return tuple(labels)
+
+
+def remove_source_lines(answer: str) -> str:
+    """Remove model-emitted source lines after their labels are resolved."""
+    if not isinstance(answer, str) or not answer:
+        return answer
+    cleaned = SOURCE_LINE.sub("", answer)
+    return re.sub(r"\n{3,}", "\n\n", cleaned).strip()
 
 
 class NullCitationResolver:
@@ -65,7 +75,8 @@ class DatabricksCitationResolver:
         for label in tuple(labels)[:10]:
             if not isinstance(label, str) or not label.strip() or len(label) > 300:
                 continue
-            for match in self._resolve_label(label.strip(), answer):
+            source_label = _canonical_source_label(label.strip(), self._tables)
+            for match in self._resolve_label(source_label, answer):
                 path_key = match["volume_path"].casefold()
                 if path_key in seen_paths:
                     continue
@@ -136,16 +147,50 @@ class DatabricksCitationResolver:
 def _resolution_statement(tables: tuple[CitationTableConfig, ...]) -> str:
     queries = []
     for table in tables:
-        normalized_title = (
+        page_number = (
+            f"TRY_CAST(`{table.page_number_column}` AS INT)"
+            if table.page_number_column
+            else (
+                "TRY_CAST(REGEXP_EXTRACT("
+                f"CAST(`{table.chunk_text_column}` AS STRING), "
+                f"'{_sql_literal(table.page_number_pattern)}', 1) AS INT)"
+                if table.page_number_pattern
+                else "CAST(NULL AS INT)"
+            )
+        )
+        title_without_metadata = (
+            "REGEXP_REPLACE("
             "REGEXP_REPLACE("
             f"REGEXP_REPLACE(LOWER(TRIM(`{table.document_title_column}`)), "
             "'\\\\.pdf$', ''), "
-            "'^[0-9]{4}\\\\s+', '')"
+            "'[0-9]{4}\\\\s+', ''), "
+            "'\\\\s+v[0-9]+', '')"
+        )
+        label_without_metadata = (
+            "REGEXP_REPLACE("
+            "REGEXP_REPLACE("
+            "REGEXP_REPLACE(LOWER(TRIM(:source_label)), '\\\\.pdf', ''), "
+            "'[0-9]{4}\\\\s+', ''), "
+            "'\\\\s+v[0-9]+', '')"
+        )
+        # Knowledge Assistant citations use human-readable spaces, while some
+        # ingestion pipelines store the same document title as an uppercase
+        # filename stem with underscores. Normalize both forms before matching.
+        normalized_title = (
+            "TRIM(REGEXP_REPLACE("
+            f"REGEXP_REPLACE({title_without_metadata}, '[_()-]+', ' '), "
+            "'\\\\s+', ' '))"
         )
         normalized_label = (
-            "REGEXP_REPLACE("
-            "REGEXP_REPLACE(LOWER(TRIM(:source_label)), '\\\\.pdf$', ''), "
-            "'^[0-9]{4}\\\\s+', '')"
+            "TRIM(REGEXP_REPLACE("
+            f"REGEXP_REPLACE({label_without_metadata}, '[_()-]+', ' '), "
+            "'\\\\s+', ' '))"
+        )
+        normalized_policy_title = (
+            f"REGEXP_REPLACE({normalized_title}, '\\\\s+policy$', '')"
+        )
+        normalized_policy_label = (
+            f"REGEXP_REPLACE({normalized_label}, '\\\\s+policy$', '')"
         )
         queries.append(
             f"""
@@ -153,17 +198,28 @@ def _resolution_statement(tables: tuple[CitationTableConfig, ...]) -> str:
                 '{_sql_literal(table.domain)}' AS domain,
                 `{table.document_title_column}` AS document_title,
                 `{table.volume_path_column}` AS volume_path,
-                TRY_CAST(`{table.page_number_column}` AS INT) AS page_number,
+                {page_number} AS page_number,
                 LEFT(CAST(`{table.chunk_text_column}` AS STRING), 12000) AS chunk_text,
                 1 AS chunk_count
             FROM `{table.table_name.replace('.', '`.`')}`
             WHERE (
                 {normalized_title} = {normalized_label}
+                OR {normalized_policy_title} = {normalized_policy_label}
+                -- Filename separators are normalized to spaces above. These
+                -- boundary-aware prefix/suffix rules therefore cover labels
+                -- such as "Document Title - Section Name" regardless of
+                -- whether the agent used a hyphen, underscore, or whitespace.
+                OR {normalized_label} LIKE CONCAT({normalized_title}, ' %')
+                OR {normalized_label} LIKE CONCAT('% ', {normalized_title})
                 OR {normalized_label} LIKE CONCAT({normalized_title}, ',%')
                 OR {normalized_label} LIKE CONCAT({normalized_title}, ' - %')
                 OR {normalized_label} LIKE CONCAT({normalized_title}, ' – %')
                 OR {normalized_label} LIKE CONCAT({normalized_title}, ' — %')
                 OR {normalized_label} LIKE CONCAT({normalized_title}, ':%')
+                OR {normalized_label} LIKE CONCAT({normalized_title}, ' (%')
+                OR {normalized_label} LIKE CONCAT('%, ', {normalized_title})
+                OR {normalized_label} LIKE CONCAT('% - ', {normalized_title})
+                OR {normalized_label} LIKE CONCAT('%: ', {normalized_title})
             )
             """.strip()
         )
@@ -235,3 +291,14 @@ def _meaningful_tokens(text: str) -> set[str]:
 
 def _sql_literal(value: str) -> str:
     return value.replace("'", "''")
+
+
+def _canonical_source_label(
+    label: str, tables: tuple[CitationTableConfig, ...]
+) -> str:
+    normalized = label.casefold()
+    for table in tables:
+        for alias, canonical_label in table.source_label_aliases:
+            if normalized == alias.casefold():
+                return canonical_label
+    return label
