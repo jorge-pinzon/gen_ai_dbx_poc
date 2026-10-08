@@ -64,6 +64,20 @@ CITATION_TABLES = (
     CitationTableConfig(
         table_name="workspace.default.benefits_chunks",
         domain="Employee Benefits",
+        source_label_aliases=(
+            (
+                "Mariner Benefits Knowledge Base",
+                "Benefits _ Mariner Finance",
+            ),
+            (
+                "Mariner Benefits Knowledge Base - Medical Plans Overview",
+                "Benefits _ Mariner Finance",
+            ),
+            (
+                "Mariner Benefits Knowledge Base - Medical Plans section",
+                "Benefits _ Mariner Finance",
+            ),
+        ),
     ),
     CitationTableConfig(
         table_name="workspace.performance_test.app_policy_chunks",

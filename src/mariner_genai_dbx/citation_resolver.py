@@ -269,16 +269,46 @@ def _best_supported_page(answer: str | None, chunks: list[tuple[int | None, str]
 
     answer_tokens = _meaningful_tokens(answer)
     scores = {}
+    tokens_by_page: dict[int, set[str]] = {}
     for page, chunk_text in chunks:
         if not page:
             continue
-        score = len(answer_tokens & _meaningful_tokens(chunk_text))
+        chunk_tokens = _meaningful_tokens(chunk_text)
+        tokens_by_page.setdefault(page, set()).update(chunk_tokens)
+        score = len(answer_tokens & chunk_tokens)
         scores[page] = max(scores.get(page, 0), score)
     if not scores:
         return None
     highest_score = max(scores.values())
     winners = [page for page, score in scores.items() if score == highest_score]
-    return winners[0] if highest_score > 0 and len(winners) == 1 else None
+    if highest_score <= 0:
+        return None
+    if len(winners) == 1:
+        return winners[0]
+
+    # When ordinary overlap ties, prefer the page matching terms that occur on
+    # fewer pages in the document. This gives a specific acronym such as "PPO"
+    # more weight than repeated words such as "plan", while retaining the
+    # fail-closed behavior if distinctiveness also ties.
+    page_count = len(tokens_by_page)
+    token_page_frequency = {
+        token: sum(token in page_tokens for page_tokens in tokens_by_page.values())
+        for token in answer_tokens
+    }
+    distinctive_scores = {
+        page: sum(
+            page_count - token_page_frequency[token] + 1
+            for token in answer_tokens & tokens_by_page[page]
+        )
+        for page in winners
+    }
+    highest_distinctive_score = max(distinctive_scores.values())
+    distinctive_winners = [
+        page
+        for page, score in distinctive_scores.items()
+        if score == highest_distinctive_score
+    ]
+    return distinctive_winners[0] if len(distinctive_winners) == 1 else None
 
 
 def _meaningful_tokens(text: str) -> set[str]:

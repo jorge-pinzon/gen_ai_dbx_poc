@@ -1,3 +1,4 @@
+import json
 import unittest
 from datetime import datetime, timezone
 from unittest.mock import patch
@@ -36,6 +37,22 @@ class FakeResponse:
 
     def json(self):
         return self.payload
+
+
+class FakeStreamingResponse(FakeResponse):
+    def __init__(self, *events, status_code=200):
+        super().__init__(None, status_code=status_code)
+        self.events = events
+        self.closed = False
+
+    def iter_lines(self, decode_unicode=False):
+        del decode_unicode
+        for event in self.events:
+            yield f"data: {json.dumps(event)}"
+        yield "data: [DONE]"
+
+    def close(self):
+        self.closed = True
 
 
 class FakeHttpSession:
@@ -138,6 +155,14 @@ def approval_payload(tool_name="app-agent-mariner-branch-worker"):
     }
 
 
+def output_item_done(item):
+    return {
+        "type": "response.output_item.done",
+        "id": "stream-event",
+        "item": item,
+    }
+
+
 def performance_payload():
     payload = successful_payload()
     payload["output"].insert(
@@ -219,7 +244,7 @@ class SupervisorServiceTests(unittest.TestCase):
         )
         self.assertEqual(token_call["auth"], ("client-id", "client-secret"))
         self.assertEqual(token_call["data"]["grant_type"], "client_credentials")
-        self.assertEqual(token_call["data"]["scope"], "model-serving-inference")
+        self.assertEqual(token_call["data"]["scope"], "model-serving")
 
         endpoint_url, endpoint_call = http.calls[1]
         self.assertEqual(
@@ -242,6 +267,79 @@ class SupervisorServiceTests(unittest.TestCase):
             ],
         )
 
+    def test_streaming_response_is_requested_and_parsed(self):
+        stream = FakeStreamingResponse(
+            {"type": "response.created", "response": {"id": "resp_test"}},
+            {"type": "response.done", "response": successful_payload()},
+        )
+        http = FakeHttpSession(token_response(), stream)
+        service = DatabricksSupervisorService(
+            config(), http_session=http, citation_resolver=FakeCitationResolver()
+        )
+
+        result = service.answer("Question", "session", ConversationHistory())
+
+        self.assertEqual(result.answer, "Paid loan files must be retained.")
+        endpoint_call = http.calls[1][1]
+        self.assertTrue(endpoint_call["json"]["stream"])
+        self.assertTrue(endpoint_call["stream"])
+        self.assertTrue(stream.closed)
+
+    def test_streaming_worker_approval_is_preserved_and_continued(self):
+        approval = approval_payload("endpoint-benefits-agent-endpoint")
+        announcement, approval_request = approval["output"]
+        approval_stream = FakeStreamingResponse(
+            output_item_done(announcement),
+            output_item_done(approval_request),
+        )
+        completed_stream = FakeStreamingResponse(
+            {"type": "response.done", "response": successful_payload()}
+        )
+        http = FakeHttpSession(token_response(), approval_stream, completed_stream)
+        service = DatabricksSupervisorService(
+            config(), http_session=http, citation_resolver=FakeCitationResolver()
+        )
+
+        result = service.answer("What is the PPO plan?", "session", ConversationHistory())
+
+        self.assertEqual(result.answer, "Paid loan files must be retained.")
+        self.assertEqual(result.agents_used, ("endpoint-benefits-agent-endpoint",))
+        continuation_input = http.calls[2][1]["json"]["input"]
+        self.assertEqual(continuation_input[1], announcement)
+        self.assertEqual(continuation_input[2], approval_request)
+        self.assertEqual(
+            continuation_input[3],
+            {
+                "type": "mcp_approval_response",
+                "id": "approval-request-1",
+                "approval_request_id": "approval-request-1",
+                "approve": True,
+            },
+        )
+        self.assertTrue(approval_stream.closed)
+        self.assertTrue(completed_stream.closed)
+
+    def test_streaming_error_payload_is_reported_and_closed(self):
+        stream = FakeStreamingResponse(
+            {
+                "error_code": "INVALID_PARAMETER_VALUE",
+                "message": "Upstream detail that must remain private",
+            }
+        )
+        service = DatabricksSupervisorService(
+            config(),
+            http_session=FakeHttpSession(token_response(), stream),
+        )
+
+        with self.assertRaises(SupervisorInvocationError) as raised:
+            service.answer("Question", "session", ConversationHistory())
+
+        self.assertEqual(
+            str(raised.exception.__cause__),
+            "The Supervisor stream failed with INVALID_PARAMETER_VALUE",
+        )
+        self.assertTrue(stream.closed)
+
     def test_reuses_cached_oauth_token(self):
         http = FakeHttpSession(
             token_response(),
@@ -257,6 +355,24 @@ class SupervisorServiceTests(unittest.TestCase):
 
         token_calls = [call for call in http.calls if call[0].endswith("/oidc/v1/token")]
         self.assertEqual(len(token_calls), 1)
+
+    def test_readiness_verifies_required_oauth_scope(self):
+        http = FakeHttpSession(token_response())
+        service = DatabricksSupervisorService(config(), http_session=http)
+
+        result = service.check_readiness()
+
+        self.assertTrue(result.ready)
+        self.assertEqual(http.calls[0][1]["data"]["scope"], "model-serving")
+
+    def test_readiness_reports_oauth_rejection(self):
+        service = DatabricksSupervisorService(
+            config(),
+            http_session=FakeHttpSession(FakeResponse({}, status_code=403)),
+        )
+
+        with self.assertRaises(DatabricksAuthenticationError):
+            service.check_readiness()
 
     def test_approves_known_worker_and_returns_completed_answer(self):
         http = FakeHttpSession(

@@ -45,9 +45,11 @@ APPROVED_WORKER_TOOLS = frozenset(
         "app-agent-mariner-branch-worker",
         "app-agent-mariner-handbook-worker",
         "app-agent-mariner-benefits-worker",
+        "endpoint-benefits-agent-endpoint",
     }
 )
 WORKSPACE_API_SCOPES = ["sql", "files"]
+SUPERVISOR_OAUTH_SCOPE = "model-serving"
 FALLBACK_SOURCE_LABELS_BY_AGENT = {
     "mariner-handbook-assistant": ("2026 Employee Handbook v1",),
     "mariner-performance-assistant": ("INSTRUCTIONS_PERFORMANCE.pdf",),
@@ -307,9 +309,16 @@ class DatabricksSupervisorService:
         )
 
     def check_readiness(self) -> ReadinessResult:
-        # Endpoint metadata requires a broader management scope than the approved
-        # model-serving-inference scope. Construction verifies local configuration;
-        # invocation failures are reported by the chat endpoint.
+        try:
+            self._access_token()
+        except Exception as error:
+            if _looks_like_authentication_error(error):
+                raise DatabricksAuthenticationError(
+                    "Databricks rejected the configured identity"
+                ) from error
+            raise SupervisorInvocationError(
+                "The Databricks Supervisor readiness check failed"
+            ) from error
         return ReadinessResult(ready=True)
 
     def _invoke(self, url: str, body: dict) -> dict:
@@ -364,6 +373,7 @@ class DatabricksSupervisorService:
     def _parse_stream_response(self, response) -> dict:
         """Parse Databricks SSE events and return the same dict shape used before streaming."""
         collected_text: list[str] = []
+        completed_items: list[dict] = []
         final_response: dict | None = None
 
         try:
@@ -395,6 +405,18 @@ class DatabricksSupervisorService:
                     logger.debug("Ignoring non-JSON Supervisor stream event")
                     continue
 
+                error_code = (
+                    event.get("error_code") if isinstance(event, dict) else None
+                )
+                if isinstance(error_code, str) and error_code:
+                    logger.error(
+                        "Supervisor stream returned an error; error_code=%s",
+                        error_code,
+                    )
+                    raise SupervisorInvocationError(
+                        f"The Supervisor stream failed with {error_code}"
+                    )
+
                 event_type = event.get("type", "") if isinstance(event, dict) else ""
 
                 if event_type == "response.output_text.delta":
@@ -407,6 +429,11 @@ class DatabricksSupervisorService:
                     if isinstance(text, str) and text and not text.startswith("<name>"):
                         collected_text = [text]
 
+                elif event_type == "response.output_item.done":
+                    item = event.get("item")
+                    if isinstance(item, dict):
+                        completed_items.append(item)
+
                 elif event_type == "response.done":
                     response_obj = event.get("response")
                     if isinstance(response_obj, dict):
@@ -414,6 +441,16 @@ class DatabricksSupervisorService:
 
             if final_response is not None:
                 return final_response
+
+            # Agent Bricks streams completed messages and MCP approval requests as
+            # output-item events, then terminates with [DONE] without necessarily
+            # sending a response.done envelope. Preserve those structured items so
+            # the approval continuation loop can authorize known worker endpoints.
+            if completed_items:
+                return {
+                    "object": "response",
+                    "output": completed_items,
+                }
 
             final_text = "".join(collected_text).strip()
             if final_text:
@@ -456,7 +493,9 @@ class DatabricksSupervisorService:
                 auth=(self.config.client_id, self.config.client_secret),
                 data={
                     "grant_type": "client_credentials",
-                    "scope": "model-serving-inference",
+                    # Worker tools can invoke other serving endpoints, so the
+                    # Supervisor token must authorize nested model serving too.
+                    "scope": SUPERVISOR_OAUTH_SCOPE,
                 },
                 timeout=min(30, self.config.request_timeout_seconds),
             )

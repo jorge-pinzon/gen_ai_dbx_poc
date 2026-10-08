@@ -223,6 +223,94 @@ class CitationResolverTests(unittest.TestCase):
 
         self.assertEqual(source.page, 3)
 
+    def test_breaks_page_tie_with_distinctive_answer_term(self):
+        client = FakeWorkspaceClient(
+            response(
+                [
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/main/benefits/Benefits.pdf",
+                        "1",
+                        "Mariner employees receive benefits.",
+                        "1",
+                    ],
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/main/benefits/Benefits.pdf",
+                        "2",
+                        "PPO plan option details.",
+                        "1",
+                    ],
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/main/benefits/Benefits.pdf",
+                        "3",
+                        "Mariner plan option details.",
+                        "1",
+                    ],
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/main/benefits/Benefits.pdf",
+                        "4",
+                        "Mariner workplace information.",
+                        "1",
+                    ],
+                ]
+            )
+        )
+        resolver = DatabricksCitationResolver(
+            workspace_client=client,
+            warehouse_id="warehouse",
+            tables=CITATION_TABLES,
+        )
+
+        source = resolver.resolve_labels(
+            ("Mariner Benefits Knowledge Base",),
+            "Yes, Mariner offers a PPO plan option.",
+        )[0]
+
+        self.assertEqual(source.page, 2)
+
+    def test_omits_page_when_distinctive_answer_terms_still_tie(self):
+        client = FakeWorkspaceClient(
+            response(
+                [
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/main/benefits/Benefits.pdf",
+                        "2",
+                        "PPO plan details.",
+                        "1",
+                    ],
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/main/benefits/Benefits.pdf",
+                        "3",
+                        "HMO plan details.",
+                        "1",
+                    ],
+                ]
+            )
+        )
+        resolver = DatabricksCitationResolver(
+            workspace_client=client,
+            warehouse_id="warehouse",
+            tables=CITATION_TABLES,
+        )
+
+        source = resolver.resolve_labels(
+            ("Mariner Benefits Knowledge Base",),
+            "Compare the PPO and HMO plan details.",
+        )[0]
+
+        self.assertIsNone(source.page)
+
     def test_resolves_new_performance_agent_source_alias(self):
         client = FakeWorkspaceClient(
             response(
@@ -256,6 +344,47 @@ class CitationResolverTests(unittest.TestCase):
         parameter = client.statement_execution.calls[0]["parameters"][0]
         value = parameter.get("value") if isinstance(parameter, dict) else parameter.value
         self.assertEqual(value, "INSTRUCTIONS_PERFORMANCE.pdf")
+
+    def test_resolves_benefits_agent_medical_plan_source_alias(self):
+        client = FakeWorkspaceClient(
+            response(
+                [
+                    [
+                        "Employee Benefits",
+                        "Benefits _ Mariner Finance",
+                        "/Volumes/workspace/default/benefits_docs/Benefits _ Mariner Finance.pdf",
+                        "4",
+                        "The PPO provides in-network and out-of-network coverage.",
+                        "1",
+                    ]
+                ]
+            )
+        )
+        resolver = DatabricksCitationResolver(
+            workspace_client=client,
+            warehouse_id="warehouse",
+            tables=CITATION_TABLES,
+        )
+
+        for label in (
+            "Mariner Benefits Knowledge Base",
+            "Mariner Benefits Knowledge Base - Medical Plans Overview",
+            "Mariner Benefits Knowledge Base - Medical Plans section",
+        ):
+            source = resolver.resolve_labels((label,))[0]
+
+            self.assertEqual(source.label, "Benefits _ Mariner Finance")
+            self.assertEqual(source.domain, "Employee Benefits")
+            self.assertEqual(source.page, 4)
+
+        for call in client.statement_execution.calls:
+            parameter = call["parameters"][0]
+            value = (
+                parameter.get("value")
+                if isinstance(parameter, dict)
+                else parameter.value
+            )
+            self.assertEqual(value, "Benefits _ Mariner Finance")
 
     def test_canonicalizes_branch_record_retention_agent_alias(self):
         client = FakeWorkspaceClient(

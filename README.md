@@ -70,7 +70,13 @@ Guardrail patterns and user-facing fallback messages are maintained together nea
 
 ## Supervisor and conversation behavior
 
-The active dependency wiring imports the Databricks client from `supervisor_service1.py`. It calls the configured Databricks serving endpoint through the Responses API and treats that endpoint as stateless.
+The active dependency wiring imports the Databricks client from
+`supervisor_service.py`. It calls the configured Databricks serving endpoint
+through the streaming Responses API and treats that endpoint as stateless.
+The OAuth application used by `DATABRICKS_CLIENT_ID` must allow the
+`model-serving` scope. This is required because the Supervisor invokes its
+specialists as nested serving-endpoint tools; `model-serving-inference` alone
+can reach the Supervisor but cannot authorize those worker calls.
 
 Conversation history is:
 
@@ -141,7 +147,10 @@ The application does not load `.env` when `APP_ENV=production`; production setti
 
 ## Databricks authentication
 
-When OAuth client credentials are configured, Supervisor inference requests a token with the `model-serving-inference` scope and caches it until shortly before expiration. In non-production development, a configured `DATABRICKS_TOKEN` is used directly instead.
+When OAuth client credentials are configured, Supervisor inference requests a
+token with the `model-serving` scope and caches it until shortly before
+expiration. In non-production development, a configured `DATABRICKS_TOKEN` is
+used directly instead.
 
 Databricks SQL and Files operations use the Databricks SDK. OAuth M2M clients request the `sql` and `files` scopes. These operations support:
 
