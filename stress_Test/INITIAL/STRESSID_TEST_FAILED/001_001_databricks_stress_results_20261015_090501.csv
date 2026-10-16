@@ -1,0 +1,2 @@
+stress_test_id,number,status,latency_seconds,success,session_id,agents_used,usage,error
+STRESS-20261015_090501-0001,1,SUCCESS,25.983,True,stress-test-5ab16f95-270d-4990-936d-283dbfc4241f,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",

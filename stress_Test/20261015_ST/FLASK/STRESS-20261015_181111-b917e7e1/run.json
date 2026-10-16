@@ -1,0 +1,22 @@
+{
+  "test_type": "flask_http",
+  "run_id": "STRESS-20261015_181111-b917e7e1",
+  "started_at": "2026-10-15T18:11:11.487484+00:00",
+  "base_url": "http://127.0.0.1:5000",
+  "endpoint": "http://127.0.0.1:5000/api/v1/chat",
+  "auth": "none",
+  "backend_mode_declared": "unknown",
+  "concurrency": 1,
+  "duration_seconds": 300.0,
+  "warmup_seconds": 60.0,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "network_timeout_seconds": 180,
+  "connect_timeout_seconds": 10,
+  "min_reliability_percent": 99.0,
+  "max_response_bytes": 2000000,
+  "custom_ca_bundle": false,
+  "question_characters": 56,
+  "question_sha256": "12e014d50b45a072f9229d5a472294b5c48ca95bb1a006e600e72808e4a4f949",
+  "run_note": "Flask stage 1: local baseline"
+}

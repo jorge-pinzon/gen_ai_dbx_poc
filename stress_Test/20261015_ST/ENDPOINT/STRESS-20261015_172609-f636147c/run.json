@@ -1,0 +1,17 @@
+{
+  "run_id": "STRESS-20261015_172609-f636147c",
+  "started_at": "2026-10-15T17:26:09.811400+00:00",
+  "endpoint": "mas-53dbd2d7-endpoint",
+  "concurrency": 30,
+  "duration_seconds": 600.0,
+  "warmup_seconds": 60.0,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "network_timeout_seconds": 6000,
+  "citation_lookup_enabled": true,
+  "min_reliability_percent": 99.0,
+  "expected_agent": "mariner-policy-assistant",
+  "question_characters": 334,
+  "question_sha256": "eaa187372f66c0fe2299f4944dd12e2d55defc5158d38b1e4560b731deaf2e62",
+  "run_note": "Stage 5: high load"
+}

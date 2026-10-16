@@ -1,0 +1,19 @@
+Databricks Direct Multi-Agent Stress Test
+==========================================
+
+Timestamp:          20261015_085049
+Concurrent users:   10
+Total requests:     20
+Successful:         10
+Failed:             10
+Success rate:       50.0%
+
+Average latency:    11.88s
+Median latency:     11.77s
+P95 latency:        20.16s
+P99 latency:        20.16s
+Maximum latency:    20.52s
+
+Total test time:    24.58s
+Requests / second:  0.81
+Requests / minute:  48.83

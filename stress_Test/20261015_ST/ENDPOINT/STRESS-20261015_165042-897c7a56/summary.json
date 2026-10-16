@@ -1,0 +1,246 @@
+{
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "required_reliability_percent": 99.0,
+  "reliability_percent": 96.06060606060606,
+  "passed": false,
+  "workflows_started": 330,
+  "outcomes": {
+    "SUCCESS_WITHIN_TARGET": 317,
+    "SUCCESS_LATE": 10,
+    "FAILED": 3
+  },
+  "successful_latency_seconds": {
+    "count": 327,
+    "mean": 18.498177401901664,
+    "p50": 16.172039917000802,
+    "p95": 21.08464637499128,
+    "p99": 87.36765537499741,
+    "max": 105.11720174999209
+  },
+  "failed_latency_seconds": {
+    "count": 3,
+    "mean": 16.09321859733124,
+    "p50": 16.292106207998586,
+    "p95": 16.65088512499642,
+    "p99": 16.65088512499642,
+    "max": 16.65088512499642
+  },
+  "completed_workflows_per_second_including_drain": 0.5362988332684535,
+  "successful_workflows_per_second_including_drain": 0.5314233893296494,
+  "invocation_outcomes": {
+    "SUCCESS": 327,
+    "FAILED": 3
+  },
+  "invocation_success_percent": 99.0909090909091,
+  "http_attempt_outcomes": {
+    "SUCCESS": 327,
+    "FAILED": 3
+  },
+  "successful_invocation_latency_seconds": {
+    "count": 327,
+    "mean": 15.300211007779891,
+    "p50": 15.099689707989455,
+    "p95": 17.982720833999338,
+    "p99": 20.643779416990583,
+    "max": 24.313952625001548
+  },
+  "failed_invocation_latency_seconds": {
+    "count": 3,
+    "mean": 16.08537777766954,
+    "p50": 16.291039792005904,
+    "p95": 16.649282875005156,
+    "p99": 16.649282875005156,
+    "max": 16.649282875005156
+  },
+  "failure_categories": {
+    "CLIENT_ERROR": 3
+  },
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 40,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 40
+      },
+      "successful_latency_seconds": {
+        "count": 40,
+        "mean": 16.60288701774807,
+        "p50": 16.326326541005983,
+        "p95": 18.8797348329972,
+        "p99": 20.824833582999418,
+        "max": 20.824833582999418
+      }
+    },
+    {
+      "minute": 1,
+      "started": 39,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 39
+      },
+      "successful_latency_seconds": {
+        "count": 39,
+        "mean": 16.29772886123026,
+        "p50": 15.918321709003067,
+        "p95": 18.99206208299438,
+        "p99": 20.498610959009966,
+        "max": 20.498610959009966
+      }
+    },
+    {
+      "minute": 2,
+      "started": 37,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 37
+      },
+      "successful_latency_seconds": {
+        "count": 37,
+        "mean": 15.995350341188306,
+        "p50": 15.916253583010985,
+        "p95": 17.75663733399415,
+        "p99": 19.981854708996252,
+        "max": 19.981854708996252
+      }
+    },
+    {
+      "minute": 3,
+      "started": 36,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 36
+      },
+      "successful_latency_seconds": {
+        "count": 36,
+        "mean": 16.605377804417206,
+        "p50": 16.156378291998408,
+        "p95": 19.254444125006557,
+        "p99": 19.583563874999527,
+        "max": 19.583563874999527
+      }
+    },
+    {
+      "minute": 4,
+      "started": 38,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 38
+      },
+      "successful_latency_seconds": {
+        "count": 38,
+        "mean": 15.743771401261926,
+        "p50": 15.896114957999089,
+        "p95": 17.534046291009872,
+        "p99": 17.643264290993102,
+        "max": 17.643264290993102
+      }
+    },
+    {
+      "minute": 5,
+      "started": 40,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 40
+      },
+      "successful_latency_seconds": {
+        "count": 40,
+        "mean": 15.867728381224879,
+        "p50": 15.839060583006358,
+        "p95": 17.02579450000485,
+        "p99": 17.79677337499743,
+        "max": 17.79677337499743
+      }
+    },
+    {
+      "minute": 6,
+      "started": 20,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 10,
+        "SUCCESS_LATE": 10
+      },
+      "successful_latency_seconds": {
+        "count": 20,
+        "mean": 51.809803989649666,
+        "p50": 17.799549916991964,
+        "p95": 96.97643999999855,
+        "p99": 105.11720174999209,
+        "max": 105.11720174999209
+      }
+    },
+    {
+      "minute": 7,
+      "started": 10,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 10
+      },
+      "successful_latency_seconds": {
+        "count": 10,
+        "mean": 21.17949513739877,
+        "p50": 21.233156166999834,
+        "p95": 22.574999375006882,
+        "p99": 22.574999375006882,
+        "max": 22.574999375006882
+      }
+    },
+    {
+      "minute": 8,
+      "started": 30,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 29,
+        "FAILED": 1
+      },
+      "successful_latency_seconds": {
+        "count": 29,
+        "mean": 16.436564551794337,
+        "p50": 16.31157649999659,
+        "p95": 17.82526541700645,
+        "p99": 18.22080583299976,
+        "max": 18.22080583299976
+      }
+    },
+    {
+      "minute": 9,
+      "started": 40,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 38,
+        "FAILED": 2
+      },
+      "successful_latency_seconds": {
+        "count": 38,
+        "mean": 15.840307601973397,
+        "p50": 15.980669000011403,
+        "p95": 18.029314540995983,
+        "p99": 19.439969833998475,
+        "max": 19.439969833998475
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "submission_window_seconds": 18.77687162499933,
+      "elapsed_with_drain_seconds": 18.776872874994297,
+      "started": 1
+    },
+    {
+      "phase": "warmup",
+      "submission_window_seconds": 60.0,
+      "elapsed_with_drain_seconds": 74.69425645799492,
+      "started": 40
+    },
+    {
+      "phase": "measurement",
+      "submission_window_seconds": 600.0,
+      "elapsed_with_drain_seconds": 615.3285808750079,
+      "started": 330
+    }
+  ],
+  "notes": [
+    "One persistent process/session/token cache per concurrent client.",
+    "Inference includes authentication, retries and approval continuations; citations are separate.",
+    "Deadline termination stops local work; remote operations may continue.",
+    "Agent/source flags are observations, not proof of grounded answer quality.",
+    "Endpoint capacity/configuration and background traffic must be recorded externally.",
+    "Interrupted runs preserve outcomes but have no passing reliability verdict."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-15T17:02:32.845745+00:00"
+}

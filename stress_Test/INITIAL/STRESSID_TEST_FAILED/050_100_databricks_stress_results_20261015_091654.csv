@@ -1,0 +1,101 @@
+stress_test_id,number,status,latency_seconds,success,session_id,agents_used,usage,error
+STRESS-20261015_091654-0001,1,SUCCESS,21.883,True,stress-test-6c14d777-c2ae-4303-adad-59f4ed77f6c2,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0002,2,SUCCESS,18.058,True,stress-test-43e8b6d9-e7e7-4132-9f27-9b62dc09df27,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0003,3,ERROR,1.25,False,stress-test-3cd06cd0-6013-4f9d-b045-562205c29a27,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0004,4,SUCCESS,24.427,True,stress-test-2a3bb1cf-96ef-4117-a89a-9f78fd7fc2c7,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0005,5,SUCCESS,23.006,True,stress-test-41bcb92a-2c50-47fb-a3ca-1ab6f439bbd5,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0006,6,SUCCESS,22.94,True,stress-test-8697e577-ffaa-4c5c-bcc3-0e63429a1d12,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0007,7,SUCCESS,24.821,True,stress-test-3d965b50-4b94-4d57-899c-f0c4d768f930,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0008,8,ERROR,1.251,False,stress-test-53b51b21-ad42-4acf-9c0f-f2f68be1e87f,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0009,9,SUCCESS,21.826,True,stress-test-a712825c-3ca0-49aa-94d7-32a1c50dccd3,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0010,10,SUCCESS,24.805,True,stress-test-8c9c5969-225a-4158-81cd-f7e46a5e3217,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0011,11,SUCCESS,23.967,True,stress-test-6cc0c341-3ba4-4595-8574-2bf29c8ca8d3,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0012,12,SUCCESS,21.818,True,stress-test-d03e9265-65ab-44a2-8a32-c9c40e69dcb2,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0013,13,SUCCESS,23.003,True,stress-test-d8349527-50d7-4029-be4e-88414724a4c4,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0014,14,SUCCESS,23.963,True,stress-test-ddc039d9-d43d-4dd9-bc1e-976817313187,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0015,15,SUCCESS,21.662,True,stress-test-67d26e3b-2d76-4146-8648-733d38a12c2a,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0016,16,SUCCESS,24.017,True,stress-test-cce916d5-ee3c-4487-9b1d-c7325aa8c271,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0017,17,SUCCESS,24.106,True,stress-test-2b1a2b93-2004-4f93-bc60-d0063a2cb564,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0018,18,SUCCESS,23.099,True,stress-test-0da1a59e-2809-4b36-b850-421662bf1b15,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0019,19,SUCCESS,120.425,True,stress-test-efc1052a-028f-48ed-b04e-5a19dfff82ca,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0020,20,SUCCESS,21.744,True,stress-test-bf3702b6-7463-4ebe-aa52-2787eae8de3f,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0021,21,SUCCESS,24.746,True,stress-test-da08456a-d23a-4132-bf26-28da0478bf2e,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0022,22,ERROR,1.272,False,stress-test-cd75f6d0-4b10-48e2-b4a5-d71f36c7d451,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0023,23,SUCCESS,22.012,True,stress-test-7a253e23-0d1e-4f88-8039-8926d0ecddc4,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0024,24,SUCCESS,24.107,True,stress-test-5abd66f8-e33b-4b1b-beba-a4f7ef6d4e28,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0025,25,SUCCESS,23.067,True,stress-test-0eb83905-bd1f-4b58-b383-73ede5ef6aad,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0026,26,SUCCESS,23.065,True,stress-test-6477a7b9-416a-49d5-bfc8-fbf12498a99f,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0027,27,SUCCESS,23.197,True,stress-test-449c795e-64a6-4577-ade2-e11a1ae52791,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0028,28,SUCCESS,23.062,True,stress-test-81f5988e-6890-49ff-b721-d66e436c2448,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0029,29,SUCCESS,24.866,True,stress-test-e9dfcad8-0441-46fa-a661-de0af498f608,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0030,30,SUCCESS,21.819,True,stress-test-392b3d67-4e6a-4aa1-b741-d2a5b2a92887,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0031,31,ERROR,1.204,False,stress-test-822057ee-084d-4301-ac7f-814ac7e6f286,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0032,32,SUCCESS,24.712,True,stress-test-d5bc616b-a927-4f98-8e54-646bc44f4dd9,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0033,33,SUCCESS,21.925,True,stress-test-21ef7931-1d8d-4c87-9162-2f18e313b107,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0034,34,SUCCESS,23.16,True,stress-test-2260891c-5b9c-485b-b46f-3021a15b20a0,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0035,35,SUCCESS,24.505,True,stress-test-fb6669e1-cf06-403f-a9f7-a0a87798d888,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0036,36,SUCCESS,24.742,True,stress-test-6ea98dbc-3431-4eba-a261-a3b6b2e76aa6,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0037,37,SUCCESS,21.903,True,stress-test-5cdda964-98af-4385-9a00-dcc963a082c8,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0038,38,SUCCESS,20.907,True,stress-test-571c1ca5-f89f-46e8-9419-7ffde4b1ee07,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0039,39,SUCCESS,21.609,True,stress-test-5719394c-ecf4-4fc0-a4cc-d30ab6290468,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0040,40,SUCCESS,23.095,True,stress-test-0a58a911-196f-4243-b401-29fc9f734e7e,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0041,41,SUCCESS,21.696,True,stress-test-8d7ce4e0-a440-49a4-a54f-8946c3c3dce4,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0042,42,SUCCESS,24.56,True,stress-test-27af404f-6551-4643-8df5-0a0ab155fb98,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0043,43,SUCCESS,21.821,True,stress-test-4aa0c8bf-88ac-42cc-a329-671df8844f78,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0044,44,ERROR,1.24,False,stress-test-9361499f-5b0a-4787-bc56-a6210af2ba74,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0045,45,SUCCESS,21.828,True,stress-test-83bc62cd-cca8-4080-8abe-247083780517,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0046,46,SUCCESS,23.1,True,stress-test-0dc002e6-2e1c-4b89-9a34-bf796586cc97,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0047,47,SUCCESS,121.321,True,stress-test-865de0ed-c6c6-433e-8ecc-96881409cb84,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0048,48,SUCCESS,23.002,True,stress-test-7f83c6a1-5e27-44ea-82d6-0421ec93f459,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0049,49,SUCCESS,24.426,True,stress-test-ba646439-76b7-4b78-9885-a15a7b3e2285,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0050,50,SUCCESS,24.068,True,stress-test-7b746b14-2a6f-438a-a3cb-115a6817dc03,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0051,51,SUCCESS,21.92,True,stress-test-5bafc45b-dd60-41a6-8124-d5442c104ae1,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0052,52,SUCCESS,22.682,True,stress-test-9560d514-6548-47fe-a7fe-7b002841662e,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0053,53,SUCCESS,22.948,True,stress-test-862300c6-dae1-4684-9bcd-c82abe20fbf0,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0054,54,SUCCESS,26.479,True,stress-test-e5c0df49-3859-4d23-8ce6-3d998651dd89,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0055,55,SUCCESS,22.794,True,stress-test-20fe62d7-f41d-4080-9980-857a8a378bb5,"('mariner-policy-assistant', 'mariner-supevisor_agent')","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0056,56,SUCCESS,14.626,True,stress-test-bf693636-f7cf-429c-a9b8-c33c00dad834,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0057,57,SUCCESS,13.959,True,stress-test-a408d483-9d22-4a4f-943f-32024ce5f808,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0058,58,SUCCESS,15.125,True,stress-test-3de682b9-42cd-4065-b435-3ed1ccf5a50d,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0059,59,SUCCESS,15.915,True,stress-test-0ce3a64d-7c79-4809-b0c2-45a8e2df528b,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0060,60,SUCCESS,16.006,True,stress-test-04074cc1-1223-4a40-b334-79fa2727bded,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0061,61,SUCCESS,15.887,True,stress-test-a88bfe1a-038b-4946-9fcb-494009faf306,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0062,62,SUCCESS,15.065,True,stress-test-d486a827-671c-4f50-aba9-f789096d1d57,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0063,63,SUCCESS,16.357,True,stress-test-2925efc1-0e9f-444f-b0a6-0ca9a43d1739,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0064,64,SUCCESS,18.929,True,stress-test-085c3e03-0072-4281-b74b-b0b01abc9aae,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0065,65,SUCCESS,15.57,True,stress-test-d9f5f90d-3683-4b2d-8d1b-1d72a6065e21,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0066,66,SUCCESS,16.621,True,stress-test-24d0d0b7-c7df-4e13-91cf-b2250e52052d,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0067,67,SUCCESS,14.859,True,stress-test-3d0b751e-080f-40b3-9c2c-f058288d9981,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0068,68,SUCCESS,16.413,True,stress-test-b5a20a76-b03c-4d8e-adb4-9158a62b74e0,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0069,69,SUCCESS,16.093,True,stress-test-d6790db4-fdb6-4d12-a5ee-ff468cbd2f5d,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0070,70,SUCCESS,15.64,True,stress-test-a0ffcb5c-3592-48ae-8e96-ef87d123386f,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0071,71,SUCCESS,17.013,True,stress-test-0b166a92-36ef-4876-ba2a-e4d8174666a6,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0072,72,SUCCESS,16.672,True,stress-test-d4439d49-14d5-4483-8492-dd02bbbe0dc8,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0073,73,SUCCESS,16.857,True,stress-test-18c952c1-a840-4311-9ee2-01a42caf5adf,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0074,74,SUCCESS,17.472,True,stress-test-8b67fa18-6b8b-4262-b052-5c5e7b9c0908,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0075,75,SUCCESS,16.544,True,stress-test-b667fc3d-8694-45af-bef7-72f3f1c2d5cd,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0076,76,SUCCESS,17.093,True,stress-test-8b2f9be5-8ee8-4a9e-81e7-c0d69d68636e,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0077,77,SUCCESS,18.606,True,stress-test-6fe0e5c2-72c5-4238-8d94-df71e05c3a75,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0078,78,SUCCESS,16.752,True,stress-test-865e4c01-5a5e-4972-834c-cc2c4d3498fe,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0079,79,SUCCESS,16.888,True,stress-test-399aeec8-ac04-4d39-b820-e2b94a504f1a,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0080,80,SUCCESS,17.198,True,stress-test-d589e4f8-d95e-49a9-9cc4-9484f9699c23,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0081,81,SUCCESS,17.199,True,stress-test-e908fbb3-a307-403d-abc0-06e6e58bf916,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0082,82,SUCCESS,16.96,True,stress-test-0ece83bd-b955-4db2-aebd-688a46f1da65,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0083,83,SUCCESS,17.128,True,stress-test-ed90c4eb-43b8-4c8e-90e9-9eeaafa1e66d,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0084,84,SUCCESS,15.288,True,stress-test-42b8be7c-b11c-4afd-8323-a3b84de9eac9,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0085,85,SUCCESS,16.469,True,stress-test-c19aa747-6ce6-4765-8f6c-187fab7ffdef,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0086,86,SUCCESS,16.15,True,stress-test-1d7b4723-2521-4d3a-ab36-4fdbcb516801,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0087,87,ERROR,3.931,False,stress-test-9158ef83-464f-4191-9df3-c338d9c1279a,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0088,88,SUCCESS,15.206,True,stress-test-b39dc48f-8cbe-4b2b-9a66-37c3d0e458ba,"('mariner-policy-assistant',)","TokenUsage(input_tokens=0, output_tokens=0, total_tokens=0)",
+STRESS-20261015_091654-0089,89,ERROR,3.628,False,stress-test-3ff46a29-e111-450e-ace1-cfe6ecbe82e6,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0090,90,ERROR,3.795,False,stress-test-62415456-1af3-4bce-8ed1-178b3672faa6,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0091,91,ERROR,3.716,False,stress-test-8c33efa1-2b60-4232-b07b-20cd25db7d6c,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0092,92,ERROR,3.736,False,stress-test-c2bfdcbc-57e1-4a78-a6d9-75b3d5b27cdc,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0093,93,ERROR,3.44,False,stress-test-e66cd498-f1cf-4d1e-88a9-1c1ca37114ec,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0094,94,ERROR,3.377,False,stress-test-84ec6223-efd9-4c6e-af49-0fffd87d1f7b,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0095,95,ERROR,3.657,False,stress-test-8b8b50a1-5460-4470-a46e-61e3ec8b8abb,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0096,96,ERROR,3.548,False,stress-test-294270a4-f21c-4436-8736-3e2ac3f6c476,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0097,97,ERROR,3.73,False,stress-test-4f80e57d-089b-4eaf-b6ae-2c8639444f9f,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0098,98,ERROR,3.584,False,stress-test-12f15348-f9c6-41c6-8daf-745d0347dfee,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0099,99,ERROR,3.543,False,stress-test-2a5c8e12-2bf8-4834-b30b-e73cbd598163,,,The Databricks Supervisor request failed
+STRESS-20261015_091654-0100,100,ERROR,3.518,False,stress-test-aa473489-45d9-42dd-b0c6-2d3336481d63,,,The Databricks Supervisor request failed

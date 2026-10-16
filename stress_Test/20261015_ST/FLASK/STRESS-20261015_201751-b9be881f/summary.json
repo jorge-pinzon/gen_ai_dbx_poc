@@ -1,0 +1,258 @@
+{
+  "test_type": "flask_http",
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "passed": false,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "required_reliability_percent": 99.0,
+  "reliability_percent": 31.044558071585097,
+  "workflows_started": 1369,
+  "outcomes": {
+    "SUCCESS_WITHIN_TARGET": 425,
+    "FAILED": 881,
+    "SUCCESS_LATE": 62,
+    "DEADLINE_EXCEEDED": 1
+  },
+  "successful_latency_seconds": {
+    "count": 487,
+    "mean": 29.939309819412838,
+    "max": 145.21675066600437,
+    "p50": 18.51865991699742,
+    "p95": 118.31798479199642,
+    "p99": 135.78985866600124
+  },
+  "failed_latency_seconds": {
+    "count": 882,
+    "mean": 5.047127880345908,
+    "max": 180.02369449999242,
+    "p50": 3.9662256250012433,
+    "p95": 4.953824832991813,
+    "p99": 16.62496058299439
+  },
+  "completed_workflows_per_second_including_drain": 1.9307180167873528,
+  "successful_workflows_per_second_including_drain": 0.6868222601719801,
+  "http_attempt_outcomes": {
+    "SUCCESS_WITHIN_TARGET": 487,
+    "FAILED": 881,
+    "DEADLINE_EXCEEDED": 1
+  },
+  "http_status_counts": {
+    "200": 487,
+    "502": 879,
+    "NO_RESPONSE": 3
+  },
+  "failure_categories": {
+    "HTTP_ERROR": 879,
+    "WORKFLOW_DEADLINE": 1,
+    "NETWORK_TIMEOUT": 2
+  },
+  "app_error_codes": {
+    "AGENT_UNAVAILABLE": 879
+  },
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 123,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 73,
+        "FAILED": 47,
+        "SUCCESS_LATE": 3
+      },
+      "successful_latency_seconds": {
+        "count": 76,
+        "mean": 25.293668677105558,
+        "max": 75.40708029200323,
+        "p50": 20.0347281669965,
+        "p95": 59.5195685409999,
+        "p99": 75.40708029200323
+      }
+    },
+    {
+      "minute": 1,
+      "started": 187,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 45,
+        "FAILED": 133,
+        "SUCCESS_LATE": 8,
+        "DEADLINE_EXCEEDED": 1
+      },
+      "successful_latency_seconds": {
+        "count": 53,
+        "mean": 27.534231945772916,
+        "max": 77.63738524999644,
+        "p50": 19.244749291989137,
+        "p95": 76.58418345899554,
+        "p99": 77.63738524999644
+      }
+    },
+    {
+      "minute": 2,
+      "started": 115,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 28,
+        "FAILED": 79,
+        "SUCCESS_LATE": 8
+      },
+      "successful_latency_seconds": {
+        "count": 36,
+        "mean": 30.798020527889296,
+        "max": 95.31181154199294,
+        "p50": 17.29753595800139,
+        "p95": 79.99286404100712,
+        "p99": 95.31181154199294
+      }
+    },
+    {
+      "minute": 3,
+      "started": 122,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 47,
+        "FAILED": 70,
+        "SUCCESS_LATE": 5
+      },
+      "successful_latency_seconds": {
+        "count": 52,
+        "mean": 23.93612626930777,
+        "max": 85.95175108399417,
+        "p50": 17.44500770799641,
+        "p95": 77.92014445801033,
+        "p99": 85.95175108399417
+      }
+    },
+    {
+      "minute": 4,
+      "started": 175,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 37,
+        "FAILED": 128,
+        "SUCCESS_LATE": 10
+      },
+      "successful_latency_seconds": {
+        "count": 47,
+        "mean": 36.08055577572451,
+        "max": 115.85353866699734,
+        "p50": 18.24943795800209,
+        "p95": 108.38350924999395,
+        "p99": 115.85353866699734
+      }
+    },
+    {
+      "minute": 5,
+      "started": 141,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 35,
+        "FAILED": 100,
+        "SUCCESS_LATE": 6
+      },
+      "successful_latency_seconds": {
+        "count": 41,
+        "mean": 33.50273947563326,
+        "max": 134.64396120799938,
+        "p50": 17.49910508398898,
+        "p95": 129.42330083300476,
+        "p99": 134.64396120799938
+      }
+    },
+    {
+      "minute": 6,
+      "started": 112,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 45,
+        "FAILED": 60,
+        "SUCCESS_LATE": 7
+      },
+      "successful_latency_seconds": {
+        "count": 52,
+        "mean": 33.17550818913598,
+        "max": 135.78985866600124,
+        "p50": 17.72535683400929,
+        "p95": 134.07878883299418,
+        "p99": 135.78985866600124
+      }
+    },
+    {
+      "minute": 7,
+      "started": 138,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 38,
+        "FAILED": 98,
+        "SUCCESS_LATE": 2
+      },
+      "successful_latency_seconds": {
+        "count": 40,
+        "mean": 24.322284305174254,
+        "max": 145.21675066600437,
+        "p50": 17.523217209003633,
+        "p95": 24.70606583300105,
+        "p99": 145.21675066600437
+      }
+    },
+    {
+      "minute": 8,
+      "started": 125,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 38,
+        "FAILED": 78,
+        "SUCCESS_LATE": 9
+      },
+      "successful_latency_seconds": {
+        "count": 47,
+        "mean": 39.75934008774509,
+        "max": 136.76662829100678,
+        "p50": 18.399167875002604,
+        "p95": 134.5894859580003,
+        "p99": 136.76662829100678
+      }
+    },
+    {
+      "minute": 9,
+      "started": 131,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 39,
+        "FAILED": 88,
+        "SUCCESS_LATE": 4
+      },
+      "successful_latency_seconds": {
+        "count": 43,
+        "mean": 28.12321493799932,
+        "max": 121.0151969580038,
+        "p50": 18.674550417010323,
+        "p95": 118.31798479199642,
+        "p99": 121.0151969580038
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "started": 1,
+      "submission_window_seconds": 17.400090416005696,
+      "elapsed_with_drain_seconds": 17.400091083007283
+    },
+    {
+      "phase": "warmup",
+      "started": 147,
+      "submission_window_seconds": 60.0,
+      "elapsed_with_drain_seconds": 180.4028610420064
+    },
+    {
+      "phase": "measurement",
+      "started": 1369,
+      "submission_window_seconds": 600.0,
+      "elapsed_with_drain_seconds": 709.0626327079954
+    }
+  ],
+  "notes": [
+    "One process and persistent HTTP session per simulated client; no think time.",
+    "Backend mode is operator-declared; HTTP success does not prove live inference or answer quality.",
+    "Each workflow uses a fresh conversation UUID; correlation marker preserves slash routing.",
+    "No automatic chat retries; internal Databricks invocations are not observable here.",
+    "HTTP attempts can finish before parent receipt; workflow timing includes dispatch/collection.",
+    "Stopping a local worker does not cancel Flask or Databricks work already running.",
+    "Remote proxy, Flask, backend, persistence and analytics latency are included.",
+    "Interrupted or errored runs cannot pass; small samples do not prove long-term reliability."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-15T20:32:58.495630+00:00"
+}

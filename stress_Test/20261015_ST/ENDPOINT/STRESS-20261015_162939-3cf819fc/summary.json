@@ -1,0 +1,162 @@
+{
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "required_reliability_percent": 99.0,
+  "reliability_percent": 100.0,
+  "passed": true,
+  "workflows_started": 17,
+  "outcomes": {
+    "SUCCESS_WITHIN_TARGET": 17
+  },
+  "successful_latency_seconds": {
+    "count": 17,
+    "mean": 17.716251642000003,
+    "p50": 17.446286000000015,
+    "p95": 20.087639499999995,
+    "p99": 20.087639499999995,
+    "max": 20.087639499999995
+  },
+  "failed_latency_seconds": {
+    "count": 0,
+    "mean": null,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "max": null
+  },
+  "completed_workflows_per_second_including_drain": 0.05644382428471071,
+  "successful_workflows_per_second_including_drain": 0.05644382428471071,
+  "invocation_outcomes": {
+    "SUCCESS": 17
+  },
+  "invocation_success_percent": 100.0,
+  "http_attempt_outcomes": {
+    "SUCCESS": 17
+  },
+  "successful_invocation_latency_seconds": {
+    "count": 17,
+    "mean": 16.195549443588234,
+    "p50": 16.12761120900001,
+    "p95": 18.473638417000018,
+    "p99": 18.473638417000018,
+    "max": 18.473638417000018
+  },
+  "failed_invocation_latency_seconds": {
+    "count": 0,
+    "mean": null,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "max": null
+  },
+  "failure_categories": {},
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 4,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 4
+      },
+      "successful_latency_seconds": {
+        "count": 4,
+        "mean": 18.846206822749995,
+        "p50": 17.80681274999999,
+        "p95": 20.087639499999995,
+        "p99": 20.087639499999995,
+        "max": 20.087639499999995
+      }
+    },
+    {
+      "minute": 1,
+      "started": 3,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 3
+      },
+      "successful_latency_seconds": {
+        "count": 3,
+        "mean": 17.13849397233334,
+        "p50": 17.021931625000008,
+        "p95": 17.446286000000015,
+        "p99": 17.446286000000015,
+        "max": 17.446286000000015
+      }
+    },
+    {
+      "minute": 2,
+      "started": 4,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 4
+      },
+      "successful_latency_seconds": {
+        "count": 4,
+        "mean": 17.564260916250014,
+        "p50": 17.309961791000035,
+        "p95": 18.613001165999975,
+        "p99": 18.613001165999975,
+        "max": 18.613001165999975
+      }
+    },
+    {
+      "minute": 3,
+      "started": 3,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 3
+      },
+      "successful_latency_seconds": {
+        "count": 3,
+        "mean": 17.556364124999998,
+        "p50": 17.40456066600001,
+        "p95": 19.112409583999977,
+        "p99": 19.112409583999977,
+        "max": 19.112409583999977
+      }
+    },
+    {
+      "minute": 4,
+      "started": 3,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 3
+      },
+      "successful_latency_seconds": {
+        "count": 3,
+        "mean": 17.149944222000006,
+        "p50": 16.82962225,
+        "p95": 18.87717329100002,
+        "p99": 18.87717329100002,
+        "max": 18.87717329100002
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "submission_window_seconds": 26.819726208,
+      "elapsed_with_drain_seconds": 26.81972875,
+      "started": 1
+    },
+    {
+      "phase": "warmup",
+      "submission_window_seconds": 60.0,
+      "elapsed_with_drain_seconds": 69.333141208,
+      "started": 4
+    },
+    {
+      "phase": "measurement",
+      "submission_window_seconds": 300.0,
+      "elapsed_with_drain_seconds": 301.18441149999995,
+      "started": 17
+    }
+  ],
+  "notes": [
+    "One persistent process/session/token cache per concurrent client.",
+    "Inference includes authentication, retries and approval continuations; citations are separate.",
+    "Deadline termination stops local work; remote operations may continue.",
+    "Agent/source flags are observations, not proof of grounded answer quality.",
+    "Endpoint capacity/configuration and background traffic must be recorded externally.",
+    "Interrupted runs preserve outcomes but have no passing reliability verdict."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-15T16:36:16.694943+00:00"
+}

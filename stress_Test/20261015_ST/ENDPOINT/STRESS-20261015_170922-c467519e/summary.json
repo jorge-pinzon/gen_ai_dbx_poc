@@ -1,0 +1,252 @@
+{
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "required_reliability_percent": 99.0,
+  "reliability_percent": 29.575596816976127,
+  "passed": false,
+  "workflows_started": 1508,
+  "outcomes": {
+    "FAILED": 1062,
+    "SUCCESS_WITHIN_TARGET": 446
+  },
+  "successful_latency_seconds": {
+    "count": 446,
+    "mean": 17.803762044271096,
+    "p50": 17.706121166003868,
+    "p95": 21.102777334002894,
+    "p99": 23.330465541002923,
+    "max": 29.91410220800026
+  },
+  "failed_latency_seconds": {
+    "count": 1062,
+    "mean": 3.869563004988655,
+    "p50": 3.7796572079969337,
+    "p95": 4.515844334004214,
+    "p99": 5.2289146250113845,
+    "max": 6.503277000010712
+  },
+  "completed_workflows_per_second_including_drain": 2.495834943723613,
+  "successful_workflows_per_second_including_drain": 0.7381580801728987,
+  "invocation_outcomes": {
+    "FAILED": 1062,
+    "SUCCESS": 446
+  },
+  "invocation_success_percent": 29.575596816976127,
+  "http_attempt_outcomes": {
+    "FAILED": 1062,
+    "SUCCESS": 446
+  },
+  "successful_invocation_latency_seconds": {
+    "count": 446,
+    "mean": 16.811687526791843,
+    "p50": 16.69343654200202,
+    "p95": 20.234403624999686,
+    "p99": 22.35508787499566,
+    "max": 28.745001333008986
+  },
+  "failed_invocation_latency_seconds": {
+    "count": 1062,
+    "mean": 3.8565941648792914,
+    "p50": 3.7642829999967944,
+    "p95": 4.500062791994424,
+    "p99": 5.225274791999254,
+    "max": 6.4943475000036415
+  },
+  "failure_categories": {
+    "CLIENT_ERROR": 1062
+  },
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 163,
+      "outcomes": {
+        "FAILED": 119,
+        "SUCCESS_WITHIN_TARGET": 44
+      },
+      "successful_latency_seconds": {
+        "count": 44,
+        "mean": 17.87943908431771,
+        "p50": 18.002449624997098,
+        "p95": 20.429008666003938,
+        "p99": 22.109223624996957,
+        "max": 22.109223624996957
+      }
+    },
+    {
+      "minute": 1,
+      "started": 145,
+      "outcomes": {
+        "FAILED": 102,
+        "SUCCESS_WITHIN_TARGET": 43
+      },
+      "successful_latency_seconds": {
+        "count": 43,
+        "mean": 18.22576717248621,
+        "p50": 18.308613957997295,
+        "p95": 21.346896458999254,
+        "p99": 22.803295708989026,
+        "max": 22.803295708989026
+      }
+    },
+    {
+      "minute": 2,
+      "started": 146,
+      "outcomes": {
+        "FAILED": 99,
+        "SUCCESS_WITHIN_TARGET": 47
+      },
+      "successful_latency_seconds": {
+        "count": 47,
+        "mean": 17.705859437128503,
+        "p50": 17.751566915991134,
+        "p95": 20.431446459013387,
+        "p99": 21.31661616700876,
+        "max": 21.31661616700876
+      }
+    },
+    {
+      "minute": 3,
+      "started": 150,
+      "outcomes": {
+        "FAILED": 106,
+        "SUCCESS_WITHIN_TARGET": 44
+      },
+      "successful_latency_seconds": {
+        "count": 44,
+        "mean": 17.70481333424951,
+        "p50": 17.391940374989645,
+        "p95": 21.322977541,
+        "p99": 22.3840519170044,
+        "max": 22.3840519170044
+      }
+    },
+    {
+      "minute": 4,
+      "started": 140,
+      "outcomes": {
+        "FAILED": 95,
+        "SUCCESS_WITHIN_TARGET": 45
+      },
+      "successful_latency_seconds": {
+        "count": 45,
+        "mean": 18.487047266621893,
+        "p50": 18.593557707994478,
+        "p95": 22.439888207998592,
+        "p99": 23.891996209000354,
+        "max": 23.891996209000354
+      }
+    },
+    {
+      "minute": 5,
+      "started": 145,
+      "outcomes": {
+        "FAILED": 99,
+        "SUCCESS_WITHIN_TARGET": 46
+      },
+      "successful_latency_seconds": {
+        "count": 46,
+        "mean": 17.777065691107925,
+        "p50": 17.423895040992647,
+        "p95": 20.16071979100525,
+        "p99": 29.91410220800026,
+        "max": 29.91410220800026
+      }
+    },
+    {
+      "minute": 6,
+      "started": 157,
+      "outcomes": {
+        "FAILED": 113,
+        "SUCCESS_WITHIN_TARGET": 44
+      },
+      "successful_latency_seconds": {
+        "count": 44,
+        "mean": 17.5608450918887,
+        "p50": 17.733976500006975,
+        "p95": 20.715496082993923,
+        "p99": 22.967963750008494,
+        "max": 22.967963750008494
+      }
+    },
+    {
+      "minute": 7,
+      "started": 154,
+      "outcomes": {
+        "FAILED": 109,
+        "SUCCESS_WITHIN_TARGET": 45
+      },
+      "successful_latency_seconds": {
+        "count": 45,
+        "mean": 17.58166095455591,
+        "p50": 17.593245625001146,
+        "p95": 20.75158854199981,
+        "p99": 21.6278385839978,
+        "max": 21.6278385839978
+      }
+    },
+    {
+      "minute": 8,
+      "started": 157,
+      "outcomes": {
+        "FAILED": 113,
+        "SUCCESS_WITHIN_TARGET": 44
+      },
+      "successful_latency_seconds": {
+        "count": 44,
+        "mean": 17.473870211203824,
+        "p50": 17.2741064580041,
+        "p95": 20.98762195800373,
+        "p99": 22.103274666995276,
+        "max": 22.103274666995276
+      }
+    },
+    {
+      "minute": 9,
+      "started": 151,
+      "outcomes": {
+        "FAILED": 107,
+        "SUCCESS_WITHIN_TARGET": 44
+      },
+      "successful_latency_seconds": {
+        "count": 44,
+        "mean": 17.648250415590155,
+        "p50": 17.590560999989975,
+        "p95": 21.04993999999715,
+        "p99": 24.904166457999963,
+        "max": 24.904166457999963
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "submission_window_seconds": 18.980936916006613,
+      "elapsed_with_drain_seconds": 18.980938374996185,
+      "started": 1
+    },
+    {
+      "phase": "warmup",
+      "submission_window_seconds": 60.0,
+      "elapsed_with_drain_seconds": 67.37504587500007,
+      "started": 93
+    },
+    {
+      "phase": "measurement",
+      "submission_window_seconds": 600.0,
+      "elapsed_with_drain_seconds": 604.2066218330001,
+      "started": 1508
+    }
+  ],
+  "notes": [
+    "One persistent process/session/token cache per concurrent client.",
+    "Inference includes authentication, retries and approval continuations; citations are separate.",
+    "Deadline termination stops local work; remote operations may continue.",
+    "Agent/source flags are observations, not proof of grounded answer quality.",
+    "Endpoint capacity/configuration and background traffic must be recorded externally.",
+    "Interrupted runs preserve outcomes but have no passing reliability verdict."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-15T17:20:55.070849+00:00"
+}

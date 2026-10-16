@@ -1,0 +1,27 @@
+Databricks Direct Multi-Agent Stress Test
+================================================
+
+Test Run ID:        STRESS-20261015_091654
+Timestamp:          20261015_091654
+Concurrent users:   50
+Total requests:     100
+Successful:         82
+Failed:             18
+Success rate:       82.0%
+
+Minimum latency:    1.20s
+Average latency:    19.25s
+Median latency:     18.77s
+P95 latency:        24.80s
+P99 latency:        120.42s
+Maximum latency:    121.32s
+
+Total test time:    121.33s
+Requests / second:  0.82
+Requests / minute:  49.45
+
+Databricks Trace Correlation
+------------------------------------------------
+Search Databricks traces for the stress_test_id.
+Example:
+STRESS-20261015_091654-0001

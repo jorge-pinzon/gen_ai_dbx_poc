@@ -366,12 +366,22 @@ def create_app(
         if request.method == "POST":
             username = request.form.get("username", "")
             password = request.form.get("password", "")
+            print(20*'******', password)
             username_matches = hmac.compare_digest(
                 username, application_settings.login_username or ""
             )
-            password_matches = check_password_hash(
-                application_settings.login_password_hash or "", password
-            )
+
+            # Get the hash value
+            stored_hash = application_settings.login_password_hash
+            print(20*'******', stored_hash)
+            # Strictly ensure stored_hash is a text string and password is not empty
+            if isinstance(stored_hash, str) and password:
+                password_matches = check_password_hash(stored_hash, password)
+            else:
+                password_matches = False
+
+            print(20*'******', password_matches)
+
             if username_matches and password_matches:
                 session.clear()
                 session["user_id"] = sha256(username.encode("utf-8")).hexdigest()

@@ -1,0 +1,157 @@
+{
+  "test_type": "flask_http",
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "passed": false,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "required_reliability_percent": 99.0,
+  "reliability_percent": 78.94736842105263,
+  "workflows_started": 19,
+  "outcomes": {
+    "SUCCESS_WITHIN_TARGET": 15,
+    "FAILED": 4
+  },
+  "successful_latency_seconds": {
+    "count": 15,
+    "mean": 18.198323113731263,
+    "max": 25.0813552079926,
+    "p50": 17.443064540988416,
+    "p95": 25.0813552079926,
+    "p99": 25.0813552079926
+  },
+  "failed_latency_seconds": {
+    "count": 4,
+    "mean": 9.447008552251646,
+    "max": 12.833757708998746,
+    "p50": 7.949581124994438,
+    "p95": 12.833757708998746,
+    "p99": 12.833757708998746
+  },
+  "completed_workflows_per_second_including_drain": 0.06113936569019837,
+  "successful_workflows_per_second_including_drain": 0.04826792028173556,
+  "http_attempt_outcomes": {
+    "SUCCESS_WITHIN_TARGET": 15,
+    "FAILED": 4
+  },
+  "http_status_counts": {
+    "200": 15,
+    "NO_RESPONSE": 4
+  },
+  "failure_categories": {
+    "CONNECTION_ERROR": 4
+  },
+  "app_error_codes": {},
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 4,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 4
+      },
+      "successful_latency_seconds": {
+        "count": 4,
+        "mean": 16.240117885248765,
+        "max": 17.099323874994298,
+        "p50": 15.873402124998393,
+        "p95": 17.099323874994298,
+        "p99": 17.099323874994298
+      }
+    },
+    {
+      "minute": 1,
+      "started": 4,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 3,
+        "FAILED": 1
+      },
+      "successful_latency_seconds": {
+        "count": 3,
+        "mean": 17.152475305333308,
+        "max": 19.058163790992694,
+        "p50": 16.406944458009093,
+        "p95": 19.058163790992694,
+        "p99": 19.058163790992694
+      }
+    },
+    {
+      "minute": 2,
+      "started": 4,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 3,
+        "FAILED": 1
+      },
+      "successful_latency_seconds": {
+        "count": 3,
+        "mean": 20.946387194329873,
+        "max": 25.0813552079926,
+        "p50": 21.51801295799669,
+        "p95": 25.0813552079926,
+        "p99": 25.0813552079926
+      }
+    },
+    {
+      "minute": 3,
+      "started": 4,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 2,
+        "FAILED": 2
+      },
+      "successful_latency_seconds": {
+        "count": 2,
+        "mean": 18.763086874998407,
+        "max": 19.50859841700003,
+        "p50": 18.017575332996785,
+        "p95": 19.50859841700003,
+        "p99": 19.50859841700003
+      }
+    },
+    {
+      "minute": 4,
+      "started": 3,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 3
+      },
+      "successful_latency_seconds": {
+        "count": 3,
+        "mean": 18.730537971995847,
+        "max": 20.18432733300142,
+        "p50": 18.56422204199771,
+        "p95": 20.18432733300142,
+        "p99": 20.18432733300142
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "started": 1,
+      "submission_window_seconds": 27.64120629199897,
+      "elapsed_with_drain_seconds": 27.64120691700373
+    },
+    {
+      "phase": "warmup",
+      "started": 4,
+      "submission_window_seconds": 60.0,
+      "elapsed_with_drain_seconds": 72.38810470799217
+    },
+    {
+      "phase": "measurement",
+      "started": 19,
+      "submission_window_seconds": 300.0,
+      "elapsed_with_drain_seconds": 310.76540925000154
+    }
+  ],
+  "notes": [
+    "One process and persistent HTTP session per simulated client; no think time.",
+    "Backend mode is operator-declared; HTTP success does not prove live inference or answer quality.",
+    "Each workflow uses a fresh conversation UUID; correlation marker preserves slash routing.",
+    "No automatic chat retries; internal Databricks invocations are not observable here.",
+    "HTTP attempts can finish before parent receipt; workflow timing includes dispatch/collection.",
+    "Stopping a local worker does not cancel Flask or Databricks work already running.",
+    "Remote proxy, Flask, backend, persistence and analytics latency are included.",
+    "Interrupted or errored runs cannot pass; small samples do not prove long-term reliability."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-15T18:18:02.302964+00:00"
+}
