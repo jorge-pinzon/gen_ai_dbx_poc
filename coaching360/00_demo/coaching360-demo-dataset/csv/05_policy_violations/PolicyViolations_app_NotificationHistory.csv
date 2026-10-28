@@ -1,0 +1,204 @@
+NotificationHistoryId,ViolationId,NotificationType,SentDate,IsSuccess,LegacySourceDateColumn,CreatedDate
+1,1,ViolationCreated,2025-07-18 15:10:09.414,1,Policy violation notice - Cash drawer variance not reported,2025-07-18 15:10:09.414
+2,2,ViolationCreated,2026-03-08 17:46:54.581,1,Policy violation notice - Cash drawer variance not reported,2026-03-08 17:46:54.581
+3,3,ViolationCreated,2025-10-29 16:50:58.692,1,Policy violation notice - Optional product sold without documented disclosure,2025-10-29 16:50:58.692
+4,3,EscalationLevel2,2025-11-03 16:50:58.692,1,Policy violation notice - Optional product sold without documented disclosure,2025-11-03 16:50:58.692
+5,3,EscalationLevel3,2025-11-08 16:50:58.692,1,Policy violation notice - Optional product sold without documented disclosure,2025-11-08 16:50:58.692
+6,4,ViolationCreated,2026-09-02 19:25:35.508,1,Policy violation notice - Customer documents left unsecured,2026-09-02 19:25:35.508
+7,5,ViolationCreated,2026-05-26 19:28:16.555,1,Policy violation notice - GLO offer processed after expiration,2026-05-26 19:28:16.555
+8,6,ViolationCreated,2026-07-06 17:48:20.680,1,Policy violation notice - Customer documents left unsecured,2026-07-06 17:48:20.680
+9,7,ViolationCreated,2026-07-10 18:08:48.224,1,Policy violation notice - GLO offer processed after expiration,2026-07-10 18:08:48.224
+10,8,ViolationCreated,2026-06-09 16:18:57.893,1,Policy violation notice - Optional product added without customer consent,2026-06-09 16:18:57.893
+11,9,ViolationCreated,2026-04-15 14:15:35.829,1,Policy violation notice - Vault accessed without dual control,2026-04-15 14:15:35.829
+12,10,ViolationCreated,2026-06-11 21:12:29.600,1,Policy violation notice - Income verification not documented,2026-06-11 21:12:29.600
+13,10,EscalationLevel2,2026-06-16 21:12:29.600,1,Policy violation notice - Income verification not documented,2026-06-16 21:12:29.600
+14,11,ViolationCreated,2025-11-29 16:49:17.448,1,Policy violation notice - Customer documents left unsecured,2025-11-29 16:49:17.448
+15,12,ViolationCreated,2025-07-25 17:44:47.654,1,Policy violation notice - GLO offer processed after expiration,2025-07-25 17:44:47.654
+16,13,ViolationCreated,2025-09-11 21:47:22.875,1,Policy violation notice - Vault accessed without dual control,2025-09-11 21:47:22.875
+17,14,ViolationCreated,2026-02-07 20:27:47.173,1,Policy violation notice - Deferment missing approval documentation,2026-02-07 20:27:47.173
+18,15,ViolationCreated,2026-10-19 19:56:45.313,1,Policy violation notice - Deferment granted beyond policy limit,2026-10-19 19:56:45.313
+19,16,ViolationCreated,2026-08-27 16:07:31.552,1,Policy violation notice - Vault accessed without dual control,2026-08-27 16:07:31.552
+20,17,ViolationCreated,2025-11-12 14:17:51.832,1,Policy violation notice - Account information shared without verification,2025-11-12 14:17:51.832
+21,18,ViolationCreated,2025-11-07 15:40:52.052,1,Policy violation notice - Optional product added without customer consent,2025-11-07 15:40:52.052
+22,19,ViolationCreated,2026-08-27 15:32:55.701,1,Policy violation notice - Missing signed application,2026-08-27 15:32:55.701
+23,20,ViolationCreated,2025-11-22 15:08:15.346,1,Policy violation notice - Vault accessed without dual control,2025-11-22 15:08:15.346
+24,21,ViolationCreated,2026-06-03 13:28:46.275,1,Policy violation notice - Account information shared without verification,2026-06-03 13:28:46.275
+25,22,ViolationCreated,2026-03-29 16:57:58.206,1,Policy violation notice - Vault accessed without dual control,2026-03-29 16:57:58.206
+26,23,ViolationCreated,2025-06-28 18:01:18.902,1,Policy violation notice - Missing signed application,2025-06-28 18:01:18.902
+27,24,ViolationCreated,2025-09-14 18:05:44.016,1,Policy violation notice - Optional product sold without documented disclosure,2025-09-14 18:05:44.016
+28,25,ViolationCreated,2026-01-28 20:45:29.194,1,Policy violation notice - Income verification not documented,2026-01-28 20:45:29.194
+29,26,ViolationCreated,2026-05-30 18:16:01.845,1,Policy violation notice - Deferment granted beyond policy limit,2026-05-30 18:16:01.845
+30,27,ViolationCreated,2025-08-18 18:51:29.728,1,Policy violation notice - Cash drawer variance not reported,2025-08-18 18:51:29.728
+31,28,ViolationCreated,2026-01-20 18:00:50.203,1,Policy violation notice - Optional product sold without documented disclosure,2026-01-20 18:00:50.203
+32,29,ViolationCreated,2025-07-03 18:59:07.832,1,Policy violation notice - Optional product added without customer consent,2025-07-03 18:59:07.832
+33,29,EscalationLevel2,2025-07-08 18:59:07.832,1,Policy violation notice - Optional product added without customer consent,2025-07-08 18:59:07.832
+34,29,EscalationLevel3,2025-07-13 18:59:07.832,1,Policy violation notice - Optional product added without customer consent,2025-07-13 18:59:07.832
+35,30,ViolationCreated,2025-12-16 16:15:19.213,1,Policy violation notice - Deferment granted beyond policy limit,2025-12-16 16:15:19.213
+36,31,ViolationCreated,2025-08-01 15:48:01.719,1,Policy violation notice - GLO amount changed without approval,2025-08-01 15:48:01.719
+37,32,ViolationCreated,2026-05-22 13:38:22.932,1,Policy violation notice - Vault accessed without dual control,2026-05-22 13:38:22.932
+38,33,ViolationCreated,2025-07-14 20:41:13.327,1,Policy violation notice - Deferment granted beyond policy limit,2025-07-14 20:41:13.327
+39,34,ViolationCreated,2026-06-13 20:38:21.264,1,Policy violation notice - Customer documents left unsecured,2026-06-13 20:38:21.264
+40,35,ViolationCreated,2026-07-25 16:42:33.891,1,Policy violation notice - Missing signed application,2026-07-25 16:42:33.891
+41,36,ViolationCreated,2025-10-26 20:25:20.325,1,Policy violation notice - Account information shared without verification,2025-10-26 20:25:20.325
+42,37,ViolationCreated,2026-08-09 18:29:30.209,1,Policy violation notice - Income verification not documented,2026-08-09 18:29:30.209
+43,38,ViolationCreated,2026-04-17 15:48:14.698,1,Policy violation notice - Missing signed application,2026-04-17 15:48:14.698
+44,39,ViolationCreated,2026-06-08 14:51:38.960,1,Policy violation notice - Optional product sold without documented disclosure,2026-06-08 14:51:38.960
+45,40,ViolationCreated,2025-10-06 13:39:46.240,1,Policy violation notice - Deferment missing approval documentation,2025-10-06 13:39:46.240
+46,41,ViolationCreated,2025-10-20 18:29:47.562,1,Policy violation notice - Account information shared without verification,2025-10-20 18:29:47.562
+47,42,ViolationCreated,2025-10-24 18:15:07.630,1,Policy violation notice - Account information shared without verification,2025-10-24 18:15:07.630
+48,43,ViolationCreated,2025-06-24 16:14:43.223,1,Policy violation notice - Deferment granted beyond policy limit,2025-06-24 16:14:43.223
+49,44,ViolationCreated,2026-08-05 14:20:05.592,1,Policy violation notice - Income verification not documented,2026-08-05 14:20:05.592
+50,45,ViolationCreated,2025-09-12 20:01:20.948,1,Policy violation notice - Vault accessed without dual control,2025-09-12 20:01:20.948
+51,46,ViolationCreated,2026-04-25 16:31:52.543,1,Policy violation notice - Account information shared without verification,2026-04-25 16:31:52.543
+52,47,ViolationCreated,2026-06-06 16:01:06.217,1,Policy violation notice - Optional product added without customer consent,2026-06-06 16:01:06.217
+53,48,ViolationCreated,2026-05-28 19:22:07.004,1,Policy violation notice - Customer documents left unsecured,2026-05-28 19:22:07.004
+54,49,ViolationCreated,2026-03-11 17:16:16.748,1,Policy violation notice - GLO amount changed without approval,2026-03-11 17:16:16.748
+55,50,ViolationCreated,2025-11-11 18:57:20.679,1,Policy violation notice - Cash drawer variance not reported,2025-11-11 18:57:20.679
+56,51,ViolationCreated,2026-03-03 16:22:50.958,1,Policy violation notice - GLO amount changed without approval,2026-03-03 16:22:50.958
+57,52,ViolationCreated,2026-08-14 17:55:04.512,1,Policy violation notice - Cash drawer variance not reported,2026-08-14 17:55:04.512
+58,53,ViolationCreated,2026-06-10 16:32:56.738,1,Policy violation notice - Cash drawer variance not reported,2026-06-10 16:32:56.738
+59,54,ViolationCreated,2026-01-24 17:54:37.668,1,Policy violation notice - Account information shared without verification,2026-01-24 17:54:37.668
+60,55,ViolationCreated,2025-08-14 15:40:23.531,1,Policy violation notice - GLO offer processed after expiration,2025-08-14 15:40:23.531
+61,56,ViolationCreated,2026-02-14 19:47:23.052,1,Policy violation notice - Account information shared without verification,2026-02-14 19:47:23.052
+62,57,ViolationCreated,2026-07-11 20:10:58.619,1,Policy violation notice - Optional product added without customer consent,2026-07-11 20:10:58.619
+63,58,ViolationCreated,2025-09-17 21:36:11.479,1,Policy violation notice - GLO amount changed without approval,2025-09-17 21:36:11.479
+64,59,ViolationCreated,2025-08-27 18:29:23.301,1,Policy violation notice - Customer documents left unsecured,2025-08-27 18:29:23.301
+65,60,ViolationCreated,2026-05-05 18:04:00.579,1,Policy violation notice - Deferment granted beyond policy limit,2026-05-05 18:04:00.579
+66,61,ViolationCreated,2026-09-24 21:59:54.885,1,Policy violation notice - Customer documents left unsecured,2026-09-24 21:59:54.885
+67,62,ViolationCreated,2026-08-16 19:27:13.337,1,Policy violation notice - Deferment missing approval documentation,2026-08-16 19:27:13.337
+68,63,ViolationCreated,2026-07-28 16:09:28.083,1,Policy violation notice - GLO amount changed without approval,2026-07-28 16:09:28.083
+69,64,ViolationCreated,2025-09-29 16:36:53.793,1,Policy violation notice - Optional product added without customer consent,2025-09-29 16:36:53.793
+70,65,ViolationCreated,2026-01-01 19:11:03.519,1,Policy violation notice - Deferment missing approval documentation,2026-01-01 19:11:03.519
+71,66,ViolationCreated,2025-07-13 15:02:33.048,1,Policy violation notice - Missing signed application,2025-07-13 15:02:33.048
+72,67,ViolationCreated,2025-11-20 13:41:37.236,1,Policy violation notice - Account information shared without verification,2025-11-20 13:41:37.236
+73,68,ViolationCreated,2026-08-13 21:08:39.891,1,Policy violation notice - Deferment missing approval documentation,2026-08-13 21:08:39.891
+74,69,ViolationCreated,2026-02-16 21:24:54.017,1,Policy violation notice - GLO offer processed after expiration,2026-02-16 21:24:54.017
+75,70,ViolationCreated,2025-08-16 15:19:51.585,1,Policy violation notice - Customer documents left unsecured,2025-08-16 15:19:51.585
+76,71,ViolationCreated,2026-10-02 21:56:33.028,1,Policy violation notice - Cash drawer variance not reported,2026-10-02 21:56:33.028
+77,72,ViolationCreated,2026-07-18 21:28:39.976,1,Policy violation notice - Income verification not documented,2026-07-18 21:28:39.976
+78,73,ViolationCreated,2026-10-04 17:10:39.764,1,Policy violation notice - Deferment missing approval documentation,2026-10-04 17:10:39.764
+79,74,ViolationCreated,2026-10-06 17:53:42.286,1,Policy violation notice - GLO amount changed without approval,2026-10-06 17:53:42.286
+80,75,ViolationCreated,2026-01-02 13:28:45.719,1,Policy violation notice - Missing signed application,2026-01-02 13:28:45.719
+81,76,ViolationCreated,2026-05-17 19:57:45.823,1,Policy violation notice - Optional product sold without documented disclosure,2026-05-17 19:57:45.823
+82,77,ViolationCreated,2025-12-19 20:56:20.309,1,Policy violation notice - Deferment granted beyond policy limit,2025-12-19 20:56:20.309
+83,78,ViolationCreated,2025-08-09 19:56:36.468,1,Policy violation notice - Account information shared without verification,2025-08-09 19:56:36.468
+84,79,ViolationCreated,2025-11-06 16:21:39.279,1,Policy violation notice - Deferment missing approval documentation,2025-11-06 16:21:39.279
+85,80,ViolationCreated,2026-06-17 18:28:05.698,1,Policy violation notice - GLO amount changed without approval,2026-06-17 18:28:05.698
+86,81,ViolationCreated,2025-08-17 14:14:54.771,1,Policy violation notice - GLO amount changed without approval,2025-08-17 14:14:54.771
+87,82,ViolationCreated,2026-03-03 14:33:28.200,1,Policy violation notice - GLO offer processed after expiration,2026-03-03 14:33:28.200
+88,83,ViolationCreated,2025-12-05 20:04:22.991,1,Policy violation notice - Missing signed application,2025-12-05 20:04:22.991
+89,84,ViolationCreated,2026-03-29 18:48:14.895,1,Policy violation notice - Account information shared without verification,2026-03-29 18:48:14.895
+90,85,ViolationCreated,2025-08-06 19:40:08.617,1,Policy violation notice - Optional product added without customer consent,2025-08-06 19:40:08.617
+91,86,ViolationCreated,2025-07-23 20:52:53.959,1,Policy violation notice - Deferment granted beyond policy limit,2025-07-23 20:52:53.959
+92,87,ViolationCreated,2025-06-12 17:43:06.546,1,Policy violation notice - GLO amount changed without approval,2025-06-12 17:43:06.546
+93,88,ViolationCreated,2025-07-10 19:20:22.414,1,Policy violation notice - Deferment granted beyond policy limit,2025-07-10 19:20:22.414
+94,89,ViolationCreated,2026-05-07 13:59:41.678,1,Policy violation notice - Vault accessed without dual control,2026-05-07 13:59:41.678
+95,90,ViolationCreated,2026-07-27 18:47:03.737,1,Policy violation notice - Income verification not documented,2026-07-27 18:47:03.737
+96,91,ViolationCreated,2026-01-02 17:36:36.594,1,Policy violation notice - Vault accessed without dual control,2026-01-02 17:36:36.594
+97,92,ViolationCreated,2026-01-31 13:53:05.965,1,Policy violation notice - Optional product added without customer consent,2026-01-31 13:53:05.965
+98,93,ViolationCreated,2025-06-18 15:41:51.574,1,Policy violation notice - Cash drawer variance not reported,2025-06-18 15:41:51.574
+99,94,ViolationCreated,2026-09-24 17:38:54.699,1,Policy violation notice - Vault accessed without dual control,2026-09-24 17:38:54.699
+100,95,ViolationCreated,2025-06-16 13:28:08.699,1,Policy violation notice - Optional product added without customer consent,2025-06-16 13:28:08.699
+101,95,EscalationLevel2,2025-06-21 13:28:08.699,1,Policy violation notice - Optional product added without customer consent,2025-06-21 13:28:08.699
+102,96,ViolationCreated,2026-03-29 17:47:10.293,1,Policy violation notice - Deferment granted beyond policy limit,2026-03-29 17:47:10.293
+103,97,ViolationCreated,2025-12-30 21:23:46.344,1,Policy violation notice - Vault accessed without dual control,2025-12-30 21:23:46.344
+104,98,ViolationCreated,2026-07-21 14:56:11.887,1,Policy violation notice - Deferment missing approval documentation,2026-07-21 14:56:11.887
+105,99,ViolationCreated,2026-03-18 16:56:07.992,1,Policy violation notice - Vault accessed without dual control,2026-03-18 16:56:07.992
+106,100,ViolationCreated,2026-07-03 21:54:06.036,1,Policy violation notice - Optional product sold without documented disclosure,2026-07-03 21:54:06.036
+107,101,ViolationCreated,2026-09-03 19:49:37.250,1,Policy violation notice - Account information shared without verification,2026-09-03 19:49:37.250
+108,102,ViolationCreated,2026-05-20 15:43:10.383,1,Policy violation notice - Optional product sold without documented disclosure,2026-05-20 15:43:10.383
+109,103,ViolationCreated,2025-09-12 15:53:57.672,1,Policy violation notice - Customer documents left unsecured,2025-09-12 15:53:57.672
+110,104,ViolationCreated,2026-01-13 14:05:58.723,1,Policy violation notice - Deferment missing approval documentation,2026-01-13 14:05:58.723
+111,105,ViolationCreated,2025-09-24 15:51:35.144,1,Policy violation notice - Deferment granted beyond policy limit,2025-09-24 15:51:35.144
+112,106,ViolationCreated,2025-09-25 17:23:52.842,1,Policy violation notice - Vault accessed without dual control,2025-09-25 17:23:52.842
+113,107,ViolationCreated,2026-03-11 16:10:35.955,1,Policy violation notice - Optional product added without customer consent,2026-03-11 16:10:35.955
+114,108,ViolationCreated,2026-03-22 20:10:06.122,1,Policy violation notice - Deferment granted beyond policy limit,2026-03-22 20:10:06.122
+115,109,ViolationCreated,2025-12-16 14:07:22.019,1,Policy violation notice - Optional product sold without documented disclosure,2025-12-16 14:07:22.019
+116,110,ViolationCreated,2025-10-16 14:44:57.883,1,Policy violation notice - GLO offer processed after expiration,2025-10-16 14:44:57.883
+117,111,ViolationCreated,2026-02-25 18:14:04.776,1,Policy violation notice - Optional product added without customer consent,2026-02-25 18:14:04.776
+118,112,ViolationCreated,2026-06-16 18:34:40.491,1,Policy violation notice - Deferment granted beyond policy limit,2026-06-16 18:34:40.491
+119,113,ViolationCreated,2025-08-05 13:11:18.485,1,Policy violation notice - Deferment granted beyond policy limit,2025-08-05 13:11:18.485
+120,114,ViolationCreated,2026-07-08 21:32:28.185,1,Policy violation notice - Optional product added without customer consent,2026-07-08 21:32:28.185
+121,115,ViolationCreated,2026-05-21 16:57:53.528,1,Policy violation notice - Deferment granted beyond policy limit,2026-05-21 16:57:53.528
+122,116,ViolationCreated,2025-07-12 20:34:11.740,1,Policy violation notice - Deferment missing approval documentation,2025-07-12 20:34:11.740
+123,117,ViolationCreated,2025-09-06 18:58:14.966,1,Policy violation notice - Cash drawer variance not reported,2025-09-06 18:58:14.966
+124,118,ViolationCreated,2026-07-01 14:38:14.417,1,Policy violation notice - GLO amount changed without approval,2026-07-01 14:38:14.417
+125,119,ViolationCreated,2026-04-23 20:11:45.914,1,Policy violation notice - Missing signed application,2026-04-23 20:11:45.914
+126,120,ViolationCreated,2026-04-29 18:56:04.020,1,Policy violation notice - GLO amount changed without approval,2026-04-29 18:56:04.020
+127,121,ViolationCreated,2025-10-23 20:48:11.886,1,Policy violation notice - Account information shared without verification,2025-10-23 20:48:11.886
+128,122,ViolationCreated,2025-12-02 16:03:10.848,1,Policy violation notice - GLO amount changed without approval,2025-12-02 16:03:10.848
+129,123,ViolationCreated,2026-10-07 15:58:04.216,1,Policy violation notice - Account information shared without verification,2026-10-07 15:58:04.216
+130,124,ViolationCreated,2026-06-15 16:10:53.017,1,Policy violation notice - GLO amount changed without approval,2026-06-15 16:10:53.017
+131,125,ViolationCreated,2026-05-22 17:25:59.505,1,Policy violation notice - Customer documents left unsecured,2026-05-22 17:25:59.505
+132,126,ViolationCreated,2026-01-21 21:03:37.947,1,Policy violation notice - Vault accessed without dual control,2026-01-21 21:03:37.947
+133,127,ViolationCreated,2026-03-05 15:45:47.607,1,Policy violation notice - Cash drawer variance not reported,2026-03-05 15:45:47.607
+134,128,ViolationCreated,2026-02-19 20:23:11.107,1,Policy violation notice - Cash drawer variance not reported,2026-02-19 20:23:11.107
+135,129,ViolationCreated,2025-07-15 16:37:14.938,1,Policy violation notice - Vault accessed without dual control,2025-07-15 16:37:14.938
+136,130,ViolationCreated,2025-08-24 16:12:17.405,1,Policy violation notice - Account information shared without verification,2025-08-24 16:12:17.405
+137,131,ViolationCreated,2026-01-18 18:27:58.291,1,Policy violation notice - Vault accessed without dual control,2026-01-18 18:27:58.291
+138,132,ViolationCreated,2026-06-26 16:23:41.527,1,Policy violation notice - Income verification not documented,2026-06-26 16:23:41.527
+139,133,ViolationCreated,2025-10-31 21:35:33.363,1,Policy violation notice - Income verification not documented,2025-10-31 21:35:33.363
+140,134,ViolationCreated,2025-12-21 17:08:44.757,1,Policy violation notice - GLO amount changed without approval,2025-12-21 17:08:44.757
+141,135,ViolationCreated,2025-11-11 15:44:16.076,1,Policy violation notice - Cash drawer variance not reported,2025-11-11 15:44:16.076
+142,136,ViolationCreated,2026-03-26 15:02:22.621,1,Policy violation notice - Customer documents left unsecured,2026-03-26 15:02:22.621
+143,137,ViolationCreated,2026-06-14 15:07:20.187,1,Policy violation notice - Optional product added without customer consent,2026-06-14 15:07:20.187
+144,138,ViolationCreated,2026-02-02 16:18:11.401,1,Policy violation notice - GLO offer processed after expiration,2026-02-02 16:18:11.401
+145,139,ViolationCreated,2026-03-21 16:36:58.891,1,Policy violation notice - GLO offer processed after expiration,2026-03-21 16:36:58.891
+146,140,ViolationCreated,2026-06-04 13:02:29.943,1,Policy violation notice - Deferment missing approval documentation,2026-06-04 13:02:29.943
+147,141,ViolationCreated,2026-01-21 17:11:55.884,1,Policy violation notice - GLO offer processed after expiration,2026-01-21 17:11:55.884
+148,142,ViolationCreated,2026-02-16 21:59:33.527,1,Policy violation notice - GLO offer processed after expiration,2026-02-16 21:59:33.527
+149,143,ViolationCreated,2025-10-28 13:50:06.475,1,Policy violation notice - Optional product added without customer consent,2025-10-28 13:50:06.475
+150,144,ViolationCreated,2026-06-02 20:34:12.861,1,Policy violation notice - GLO offer processed after expiration,2026-06-02 20:34:12.861
+151,145,ViolationCreated,2026-10-07 15:48:51.685,1,Policy violation notice - GLO amount changed without approval,2026-10-07 15:48:51.685
+152,146,ViolationCreated,2026-07-02 13:14:16.804,1,Policy violation notice - Account information shared without verification,2026-07-02 13:14:16.804
+153,147,ViolationCreated,2026-03-29 18:45:51.079,1,Policy violation notice - Missing signed application,2026-03-29 18:45:51.079
+154,148,ViolationCreated,2025-10-31 17:49:21.416,1,Policy violation notice - Optional product sold without documented disclosure,2025-10-31 17:49:21.416
+155,149,ViolationCreated,2026-05-27 21:59:50.971,1,Policy violation notice - Vault accessed without dual control,2026-05-27 21:59:50.971
+156,150,ViolationCreated,2026-01-12 19:29:38.134,1,Policy violation notice - Customer documents left unsecured,2026-01-12 19:29:38.134
+157,151,ViolationCreated,2026-01-11 14:02:43.787,1,Policy violation notice - Account information shared without verification,2026-01-11 14:02:43.787
+158,152,ViolationCreated,2025-08-17 17:07:31.035,1,Policy violation notice - Optional product sold without documented disclosure,2025-08-17 17:07:31.035
+159,153,ViolationCreated,2026-05-01 15:40:04.656,1,Policy violation notice - Account information shared without verification,2026-05-01 15:40:04.656
+160,154,ViolationCreated,2026-09-14 19:32:24.659,1,Policy violation notice - Optional product sold without documented disclosure,2026-09-14 19:32:24.659
+161,155,ViolationCreated,2026-08-10 18:12:41.855,1,Policy violation notice - GLO amount changed without approval,2026-08-10 18:12:41.855
+162,156,ViolationCreated,2025-08-31 16:31:26.272,1,Policy violation notice - Cash drawer variance not reported,2025-08-31 16:31:26.272
+163,157,ViolationCreated,2026-09-18 16:51:56.578,1,Policy violation notice - GLO amount changed without approval,2026-09-18 16:51:56.578
+164,158,ViolationCreated,2026-02-24 17:48:06.700,1,Policy violation notice - Account information shared without verification,2026-02-24 17:48:06.700
+165,159,ViolationCreated,2025-06-12 18:18:48.076,1,Policy violation notice - Deferment missing approval documentation,2025-06-12 18:18:48.076
+166,160,ViolationCreated,2025-07-02 17:43:37.363,1,Policy violation notice - GLO amount changed without approval,2025-07-02 17:43:37.363
+167,161,ViolationCreated,2025-12-26 21:00:50.362,1,Policy violation notice - Cash drawer variance not reported,2025-12-26 21:00:50.362
+168,162,ViolationCreated,2026-01-13 17:01:40.525,1,Policy violation notice - Account information shared without verification,2026-01-13 17:01:40.525
+169,162,EscalationLevel2,2026-01-18 17:01:40.525,1,Policy violation notice - Account information shared without verification,2026-01-18 17:01:40.525
+170,162,EscalationLevel3,2026-01-23 17:01:40.525,1,Policy violation notice - Account information shared without verification,2026-01-23 17:01:40.525
+171,163,ViolationCreated,2026-04-17 19:26:42.169,1,Policy violation notice - Optional product sold without documented disclosure,2026-04-17 19:26:42.169
+172,164,ViolationCreated,2026-02-08 21:14:53.909,1,Policy violation notice - GLO offer processed after expiration,2026-02-08 21:14:53.909
+173,165,ViolationCreated,2026-02-07 20:29:46.449,1,Policy violation notice - Deferment granted beyond policy limit,2026-02-07 20:29:46.449
+174,166,ViolationCreated,2026-05-21 14:49:54.235,1,Policy violation notice - Deferment granted beyond policy limit,2026-05-21 14:49:54.235
+175,167,ViolationCreated,2026-02-14 17:26:22.190,1,Policy violation notice - Missing signed application,2026-02-14 17:26:22.190
+176,168,ViolationCreated,2026-06-29 13:36:19.205,1,Policy violation notice - GLO amount changed without approval,2026-06-29 13:36:19.205
+177,169,ViolationCreated,2026-02-09 17:25:16.351,1,Policy violation notice - GLO offer processed after expiration,2026-02-09 17:25:16.351
+178,170,ViolationCreated,2025-11-19 16:58:04.838,1,Policy violation notice - Optional product added without customer consent,2025-11-19 16:58:04.838
+179,171,ViolationCreated,2025-06-11 13:28:15.053,1,Policy violation notice - Vault accessed without dual control,2025-06-11 13:28:15.053
+180,171,EscalationLevel2,2025-06-16 13:28:15.053,1,Policy violation notice - Vault accessed without dual control,2025-06-16 13:28:15.053
+181,171,EscalationLevel3,2025-06-21 13:28:15.053,1,Policy violation notice - Vault accessed without dual control,2025-06-21 13:28:15.053
+182,172,ViolationCreated,2026-01-05 18:06:49.164,1,Policy violation notice - GLO offer processed after expiration,2026-01-05 18:06:49.164
+183,173,ViolationCreated,2025-06-07 21:07:07.175,1,Policy violation notice - GLO offer processed after expiration,2025-06-07 21:07:07.175
+184,174,ViolationCreated,2025-09-12 18:45:46.150,1,Policy violation notice - GLO amount changed without approval,2025-09-12 18:45:46.150
+185,175,ViolationCreated,2026-06-26 14:13:10.023,1,Policy violation notice - Missing signed application,2026-06-26 14:13:10.023
+186,175,EscalationLevel2,2026-07-01 14:13:10.023,1,Policy violation notice - Missing signed application,2026-07-01 14:13:10.023
+187,175,EscalationLevel3,2026-07-06 14:13:10.023,1,Policy violation notice - Missing signed application,2026-07-06 14:13:10.023
+188,176,ViolationCreated,2026-05-05 20:25:44.080,1,Policy violation notice - Vault accessed without dual control,2026-05-05 20:25:44.080
+189,177,ViolationCreated,2025-12-21 16:02:21.056,1,Policy violation notice - Cash drawer variance not reported,2025-12-21 16:02:21.056
+190,178,ViolationCreated,2026-07-08 13:49:11.490,1,Policy violation notice - Income verification not documented,2026-07-08 13:49:11.490
+191,178,EscalationLevel2,2026-07-13 13:49:11.490,1,Policy violation notice - Income verification not documented,2026-07-13 13:49:11.490
+192,179,ViolationCreated,2025-10-05 19:30:28.383,1,Policy violation notice - Deferment missing approval documentation,2025-10-05 19:30:28.383
+193,180,ViolationCreated,2026-10-11 17:45:22.790,1,Policy violation notice - Deferment missing approval documentation,2026-10-11 17:45:22.790
+194,181,ViolationCreated,2025-09-05 17:24:17.139,1,Policy violation notice - Customer documents left unsecured,2025-09-05 17:24:17.139
+195,182,ViolationCreated,2026-10-06 13:28:20.342,1,Policy violation notice - Deferment missing approval documentation,2026-10-06 13:28:20.342
+196,183,ViolationCreated,2025-09-25 18:57:46.595,1,Policy violation notice - Cash drawer variance not reported,2025-09-25 18:57:46.595
+197,184,ViolationCreated,2025-10-26 19:27:28.714,1,Policy violation notice - GLO amount changed without approval,2025-10-26 19:27:28.714
+198,185,ViolationCreated,2026-03-18 15:30:10.234,1,Policy violation notice - Deferment missing approval documentation,2026-03-18 15:30:10.234
+199,186,ViolationCreated,2026-01-01 17:37:00.591,1,Policy violation notice - Missing signed application,2026-01-01 17:37:00.591
+200,187,ViolationCreated,2025-06-18 14:03:26.594,1,Policy violation notice - GLO amount changed without approval,2025-06-18 14:03:26.594
+201,188,ViolationCreated,2025-07-31 14:01:34.619,1,Policy violation notice - Optional product sold without documented disclosure,2025-07-31 14:01:34.619
+202,189,ViolationCreated,2025-07-28 13:24:08.596,1,Policy violation notice - Optional product sold without documented disclosure,2025-07-28 13:24:08.596
+203,190,ViolationCreated,2025-12-27 20:02:18.257,1,Policy violation notice - Missing signed application,2025-12-27 20:02:18.257

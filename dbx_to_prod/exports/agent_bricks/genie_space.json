@@ -1,0 +1,5 @@
+{
+  "title": "mariner-performance-data-assitant",
+  "description": "Structured data agent for querying employee performance, loan production, competency ratings, goals, and review compliance.",
+  "serialized_space_file": "../../../agent_descriptions/genie_space/serialized_space_fast.json"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "mariner-hr-supervisor",
+    "description": "",
+    "compute_size": "MEDIUM",
+    "default_source_code_path": "/Workspace/Users/jorge.pinzon@marinerfinance.com/mariner-hr-supervisor",
+    "resources": [
+      {
+        "name": "sql-warehouse",
+        "sql_warehouse": {
+          "id": "55cdb78d4d2a62d0",
+          "permission": "CAN_USE"
+        }
+      },
+      {
+        "name": "supervisor-endpoint",
+        "serving_endpoint": {
+          "name": "mas-53dbd2d7-endpoint",
+          "permission": "CAN_QUERY"
+        }
+      }
+    ]
+  }
+]

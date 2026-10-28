@@ -1,0 +1,8 @@
+{
+  "model": "workspace.default.benefits_agent_model",
+  "version": "3",
+  "run_id": "6218841b87ff4feaa19c4384076fbcdd",
+  "source": "models:/m-6ad4da9eb4de4138bfb061123afd13b8",
+  "storage_location": "s3://dbstorage-prod-xe7dwhs0cf/uc/2db8c077-65b4-4fec-a6e9-f029b704cba6/dc878037-59cb-48a8-8d57-2525c9e83b33/__unitystorage/catalogs/d62670e4-a338-4d91-b7bd-efbab3657119/models/90ea09ac-026a-4741-ab2a-646cdaed38cd/versions/eb01a4e7-8aa5-4cbe-9e1a-f23a2788b9a2",
+  "artifacts": []
+}

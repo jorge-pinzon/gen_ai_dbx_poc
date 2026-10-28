@@ -1,0 +1,98 @@
+[
+  {
+    "name": "workspace.performance_test.perf_policy_retrieval_index",
+    "endpoint_name": "mariner-bot-endpoint",
+    "primary_key": "retrieval_id",
+    "index_type": "DELTA_SYNC",
+    "source_table": "workspace.performance_test.perf_policy_retrieval",
+    "pipeline_type": "TRIGGERED",
+    "embedding_source_columns": [
+      {
+        "name": "chunk_text",
+        "embedding_model_endpoint_name": "databricks-qwen3-embedding-0-6b"
+      }
+    ],
+    "columns_to_sync": null,
+    "indexed_rows": 9
+  },
+  {
+    "name": "workspace.performance_test.performance_index",
+    "endpoint_name": "mariner-bot-endpoint",
+    "primary_key": "chunk_id",
+    "index_type": "DELTA_SYNC",
+    "source_table": "workspace.performance_test.app_policy_chunks",
+    "pipeline_type": "TRIGGERED",
+    "embedding_source_columns": [
+      {
+        "name": "chunk_to_embed",
+        "embedding_model_endpoint_name": "databricks-qwen3-embedding-0-6b"
+      }
+    ],
+    "columns_to_sync": null,
+    "indexed_rows": 9
+  },
+  {
+    "name": "workspace.default.branch_ops_index",
+    "endpoint_name": "mariner-bot-endpoint",
+    "primary_key": "chunk_id",
+    "index_type": "DELTA_SYNC",
+    "source_table": "workspace.default.branch_operations_chunks",
+    "pipeline_type": "TRIGGERED",
+    "embedding_source_columns": [
+      {
+        "name": "embedding_text",
+        "embedding_model_endpoint_name": "databricks-qwen3-embedding-0-6b"
+      }
+    ],
+    "columns_to_sync": null,
+    "indexed_rows": 29
+  },
+  {
+    "name": "workspace.default.benefits_new_index",
+    "endpoint_name": "mariner-bot-endpoint",
+    "primary_key": "chunk_id",
+    "index_type": "DELTA_SYNC",
+    "source_table": "workspace.default.benefits_chunks",
+    "pipeline_type": "TRIGGERED",
+    "embedding_source_columns": [
+      {
+        "name": "embedding_text",
+        "embedding_model_endpoint_name": "databricks-qwen3-embedding-0-6b"
+      }
+    ],
+    "columns_to_sync": null,
+    "indexed_rows": 6
+  },
+  {
+    "name": "workspace.ask_mariner_perf_dev.perf_policy_retrieval_index",
+    "endpoint_name": "mariner-bot-endpoint",
+    "primary_key": "retrieval_id",
+    "index_type": "DELTA_SYNC",
+    "source_table": "workspace.ask_mariner_perf_dev.perf_policy_retrieval",
+    "pipeline_type": "TRIGGERED",
+    "embedding_source_columns": [
+      {
+        "name": "chunk_text",
+        "embedding_model_endpoint_name": "databricks-qwen3-embedding-0-6b"
+      }
+    ],
+    "columns_to_sync": null,
+    "indexed_rows": 9
+  },
+  {
+    "name": "workspace.default.employee_handbook_new_index",
+    "endpoint_name": "mariner-bot-endpoint",
+    "primary_key": "chunk_id",
+    "index_type": "DELTA_SYNC",
+    "source_table": "workspace.default.employee_handbook_chunks",
+    "pipeline_type": "TRIGGERED",
+    "embedding_source_columns": [
+      {
+        "name": "embedding_text",
+        "embedding_model_endpoint_name": "databricks-qwen3-embedding-0-6b"
+      }
+    ],
+    "columns_to_sync": null,
+    "indexed_rows": 90
+  }
+]

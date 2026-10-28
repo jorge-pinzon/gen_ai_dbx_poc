@@ -1,0 +1,7 @@
+PolicyId,PolicyName,IsActive,IsOptionalProductPolicy,ModifiedDate
+1,Optional Product Disclosure,1,1,2025-05-01 13:00:00.000
+2,Deferment Approval and Documentation,1,0,2025-05-01 13:00:00.000
+3,Cash Handling and Dual Control,1,0,2025-05-01 13:00:00.000
+4,Application Documentation,1,0,2025-05-01 13:00:00.000
+5,Guaranteed Loan Offer (GLO) Handling,1,0,2025-05-01 13:00:00.000
+6,Customer Privacy and Information Security,1,0,2025-05-01 13:00:00.000

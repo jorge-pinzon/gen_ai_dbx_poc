@@ -1,0 +1,34 @@
+Id,Title,ReviewType,StartDate,EndDate
+5,Branch LPE,Branch,2022-01-01,2025-12-31
+44,Branch LPE,Branch,2026-01-01,
+6,Branch DACC LPE,Branch,2022-01-01,
+7,Current Month DLQ %,Branch,2022-01-01,2025-12-31
+52,Current Month DLQ %,Branch,2026-01-01,
+8,ROA %,Branch,2022-01-01,2025-12-31
+50,ROA %,Branch,2026-01-01,
+9,First Lien %,Branch,2022-01-01,2023-06-30
+19,First Lien %,Branch,2023-07-01,2025-12-31
+48,First Lien %,Branch,2026-01-01,
+10,BM LPE,Branch,2022-01-01,
+11,BM DACC LPE,Branch,2022-01-01,2025-02-28
+13,District LPE,District,2022-01-01,2025-12-31
+46,District LPE,District,2026-01-01,
+14,District DACC LPE,District,2022-01-01,
+16,ROA %,District,2022-01-01,2025-12-31
+51,ROA %,District,2026-01-01,
+20,First Lien %,District,2022-01-01,2025-12-31
+49,First Lien %,District,2026-01-01,
+29,Current Month DLQ %,District,2022-01-01,2024-12-31
+53,Current Month DLQ %,District,2025-01-01,2025-12-31
+54,Current Month DLQ %,District,2026-01-01,
+34,30-89 DLQ %,Employee,2022-01-01,
+35,30-89 DLQ %,Branch,2022-01-01,
+36,30-89 DLQ %,District,2022-01-01,
+37,Non-Affiliated Apps per Approved HC,Branch,2022-01-01,
+38,DARP Deals Booked,Branch,2022-01-01,
+39,PB Renewal %,Branch,2022-01-01,
+40,Conversion Combo,Branch,2022-01-01,
+41,Turnover %,District,2022-01-01,
+42,DARP Deals Booked,District,2022-01-01,
+55,Credit Grade 4/5,Branch,2026-01-01,
+56,Credit Grade 4/5,District,2026-01-01,

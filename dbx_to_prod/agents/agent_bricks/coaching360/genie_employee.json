@@ -1,0 +1,706 @@
+{
+ "version": "2",
+ "data_sources": {
+  "tables": [
+   {
+    "identifier": "workspace.c360_employee.data_status",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.kpi_definitions",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.kpi_goals",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.kpi_scoring_bands",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.kpi_scoring_rules",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_ace_payout",
+    "description": [
+     "My ACE incentive payout estimate (branch manager payout columns removed)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_call_activity",
+    "description": [
+     "My daily outbound calls."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_call_goals",
+    "description": [
+     "My outbound call and contact targets."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_coaching_acknowledgements",
+    "description": [
+     "My acknowledgements of coaching records."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_coaching_comments",
+    "description": [
+     "Employee-visible comments on my coaching records (internal manager notes excluded)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_coaching_records",
+    "description": [
+     "Coaching records about me that are visible to me."
+    ],
+    "column_configs": [
+     {
+      "column_name": "Status",
+      "description": [
+       "Submitted or PendingAcknowledgement."
+      ],
+      "synonyms": [
+       "coaching status"
+      ]
+     },
+     {
+      "column_name": "TopicCode",
+      "description": [
+       "Coaching topic."
+      ],
+      "synonyms": [
+       "topic",
+       "subject"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_dpr_scorecard",
+    "description": [
+     "My published DPR scorecard metrics (ratios are fractions; MetricMonth is the month)."
+    ],
+    "column_configs": [
+     {
+      "column_name": "KpiName",
+      "description": [
+       "Scorecard KPI name."
+      ],
+      "synonyms": [
+       "KPI",
+       "metric",
+       "measure"
+      ]
+     },
+     {
+      "column_name": "MetricMonth",
+      "description": [
+       "First day of the scorecard month."
+      ],
+      "synonyms": [
+       "month"
+      ]
+     },
+     {
+      "column_name": "MetricValue",
+      "description": [
+       "Scorecard value; ratios are fractions (0.25 = 25%)."
+      ],
+      "synonyms": [
+       "score",
+       "value",
+       "result"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_monthly_kpis",
+    "description": [
+     "My monthly production and delinquency (one row per branch x month; KpiMonth is the month)."
+    ],
+    "column_configs": [
+     {
+      "column_name": "DLQ3060DayPerc_Actual",
+      "description": [
+       "30-89 day delinquency rate (fraction, lower is better). The source column name says 3060 but it holds the 30-89 day rate."
+      ],
+      "synonyms": [
+       "30-89 day delinquency",
+       "30 to 89 day DLQ",
+       "delinquency 30-89"
+      ]
+     },
+     {
+      "column_name": "DLQ3089DayPerc_Goal",
+      "description": [
+       "Goal for the 30-89 day delinquency rate (fraction)."
+      ],
+      "synonyms": [
+       "30-89 day delinquency goal"
+      ]
+     },
+     {
+      "column_name": "DLQCurrentMonthPerc_Actual",
+      "description": [
+       "Current-month delinquency rate (fraction, lower is better)."
+      ],
+      "synonyms": [
+       "delinquency",
+       "DLQ",
+       "past due rate"
+      ]
+     },
+     {
+      "column_name": "DLQCurrentMonthPerc_Goal",
+      "description": [
+       "Current-month delinquency goal (fraction)."
+      ],
+      "synonyms": [
+       "delinquency goal",
+       "DLQ goal"
+      ]
+     },
+     {
+      "column_name": "KpiMonth",
+      "description": [
+       "First day of the KPI month."
+      ],
+      "synonyms": [
+       "month",
+       "period"
+      ]
+     },
+     {
+      "column_name": "LPE",
+      "description": [
+       "Loans per employee for the month."
+      ],
+      "synonyms": [
+       "loans per employee"
+      ]
+     },
+     {
+      "column_name": "TotalLoans",
+      "description": [
+       "Number of loans booked in the month."
+      ],
+      "synonyms": [
+       "loans",
+       "loan count",
+       "units",
+       "deals"
+      ]
+     },
+     {
+      "column_name": "TotalVolumeDollars",
+      "description": [
+       "Total loan volume in US dollars for the month (higher is better)."
+      ],
+      "synonyms": [
+       "volume",
+       "dollar volume",
+       "production dollars",
+       "sales"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_overview",
+    "description": [
+     "My one-row summary: latest-month KPIs and rank in my branch, open and overdue tasks, coaching, Success Plan and open violations."
+    ],
+    "column_configs": [
+     {
+      "column_name": "CoachingRecordsLast90Days",
+      "description": [
+       "Coaching records dated in the last 90 days."
+      ],
+      "synonyms": [
+       "recent coaching",
+       "coaching count"
+      ]
+     },
+     {
+      "column_name": "LatestKpiMonth",
+      "description": [
+       "Month the KPI columns refer to (latest month in the data)."
+      ],
+      "synonyms": [
+       "month"
+      ]
+     },
+     {
+      "column_name": "OpenPolicyViolations",
+      "description": [
+       "Policy violations without completed corrective action."
+      ],
+      "synonyms": [
+       "open violations",
+       "compliance issues"
+      ]
+     },
+     {
+      "column_name": "OpenTasks",
+      "description": [
+       "Tasks not completed."
+      ],
+      "synonyms": [
+       "open tasks",
+       "to-dos",
+       "action items"
+      ]
+     },
+     {
+      "column_name": "OverdueTasks",
+      "description": [
+       "Open tasks past their due date (as of AsOfDate)."
+      ],
+      "synonyms": [
+       "overdue",
+       "late tasks",
+       "past due tasks"
+      ]
+     },
+     {
+      "column_name": "PendingAcknowledgements",
+      "description": [
+       "Coaching records waiting for the employee's acknowledgement."
+      ],
+      "synonyms": [
+       "unacknowledged coaching",
+       "pending acknowledgements"
+      ]
+     },
+     {
+      "column_name": "SuccessPlanStatus",
+      "description": [
+       "Status of the latest non-archived Success Plan (IDP)."
+      ],
+      "synonyms": [
+       "IDP status",
+       "development plan status"
+      ]
+     },
+     {
+      "column_name": "TotalLoans",
+      "description": [
+       "Number of loans booked in the month."
+      ],
+      "synonyms": [
+       "loans",
+       "loan count",
+       "units",
+       "deals"
+      ]
+     },
+     {
+      "column_name": "TotalVolumeDollars",
+      "description": [
+       "Total loan volume in US dollars for the month (higher is better)."
+      ],
+      "synonyms": [
+       "volume",
+       "dollar volume",
+       "production dollars",
+       "sales"
+      ]
+     },
+     {
+      "column_name": "VolumeRankInBranch",
+      "description": [
+       "Rank by volume within the branch for LatestKpiMonth (1 = highest)."
+      ],
+      "synonyms": [
+       "rank",
+       "ranking",
+       "standing"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_policy_violations",
+    "description": [
+     "Policy violations recorded about me (account numbers masked)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_profile",
+    "description": [
+     "My directory record, branch and district."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_success_plan_comments",
+    "description": [
+     "Comments on my Success Plans."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_success_plans",
+    "description": [
+     "My monthly Success Plans (IDPs)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_employee.my_tasks",
+    "description": [
+     "Tasks and action items assigned to me."
+    ],
+    "column_configs": [
+     {
+      "column_name": "DueDate",
+      "description": [
+       "Date the task is due."
+      ],
+      "synonyms": [
+       "deadline",
+       "due"
+      ]
+     },
+     {
+      "column_name": "Status",
+      "description": [
+       "Open, In Progress, Escalated or Completed."
+      ],
+      "synonyms": [
+       "task status"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "instructions": {
+  "text_instructions": [
+   {
+    "id": "3e104729a44d57f38bf0e709b55b823f",
+    "content": [
+     "You help an employee (Account Representative, Assistant Branch Manager or Branch Manager Trainee) understand their own performance, coaching, Success Plans, tasks, incentive estimate and policy violations.\n",
+     "Every table contains only this employee's own rows. Speak to them as 'you'.\n",
+     "All rows are already limited to the signed-in person's scope by Unity Catalog. Never say data is hidden or filtered; answer from what the tables return.\n",
+     "If a query returns no rows, say there is no recorded data for that request in your scope. Never guess or invent values.\n",
+     "Months: 'last month', 'this month', 'latest' and no month at all mean data_status.LatestKpiMonth (the latest month with complete KPI data), never a month computed from today's date. The functions already default to it. Name the month in the answer.\n",
+     "Scorecards: use my_scorecard / team_scorecard / branch_scorecard. Goals come only from these functions (LPE goal 1.00, DACC loans goal 2 per month, delinquency goals from the KPI row, outbound call and contact goals from EmployeeGoals; see kpi_goals). Never infer, estimate or change a goal, and report Status values as returned.\n",
+     "Delinquency: always report both measures, labelled 'current month' and '30-89 day', each against its own goal. Dlq30To89Day and the source column DLQ3060DayPerc_Actual hold the 30-89 day rate despite the column name.\n",
+     "Overdue and day counts use the dataset as-of date (data_status.AsOfDate), never current_date().\n",
+     "A month applies to monthly measures (KPIs, scorecards, rankings) only. Never filter coaching records, acknowledgements, tasks, Success Plan approvals or visits by a month unless the question itself names a month for them.\n",
+     "Comparisons: 'last month' and 'year to date' come from the LastMonth / YearToDate columns of the scorecard functions; monthly trends from employee_kpi_trend. Do not compute them yourself. When saying whether a measure is above or below goal, also give last month's value.\n",
+     "Function values are already formatted (LPE 0.86, delinquency 4.57%, first lien 54.6%, scores 108.8). Return them unchanged; sort with the Rank columns.\n",
+     "DPR scorecard ratios are fractions (0.25 = 25%). Show them as percentages with at most one decimal place.\n",
+     "Delinquency (DLQ) measures and turnover are lower-is-better; production, volume, LPE, ROA and contact measures are higher-is-better (see kpi_definitions.IsHigherBetter).\n",
+     "Currency columns are US dollars; format with $ and thousands separators.\n",
+     "Coaching record Status values: Submitted, PendingAcknowledgement. Task Status: Open, In Progress, Escalated, Completed. Success Plan (IDP) Status: Active, Approved, Locked, Archived.\n",
+     "Policy violation Status values: Submitted, Acknowledged, CorrectiveActionInProgress, CorrectiveActionCompleted; 'open' means anything except CorrectiveActionCompleted.\n",
+     "Payout figures are estimates from the ACE incentive model, not final pay. Say so when you report them.\n",
+     "Do not expose SQL, table names or internal ids unless asked; use plain business names.\n",
+     "Keep results small: select only the columns the question needs and aggregate or LIMIT long lists.\n",
+     "Answer with one query. Prefer the trusted functions and the overview table (my_overview / team_overview): they already answer the common questions with names, branches and the latest month. Do not run exploratory or DESCRIBE queries first.\n",
+     "Month parameters of the functions are text: pass the month as 'YYYY-MM' (for example '2026-09'), or NULL for the latest month. A month named without a year means the most recent such month in the data.\n"
+    ]
+   }
+  ],
+  "sql_functions": [
+   {
+    "id": "23a7733a0c885666902dc8027e639469",
+    "identifier": "workspace.c360_employee.my_scorecard"
+   },
+   {
+    "id": "ca6db1b4ee9e5d34b0df89d6e35aaf49",
+    "identifier": "workspace.c360_employee.my_pending_acknowledgements"
+   },
+   {
+    "id": "ee88b1b7ab365eca91725c41d8ec6b04",
+    "identifier": "workspace.c360_employee.my_success_plan"
+   },
+   {
+    "id": "feeeae791e7050a39ea13c5bd6f9f8dc",
+    "identifier": "workspace.c360_employee.my_open_items"
+   }
+  ],
+  "example_question_sqls": [
+   {
+    "id": "055229efff6250b095fae0ff9b59d58d",
+    "question": [
+     "What is my current Success Plan?"
+    ],
+    "sql": [
+     "SELECT GoalMonth, DevelopmentArea, GoalStatement, ActionPlan, SuccessMeasures, Status\n",
+     "FROM workspace.c360_employee.my_success_plans\n",
+     "ORDER BY GoalMonth DESC\n",
+     "LIMIT 1"
+    ]
+   },
+   {
+    "id": "3196f65d5920539084eb3213041d2b88",
+    "question": [
+     "What is my estimated ACE payout?"
+    ],
+    "sql": [
+     "SELECT REPORT_DATE, Month_Name, PayClass, EmpEstPayout\n",
+     "FROM workspace.c360_employee.my_ace_payout\n",
+     "ORDER BY REPORT_DATE DESC\n",
+     "LIMIT 3"
+    ]
+   },
+   {
+    "id": "34fa9eac90da5eafa31678708783d25e",
+    "question": [
+     "Who is my manager and which branch am I in?"
+    ],
+    "sql": [
+     "SELECT Name, UserTitle, ManagerUserName, BranchNumber, BranchName, DistrictName\n",
+     "FROM workspace.c360_employee.my_profile"
+    ]
+   },
+   {
+    "id": "3a3150cda04f5d71909fa956fa7eeab4",
+    "question": [
+     "Do I have any coaching records waiting for my acknowledgement?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_employee.my_pending_acknowledgements()"
+    ]
+   },
+   {
+    "id": "3b7a18e9cacd5f5a8cf614420f8db552",
+    "question": [
+     "How has my production trended over the last six months?"
+    ],
+    "sql": [
+     "SELECT make_date(Year, Month, 1) AS month, TotalLoans, LPE, TotalVolumeDollars\n",
+     "FROM workspace.c360_employee.my_monthly_kpis\n",
+     "ORDER BY Year DESC, Month DESC\n",
+     "LIMIT 6"
+    ]
+   },
+   {
+    "id": "41f774e6ad465390a97f253964ac5625",
+    "question": [
+     "What was my production last month?"
+    ],
+    "sql": [
+     "SELECT KpiMonth, Measure, ActualDisplay, GoalDisplay, Status\n",
+     "FROM workspace.c360_employee.my_scorecard(NULL)\n",
+     "WHERE Section = 'Monthly KPIs'"
+    ]
+   },
+   {
+    "id": "4a17e32658715f3ea3e9397dfd8171db",
+    "question": [
+     "How is my delinquency?"
+    ],
+    "sql": [
+     "SELECT KpiMonth, Measure, ActualDisplay, GoalDisplay, Status\n",
+     "FROM workspace.c360_employee.my_scorecard(NULL)\n",
+     "WHERE Measure LIKE 'Delinquency%'"
+    ]
+   },
+   {
+    "id": "6de9dd04a2505632baee062346def848",
+    "question": [
+     "Show me my scorecard for September"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_employee.my_scorecard('2026-09')"
+    ]
+   },
+   {
+    "id": "81e6387a94cb54e08ce352affd3f4136",
+    "question": [
+     "How does my LPE compare to my goal and to last month?"
+    ],
+    "sql": [
+     "SELECT KpiMonth, Measure, ActualDisplay, GoalDisplay, Status, LastMonthDisplay, YearToDateAverageDisplay\n",
+     "FROM workspace.c360_employee.my_scorecard(NULL)\n",
+     "WHERE Measure LIKE 'LPE%'"
+    ]
+   },
+   {
+    "id": "857968a560b25f0ba1b9aabf7e97974e",
+    "question": [
+     "Which of my metrics are above goal and which are below?"
+    ],
+    "sql": [
+     "SELECT Measure, ActualDisplay, GoalDisplay, Status, LastMonthDisplay\n",
+     "FROM workspace.c360_employee.my_scorecard(NULL)\n",
+     "WHERE Section = 'Monthly KPIs' AND Status IS NOT NULL"
+    ]
+   },
+   {
+    "id": "873e5415beda5b74a27da282dd721e82",
+    "question": [
+     "What did I focus on in September, and did I hit it?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_employee.my_success_plan('2026-09')"
+    ]
+   },
+   {
+    "id": "9a9cca622ef35496b366a56f54a6b2f6",
+    "question": [
+     "How is my DPR scorecard this month?"
+    ],
+    "sql": [
+     "SELECT KpiMonth, Measure, ActualDisplay\n",
+     "FROM workspace.c360_employee.my_scorecard(NULL)\n",
+     "WHERE Section = 'DPR metrics'"
+    ]
+   },
+   {
+    "id": "a308459127885e8da7a93b5be1dd6dc2",
+    "question": [
+     "What are my open tasks?"
+    ],
+    "sql": [
+     "SELECT Subject, DueDate, Status, Severity\n",
+     "FROM workspace.c360_employee.my_tasks\n",
+     "WHERE Status <> 'Completed'\n",
+     "ORDER BY DueDate"
+    ]
+   },
+   {
+    "id": "a5ca15d073db543688c6ca3d7b2f3f85",
+    "question": [
+     "Do I have any open policy violations?"
+    ],
+    "sql": [
+     "SELECT ViolationDate, PolicyName, ViolationTypeName, EscalationLevel, Status, RequiredAction, CorrectiveActionDueDate\n",
+     "FROM workspace.c360_employee.my_policy_violations\n",
+     "WHERE Status <> 'CorrectiveActionCompleted'\n",
+     "ORDER BY ViolationDate DESC"
+    ]
+   },
+   {
+    "id": "a6a44cb5b1a05568974ac6429412fd1b",
+    "question": [
+     "Give me a summary of how I'm doing"
+    ],
+    "sql": [
+     "SELECT LatestKpiMonth, TotalLoans, LPE, TotalVolumeDollars, VolumeRankInBranch, OpenTasks, OverdueTasks,\n",
+     "       LastCoachingDate, PendingAcknowledgements, SuccessPlanStatus, OpenPolicyViolations\n",
+     "FROM workspace.c360_employee.my_overview"
+    ]
+   },
+   {
+    "id": "ba00ae3e45fb570f8ac611029bc26d6b",
+    "question": [
+     "Show me my scorecard"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_employee.my_scorecard(NULL)"
+    ]
+   },
+   {
+    "id": "c33f53864f415ceb816673d4329ae758",
+    "question": [
+     "How many outbound calls and contacts did I make in the last three months?"
+    ],
+    "sql": [
+     "SELECT date_trunc('month', call_date) AS month, SUM(OutboundCalls) AS outbound_calls, SUM(OutboundContacts) AS outbound_contacts\n",
+     "FROM workspace.c360_employee.my_call_activity\n",
+     "GROUP BY 1\n",
+     "ORDER BY 1 DESC\n",
+     "LIMIT 3"
+    ]
+   },
+   {
+    "id": "ce050d65977a557dba44792208734aec",
+    "question": [
+     "What's in my Success Plan for October?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_employee.my_success_plan('2026-10')"
+    ]
+   },
+   {
+    "id": "d6d22f5091c85462b77ab2f8dd831603",
+    "question": [
+     "What do I still need to do?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_employee.my_open_items()\n",
+     "ORDER BY DueDate"
+    ]
+   },
+   {
+    "id": "f95ac9f41b435ce9af54b17343ef5172",
+    "question": [
+     "What coaching have I received recently?"
+    ],
+    "sql": [
+     "SELECT CoachingDate, TopicCode, KpiFocusCode, ObservationSummary, ActionRequired, Status\n",
+     "FROM workspace.c360_employee.my_coaching_records\n",
+     "ORDER BY CoachingDate DESC\n",
+     "LIMIT 5"
+    ]
+   }
+  ],
+  "join_specs": [
+   {
+    "id": "558a7319fb8d57dfbb27b854674abbc6",
+    "left": {
+     "identifier": "workspace.c360_employee.my_coaching_comments"
+    },
+    "right": {
+     "identifier": "workspace.c360_employee.my_coaching_records"
+    },
+    "sql": [
+     "my_coaching_comments.CoachingRecordId = my_coaching_records.CoachingRecordId",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Comment to coaching record"
+    ]
+   },
+   {
+    "id": "b3834ec74769540faa541e7dcc270d69",
+    "left": {
+     "identifier": "workspace.c360_employee.my_success_plan_comments"
+    },
+    "right": {
+     "identifier": "workspace.c360_employee.my_success_plans"
+    },
+    "sql": [
+     "my_success_plan_comments.IndividualDevelopmentGoalId = my_success_plans.IndividualDevelopmentGoalId",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Comment to Success Plan"
+    ]
+   },
+   {
+    "id": "f8e72e9f36635652b12acead42f7867b",
+    "left": {
+     "identifier": "workspace.c360_employee.my_dpr_scorecard"
+    },
+    "right": {
+     "identifier": "workspace.c360_employee.kpi_definitions"
+    },
+    "sql": [
+     "my_dpr_scorecard.KpiDefinitionId = kpi_definitions.KpiDefinitionId",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Scorecard metric to KPI definition"
+    ]
+   }
+  ]
+ }
+}

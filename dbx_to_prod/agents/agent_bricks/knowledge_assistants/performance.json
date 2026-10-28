@@ -1,0 +1,13 @@
+{
+  "name": "mariner-performance-assistant",
+  "description": "Answers questions about the employee performance management policy, including rating definitions, meeting requirements, bonus eligibility, promotion criteria, and improvement plan rules.",
+  "instructions_file": "performance_instructions.md",
+  "knowledge_source": {
+    "name": "performance_index",
+    "description": "Managed Vector Index with Delta Sync",
+    "index": "workspace.performance_test.performance_index",
+    "text_col": "chunk_to_embed",
+    "doc_uri_col": "document_name"
+  },
+  "trial_endpoint_name": "ka-8ef6351b-endpoint"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "mariner-coaching360-guide",
+  "description": "Coaching360 Guide: answers how the Coaching360 application works (features, workflows, KPI scoring rules, statuses, roles) from the Coaching360 BRD. Not for anyone's personal data.",
+  "instructions_file": "coaching360_instructions.md",
+  "knowledge_source": {
+    "name": "coaching360_index",
+    "description": "Coaching360 BRD chunks (Delta Sync index)",
+    "index": "workspace.default.coaching360_index",
+    "text_col": "embedding_text",
+    "doc_uri_col": "document_title"
+  }
+}

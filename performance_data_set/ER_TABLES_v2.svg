@@ -1,0 +1,431 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="1810" viewBox="0 0 2020 1810" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs><filter id="sh" x="-5%" y="-5%" width="110%" height="115%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/></filter></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="60" y="58" font-size="28" font-weight="700" fill="#0f172a">Employee Performance Management — Entity Relationship Diagram</text>
+<text x="60" y="86" font-size="15" fill="#64748b">workspace.performance_test · 18 tables · 36 relationships · colored lines join to hub tables, gray lines are other joins</text>
+<rect x="36" y="110" width="1148" height="500" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="54" y="142" font-size="13" font-weight="700" letter-spacing="1.2" fill="#64748b">ORGANIZATION &amp; PEOPLE</text>
+<rect x="1236" y="110" width="748" height="500" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="1254" y="142" font-size="13" font-weight="700" letter-spacing="1.2" fill="#64748b">PERFORMANCE CYCLES</text>
+<rect x="36" y="720" width="1948" height="690" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="54" y="752" font-size="13" font-weight="700" letter-spacing="1.2" fill="#64748b">REVIEWS &amp; FEEDBACK</text>
+<rect x="36" y="1460" width="1148" height="300" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="54" y="1492" font-size="13" font-weight="700" letter-spacing="1.2" fill="#64748b">GOALS &amp; DEVELOPMENT</text>
+<rect x="1236" y="1460" width="348" height="300" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="1254" y="1492" font-size="13" font-weight="700" letter-spacing="1.2" fill="#64748b">PRODUCTION</text>
+<path d="M460 271.5 H420 V221.5 H360" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M448 271.5 L460 264.5 M448 271.5 L460 278.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M368 214.5 V228.5" stroke="#64748b" stroke-width="2"/>
+<path d="M460 501.5 H429 V381.5 H360" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M448 501.5 L460 494.5 M448 501.5 L460 508.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M368 374.5 V388.5" stroke="#64748b" stroke-width="2"/>
+<path d="M460 526.5 H438 V221.5 H360" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M448 526.5 L460 519.5 M448 526.5 L460 533.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M368 214.5 V228.5" stroke="#64748b" stroke-width="2"/>
+<path d="M760 856.5 H820 V831.5 H860" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M772 856.5 L760 849.5 M772 856.5 L760 863.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M852 824.5 V838.5" stroke="#64748b" stroke-width="2"/>
+<path d="M460 931.5 H447 V831.5 H360" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M448 931.5 L460 924.5 M448 931.5 L460 938.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M368 824.5 V838.5" stroke="#64748b" stroke-width="2"/>
+<path d="M1260 856.5 H1220 V831.5 H1160" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M1248 856.5 L1260 849.5 M1248 856.5 L1260 863.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M1168 824.5 V838.5" stroke="#64748b" stroke-width="2"/>
+<path d="M1260 1086.5 H1229 V831.5 H1160" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M1248 1086.5 L1260 1079.5 M1248 1086.5 L1260 1093.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M1168 824.5 V838.5" stroke="#64748b" stroke-width="2"/>
+<path d="M1260 1266.5 H1238 V831.5 H1160" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M1248 1266.5 L1260 1259.5 M1248 1266.5 L1260 1273.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M1168 824.5 V838.5" stroke="#64748b" stroke-width="2"/>
+<path d="M1660 856.5 H1620 V831.5 H1560" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M1648 856.5 L1660 849.5 M1648 856.5 L1660 863.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M1568 824.5 V838.5" stroke="#64748b" stroke-width="2"/>
+<path d="M460 1596.5 H456 V1571.5 H360" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+<path d="M448 1596.5 L460 1589.5 M448 1596.5 L460 1603.5" stroke="#64748b" stroke-width="1.8" fill="none"/>
+<path d="M368 1564.5 V1578.5" stroke="#64748b" stroke-width="2"/>
+<path d="M360 271.5 H374" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M372 271.5 L360 264.5 M372 271.5 L360 278.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M760 346.5 H774" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 346.5 L760 339.5 M772 346.5 L760 353.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M760 476.5 H774" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 476.5 L760 469.5 M772 476.5 L760 483.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M760 551.5 H802" stroke="#0d9488" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 551.5 L760 544.5 M772 551.5 L760 558.5" stroke="#0d9488" stroke-width="1.8" fill="none"/>
+<path d="M760 576.5 H774" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 576.5 L760 569.5 M772 576.5 L760 583.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1660 246.5 H1588" stroke="#7c3aed" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1648 246.5 L1660 239.5 M1648 246.5 L1660 253.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+<path d="M760 881.5 H774" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 881.5 L760 874.5 M772 881.5 L760 888.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M760 906.5 H788" stroke="#7c3aed" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 906.5 L760 899.5 M772 906.5 L760 913.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+<path d="M1160 856.5 H1174" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1172 856.5 L1160 849.5 M1172 856.5 L1160 863.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1160 881.5 H1188" stroke="#7c3aed" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1172 881.5 L1160 874.5 M1172 881.5 L1160 888.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+<path d="M1160 906.5 H1174" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1172 906.5 L1160 899.5 M1172 906.5 L1160 913.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1160 931.5 H1202" stroke="#0d9488" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1172 931.5 L1160 924.5 M1172 931.5 L1160 938.5" stroke="#0d9488" stroke-width="1.8" fill="none"/>
+<path d="M1560 881.5 H1574" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 881.5 L1560 874.5 M1572 881.5 L1560 888.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1560 906.5 H1574" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 906.5 L1560 899.5 M1572 906.5 L1560 913.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1560 1111.5 H1574" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 1111.5 L1560 1104.5 M1572 1111.5 L1560 1118.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1560 1291.5 H1574" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 1291.5 L1560 1284.5 M1572 1291.5 L1560 1298.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1560 1316.5 H1588" stroke="#7c3aed" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 1316.5 L1560 1309.5 M1572 1316.5 L1560 1323.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+<path d="M1660 931.5 H1574" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1648 931.5 L1660 924.5 M1648 931.5 L1660 938.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M360 1596.5 H374" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M372 1596.5 L360 1589.5 M372 1596.5 L360 1603.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M760 1621.5 H788" stroke="#7c3aed" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M772 1621.5 L760 1614.5 M772 1621.5 L760 1628.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+<path d="M1160 1596.5 H1174" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1172 1596.5 L1160 1589.5 M1172 1596.5 L1160 1603.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1560 1596.5 H1574" stroke="#2563eb" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 1596.5 L1560 1589.5 M1572 1596.5 L1560 1603.5" stroke="#2563eb" stroke-width="1.8" fill="none"/>
+<path d="M1560 1621.5 H1588" stroke="#7c3aed" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 1621.5 L1560 1614.5 M1572 1621.5 L1560 1628.5" stroke="#7c3aed" stroke-width="1.8" fill="none"/>
+<path d="M1560 1646.5 H1602" stroke="#0d9488" stroke-width="1.6" stroke-opacity="0.85" fill="none"/>
+<path d="M1572 1646.5 L1560 1639.5 M1572 1646.5 L1560 1653.5" stroke="#0d9488" stroke-width="1.8" fill="none"/>
+<path d="M774 221.5 H860" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+<path d="M852 214.5 V228.5" stroke="#2563eb" stroke-width="2"/>
+<path d="M1188 221.5 H1260" stroke="#7c3aed" stroke-width="2.2" fill="none"/>
+<path d="M1252 214.5 V228.5" stroke="#7c3aed" stroke-width="2"/>
+<path d="M802 221.5 H760" stroke="#0d9488" stroke-width="2.2" fill="none"/>
+<path d="M768 214.5 V228.5" stroke="#0d9488" stroke-width="2"/>
+<path d="M374 271.5 V1596.5" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+<path d="M774 221.5 V881.5" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+<path d="M802 221.5 V678" stroke="#0d9488" stroke-width="2.2" fill="none"/>
+<path d="M1588 246.5 V1621.5" stroke="#7c3aed" stroke-width="2.2" fill="none"/>
+<path d="M788 658 V1621.5" stroke="#7c3aed" stroke-width="2.2" fill="none"/>
+<path d="M1174 638 V1596.5" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+<path d="M1188 221.5 V881.5" stroke="#7c3aed" stroke-width="2.2" fill="none"/>
+<path d="M1202 678 V931.5" stroke="#0d9488" stroke-width="2.2" fill="none"/>
+<path d="M1574 638 V1596.5" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+<path d="M1602 678 V1646.5" stroke="#0d9488" stroke-width="2.2" fill="none"/>
+<path d="M374 638 H1574" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+<path d="M802 678 H1602" stroke="#0d9488" stroke-width="2.2" fill="none"/>
+<path d="M788 658 H1588" stroke="#7c3aed" stroke-width="2.2" fill="none"/>
+<circle cx="374" cy="271.5" r="3" fill="#2563eb"/>
+<circle cx="774" cy="346.5" r="3" fill="#2563eb"/>
+<circle cx="774" cy="476.5" r="3" fill="#2563eb"/>
+<circle cx="802" cy="551.5" r="3" fill="#0d9488"/>
+<circle cx="774" cy="576.5" r="3" fill="#2563eb"/>
+<circle cx="1588" cy="246.5" r="3" fill="#7c3aed"/>
+<circle cx="774" cy="881.5" r="3" fill="#2563eb"/>
+<circle cx="788" cy="906.5" r="3" fill="#7c3aed"/>
+<circle cx="1174" cy="856.5" r="3" fill="#2563eb"/>
+<circle cx="1188" cy="881.5" r="3" fill="#7c3aed"/>
+<circle cx="1174" cy="906.5" r="3" fill="#2563eb"/>
+<circle cx="1202" cy="931.5" r="3" fill="#0d9488"/>
+<circle cx="1574" cy="881.5" r="3" fill="#2563eb"/>
+<circle cx="1574" cy="906.5" r="3" fill="#2563eb"/>
+<circle cx="1574" cy="1111.5" r="3" fill="#2563eb"/>
+<circle cx="1574" cy="1291.5" r="3" fill="#2563eb"/>
+<circle cx="1588" cy="1316.5" r="3" fill="#7c3aed"/>
+<circle cx="1574" cy="931.5" r="3" fill="#2563eb"/>
+<circle cx="374" cy="1596.5" r="3" fill="#2563eb"/>
+<circle cx="788" cy="1621.5" r="3" fill="#7c3aed"/>
+<circle cx="1174" cy="1596.5" r="3" fill="#2563eb"/>
+<circle cx="1574" cy="1596.5" r="3" fill="#2563eb"/>
+<circle cx="1588" cy="1621.5" r="3" fill="#7c3aed"/>
+<circle cx="1602" cy="1646.5" r="3" fill="#0d9488"/>
+<circle cx="374" cy="638" r="3.5" fill="#2563eb"/>
+<circle cx="774" cy="638" r="3.5" fill="#2563eb"/>
+<circle cx="1174" cy="638" r="3.5" fill="#2563eb"/>
+<circle cx="1574" cy="638" r="3.5" fill="#2563eb"/>
+<circle cx="802" cy="678" r="3.5" fill="#0d9488"/>
+<circle cx="1202" cy="678" r="3.5" fill="#0d9488"/>
+<circle cx="1602" cy="678" r="3.5" fill="#0d9488"/>
+<circle cx="1588" cy="658" r="3.5" fill="#7c3aed"/>
+<circle cx="788" cy="658" r="3.5" fill="#7c3aed"/>
+<circle cx="1188" cy="658" r="3.5" fill="#7c3aed"/>
+<g filter="url(#sh)"><rect x="60" y="170" width="300" height="117" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M60 178 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="74" y="194" font-size="15" font-weight="700" fill="#ffffff">region</text>
+<rect x="74" y="212.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="87" y="225.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="108" y="226.5" font-size="13.5" font-weight="700" fill="#0f172a">region_id</text>
+<rect x="61" y="234" width="298" height="25" fill="#f8fafc"/>
+<text x="108" y="251.5" font-size="13.5" fill="#475569">region_name</text>
+<rect x="74" y="262.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="87" y="275.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="108" y="276.5" font-size="13.5" fill="#1e293b">vp_employee_id</text>
+<rect x="281.2" y="262.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="314.6" y="275.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<g filter="url(#sh)"><rect x="60" y="330" width="300" height="142" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M60 338 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="74" y="354" font-size="15" font-weight="700" fill="#ffffff">job_role</text>
+<rect x="74" y="372.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="87" y="385.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="108" y="386.5" font-size="13.5" font-weight="700" fill="#0f172a">job_role_id</text>
+<rect x="61" y="394" width="298" height="25" fill="#f8fafc"/>
+<text x="108" y="411.5" font-size="13.5" fill="#475569">job_role_name</text>
+<text x="108" y="436.5" font-size="13.5" fill="#475569">role_category</text>
+<rect x="61" y="444" width="298" height="25" fill="#f8fafc"/>
+<text x="108" y="461.5" font-size="13.5" fill="#475569">hierarchy_level</text>
+<g filter="url(#sh)"><rect x="460" y="170" width="300" height="192" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="2.5"/></g>
+<path d="M460 178 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#0d9488"/>
+<text x="474" y="194" font-size="15" font-weight="700" fill="#ffffff">branch</text>
+<text x="748" y="193" font-size="11" font-weight="600" fill="#ffffff" fill-opacity="0.85" text-anchor="end">HUB</text>
+<rect x="474" y="212.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="487" y="225.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="508" y="226.5" font-size="13.5" font-weight="700" fill="#0f172a">branch_id</text>
+<rect x="461" y="234" width="298" height="25" fill="#f8fafc"/>
+<text x="508" y="251.5" font-size="13.5" fill="#475569">branch_name</text>
+<rect x="474" y="262.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="487" y="275.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="508" y="276.5" font-size="13.5" fill="#1e293b">region_id</text>
+<rect x="461" y="284" width="298" height="25" fill="#f8fafc"/>
+<text x="508" y="301.5" font-size="13.5" fill="#475569">city</text>
+<text x="508" y="326.5" font-size="13.5" fill="#475569">state</text>
+<rect x="461" y="334" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="337.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="487" y="350.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="508" y="351.5" font-size="13.5" fill="#1e293b">manager_employee_id</text>
+<rect x="681.2" y="337.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="714.6" y="350.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<g filter="url(#sh)"><rect x="460" y="400" width="300" height="192" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M460 408 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="474" y="424" font-size="15" font-weight="700" fill="#ffffff">employee_assignment</text>
+<rect x="474" y="442.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="487" y="455.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="508" y="456.5" font-size="13.5" font-weight="700" fill="#0f172a">assignment_id</text>
+<rect x="461" y="464" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="467.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="487" y="480.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="508" y="481.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="681.2" y="467.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="714.6" y="480.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="474" y="492.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="487" y="505.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="508" y="506.5" font-size="13.5" fill="#1e293b">job_role_id</text>
+<rect x="461" y="514" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="517.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="487" y="530.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="508" y="531.5" font-size="13.5" fill="#1e293b">region_id</text>
+<rect x="474" y="542.5" width="26" height="18" rx="4" fill="#0d9488" fill-opacity="0.12"/><text x="487" y="555.5" font-size="10" font-weight="700" fill="#0d9488" text-anchor="middle">FK</text>
+<text x="508" y="556.5" font-size="13.5" fill="#1e293b">branch_id</text>
+<rect x="694.4" y="542.5" width="53.599999999999994" height="18" rx="9" fill="#0d9488"/><text x="721.2" y="555.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">branch</text>
+<rect x="461" y="564" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="567.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="487" y="580.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="508" y="581.5" font-size="13.5" fill="#1e293b">manager_employee_id</text>
+<rect x="681.2" y="567.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="714.6" y="580.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<g filter="url(#sh)"><rect x="860" y="170" width="300" height="217" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2.5"/></g>
+<path d="M860 178 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#2563eb"/>
+<text x="874" y="194" font-size="15" font-weight="700" fill="#ffffff">employee</text>
+<text x="1148" y="193" font-size="11" font-weight="600" fill="#ffffff" fill-opacity="0.85" text-anchor="end">HUB</text>
+<rect x="874" y="212.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="887" y="225.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="908" y="226.5" font-size="13.5" font-weight="700" fill="#0f172a">employee_id</text>
+<rect x="861" y="234" width="298" height="25" fill="#f8fafc"/>
+<text x="908" y="251.5" font-size="13.5" fill="#475569">first_name</text>
+<text x="908" y="276.5" font-size="13.5" fill="#475569">last_name</text>
+<rect x="861" y="284" width="298" height="25" fill="#f8fafc"/>
+<text x="908" y="301.5" font-size="13.5" fill="#475569">email</text>
+<text x="908" y="326.5" font-size="13.5" fill="#475569">job_title</text>
+<rect x="861" y="334" width="298" height="25" fill="#f8fafc"/>
+<text x="908" y="351.5" font-size="13.5" fill="#475569">hire_date</text>
+<text x="908" y="376.5" font-size="13.5" fill="#475569">employment_status</text>
+<g filter="url(#sh)"><rect x="1260" y="170" width="300" height="167" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="2.5"/></g>
+<path d="M1260 178 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#7c3aed"/>
+<text x="1274" y="194" font-size="15" font-weight="700" fill="#ffffff">performance_cycle</text>
+<text x="1548" y="193" font-size="11" font-weight="600" fill="#ffffff" fill-opacity="0.85" text-anchor="end">HUB</text>
+<rect x="1274" y="212.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1287" y="225.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1308" y="226.5" font-size="13.5" font-weight="700" fill="#0f172a">cycle_id</text>
+<rect x="1261" y="234" width="298" height="25" fill="#f8fafc"/>
+<text x="1308" y="251.5" font-size="13.5" fill="#475569">cycle_name</text>
+<text x="1308" y="276.5" font-size="13.5" fill="#475569">start_date</text>
+<rect x="1261" y="284" width="298" height="25" fill="#f8fafc"/>
+<text x="1308" y="301.5" font-size="13.5" fill="#475569">end_date</text>
+<text x="1308" y="326.5" font-size="13.5" fill="#475569">cycle_status</text>
+<g filter="url(#sh)"><rect x="1660" y="170" width="300" height="167" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M1660 178 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="1674" y="194" font-size="15" font-weight="700" fill="#ffffff">performance_target</text>
+<rect x="1674" y="212.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1687" y="225.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1708" y="226.5" font-size="13.5" font-weight="700" fill="#0f172a">target_id</text>
+<rect x="1661" y="234" width="298" height="25" fill="#f8fafc"/>
+<rect x="1674" y="237.5" width="26" height="18" rx="4" fill="#7c3aed" fill-opacity="0.12"/><text x="1687" y="250.5" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="1708" y="251.5" font-size="13.5" fill="#1e293b">cycle_id</text>
+<rect x="1821.8" y="237.5" width="126.19999999999999" height="18" rx="9" fill="#7c3aed"/><text x="1884.9" y="250.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">performance_cycle</text>
+<text x="1708" y="276.5" font-size="13.5" fill="#475569">target_scope_type</text>
+<rect x="1661" y="284" width="298" height="25" fill="#f8fafc"/>
+<text x="1708" y="301.5" font-size="13.5" fill="#475569">target_metric</text>
+<text x="1708" y="326.5" font-size="13.5" fill="#475569">target_value</text>
+<g filter="url(#sh)"><rect x="60" y="780" width="300" height="117" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M60 788 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="74" y="804" font-size="15" font-weight="700" fill="#ffffff">competency</text>
+<rect x="74" y="822.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="87" y="835.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="108" y="836.5" font-size="13.5" font-weight="700" fill="#0f172a">competency_id</text>
+<rect x="61" y="844" width="298" height="25" fill="#f8fafc"/>
+<text x="108" y="861.5" font-size="13.5" fill="#475569">competency_name</text>
+<text x="108" y="886.5" font-size="13.5" fill="#475569">competency_description</text>
+<g filter="url(#sh)"><rect x="460" y="780" width="300" height="192" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M460 788 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="474" y="804" font-size="15" font-weight="700" fill="#ffffff">competency_rating</text>
+<rect x="474" y="822.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="487" y="835.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="508" y="836.5" font-size="13.5" font-weight="700" fill="#0f172a">competency_rating_id</text>
+<rect x="461" y="844" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="847.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="487" y="860.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="508" y="861.5" font-size="13.5" fill="#1e293b">review_id</text>
+<rect x="474" y="872.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="487" y="885.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="508" y="886.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="681.2" y="872.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="714.6" y="885.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="461" y="894" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="897.5" width="26" height="18" rx="4" fill="#7c3aed" fill-opacity="0.12"/><text x="487" y="910.5" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="508" y="911.5" font-size="13.5" fill="#1e293b">cycle_id</text>
+<rect x="621.8" y="897.5" width="126.19999999999999" height="18" rx="9" fill="#7c3aed"/><text x="684.9" y="910.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">performance_cycle</text>
+<rect x="474" y="922.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="487" y="935.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="508" y="936.5" font-size="13.5" fill="#1e293b">competency_id</text>
+<rect x="461" y="944" width="298" height="25" fill="#f8fafc"/>
+<text x="508" y="961.5" font-size="13.5" fill="#475569">rating</text>
+<g filter="url(#sh)"><rect x="860" y="780" width="300" height="217" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M860 788 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="874" y="804" font-size="15" font-weight="700" fill="#ffffff">employee_review</text>
+<rect x="874" y="822.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="887" y="835.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="908" y="836.5" font-size="13.5" font-weight="700" fill="#0f172a">review_id</text>
+<rect x="861" y="844" width="298" height="25" fill="#f8fafc"/>
+<rect x="874" y="847.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="887" y="860.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="908" y="861.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="1081.2" y="847.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1114.6" y="860.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="874" y="872.5" width="26" height="18" rx="4" fill="#7c3aed" fill-opacity="0.12"/><text x="887" y="885.5" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="908" y="886.5" font-size="13.5" fill="#1e293b">cycle_id</text>
+<rect x="1021.8" y="872.5" width="126.19999999999999" height="18" rx="9" fill="#7c3aed"/><text x="1084.9" y="885.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">performance_cycle</text>
+<rect x="861" y="894" width="298" height="25" fill="#f8fafc"/>
+<rect x="874" y="897.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="887" y="910.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="908" y="911.5" font-size="13.5" fill="#1e293b">reviewer_employee_id</text>
+<rect x="1081.2" y="897.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1114.6" y="910.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="874" y="922.5" width="26" height="18" rx="4" fill="#0d9488" fill-opacity="0.12"/><text x="887" y="935.5" font-size="10" font-weight="700" fill="#0d9488" text-anchor="middle">FK</text>
+<text x="908" y="936.5" font-size="13.5" fill="#1e293b">branch_id</text>
+<rect x="1094.4" y="922.5" width="53.599999999999994" height="18" rx="9" fill="#0d9488"/><text x="1121.2" y="935.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">branch</text>
+<rect x="861" y="944" width="298" height="25" fill="#f8fafc"/>
+<text x="908" y="961.5" font-size="13.5" fill="#475569">review_status</text>
+<text x="908" y="986.5" font-size="13.5" fill="#475569">final_rating</text>
+<g filter="url(#sh)"><rect x="1260" y="780" width="300" height="192" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M1260 788 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="1274" y="804" font-size="15" font-weight="700" fill="#ffffff">review_meeting</text>
+<rect x="1274" y="822.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1287" y="835.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1308" y="836.5" font-size="13.5" font-weight="700" fill="#0f172a">meeting_id</text>
+<rect x="1261" y="844" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="847.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="1287" y="860.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="1308" y="861.5" font-size="13.5" fill="#1e293b">review_id</text>
+<rect x="1274" y="872.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="1287" y="885.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="1308" y="886.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="1481.2" y="872.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1514.6" y="885.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="1261" y="894" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="897.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="1287" y="910.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="1308" y="911.5" font-size="13.5" fill="#1e293b">manager_employee_id</text>
+<rect x="1481.2" y="897.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1514.6" y="910.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<text x="1308" y="936.5" font-size="13.5" fill="#475569">meeting_date</text>
+<rect x="1261" y="944" width="298" height="25" fill="#f8fafc"/>
+<text x="1308" y="961.5" font-size="13.5" fill="#475569">meeting_status</text>
+<g filter="url(#sh)"><rect x="1260" y="1010" width="300" height="142" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M1260 1018 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="1274" y="1034" font-size="15" font-weight="700" fill="#ffffff">employee_acknowledgment</text>
+<rect x="1274" y="1052.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1287" y="1065.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1308" y="1066.5" font-size="13.5" font-weight="700" fill="#0f172a">acknowledgment_id</text>
+<rect x="1261" y="1074" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="1077.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="1287" y="1090.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="1308" y="1091.5" font-size="13.5" fill="#1e293b">review_id</text>
+<rect x="1274" y="1102.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="1287" y="1115.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="1308" y="1116.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="1481.2" y="1102.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1514.6" y="1115.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="1261" y="1124" width="298" height="25" fill="#f8fafc"/>
+<text x="1308" y="1141.5" font-size="13.5" fill="#475569">acknowledgment_status</text>
+<g filter="url(#sh)"><rect x="1260" y="1190" width="300" height="192" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M1260 1198 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="1274" y="1214" font-size="15" font-weight="700" fill="#ffffff">metric_snapshot</text>
+<rect x="1274" y="1232.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1287" y="1245.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1308" y="1246.5" font-size="13.5" font-weight="700" fill="#0f172a">snapshot_id</text>
+<rect x="1261" y="1254" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="1257.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="1287" y="1270.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="1308" y="1271.5" font-size="13.5" fill="#1e293b">review_id</text>
+<rect x="1274" y="1282.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="1287" y="1295.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="1308" y="1296.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="1481.2" y="1282.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1514.6" y="1295.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="1261" y="1304" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="1307.5" width="26" height="18" rx="4" fill="#7c3aed" fill-opacity="0.12"/><text x="1287" y="1320.5" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="1308" y="1321.5" font-size="13.5" fill="#1e293b">cycle_id</text>
+<rect x="1421.8" y="1307.5" width="126.19999999999999" height="18" rx="9" fill="#7c3aed"/><text x="1484.9" y="1320.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">performance_cycle</text>
+<text x="1308" y="1346.5" font-size="13.5" fill="#475569">funded_amount</text>
+<rect x="1261" y="1354" width="298" height="25" fill="#f8fafc"/>
+<text x="1308" y="1371.5" font-size="13.5" fill="#475569">attainment_percent</text>
+<g filter="url(#sh)"><rect x="1660" y="780" width="300" height="167" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M1660 788 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="1674" y="804" font-size="15" font-weight="700" fill="#ffffff">meeting_note</text>
+<rect x="1674" y="822.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1687" y="835.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1708" y="836.5" font-size="13.5" font-weight="700" fill="#0f172a">note_id</text>
+<rect x="1661" y="844" width="298" height="25" fill="#f8fafc"/>
+<rect x="1674" y="847.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="1687" y="860.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="1708" y="861.5" font-size="13.5" fill="#1e293b">meeting_id</text>
+<text x="1708" y="886.5" font-size="13.5" fill="#475569">discussion_topic</text>
+<rect x="1661" y="894" width="298" height="25" fill="#f8fafc"/>
+<text x="1708" y="911.5" font-size="13.5" fill="#475569">note_text</text>
+<rect x="1674" y="922.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="1687" y="935.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="1708" y="936.5" font-size="13.5" fill="#1e293b">created_by_employee_id</text>
+<rect x="1881.2" y="922.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1914.6" y="935.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<g filter="url(#sh)"><rect x="60" y="1520" width="300" height="167" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M60 1528 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="74" y="1544" font-size="15" font-weight="700" fill="#ffffff">performance_goal</text>
+<rect x="74" y="1562.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="87" y="1575.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="108" y="1576.5" font-size="13.5" font-weight="700" fill="#0f172a">goal_id</text>
+<rect x="61" y="1584" width="298" height="25" fill="#f8fafc"/>
+<rect x="74" y="1587.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="87" y="1600.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="108" y="1601.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="281.2" y="1587.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="314.6" y="1600.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<text x="108" y="1626.5" font-size="13.5" fill="#475569">goal_type</text>
+<rect x="61" y="1634" width="298" height="25" fill="#f8fafc"/>
+<text x="108" y="1651.5" font-size="13.5" fill="#475569">goal_title</text>
+<text x="108" y="1676.5" font-size="13.5" fill="#475569">goal_status</text>
+<g filter="url(#sh)"><rect x="460" y="1520" width="300" height="167" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M460 1528 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="474" y="1544" font-size="15" font-weight="700" fill="#ffffff">goal_progress</text>
+<rect x="474" y="1562.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="487" y="1575.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="508" y="1576.5" font-size="13.5" font-weight="700" fill="#0f172a">progress_id</text>
+<rect x="461" y="1584" width="298" height="25" fill="#f8fafc"/>
+<rect x="474" y="1587.5" width="26" height="18" rx="4" fill="#475569" fill-opacity="0.12"/><text x="487" y="1600.5" font-size="10" font-weight="700" fill="#475569" text-anchor="middle">FK</text>
+<text x="508" y="1601.5" font-size="13.5" fill="#1e293b">goal_id</text>
+<rect x="474" y="1612.5" width="26" height="18" rx="4" fill="#7c3aed" fill-opacity="0.12"/><text x="487" y="1625.5" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="508" y="1626.5" font-size="13.5" fill="#1e293b">cycle_id</text>
+<rect x="621.8" y="1612.5" width="126.19999999999999" height="18" rx="9" fill="#7c3aed"/><text x="684.9" y="1625.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">performance_cycle</text>
+<rect x="461" y="1634" width="298" height="25" fill="#f8fafc"/>
+<text x="508" y="1651.5" font-size="13.5" fill="#475569">completion_percent</text>
+<text x="508" y="1676.5" font-size="13.5" fill="#475569">progress_note</text>
+<g filter="url(#sh)"><rect x="860" y="1520" width="300" height="142" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M860 1528 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="874" y="1544" font-size="15" font-weight="700" fill="#ffffff">career_aspiration</text>
+<rect x="874" y="1562.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="887" y="1575.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="908" y="1576.5" font-size="13.5" font-weight="700" fill="#0f172a">aspiration_id</text>
+<rect x="861" y="1584" width="298" height="25" fill="#f8fafc"/>
+<rect x="874" y="1587.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="887" y="1600.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="908" y="1601.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="1081.2" y="1587.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1114.6" y="1600.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<text x="908" y="1626.5" font-size="13.5" fill="#475569">desired_role</text>
+<rect x="861" y="1634" width="298" height="25" fill="#f8fafc"/>
+<text x="908" y="1651.5" font-size="13.5" fill="#475569">target_timeline</text>
+<g filter="url(#sh)"><rect x="1260" y="1520" width="300" height="217" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/></g>
+<path d="M1260 1528 a8 8 0 0 1 8 -8 h284 a8 8 0 0 1 8 8 v28 h-300 z" fill="#1e293b"/>
+<text x="1274" y="1544" font-size="15" font-weight="700" fill="#ffffff">loan_transaction</text>
+<rect x="1274" y="1562.5" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1287" y="1575.5" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1308" y="1576.5" font-size="13.5" font-weight="700" fill="#0f172a">loan_id</text>
+<rect x="1261" y="1584" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="1587.5" width="26" height="18" rx="4" fill="#2563eb" fill-opacity="0.12"/><text x="1287" y="1600.5" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">FK</text>
+<text x="1308" y="1601.5" font-size="13.5" fill="#1e293b">employee_id</text>
+<rect x="1481.2" y="1587.5" width="66.8" height="18" rx="9" fill="#2563eb"/><text x="1514.6" y="1600.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">employee</text>
+<rect x="1274" y="1612.5" width="26" height="18" rx="4" fill="#7c3aed" fill-opacity="0.12"/><text x="1287" y="1625.5" font-size="10" font-weight="700" fill="#7c3aed" text-anchor="middle">FK</text>
+<text x="1308" y="1626.5" font-size="13.5" fill="#1e293b">cycle_id</text>
+<rect x="1421.8" y="1612.5" width="126.19999999999999" height="18" rx="9" fill="#7c3aed"/><text x="1484.9" y="1625.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">performance_cycle</text>
+<rect x="1261" y="1634" width="298" height="25" fill="#f8fafc"/>
+<rect x="1274" y="1637.5" width="26" height="18" rx="4" fill="#0d9488" fill-opacity="0.12"/><text x="1287" y="1650.5" font-size="10" font-weight="700" fill="#0d9488" text-anchor="middle">FK</text>
+<text x="1308" y="1651.5" font-size="13.5" fill="#1e293b">branch_id</text>
+<rect x="1494.4" y="1637.5" width="53.599999999999994" height="18" rx="9" fill="#0d9488"/><text x="1521.2" y="1650.5" font-size="10.5" font-weight="600" fill="#fff" text-anchor="middle">branch</text>
+<text x="1308" y="1676.5" font-size="13.5" fill="#475569">loan_amount</text>
+<rect x="1261" y="1684" width="298" height="25" fill="#f8fafc"/>
+<text x="1308" y="1701.5" font-size="13.5" fill="#475569">loan_product</text>
+<text x="1308" y="1726.5" font-size="13.5" fill="#475569">loan_status</text>
+<rect x="1636" y="1460" width="348" height="300" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="1654" y="1492" font-size="13" font-weight="700" letter-spacing="1.2" fill="#64748b">LEGEND</text>
+<rect x="1654" y="1511" width="26" height="18" rx="4" fill="#fef3c7"/><text x="1667" y="1524" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">PK</text>
+<text x="1786" y="1525" font-size="13" fill="#1e293b">Primary key</text>
+<path d="M1654 1550 H1764" stroke="#94a3b8" stroke-width="1.8"/><path d="M1666 1550 L1654 1543 M1666 1550 L1654 1557" stroke="#64748b" stroke-width="1.8" fill="none"/><path d="M1756 1543 V1557" stroke="#64748b" stroke-width="2"/>
+<text x="1786" y="1555" font-size="13" fill="#1e293b">FK, many → one</text>
+<path d="M1654 1580 H1764" stroke="#2563eb" stroke-width="2.2"/><path d="M1666 1580 L1654 1573 M1666 1580 L1654 1587" stroke="#2563eb" stroke-width="1.8" fill="none"/><circle cx="1709" cy="1580" r="3.5" fill="#2563eb"/><path d="M1756 1573 V1587" stroke="#2563eb" stroke-width="2"/>
+<text x="1786" y="1585" font-size="13" fill="#1e293b">FK → employee</text>
+<path d="M1654 1610 H1764" stroke="#7c3aed" stroke-width="2.2"/><path d="M1666 1610 L1654 1603 M1666 1610 L1654 1617" stroke="#7c3aed" stroke-width="1.8" fill="none"/><circle cx="1709" cy="1610" r="3.5" fill="#7c3aed"/><path d="M1756 1603 V1617" stroke="#7c3aed" stroke-width="2"/>
+<text x="1786" y="1615" font-size="13" fill="#1e293b">FK → performance_cycle</text>
+<path d="M1654 1640 H1764" stroke="#0d9488" stroke-width="2.2"/><path d="M1666 1640 L1654 1633 M1666 1640 L1654 1647" stroke="#0d9488" stroke-width="1.8" fill="none"/><circle cx="1709" cy="1640" r="3.5" fill="#0d9488"/><path d="M1756 1633 V1647" stroke="#0d9488" stroke-width="2"/>
+<text x="1786" y="1645" font-size="13" fill="#1e293b">FK → branch</text>
+<text x="1654" y="1676" font-size="11.5" fill="#64748b">Dots mark where FKs merge into a shared hub line.</text>
+<text x="1654" y="1692" font-size="11.5" fill="#64748b">*_employee_id (vp, manager, reviewer, created_by)</text>
+<text x="1654" y="1708" font-size="11.5" fill="#64748b">all reference employee.employee_id.</text>
+</svg>

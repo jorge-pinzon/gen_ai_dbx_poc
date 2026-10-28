@@ -1,3 +1,5 @@
+import json
+import re
 import unittest
 import io
 from uuid import UUID
@@ -7,7 +9,7 @@ from werkzeug.security import generate_password_hash
 from mariner_genai_dbx.config import Settings
 from mariner_genai_dbx.errors import CitationResolutionError, SupervisorInvocationError
 from mariner_genai_dbx.models import AgentAnswer, ReadinessResult, Source
-from mariner_genai_dbx.web import ReadinessCache, create_app
+from mariner_genai_dbx.web import ReadinessCache, create_app, start_warm_up
 
 
 def test_settings(max_message_characters=4000):
@@ -144,7 +146,7 @@ class WebApplicationTests(unittest.TestCase):
         self.assertIn(b"agent-panel-collapsed", page.data)
         self.assertIn(b'id="toggle-agents"', page.data)
         self.assertIn(b'id="agent-sidebar-content" hidden', page.data)
-        self.assertIn(b'data-command="/coaching"', page.data)
+        self.assertIn(b'data-command="/performance"', page.data)
         self.assertIn(b'id="open-documents"', page.data)
         self.assertIn(b'aria-controls="source-workspace"', page.data)
         self.assertEqual(self.client.get("/health").get_json(), {"status": "ok"})
@@ -287,7 +289,7 @@ class WebApplicationTests(unittest.TestCase):
 
     def test_coaching_command_routes_to_employee_performance(self):
         self.client.post(
-            "/api/v1/chat", json={"message": "/coaching What are the ratings?"}
+            "/api/v1/chat", json={"message": "/performance What are the ratings?"}
         )
 
         supervisor_input = self.supervisor.answer_calls[0][0]
@@ -572,7 +574,7 @@ class WebApplicationTests(unittest.TestCase):
         )
         message = response.get_json()["error"]["message"]
         self.assertIn("Options:", message)
-        self.assertIn("/policy, /handbook, /benefits, or /coaching", message)
+        self.assertIn("/policy, /handbook, /benefits, or /performance", message)
         self.assertNotIn("The answer sources could not be verified", message)
         self.assertNotIn("private SQL detail", response.get_data(as_text=True))
 
@@ -667,6 +669,162 @@ class WebApplicationTests(unittest.TestCase):
         client.get("/ready")
 
         self.assertEqual(self.supervisor.readiness_calls, 1)
+
+
+
+class DirectRouteTests(unittest.TestCase):
+    class DirectSupervisor(FakeSupervisor):
+        def __init__(self):
+            super().__init__()
+            self.direct_calls = []
+
+        def prepare_direct_answer(self, command, question, supervisor_message, session_id):
+            from mariner_genai_dbx.models import PendingAgentAnswer
+            self.direct_calls.append((command, question, supervisor_message))
+            return PendingAgentAnswer(answer="Direct answer")
+
+        def prepare_answer(self, message, session_id, history):
+            from mariner_genai_dbx.models import PendingAgentAnswer
+            self.messages.append(message)
+            return PendingAgentAnswer(answer="Supervisor answer")
+
+        def resolve_answer(self, pending):
+            return AgentAnswer(answer=pending.answer)
+
+    def post(self, message, path="/api/v1/chat"):
+        supervisor = self.DirectSupervisor()
+        app = create_app(test_settings(), supervisor_service=supervisor)
+        response = app.test_client().post(path, json={"message": message})
+        return supervisor, response
+
+    def test_slash_command_goes_to_the_specialist(self):
+        supervisor, response = self.post("/policy How long are paid loan files kept?")
+        self.assertEqual(response.get_json()["answer"], "Direct answer")
+        [(command, question, fallback)] = supervisor.direct_calls
+        self.assertEqual((command, question), ("/policy", "How long are paid loan files kept?"))
+        self.assertIn("Mandatory application routing directive", fallback)
+
+    def test_streaming_slash_command_goes_to_the_specialist(self):
+        supervisor, response = self.post("/handbook Jury duty?", path="/api/v1/chat/stream")
+        self.assertIn("Direct answer", response.get_data(as_text=True))
+        self.assertEqual(supervisor.direct_calls[0][0], "/handbook")
+
+    def test_typo_alias_and_table_requirement_are_kept(self):
+        supervisor, _ = self.post("/benfits Show PPO plans as a table")
+        command, question, _ = supervisor.direct_calls[0]
+        self.assertEqual(command, "/benefits")
+        self.assertIn("Application table format requirement", question)
+
+    def test_chart_requests_and_plain_questions_use_the_supervisor(self):
+        supervisor, response = self.post("/policy Chart the retention periods")
+        self.assertNotEqual(response.get_json()["answer"], "Direct answer")
+        self.assertEqual(supervisor.direct_calls, [])
+        supervisor, _ = self.post("How long are paid loan files kept?")
+        self.assertEqual(supervisor.direct_calls, [])
+
+
+class LiveStreamTests(unittest.TestCase):
+    class LiveSupervisor(FakeSupervisor):
+        def __init__(self, final_text, live_text):
+            super().__init__()
+            self.final_text, self.live_text = final_text, live_text
+
+        def prepare_answer(self, message, session_id, history, *, on_event=None):
+            from mariner_genai_dbx.models import PendingAgentAnswer
+            on_event("progress", "ka-56b296c2-4004")
+            on_event("progress", "mariner-handbook-assistant")
+            for line in self.live_text:
+                on_event("text", line)
+            return PendingAgentAnswer(answer=self.final_text)
+
+        def resolve_answer(self, pending):
+            return AgentAnswer(answer=pending.answer)
+
+    def stream(self, final_text, live_text):
+        app = create_app(test_settings(), supervisor_service=self.LiveSupervisor(final_text, live_text))
+        body = app.test_client().post("/api/v1/chat/stream", json={"message": "What is the dress code?"}).get_data(as_text=True)
+        events = []
+        for frame in body.strip().split("\n\n"):
+            lines = frame.split("\n")
+            events.append((lines[0][len("event: "):], json.loads(lines[1][len("data: "):])))
+        return events
+
+    def test_progress_and_checked_text_arrive_before_the_final_answer(self):
+        lines = [f"Line {i} of the dress code answer, long enough to clear the hold window.\n" for i in range(8)]
+        events = self.stream("".join(lines), lines)
+        names = [name for name, _ in events]
+        self.assertEqual(names[:3], ["status", "progress", "progress"])
+        self.assertEqual([data["message"] for name, data in events if name == "progress"],
+                         ["Consulting a specialist…", "Checking the Employee Handbook…"])
+        self.assertIn("delta", names)
+        self.assertLess(names.index("delta"), names.index("answer"))
+        self.assertEqual(names[-3:], ["answer", "sources", "done"])
+        shown = "".join(data["text"] for name, data in events if name == "delta")
+        self.assertTrue("".join(lines).startswith(shown))
+        self.assertNotIn("ka-56b296c2", json.dumps(events))
+
+    def test_blocked_answer_clears_the_preview_and_returns_the_fallback(self):
+        lines = [f"Safe line {i} with plenty of words to pass the hold window here.\n" for i in range(6)]
+        lines.append("Internally this calls the mas-abc123-endpoint for answers.\n")
+        events = self.stream("".join(lines), lines)
+        names = [name for name, _ in events]
+        self.assertIn("preview_reset", names)
+        self.assertLess(names.index("preview_reset"), names.index("answer"))
+        answer = next(data for name, data in events if name == "answer")
+        self.assertNotIn("mas-abc123", answer["answer"])
+
+
+class Coaching360ProgressTests(unittest.TestCase):
+    def test_coaching360_tools_get_their_own_labels(self):
+        from mariner_genai_dbx.web import _progress_message
+        self.assertEqual(_progress_message("coaching360_branch_data"), "Looking up your Coaching360 data…")
+        self.assertEqual(_progress_message("mariner-coaching360-guide"), "Checking the Coaching360 Guide…")
+        self.assertEqual(_progress_message("ka-56b296c2-4004"), "Consulting a specialist…")
+
+
+class WarmUpTests(unittest.TestCase):
+    def test_warm_up_runs_in_background(self):
+        calls = []
+
+        class WarmingSupervisor(FakeSupervisor):
+            def warm_up(self):
+                calls.append(True)
+
+        app = create_app(test_settings(), supervisor_service=WarmingSupervisor())
+        start_warm_up(app).join(2)
+        self.assertEqual(calls, [True])
+
+    def test_warm_up_failure_is_logged_not_raised(self):
+        class FailingSupervisor(FakeSupervisor):
+            def warm_up(self):
+                raise RuntimeError("Databricks unavailable")
+
+        app = create_app(test_settings(), supervisor_service=FailingSupervisor())
+        with self.assertLogs("mariner_genai_dbx.web", level="WARNING"):
+            start_warm_up(app).join(2)
+
+    def test_services_without_warm_up_are_skipped(self):
+        app = create_app(test_settings(), supervisor_service=FakeSupervisor())
+        self.assertIsNone(start_warm_up(app))
+
+
+class StaticAssetCachingTests(unittest.TestCase):
+    def test_static_urls_are_versioned_and_cached_long(self):
+        app = create_app(test_settings(), supervisor_service=FakeSupervisor())
+        client = app.test_client()
+        page = client.get("/").get_data(as_text=True)
+        match = re.search(r'/static/chat\.js\?v=([0-9a-f]{12})"', page)
+        self.assertIsNotNone(match)
+        response = client.get(f"/static/chat.js?v={match.group(1)}")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("max-age=31536000", response.headers["Cache-Control"])
+        response.close()
+
+    def test_development_keeps_plain_static_urls(self):
+        settings = Settings(app_env="development")
+        app = create_app(settings, supervisor_service=FakeSupervisor())
+        page = app.test_client().get("/").get_data(as_text=True)
+        self.assertIn('/static/chat.js"', page)
 
 
 if __name__ == "__main__":

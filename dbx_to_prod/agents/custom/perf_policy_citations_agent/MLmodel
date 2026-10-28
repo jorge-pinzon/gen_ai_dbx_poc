@@ -1,0 +1,83 @@
+artifact_path: dbfs:/databricks/mlflow-tracking/920584349555511/logged_models/m-dca0893e573c47e6ab781f628adc51ec/artifacts
+databricks_runtime: client.6
+flavors:
+  python_function:
+    cloudpickle_version: 3.1.1
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.loaders.code_model
+    model_code_path: /Workspace/Users/jorge.pinzon@marinerfinance.com/ask-mariner-perf-dev/serving/perf_policy_citations_agent.py
+    python_version: 3.12.3
+    streamable: true
+is_signature_from_type_hint: false
+metadata:
+  task: agent/v1/responses
+mlflow_version: 3.12.0
+model_id: m-dca0893e573c47e6ab781f628adc51ec
+model_size_bytes: 6290
+model_uuid: m-dca0893e573c47e6ab781f628adc51ec
+prompts: null
+resources:
+  api_version: '1'
+  databricks:
+    serving_endpoint:
+    - name: databricks-claude-haiku-4-5
+    - name: databricks-qwen3-embedding-0-6b
+    vector_search_index:
+    - name: workspace.performance_test.perf_policy_retrieval_index
+run_id: 0873d17b7b1c4fcdafa7249a996bfa65
+saved_input_example_info:
+  artifact_path: input_example.json
+  serving_input_path: serving_input_example.json
+  type: json_object
+signature:
+  inputs: '[{"type": "boolean", "name": "background", "required": false}, {"type":
+    "object", "properties": {"conversation_id": {"type": "string", "required": false},
+    "user_id": {"type": "string", "required": false}}, "name": "context", "required":
+    false}, {"type": "map", "values": {"type": "any"}, "name": "custom_inputs", "required":
+    false}, {"type": "array", "items": {"type": "any"}, "name": "input", "required":
+    true}, {"type": "long", "name": "max_output_tokens", "required": false}, {"type":
+    "map", "values": {"type": "string"}, "name": "metadata", "required": false}, {"type":
+    "boolean", "name": "parallel_tool_calls", "required": false}, {"type": "object",
+    "properties": {"effort": {"type": "string", "required": false}, "generate_summary":
+    {"type": "string", "required": false}}, "name": "reasoning", "required": false},
+    {"type": "boolean", "name": "store", "required": false}, {"type": "boolean", "name":
+    "stream", "required": false}, {"type": "double", "name": "temperature", "required":
+    false}, {"type": "any", "name": "text", "required": false}, {"type": "any", "name":
+    "tool_choice", "required": false}, {"type": "array", "items": {"type": "object",
+    "properties": {"type": {"type": "string", "required": true}}}, "name": "tools",
+    "required": false}, {"type": "double", "name": "top_p", "required": false}, {"type":
+    "string", "name": "truncation", "required": false}, {"type": "string", "name":
+    "user", "required": false}]'
+  outputs: '[{"type": "object", "properties": {"created_at": {"type": "double", "required":
+    false}, "custom_outputs": {"type": "map", "values": {"type": "any"}, "required":
+    false}, "error": {"type": "object", "properties": {"code": {"type": "string",
+    "required": false}, "message": {"type": "string", "required": true}}, "required":
+    false}, "id": {"type": "string", "required": false}, "incomplete_details": {"type":
+    "object", "properties": {"reason": {"type": "string", "required": false}}, "required":
+    false}, "instructions": {"type": "string", "required": false}, "max_output_tokens":
+    {"type": "long", "required": false}, "metadata": {"type": "map", "values": {"type":
+    "string"}, "required": false}, "model": {"type": "string", "required": false},
+    "object": {"type": "string", "required": true}, "output": {"type": "array", "items":
+    {"type": "object", "properties": {"type": {"type": "string", "required": true}}},
+    "required": true}, "parallel_tool_calls": {"type": "boolean", "required": false},
+    "previous_response_id": {"type": "string", "required": false}, "reasoning": {"type":
+    "object", "properties": {"effort": {"type": "string", "required": false}, "generate_summary":
+    {"type": "string", "required": false}}, "required": false}, "status": {"type":
+    "string", "required": false}, "temperature": {"type": "double", "required": false},
+    "text": {"type": "any", "required": false}, "tool_choice": {"type": "any", "required":
+    false}, "tools": {"type": "array", "items": {"type": "object", "properties": {"type":
+    {"type": "string", "required": true}}}, "required": false}, "top_p": {"type":
+    "double", "required": false}, "truncation": {"type": "string", "required": false},
+    "usage": {"type": "object", "properties": {"input_tokens": {"type": "long", "required":
+    true}, "input_tokens_details": {"type": "object", "properties": {"cached_tokens":
+    {"type": "long", "required": true}}, "required": true}, "output_tokens": {"type":
+    "long", "required": true}, "output_tokens_details": {"type": "object", "properties":
+    {"reasoning_tokens": {"type": "long", "required": true}}, "required": true}, "total_tokens":
+    {"type": "long", "required": true}}, "required": false}, "user": {"type": "string",
+    "required": false}}, "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-10-20 20:11:15.355631'

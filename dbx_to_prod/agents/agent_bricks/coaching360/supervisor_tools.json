@@ -1,0 +1,29 @@
+{
+ "note": "Added to the Supervisor by notebooks/06_agent_bricks.py (COACHING360 = True). In trial they live on mas-53dbd2d7-endpoint.",
+ "tools": [
+  {
+   "tool_id": "coaching360_employee_data",
+   "tool_type": "genie_space",
+   "target": "Coaching360 - My Development",
+   "description": "Coaching360 data for an employee (Account Representative, Assistant Branch Manager, Branch Manager Trainee): their own KPIs, DPR scorecard, calls, coaching records, Success Plans, tasks, ACE payout estimate and policy violations. Use only when the Coaching360 directive says level employee."
+  },
+  {
+   "tool_id": "coaching360_branch_data",
+   "tool_type": "genie_space",
+   "target": "Coaching360 - Branch Leader",
+   "description": "Coaching360 data for a Branch Manager: team KPIs and rankings, branch scorecard, coaching records and comments, Success Plans, tasks, accountability meetings, branch visits, payout estimates and policy violations for their branches. Use only when the Coaching360 directive says level branch."
+  },
+  {
+   "tool_id": "coaching360_district_data",
+   "tool_type": "genie_space",
+   "target": "Coaching360 - District and Above",
+   "description": "Coaching360 data for District Managers, AVPs and senior leaders: branch and district scorecards, turnover, coaching activity, branch visits, accountability meetings, payout estimates and policy violations for their districts. Use only when the Coaching360 directive says level district."
+  },
+  {
+   "tool_id": "coaching360_guide",
+   "tool_type": "knowledge_assistant",
+   "target": "mariner-coaching360-guide",
+   "description": "Coaching360 Guide: answers how the Coaching360 application works (features, workflows, KPI scoring rules, statuses, roles) from the Coaching360 BRD. Not for anyone's personal data."
+  }
+ ]
+}

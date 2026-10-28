@@ -1,0 +1,8 @@
+{
+  "model": "workspace.ask_mariner_perf_dev.perf_policy_citations_agent",
+  "version": "2",
+  "run_id": "0873d17b7b1c4fcdafa7249a996bfa65",
+  "source": "models:/m-dca0893e573c47e6ab781f628adc51ec",
+  "storage_location": "s3://dbstorage-prod-xe7dwhs0cf/uc/2db8c077-65b4-4fec-a6e9-f029b704cba6/dc878037-59cb-48a8-8d57-2525c9e83b33/__unitystorage/catalogs/d62670e4-a338-4d91-b7bd-efbab3657119/models/5bc16365-92b7-4718-bb01-a6f4381fd586/versions/9726c07f-748f-46ce-bf6d-2cd5a9adba6d",
+  "artifacts": []
+}

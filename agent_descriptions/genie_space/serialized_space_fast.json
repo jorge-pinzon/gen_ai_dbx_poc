@@ -1,0 +1,1527 @@
+{
+ "version": 2,
+ "data_sources": {
+  "tables": [
+   {
+    "identifier": "workspace.performance_test.app_fast_branch_quarterly_summary",
+    "description": [
+     "One row per branch per cycle. Already aggregated \u2014 use directly for branch-level targets, funded totals, attainment, funded-loan counts, average ratings, rating distributions, completed/missing review counts, branch comparisons. Key: branch_id + cycle_id. Do not join to employee-level views to calculate branch totals."
+    ],
+    "column_configs": [
+     {
+      "column_name": "avg_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_attainment_pct",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "completed_review_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employee_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "funded_loan_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "missing_review_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rating_1_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rating_2_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rating_3_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rating_4_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rating_5_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "region_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "region_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "total_funded_amount",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "total_target",
+      "enable_format_assistance": true
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.performance_test.app_fast_employee_competency_summary",
+    "description": [
+     "One row per employee, cycle, and competency. Use for individual competency ratings, comparisons, and trends. Key: employee_id + cycle_id + competency_id. Must be aggregated before joining to quarterly performance views."
+    ],
+    "column_configs": [
+     {
+      "column_name": "competency_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "competency_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "competency_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "rated_by_employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rated_by_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "rating_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "rating_label",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.performance_test.app_fast_employee_goal_status",
+    "description": [
+     "One row per employee, goal, and cycle. Use for business/development goals, goal status, completion percentage, progress notes, due dates. Key: employee_id + goal_id + cycle_id. Must be aggregated before joining to quarterly performance views."
+    ],
+    "column_configs": [
+     {
+      "column_name": "completion_percent",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "goal_description",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "goal_due_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "goal_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "goal_start_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "goal_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "goal_title",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "goal_type",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "progress_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "progress_note",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.performance_test.app_fast_employee_performance_history",
+    "description": [
+     "One row per employee per cycle. Use for performance trends and historical comparisons \u2014 combines rating, loan, competency, meeting, acknowledgment, and goal summaries. Prefer this view when the question asks for performance over multiple quarters. Key: employee_id + cycle_id."
+    ],
+    "column_configs": [
+     {
+      "column_name": "acknowledgment_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "active_goal_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "attainment_percent",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "avg_competency_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "avg_goal_completion",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "cycle_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "final_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "funded_amount",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "funded_loan_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "job_role_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "loan_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "manager_employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "manager_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "meeting_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "rating_rationale",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "region_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "region_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "review_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "target_amount",
+      "enable_format_assistance": true
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.performance_test.app_fast_employee_profile",
+    "description": [
+     "One row per employee. Use for employee name, email, job title/role, branch, region, manager, VP, hire date, employment status. PK: employee_id."
+    ],
+    "column_configs": [
+     {
+      "column_name": "branch_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "email",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employment_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employment_type",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "hire_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "job_role_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "job_role_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "job_title",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "manager_employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "manager_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "region_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "region_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "vp_employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "vp_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.performance_test.app_fast_employee_quarterly_performance",
+    "description": [
+     "One row per employee per cycle. Preferred view for detailed employee quarterly performance: final ratings, rating rationale, loan targets, funded amounts, funded loan counts, loan ratings, review meetings, acknowledgments, cycle dates/status. Key: employee_id + cycle_id."
+    ],
+    "column_configs": [
+     {
+      "column_name": "acknowledgment_comment",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "acknowledgment_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "acknowledgment_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "acknowledgment_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "attainment_percent",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "completed_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_end_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "cycle_start_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "duration_minutes",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "final_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "funded_amount",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "funded_loan_count",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "loan_rating",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "meeting_channel",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "meeting_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "meeting_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "meeting_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "rating_rationale",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "region_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "region_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "review_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "review_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "review_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "reviewer_employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "reviewer_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "snapshot_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "target_amount",
+      "enable_format_assistance": true
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.performance_test.app_fast_review_compliance",
+    "description": [
+     "One row per employee per cycle. Use for overdue reviews, missing meetings, missing acknowledgments, review due dates, manager-level compliance. Key: employee_id + cycle_id. is_overdue=true means review not completed by review_due_date. is_missing_meeting=true means no review meeting held. is_missing_acknowledgment=true means employee has not acknowledged review. Use these Boolean fields directly."
+    ],
+    "column_configs": [
+     {
+      "column_name": "acknowledgment_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "branch_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "branch_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "cycle_end_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "cycle_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "employee_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "is_missing_acknowledgment",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "is_missing_meeting",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "is_overdue",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "manager_employee_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "manager_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "meeting_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "meeting_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "region_id",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "region_name",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     },
+     {
+      "column_name": "review_due_date",
+      "enable_format_assistance": true
+     },
+     {
+      "column_name": "review_status",
+      "enable_format_assistance": true,
+      "enable_entity_matching": true
+     }
+    ]
+   }
+  ]
+ },
+ "instructions": {
+  "text_instructions": [
+   {
+    "id": "01f1b85e47841263ba6a1782b9b5f099",
+    "content": [
+     "You are the Mariner Employee Performance Structured Data Agent. Answer questions about employee, branch, regional, loan-production, competency, goal, review, and review-compliance performance using approved views in workspace.performance_test. Do not invent missing values, policies, ratings, or recommendations.\n",
+     "\n",
+     "Policy questions (bonuses, promotion rules, etc.) should be handled by the Performance Policy knowledge agent.\n",
+     "\n",
+     "== RATING DEFINITIONS ==\n",
+     "Performance ratings (1-5): 1=Significantly below expectations, 2=Below expectations, 3=Meets expectations, 4=Exceeds expectations, 5=Significantly exceeds expectations.\n",
+     "Competency ratings (1-5): 1=Improvement required, 2=Partially meets expectations, 3=Meets expectations, 4=Exceeds expectations, 5=Significantly exceeds expectations.\n",
+     "Loan ratings: 1-5 integer scale.\n",
+     "A rating of 3 is not poor. Do not recommend termination, promotion, or bonus based solely on a rating.\n",
+     "\n",
+     "== BUSINESS CONTEXT ==\n",
+     "Cycles are quarterly: names like \"2025 Q1\", IDs like \"CY2025Q1\". Data covers 2025-2026 Q3.\n",
+     "Goal types: Business, Development.\n",
+     "Competencies: Business Domain Knowledge, Career Development, Communication, Strategy and Execution.\n",
+     "Job roles: Branch Manager, Loan Officer, Regional Vice President.\n",
+     "Regions: Great Lakes Region, Southwest Region.\n",
+     "Attainment = 100.0 * funded_amount / NULLIF(target_amount, 0). Compare funded_amount directly to target_amount for thresholds.\n",
+     "\n",
+     "== JOIN AND AGGREGATION RULES ==\n",
+     "Prefer a single view. Join profile to other views on employee_id. Join two quarterly views on employee_id + cycle_id. Never join cycle-level views on employee_id alone. Aggregate competency/goal rows before joining to quarterly performance. Use the branch summary view directly for branch questions; do not recreate from employee rows. Use COUNT(DISTINCT employee_id) for employee counts. Use averages for ratings, never sums. Round only in final output.\n",
+     "\n",
+     "== TIME AND LATEST RULES ==\n",
+     "For latest review: use app_fast_employee_quarterly_performance, prefer non-null final_rating, ORDER BY cycle_end_date DESC, completed_date DESC NULLS LAST. Do not sort by cycle_name. CYyyyyQn IDs may be sorted. If latest cycle has no rating, say so.\n",
+     "\n",
+     "== EMPLOYEE NAME MATCHING ==\n",
+     "Case-insensitive exact match first, then partial match. If multiple matches, list names/IDs/branches/regions and ask user to clarify.\n",
+     "\n",
+     "== PERFORMANCE INTERPRETATION ==\n",
+     "\"Below expected\" = rating < 3. \"Meets expectations\" = 3. \"Above expected\" = rating > 3. \"Below loan target\" = funded_amount < target_amount. \"Overdue review\" = is_overdue = true.\n",
+     "\"Underperforming\" is ambiguous. Present separately: below-expected rating (avg_rating < 3), below loan target, review noncompliance. State which definition was used.\n",
+     "\n",
+     "== RESPONSE RULES ==\n",
+     "Answer directly. Include cycle/date with every rating. If no records match, say so. Do not convert NULLs to zero. Use human-readable labels in tables."
+    ]
+   }
+  ],
+  "example_question_sqls": [
+   {
+    "id": "01f1b85e475218368060113a02c219f3",
+    "question": [
+     "Most recent completed performance for an employee"
+    ],
+    "sql": [
+     "WITH ranked_reviews AS (\n",
+     "    SELECT\n",
+     "        employee_id,\n",
+     "        employee_name,\n",
+     "        branch_name,\n",
+     "        region_name,\n",
+     "        cycle_id,\n",
+     "        cycle_name,\n",
+     "        cycle_end_date,\n",
+     "        completed_date,\n",
+     "        final_rating,\n",
+     "        rating_rationale,\n",
+     "        loan_rating,\n",
+     "        funded_amount,\n",
+     "        target_amount,\n",
+     "        ROW_NUMBER() OVER (\n",
+     "            PARTITION BY employee_id\n",
+     "            ORDER BY cycle_end_date DESC, completed_date DESC NULLS LAST\n",
+     "        ) AS review_rank\n",
+     "    FROM workspace.performance_test.app_fast_employee_quarterly_performance\n",
+     "    WHERE LOWER(TRIM(employee_name)) = LOWER(TRIM('Jamie Ortiz'))\n",
+     "      AND final_rating IS NOT NULL\n",
+     ")\n",
+     "SELECT\n",
+     "    employee_id,\n",
+     "    employee_name,\n",
+     "    branch_name,\n",
+     "    region_name,\n",
+     "    cycle_name,\n",
+     "    final_rating,\n",
+     "    rating_rationale,\n",
+     "    loan_rating,\n",
+     "    funded_amount,\n",
+     "    target_amount,\n",
+     "    ROUND(\n",
+     "        100.0 * funded_amount / NULLIF(target_amount, 0),\n",
+     "        1\n",
+     "    ) AS calculated_attainment_pct\n",
+     "FROM ranked_reviews\n",
+     "WHERE review_rank = 1;"
+    ]
+   },
+   {
+    "id": "01f1b85e47521f8e8842b5b624e40c5d",
+    "question": [
+     "Branches below expectations in the latest available cycle"
+    ],
+    "sql": [
+     "WITH latest_cycle AS (\n",
+     "    SELECT MAX(cycle_id) AS cycle_id\n",
+     "    FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+     ")\n",
+     "SELECT\n",
+     "    branch_name,\n",
+     "    region_name,\n",
+     "    cycle_name,\n",
+     "    employee_count,\n",
+     "    total_target,\n",
+     "    total_funded_amount,\n",
+     "    ROUND(\n",
+     "        100.0 * total_funded_amount / NULLIF(total_target, 0),\n",
+     "        1\n",
+     "    ) AS calculated_attainment_pct,\n",
+     "    avg_rating,\n",
+     "    missing_review_count\n",
+     "FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+     "WHERE cycle_id = (SELECT cycle_id FROM latest_cycle)\n",
+     "  AND (\n",
+     "      avg_rating < 3\n",
+     "      OR total_funded_amount < total_target\n",
+     "  )\n",
+     "ORDER BY avg_rating ASC, calculated_attainment_pct ASC;"
+    ]
+   },
+   {
+    "id": "01f1b85e4753144caa23ae4487837ebf",
+    "question": [
+     "Employees with overdue reviews"
+    ],
+    "sql": [
+     "SELECT\n",
+     "    employee_id,\n",
+     "    employee_name,\n",
+     "    manager_name,\n",
+     "    branch_name,\n",
+     "    region_name,\n",
+     "    cycle_name,\n",
+     "    review_due_date,\n",
+     "    review_status,\n",
+     "    meeting_status,\n",
+     "    acknowledgment_status\n",
+     "FROM workspace.performance_test.app_fast_review_compliance\n",
+     "WHERE is_overdue = true\n",
+     "ORDER BY review_due_date ASC, region_name, branch_name, employee_name\n",
+     "LIMIT 100;"
+    ]
+   },
+   {
+    "id": "01f1b85e475317238bf7e263228695bd",
+    "question": [
+     "Average funded loans per branch per month"
+    ],
+    "sql": [
+     "SELECT\n",
+     "    branch_name,\n",
+     "    region_name,\n",
+     "    ROUND(AVG(funded_loan_count / 3.0), 1) AS avg_funded_loans_per_month\n",
+     "FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+     "GROUP BY branch_name, region_name\n",
+     "ORDER BY avg_funded_loans_per_month DESC;"
+    ]
+   },
+   {
+    "id": "01f1b85e475319eea40d0d46518b47eb",
+    "question": [
+     "Competency scores for an employee in the latest rated cycle"
+    ],
+    "sql": [
+     "WITH rated_competencies AS (\n",
+     "    SELECT\n",
+     "        employee_id,\n",
+     "        employee_name,\n",
+     "        cycle_id,\n",
+     "        cycle_name,\n",
+     "        competency_name,\n",
+     "        competency_rating,\n",
+     "        rating_label,\n",
+     "        rating_date,\n",
+     "        ROW_NUMBER() OVER (\n",
+     "            PARTITION BY employee_id, competency_id\n",
+     "            ORDER BY cycle_id DESC, rating_date DESC\n",
+     "        ) AS competency_rank\n",
+     "    FROM workspace.performance_test.app_fast_employee_competency_summary\n",
+     "    WHERE LOWER(TRIM(employee_name)) = LOWER(TRIM('Jamie Ortiz'))\n",
+     ")\n",
+     "SELECT\n",
+     "    employee_name,\n",
+     "    cycle_name,\n",
+     "    competency_name,\n",
+     "    competency_rating,\n",
+     "    rating_label,\n",
+     "    rating_date\n",
+     "FROM rated_competencies\n",
+     "WHERE competency_rank = 1\n",
+     "ORDER BY competency_name;"
+    ]
+   },
+   {
+    "id": "01f1b85e475400000000000000000001",
+    "question": [
+     "Employees ranked by loan attainment within a branch for the current quarter"
+    ],
+    "sql": [
+     "WITH latest_cycle AS (\n",
+     "    SELECT MAX(cycle_id) AS cycle_id\n",
+     "    FROM workspace.performance_test.app_fast_employee_quarterly_performance\n",
+     ")\n",
+     "SELECT\n",
+     "    q.employee_name,\n",
+     "    q.branch_name,\n",
+     "    q.region_name,\n",
+     "    q.cycle_name,\n",
+     "    q.target_amount,\n",
+     "    q.funded_amount,\n",
+     "    ROUND(\n",
+     "        100.0 * q.funded_amount / NULLIF(q.target_amount, 0),\n",
+     "        1\n",
+     "    ) AS attainment_pct,\n",
+     "    q.final_rating\n",
+     "FROM workspace.performance_test.app_fast_employee_quarterly_performance q\n",
+     "JOIN latest_cycle lc ON q.cycle_id = lc.cycle_id\n",
+     "WHERE LOWER(q.branch_name) = LOWER('Chicago Central')\n",
+     "ORDER BY q.attainment_percent ASC NULLS LAST;"
+    ]
+   },
+   {
+    "id": "01f1b85e475400000000000000000002",
+    "question": [
+     "Employees with review compliance gaps including overdue reviews, missing meetings, or missing acknowledgments"
+    ],
+    "sql": [
+     "WITH latest_cycle AS (\n",
+     "    SELECT MAX(cycle_id) AS cycle_id\n",
+     "    FROM workspace.performance_test.app_fast_review_compliance\n",
+     ")\n",
+     "SELECT\n",
+     "    rc.employee_name,\n",
+     "    rc.manager_name,\n",
+     "    rc.branch_name,\n",
+     "    rc.region_name,\n",
+     "    rc.cycle_name,\n",
+     "    rc.review_status,\n",
+     "    rc.meeting_status,\n",
+     "    rc.acknowledgment_status,\n",
+     "    rc.is_overdue,\n",
+     "    rc.is_missing_meeting,\n",
+     "    rc.is_missing_acknowledgment\n",
+     "FROM workspace.performance_test.app_fast_review_compliance rc\n",
+     "JOIN latest_cycle lc ON rc.cycle_id = lc.cycle_id\n",
+     "WHERE rc.is_overdue = true\n",
+     "   OR rc.is_missing_meeting = true\n",
+     "   OR rc.is_missing_acknowledgment = true\n",
+     "ORDER BY rc.branch_name, rc.employee_name;"
+    ]
+   },
+   {
+    "id": "01f1b85e475400000000000000000003",
+    "question": [
+     "Employees with at-risk goals under 50 percent completion approaching their due date"
+    ],
+    "sql": [
+     "SELECT\n",
+     "    g.employee_name,\n",
+     "    g.goal_title,\n",
+     "    g.goal_type,\n",
+     "    g.goal_status,\n",
+     "    g.completion_percent,\n",
+     "    g.goal_due_date,\n",
+     "    g.progress_note,\n",
+     "    g.cycle_name\n",
+     "FROM workspace.performance_test.app_fast_employee_goal_status g\n",
+     "WHERE g.completion_percent < 50\n",
+     "  AND g.goal_due_date <= DATE_ADD(CURRENT_DATE(), 30)\n",
+     "ORDER BY g.goal_due_date ASC NULLS LAST, g.completion_percent ASC;"
+    ]
+   },
+   {
+    "id": "01f1b85e475400000000000000000010",
+    "question": [
+     "Comprehensive performance overview for an employee including ratings, loan production, competency scores, goal progress, and review compliance"
+    ],
+    "sql": [
+     "WITH emp AS (\n",
+     "    SELECT employee_id, employee_name\n",
+     "    FROM workspace.performance_test.app_fast_employee_profile\n",
+     "    WHERE LOWER(TRIM(employee_name)) = LOWER(TRIM('Jamie Ortiz'))\n",
+     "),\n",
+     "latest_perf AS (\n",
+     "    SELECT\n",
+     "        q.employee_name,\n",
+     "        q.branch_name,\n",
+     "        q.region_name,\n",
+     "        q.cycle_name,\n",
+     "        q.final_rating,\n",
+     "        q.rating_rationale,\n",
+     "        q.loan_rating,\n",
+     "        q.target_amount,\n",
+     "        q.funded_amount,\n",
+     "        ROUND(100.0 * q.funded_amount / NULLIF(q.target_amount, 0), 1) AS attainment_pct,\n",
+     "        q.review_status,\n",
+     "        q.cycle_id\n",
+     "    FROM workspace.performance_test.app_fast_employee_quarterly_performance q\n",
+     "    JOIN emp e ON q.employee_id = e.employee_id\n",
+     "    ORDER BY q.cycle_end_date DESC\n",
+     "    LIMIT 4\n",
+     "),\n",
+     "latest_competencies AS (\n",
+     "    SELECT\n",
+     "        c.cycle_name,\n",
+     "        c.competency_name,\n",
+     "        c.competency_rating,\n",
+     "        c.rating_label\n",
+     "    FROM workspace.performance_test.app_fast_employee_competency_summary c\n",
+     "    JOIN emp e ON c.employee_id = e.employee_id\n",
+     "    WHERE c.cycle_id = (\n",
+     "        SELECT MAX(cycle_id)\n",
+     "        FROM workspace.performance_test.app_fast_employee_competency_summary c2\n",
+     "        JOIN emp e2 ON c2.employee_id = e2.employee_id\n",
+     "    )\n",
+     "),\n",
+     "latest_goals AS (\n",
+     "    SELECT\n",
+     "        g.goal_title,\n",
+     "        g.goal_type,\n",
+     "        g.goal_status,\n",
+     "        g.completion_percent,\n",
+     "        g.goal_due_date,\n",
+     "        g.progress_note,\n",
+     "        g.cycle_name\n",
+     "    FROM workspace.performance_test.app_fast_employee_goal_status g\n",
+     "    JOIN emp e ON g.employee_id = e.employee_id\n",
+     "    WHERE g.cycle_id = (\n",
+     "        SELECT MAX(cycle_id)\n",
+     "        FROM workspace.performance_test.app_fast_employee_goal_status g2\n",
+     "        JOIN emp e2 ON g2.employee_id = e2.employee_id\n",
+     "    )\n",
+     "),\n",
+     "compliance AS (\n",
+     "    SELECT\n",
+     "        rc.cycle_name,\n",
+     "        rc.review_status,\n",
+     "        rc.meeting_status,\n",
+     "        rc.acknowledgment_status,\n",
+     "        rc.is_overdue,\n",
+     "        rc.is_missing_meeting,\n",
+     "        rc.is_missing_acknowledgment\n",
+     "    FROM workspace.performance_test.app_fast_review_compliance rc\n",
+     "    JOIN emp e ON rc.employee_id = e.employee_id\n",
+     "    WHERE rc.cycle_id = (\n",
+     "        SELECT MAX(cycle_id)\n",
+     "        FROM workspace.performance_test.app_fast_review_compliance rc2\n",
+     "        JOIN emp e2 ON rc2.employee_id = e2.employee_id\n",
+     "    )\n",
+     ")\n",
+     "SELECT 'Performance History' AS section, cycle_name, final_rating AS metric_value, attainment_pct AS pct, NULL AS status, rating_rationale AS detail FROM latest_perf\n",
+     "UNION ALL\n",
+     "SELECT 'Competency', cycle_name, competency_rating, NULL, rating_label, competency_name FROM latest_competencies\n",
+     "UNION ALL\n",
+     "SELECT 'Goals', cycle_name, completion_percent, NULL, goal_status, goal_title FROM latest_goals\n",
+     "UNION ALL\n",
+     "SELECT 'Compliance', cycle_name, NULL, NULL, review_status, meeting_status FROM compliance;"
+    ]
+   }
+  ],
+  "join_specs": [
+   {
+    "id": "01f1b85e541e1fe08302a0ed35edb824",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_quarterly_performance"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_profile"
+    },
+    "sql": [
+     "app_fast_employee_profile.employee_id = app_fast_employee_quarterly_performance.employee_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee profile to quarterly performance"
+    ]
+   },
+   {
+    "id": "01f1b85e541f1369acab477d468d7d32",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_performance_history"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_profile"
+    },
+    "sql": [
+     "app_fast_employee_profile.employee_id = app_fast_employee_performance_history.employee_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee profile to performance history"
+    ]
+   },
+   {
+    "id": "01f1b85e541f15f88197f943ec943ce3",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_competency_summary"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_profile"
+    },
+    "sql": [
+     "app_fast_employee_profile.employee_id = app_fast_employee_competency_summary.employee_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee profile to competency summary"
+    ]
+   },
+   {
+    "id": "01f1b85e541f18999f74441603e87307",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_goal_status"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_profile"
+    },
+    "sql": [
+     "app_fast_employee_profile.employee_id = app_fast_employee_goal_status.employee_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee profile to goal status"
+    ]
+   },
+   {
+    "id": "01f1b85e541f1aff985db1bf15c4a116",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_review_compliance"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_profile"
+    },
+    "sql": [
+     "app_fast_employee_profile.employee_id = app_fast_review_compliance.employee_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee profile to review compliance"
+    ]
+   },
+   {
+    "id": "01f1b85e541f1d458bc800ae587cc490",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_quarterly_performance"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_competency_summary"
+    },
+    "sql": [
+     "app_fast_employee_quarterly_performance.employee_id = app_fast_employee_competency_summary.employee_id AND app_fast_employee_quarterly_performance.cycle_id = app_fast_employee_competency_summary.cycle_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_ONE_TO_MANY--"
+    ],
+    "comment": [
+     "Quarterly performance to competency summary"
+    ]
+   },
+   {
+    "id": "01f1b85e541f1f779dbb0d6adb249834",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_quarterly_performance"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_employee_goal_status"
+    },
+    "sql": [
+     "app_fast_employee_quarterly_performance.employee_id = app_fast_employee_goal_status.employee_id AND app_fast_employee_quarterly_performance.cycle_id = app_fast_employee_goal_status.cycle_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_ONE_TO_MANY--"
+    ],
+    "comment": [
+     "Quarterly performance to goal status"
+    ]
+   },
+   {
+    "id": "01f1b85e542011a4a3b3b89eb13ca31c",
+    "left": {
+     "identifier": "workspace.performance_test.app_fast_employee_quarterly_performance"
+    },
+    "right": {
+     "identifier": "workspace.performance_test.app_fast_review_compliance"
+    },
+    "sql": [
+     "app_fast_employee_quarterly_performance.employee_id = app_fast_review_compliance.employee_id AND app_fast_employee_quarterly_performance.cycle_id = app_fast_review_compliance.cycle_id",
+     "--rt=FROM_RELATIONSHIP_TYPE_ONE_TO_ONE--"
+    ],
+    "comment": [
+     "Quarterly performance to review compliance"
+    ]
+   }
+  ],
+  "sql_snippets": {
+   "filters": [
+    {
+     "id": "01f1b85e5427145ea16e6f078900e165",
+     "sql": [
+      "app_fast_review_compliance.is_overdue = true"
+     ],
+     "display_name": "Overdue reviews only"
+    },
+    {
+     "id": "01f1b85e542716bcb947ccdd9776e75f",
+     "sql": [
+      "app_fast_employee_quarterly_performance.final_rating < 3"
+     ],
+     "display_name": "Below expected performance rating"
+    },
+    {
+     "id": "01f1b85e5427192694e645a5e53a238e",
+     "sql": [
+      "app_fast_employee_quarterly_performance.funded_amount < app_fast_employee_quarterly_performance.target_amount"
+     ],
+     "display_name": "Below loan target"
+    }
+   ],
+   "expressions": [
+    {
+     "id": "01f1b85e54261f689098d6d893e3d7d5",
+     "sql": [
+      "ROUND(100.0 * app_fast_employee_quarterly_performance.funded_amount / NULLIF(app_fast_employee_quarterly_performance.target_amount, 0), 1)"
+     ],
+     "display_name": "Loan attainment percentage"
+    },
+    {
+     "id": "01f1b85e54271241a212f6371b93fa67",
+     "sql": [
+      "ROUND(100.0 * app_fast_branch_quarterly_summary.total_funded_amount / NULLIF(app_fast_branch_quarterly_summary.total_target, 0), 1)"
+     ],
+     "display_name": "Branch attainment percentage"
+    }
+   ],
+   "measures": [
+    {
+     "id": "01f1b85e54271b74a6cefcc46167f03a",
+     "sql": [
+      "ROUND(AVG(app_fast_employee_quarterly_performance.final_rating), 2)"
+     ],
+     "display_name": "Average performance rating"
+    },
+    {
+     "id": "01f1b85e54271dcfb0763237d222980d",
+     "sql": [
+      "ROUND(AVG(app_fast_employee_competency_summary.competency_rating), 2)"
+     ],
+     "display_name": "Average competency rating"
+    },
+    {
+     "id": "01f1b85e54281017ad1ebc817a3ff850",
+     "sql": [
+      "COUNT(DISTINCT employee_id)"
+     ],
+     "display_name": "Distinct employee count"
+    }
+   ]
+  }
+ },
+ "benchmarks": {
+  "questions": [
+   {
+    "id": "01f1b85ec5cf1c469a693fe26eca7c51",
+    "question": [
+     "Compare branch performance across all quarters"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "SELECT\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    cycle_name,\n",
+       "    employee_count,\n",
+       "    avg_rating,\n",
+       "    ROUND(100.0 * total_funded_amount / NULLIF(total_target, 0), 1) AS attainment_pct,\n",
+       "    funded_loan_count,\n",
+       "    completed_review_count,\n",
+       "    missing_review_count\n",
+       "FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+       "ORDER BY branch_name, cycle_id;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec5b5130480c6088144b2791c",
+    "question": [
+     "What are the goal completion rates by employee in the latest cycle?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "WITH latest_cycle AS (\n",
+       "    SELECT MAX(cycle_id) AS cycle_id\n",
+       "    FROM workspace.performance_test.app_fast_employee_goal_status\n",
+       ")\n",
+       "SELECT\n",
+       "    g.employee_name,\n",
+       "    g.cycle_name,\n",
+       "    COUNT(g.goal_id) AS total_goals,\n",
+       "    SUM(CASE WHEN g.goal_status = 'Completed' THEN 1 ELSE 0 END) AS completed_goals,\n",
+       "    ROUND(AVG(g.completion_percent), 1) AS avg_completion_pct\n",
+       "FROM workspace.performance_test.app_fast_employee_goal_status g\n",
+       "WHERE g.cycle_id = (SELECT cycle_id FROM latest_cycle)\n",
+       "GROUP BY g.employee_name, g.cycle_name\n",
+       "ORDER BY avg_completion_pct DESC;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec59b193d802d7103ddbe341c",
+    "question": [
+     "Which employees have a performance rating below 3 in 2026 Q2?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "SELECT\n",
+       "    employee_name,\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    cycle_name,\n",
+       "    final_rating,\n",
+       "    rating_rationale\n",
+       "FROM workspace.performance_test.app_fast_employee_quarterly_performance\n",
+       "WHERE cycle_name = '2026 Q2'\n",
+       "  AND final_rating < 3\n",
+       "ORDER BY final_rating ASC, employee_name;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec57911c48f48e939ea7bfb12",
+    "question": [
+     "Show me the performance history for Taylor Reed"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "SELECT\n",
+       "    employee_name,\n",
+       "    cycle_name,\n",
+       "    final_rating,\n",
+       "    rating_rationale,\n",
+       "    funded_amount,\n",
+       "    target_amount,\n",
+       "    ROUND(100.0 * funded_amount / NULLIF(target_amount, 0), 1) AS attainment_pct,\n",
+       "    loan_rating,\n",
+       "    avg_competency_rating,\n",
+       "    active_goal_count,\n",
+       "    avg_goal_completion,\n",
+       "    meeting_status,\n",
+       "    acknowledgment_status\n",
+       "FROM workspace.performance_test.app_fast_employee_performance_history\n",
+       "WHERE LOWER(TRIM(employee_name)) = LOWER(TRIM('Taylor Reed'))\n",
+       "ORDER BY cycle_id;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec5621c5491477abb957682f2",
+    "question": [
+     "How many employees are in each branch?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "SELECT\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    COUNT(DISTINCT employee_id) AS employee_count\n",
+       "FROM workspace.performance_test.app_fast_employee_profile\n",
+       "GROUP BY branch_name, region_name\n",
+       "ORDER BY branch_name;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec53c10fb9711cd3f94164864",
+    "question": [
+     "What are Jamie Ortiz's competency scores in the latest cycle?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "WITH rated_competencies AS (\n",
+       "    SELECT\n",
+       "        employee_id,\n",
+       "        employee_name,\n",
+       "        cycle_id,\n",
+       "        cycle_name,\n",
+       "        competency_name,\n",
+       "        competency_rating,\n",
+       "        rating_label,\n",
+       "        rating_date,\n",
+       "        ROW_NUMBER() OVER (\n",
+       "            PARTITION BY employee_id, competency_id\n",
+       "            ORDER BY cycle_id DESC, rating_date DESC\n",
+       "        ) AS competency_rank\n",
+       "    FROM workspace.performance_test.app_fast_employee_competency_summary\n",
+       "    WHERE LOWER(TRIM(employee_name)) = LOWER(TRIM('Jamie Ortiz'))\n",
+       ")\n",
+       "SELECT\n",
+       "    employee_name,\n",
+       "    cycle_name,\n",
+       "    competency_name,\n",
+       "    competency_rating,\n",
+       "    rating_label,\n",
+       "    rating_date\n",
+       "FROM rated_competencies\n",
+       "WHERE competency_rank = 1\n",
+       "ORDER BY competency_name;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec51e1bffa1f641cfd5232736",
+    "question": [
+     "What is the average funded loans per branch per month?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "SELECT\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    ROUND(AVG(funded_loan_count / 3.0), 1) AS avg_funded_loans_per_month\n",
+       "FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+       "GROUP BY branch_name, region_name\n",
+       "ORDER BY avg_funded_loans_per_month DESC;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec5031cdf86ab5d78875e44fe",
+    "question": [
+     "Show me employees with overdue reviews"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "SELECT\n",
+       "    employee_id,\n",
+       "    employee_name,\n",
+       "    manager_name,\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    cycle_name,\n",
+       "    review_due_date,\n",
+       "    review_status,\n",
+       "    meeting_status,\n",
+       "    acknowledgment_status\n",
+       "FROM workspace.performance_test.app_fast_review_compliance\n",
+       "WHERE is_overdue = true\n",
+       "ORDER BY review_due_date ASC, region_name, branch_name, employee_name\n",
+       "LIMIT 100;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec4e8198aa27a07a08ed2f5cf",
+    "question": [
+     "Which branches are below expectations in the latest cycle?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "WITH latest_cycle AS (\n",
+       "    SELECT MAX(cycle_id) AS cycle_id\n",
+       "    FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+       ")\n",
+       "SELECT\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    cycle_name,\n",
+       "    employee_count,\n",
+       "    total_target,\n",
+       "    total_funded_amount,\n",
+       "    ROUND(100.0 * total_funded_amount / NULLIF(total_target, 0), 1) AS calculated_attainment_pct,\n",
+       "    avg_rating,\n",
+       "    missing_review_count\n",
+       "FROM workspace.performance_test.app_fast_branch_quarterly_summary\n",
+       "WHERE cycle_id = (SELECT cycle_id FROM latest_cycle)\n",
+       "  AND (avg_rating < 3 OR total_funded_amount < total_target)\n",
+       "ORDER BY avg_rating ASC, calculated_attainment_pct ASC;"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "01f1b85ec4cf16719ef63744b2e59bb9",
+    "question": [
+     "What is Jamie Ortiz's most recent performance rating?"
+    ],
+    "answer": [
+     {
+      "format": "SQL",
+      "content": [
+       "WITH ranked_reviews AS (\n",
+       "    SELECT\n",
+       "        employee_id,\n",
+       "        employee_name,\n",
+       "        branch_name,\n",
+       "        region_name,\n",
+       "        cycle_id,\n",
+       "        cycle_name,\n",
+       "        cycle_end_date,\n",
+       "        completed_date,\n",
+       "        final_rating,\n",
+       "        rating_rationale,\n",
+       "        loan_rating,\n",
+       "        funded_amount,\n",
+       "        target_amount,\n",
+       "        ROW_NUMBER() OVER (\n",
+       "            PARTITION BY employee_id\n",
+       "            ORDER BY cycle_end_date DESC, completed_date DESC NULLS LAST\n",
+       "        ) AS review_rank\n",
+       "    FROM workspace.performance_test.app_fast_employee_quarterly_performance\n",
+       "    WHERE LOWER(TRIM(employee_name)) = LOWER(TRIM('Jamie Ortiz'))\n",
+       "      AND final_rating IS NOT NULL\n",
+       ")\n",
+       "SELECT\n",
+       "    employee_id,\n",
+       "    employee_name,\n",
+       "    branch_name,\n",
+       "    region_name,\n",
+       "    cycle_name,\n",
+       "    final_rating,\n",
+       "    rating_rationale,\n",
+       "    loan_rating,\n",
+       "    funded_amount,\n",
+       "    target_amount,\n",
+       "    ROUND(100.0 * funded_amount / NULLIF(target_amount, 0), 1) AS calculated_attainment_pct\n",
+       "FROM ranked_reviews\n",
+       "WHERE review_rank = 1;"
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

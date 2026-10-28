@@ -1,0 +1,100 @@
+{
+  "workspace.default": [
+    [
+      "9480056c-9708-40af-92da-c35b15cf61fa",
+      "USE SCHEMA",
+      "SCHEMA",
+      "workspace.default"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "CREATE FUNCTION",
+      "SCHEMA",
+      "workspace.default"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "CREATE VOLUME",
+      "SCHEMA",
+      "workspace.default"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "CREATE MODEL",
+      "SCHEMA",
+      "workspace.default"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "CREATE MATERIALIZED VIEW",
+      "SCHEMA",
+      "workspace.default"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "USE SCHEMA",
+      "SCHEMA",
+      "workspace.default"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "CREATE TABLE",
+      "SCHEMA",
+      "workspace.default"
+    ]
+  ],
+  "workspace.performance_test": [
+    [
+      "9480056c-9708-40af-92da-c35b15cf61fa",
+      "SELECT",
+      "SCHEMA",
+      "workspace.performance_test"
+    ],
+    [
+      "9480056c-9708-40af-92da-c35b15cf61fa",
+      "USE SCHEMA",
+      "SCHEMA",
+      "workspace.performance_test"
+    ]
+  ],
+  "workspace.ask_mariner_perf_dev": [
+    [
+      "bc2d85ee-a46e-4e87-9539-73e04c087eaa",
+      "EXECUTE",
+      "SCHEMA",
+      "workspace.ask_mariner_perf_dev"
+    ],
+    [
+      "bc2d85ee-a46e-4e87-9539-73e04c087eaa",
+      "USE SCHEMA",
+      "SCHEMA",
+      "workspace.ask_mariner_perf_dev"
+    ],
+    [
+      "9480056c-9708-40af-92da-c35b15cf61fa",
+      "USE SCHEMA",
+      "SCHEMA",
+      "workspace.ask_mariner_perf_dev"
+    ]
+  ],
+  "catalog workspace": [
+    [
+      "bc2d85ee-a46e-4e87-9539-73e04c087eaa",
+      "USE CATALOG",
+      "CATALOG",
+      "workspace"
+    ],
+    [
+      "9480056c-9708-40af-92da-c35b15cf61fa",
+      "USE CATALOG",
+      "CATALOG",
+      "workspace"
+    ],
+    [
+      "_workspace_users_workspace_7474656475764486",
+      "USE CATALOG",
+      "CATALOG",
+      "workspace"
+    ]
+  ]
+}

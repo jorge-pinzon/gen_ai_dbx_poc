@@ -1,0 +1,67 @@
+artifact_path: dbfs:/databricks/mlflow-tracking/2230369232280531/logged_models/m-6ad4da9eb4de4138bfb061123afd13b8/artifacts
+databricks_runtime: client.6
+flavors:
+  python_function:
+    cloudpickle_version: 3.1.1
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.loaders.code_model
+    model_code_path: /Workspace/Users/jorge.pinzon@marinerfinance.com/agent.py
+    python_version: 3.12.3
+    streamable: true
+is_signature_from_type_hint: false
+metadata:
+  task: agent/v2/chat
+mlflow_version: 3.16.1
+model_id: m-6ad4da9eb4de4138bfb061123afd13b8
+model_size_bytes: 6212
+model_uuid: m-6ad4da9eb4de4138bfb061123afd13b8
+prompts: null
+resources:
+  api_version: '1'
+  databricks:
+    function:
+    - name: workspace.default.lookup_benefits_plan
+    serving_endpoint:
+    - name: databricks-claude-sonnet-4-5
+    vector_search_index:
+    - name: workspace.default.benefits_new_index
+run_id: 6218841b87ff4feaa19c4384076fbcdd
+saved_input_example_info:
+  artifact_path: input_example.json
+  serving_input_path: serving_input_example.json
+  type: json_object
+signature:
+  inputs: '[{"type": "array", "items": {"type": "object", "properties": {"attachments":
+    {"type": "map", "values": {"type": "string"}, "required": false}, "content": {"type":
+    "string", "required": false}, "id": {"type": "string", "required": false}, "name":
+    {"type": "string", "required": false}, "role": {"type": "string", "required":
+    true}, "tool_call_id": {"type": "string", "required": false}, "tool_calls": {"type":
+    "array", "items": {"type": "object", "properties": {"function": {"type": "object",
+    "properties": {"arguments": {"type": "string", "required": true}, "name": {"type":
+    "string", "required": true}}, "required": true}, "id": {"type": "string", "required":
+    true}, "type": {"type": "string", "required": true}}}, "required": false}}}, "name":
+    "messages", "required": true}, {"type": "object", "properties": {"conversation_id":
+    {"type": "string", "required": false}, "user_id": {"type": "string", "required":
+    false}}, "name": "context", "required": false}, {"type": "map", "values": {"type":
+    "any"}, "name": "custom_inputs", "required": false}, {"type": "boolean", "name":
+    "stream", "required": false}]'
+  outputs: '[{"type": "array", "items": {"type": "object", "properties": {"attachments":
+    {"type": "map", "values": {"type": "string"}, "required": false}, "content": {"type":
+    "string", "required": false}, "id": {"type": "string", "required": false}, "name":
+    {"type": "string", "required": false}, "role": {"type": "string", "required":
+    true}, "tool_call_id": {"type": "string", "required": false}, "tool_calls": {"type":
+    "array", "items": {"type": "object", "properties": {"function": {"type": "object",
+    "properties": {"arguments": {"type": "string", "required": true}, "name": {"type":
+    "string", "required": true}}, "required": true}, "id": {"type": "string", "required":
+    true}, "type": {"type": "string", "required": true}}}, "required": false}}}, "name":
+    "messages", "required": true}, {"type": "string", "name": "finish_reason", "required":
+    false}, {"type": "map", "values": {"type": "any"}, "name": "custom_outputs", "required":
+    false}, {"type": "object", "properties": {"completion_tokens": {"type": "long",
+    "required": true}, "prompt_tokens": {"type": "long", "required": true}, "total_tokens":
+    {"type": "long", "required": true}}, "name": "usage", "required": false}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-09-30 17:55:53.025588'

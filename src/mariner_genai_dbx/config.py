@@ -5,17 +5,24 @@ from __future__ import annotations
 import json
 import os
 import re
-from dataclasses import dataclass, field
+from dataclasses import replace, dataclass, field
 from pathlib import Path
 from typing import Mapping
 
 from .errors import ConfigurationError
-from .models import CitationTableConfig, SupervisorConfig, VolumeCatalog
+from .models import CitationTableConfig, DirectRoute, SupervisorConfig, VolumeCatalog
 
 
 APPLICATION_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DOTENV_PATH = APPLICATION_ROOT / ".env"
 ALLOWED_DOTENV_SETTINGS = {
+    "PERFORMANCE_FAST_PATH_ENABLED",
+    "PERFORMANCE_FAST_MODEL_ENDPOINT",
+    "PERFORMANCE_SYNTHESIS_MODEL_ENDPOINT",
+    "PERFORMANCE_VIEW_PREFIX",
+    "DATABRICKS_CITATION_REGISTRY_TABLE",
+    "CITATION_REGISTRY_TTL_SECONDS",
+    "CITATION_REGISTRY_TIMEOUT_SECONDS",
     "APP_VERSION",
     "APP_ENV",
     "AUTH_MODE",
@@ -38,6 +45,10 @@ ALLOWED_DOTENV_SETTINGS = {
     "DATABRICKS_SUPERVISOR_ENDPOINT",
     "SUPERVISOR_MODE",
     "VOLUME_CATALOGS_JSON",
+    "DIRECT_SPECIALIST_ROUTES_JSON",
+    "COACHING360_ENABLED",
+    "ANALYTICS_STAGE_TIMINGS",
+    "COACHING360_TIMEOUT_SECONDS",
 }
 
 CITATION_TABLES = (
@@ -95,6 +106,12 @@ CITATION_TABLES = (
         ),
     ),
 )
+# Coaching360 BRD chunks (coaching360/notebooks/setup_agents.py). Added to the citation tables only
+# when COACHING360_ENABLED, because the table does not exist until that notebook has run.
+COACHING360_CITATION_TABLE = CitationTableConfig(
+    table_name="workspace.default.coaching360_chunks",
+    domain="Coaching360",
+)
 
 
 @dataclass(frozen=True)
@@ -112,6 +129,17 @@ class Settings:
     databricks_client_secret: str | None = field(default=None, repr=False)
     databricks_warehouse_id: str | None = None
     databricks_log_table: str = "workspace.default.flask_app_logs"
+    citation_registry_table: str | None = None
+    citation_registry_ttl_seconds: int = 60
+    citation_registry_timeout_seconds: int = 10
+    performance_fast_path_enabled: bool = False
+    performance_fast_model_endpoint: str = "databricks-gpt-5-4-mini"
+    performance_synthesis_model_endpoint: str = "databricks-gpt-5-4-mini"
+    performance_view_prefix: str = "app_vw_"
+    direct_specialist_routes: tuple[tuple[str, DirectRoute], ...] = ()
+    coaching360_enabled: bool = False
+    analytics_stage_timings: bool = False
+    coaching360_timeout_seconds: int = 120
     supervisor_endpoint: str | None = None
     session_secret_key: str | None = field(default=None, repr=False)
     request_timeout_seconds: int = 60
@@ -138,6 +166,7 @@ class Settings:
             client_id=self.databricks_client_id,
             client_secret=self.databricks_client_secret,
             request_timeout_seconds=self.request_timeout_seconds,
+            direct_routes=self.direct_specialist_routes,
         )
 
 
@@ -165,6 +194,17 @@ def load_settings(
         databricks_client_id=_optional(values, "DATABRICKS_CLIENT_ID"),
         databricks_client_secret=_optional(values, "DATABRICKS_CLIENT_SECRET"),
         databricks_warehouse_id=_optional(values, "DATABRICKS_WAREHOUSE_ID"),
+        citation_registry_table=_optional(values, "DATABRICKS_CITATION_REGISTRY_TABLE"),
+        citation_registry_ttl_seconds=_integer(
+            values, "CITATION_REGISTRY_TTL_SECONDS", 60, minimum=1, maximum=3600
+        ),
+        citation_registry_timeout_seconds=_integer(
+            values, "CITATION_REGISTRY_TIMEOUT_SECONDS", 10, minimum=1, maximum=30
+        ),
+        performance_fast_path_enabled=_boolean(values, "PERFORMANCE_FAST_PATH_ENABLED", False),
+        performance_fast_model_endpoint=values.get("PERFORMANCE_FAST_MODEL_ENDPOINT", "databricks-gpt-5-4-mini").strip(),
+        performance_synthesis_model_endpoint=values.get("PERFORMANCE_SYNTHESIS_MODEL_ENDPOINT", "databricks-gpt-5-4-mini").strip(),
+        performance_view_prefix=values.get("PERFORMANCE_VIEW_PREFIX", "app_vw_").strip(),
         databricks_log_table=(
             _optional(values, "DATABRICKS_LOG_TABLE")
             or "workspace.default.flask_app_logs"
@@ -186,12 +226,34 @@ def load_settings(
             values, "CHAT_SESSION_TTL_SECONDS", 1800, minimum=60
         ),
         volume_catalogs=_volume_catalogs(values.get("VOLUME_CATALOGS_JSON", "[]")),
+        direct_specialist_routes=_direct_routes(values.get("DIRECT_SPECIALIST_ROUTES_JSON", "{}")),
+        coaching360_enabled=_boolean(values, "COACHING360_ENABLED", False),
+        analytics_stage_timings=_boolean(values, "ANALYTICS_STAGE_TIMINGS", False),
+        coaching360_timeout_seconds=_integer(values, "COACHING360_TIMEOUT_SECONDS", 120, minimum=10),
     )
+    if settings.coaching360_enabled:
+        settings = replace(settings, citation_tables=settings.citation_tables + (COACHING360_CITATION_TABLE,))
     _validate_settings(settings)
     return settings
 
 
 def _validate_settings(settings: Settings) -> None:
+    if settings.performance_fast_path_enabled:
+        if settings.is_production:
+            raise ConfigurationError("The POC fast path uses app-identity visibility; configure user scope before production")
+        if settings.supervisor_mode != "databricks" or not settings.databricks_warehouse_id or not settings.citation_registry_table:
+            raise ConfigurationError("Performance fast path requires Databricks, warehouse, and citation registry")
+        if not settings.performance_fast_model_endpoint or not settings.performance_synthesis_model_endpoint:
+            raise ConfigurationError("Performance fast path requires model and policy endpoints")
+    if settings.coaching360_enabled and (settings.supervisor_mode != "databricks" or not settings.databricks_warehouse_id):
+        raise ConfigurationError("Coaching360 requires Databricks mode and a SQL warehouse")
+    if settings.performance_view_prefix not in {"app_vw_", "app_fast_"}:
+        raise ConfigurationError("PERFORMANCE_VIEW_PREFIX must be app_vw_ or app_fast_")
+    if settings.citation_registry_table:
+        if not re.fullmatch(r"[A-Za-z0-9_]+\.[A-Za-z0-9_]+\.[A-Za-z0-9_]+", settings.citation_registry_table):
+            raise ConfigurationError("DATABRICKS_CITATION_REGISTRY_TABLE must be fully qualified")
+        if not settings.databricks_warehouse_id or not settings.volume_catalogs:
+            raise ConfigurationError("Citation registry requires a warehouse and approved Volume catalogs")
     if settings.app_env not in {"development", "test", "production"}:
         raise ConfigurationError("APP_ENV must be development, test, or production")
     if settings.auth_mode not in {"local", "password", "databricks"}:
@@ -271,6 +333,34 @@ def _read_allowed_dotenv(path: Path) -> dict[str, str]:
     return values
 
 
+DIRECT_ROUTE_COMMANDS = {"/policy", "/handbook", "/benefits", "/performance"}
+
+
+def _direct_routes(raw_value: str) -> tuple[tuple[str, DirectRoute], ...]:
+    """Parse {"/policy": {"endpoint": ..., "api": "responses"|"chat", "agent": ...}}."""
+    try:
+        records = json.loads(raw_value)
+    except (TypeError, json.JSONDecodeError) as error:
+        raise ConfigurationError("DIRECT_SPECIALIST_ROUTES_JSON must be valid JSON") from error
+    if not isinstance(records, dict):
+        raise ConfigurationError("DIRECT_SPECIALIST_ROUTES_JSON must be a JSON object")
+    routes = []
+    for command, record in records.items():
+        if (command not in DIRECT_ROUTE_COMMANDS or not isinstance(record, dict)
+                or not {"endpoint", "api", "agent"} <= set(record) <= {"endpoint", "api", "agent", "stream"}):
+            raise ConfigurationError("Direct routes need a known command with endpoint, api and agent")
+        endpoint, api, agent = record["endpoint"], record["api"], record["agent"]
+        stream = record.get("stream", False)
+        if type(stream) is not bool:
+            raise ConfigurationError("Direct route stream must be true or false")
+        if (not isinstance(endpoint, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,99}", endpoint)
+                or api not in {"responses", "chat"}
+                or not isinstance(agent, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9 _.-]{0,99}", agent)):
+            raise ConfigurationError("Direct route endpoint, api or agent is invalid")
+        routes.append((command, DirectRoute(endpoint=endpoint, api=api, agent=agent, stream=stream)))
+    return tuple(routes)
+
+
 def _volume_catalogs(raw_value: str) -> tuple[VolumeCatalog, ...]:
     try:
         records = json.loads(raw_value)
@@ -305,6 +395,13 @@ def _volume_catalogs(raw_value: str) -> tuple[VolumeCatalog, ...]:
 def _optional(values: Mapping[str, str], name: str) -> str | None:
     value = values.get(name, "").strip()
     return value or None
+
+
+def _boolean(values, name, default):
+    raw = values.get(name, str(default)).strip().lower()
+    if raw not in {"true", "false"}:
+        raise ConfigurationError(f"{name} must be true or false")
+    return raw == "true"
 
 
 def _integer(

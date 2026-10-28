@@ -1,0 +1,202 @@
+[
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": null,
+  "ask": "/coaching360 Rowan Jessup",
+  "seconds": 7.6,
+  "problems": [],
+  "answer": "\ud83d\udc4b Welcome to Coaching360, Rowan.\n\nI can help you with:\n  Performance: your scorecard, KPIs, ACE goals, and rankings\n  Coaching: coaching records, Success Plans, and acknowledgements\n  Oversight: your team, branch visits, tasks, and follow-ups\n  How Coaching360 works\n\nTry: \"Show me my scorecard for September\" or \"What's in my Success Plan?\"\n\nCommands: /coaching360 <name> to view as someone else \u00b7 /coaching360 switch to change person \u00b7 /coaching360 exit to leave"
+ },
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": "D1",
+  "ask": "Show me my scorecard for September 2026.",
+  "seconds": 31.5,
+  "problems": [],
+  "answer": "# Your Coaching360 Scorecard \u2013 September 2026\n\n## Monthly KPIs (Laurel Fork Branch)\n\n| Measure | Actual | Goal | Status | Last Month | Year-to-Date Avg |\n|---------|--------|------|--------|------------|------------------|\n| **Loans booked** | 6 | \u2014 | \u2014 | 7 | 11 |\n| **LPE (loans per employee)** | 0.29 | 1.00 | Below goal | 0.35 (Below goal) | 0.52 |\n| **DACC loans** | 2 | 2 | Met | 1 (Below goal) | 2 |\n| **Delinquency - current month** | 8.34% | 8.00% | Above goal | 7.57% (Met) | 8.76% |\n| **Delinquency - 30-89 day** | 4.09% | 3.40% | Above goal | 4.67% (Above goal) | 4.53% |\n| **First lien - share of loans** | 32.6% | \u2014 | \u2014 | 38.9% | 38.8% |\n| **First lien - share of volume** | 32.0% | \u2014 | \u2014 | 37.9% | 38.8% |\n| **Cash advance** | $56,858 | $67,145 | Below state average | $44,868 (Below state average) | $42,602 |\n| **Outbound calls** | 1,102 | 1,200 | Below goal | 1,068 (Below goal) | 1,060 |\n| **Outbound contacts** | 252 | 300 | Below goal | 240 (Below goal) | 246 |\n\n## DPR Metrics\n\n| Measure | Actual |\n|---------|--------|\n| **30/60 DQ Resolution Rate** | 62.61% |\n| **App Rate** | 8.60% |\n| **Avg. Net New Money** | $2,619 |\n| **Contacts per Worked Hour** | 9.07 |\n| **Funded Rate** | 48.65% |\n| **NMC** | 109.61 |\n| **NMPH** | 993.77 |\n| **Payment Rate** | 16.30% |\n| **Production %** | 83.24% |"
+ },
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": "D2",
+  "ask": "How does my September LPE compare to my goal and to August?",
+  "seconds": 23.3,
+  "problems": [],
+  "answer": "Based on your September 2026 data:\n\n**September LPE Performance:**\n- **Actual:** 0.29 loans per employee\n- **Goal:** 1.00\n- **Status:** Below goal\n\n**Comparison to August:**\n- **August LPE:** 0.35\n- Your September LPE of 0.29 decreased from August's 0.35\n\n**Year-to-Date Average:**\n- **YTD Average:** 0.52\n\nIn summary, your September LPE of 0.29 is below your goal of 1.00 and represents a decrease from August's 0.35. You booked 6 loans in September compared to 7 loans in August."
+ },
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": "D3",
+  "ask": "Which of my September metrics met goal and which missed?",
+  "seconds": 21.7,
+  "problems": [],
+  "answer": "Based on your September 2026 metrics:\n\n**Metrics that met goal:**\n- **DACC loans**: 2 (Goal: 2) \u2014 Met\n\n**Metrics that missed goal:**\n- **LPE (loans per employee)**: 0.29 (Goal: 1.00) \u2014 Below goal\n- **Delinquency - current month**: 8.34% (Goal: 8.00%) \u2014 Above goal (higher delinquency is worse)\n- **Delinquency - 30-89 day**: 4.09% (Goal: 3.40%) \u2014 Above goal (higher delinquency is worse)\n- **Cash advance**: $56,858 (State average: $67,145) \u2014 Below state average\n- **Outbound calls**: 1,102 (Goal: 1,200) \u2014 Below goal\n- **Outbound contacts**: 252 (Goal: 300) \u2014 Below goal\n\n**Metrics without goals** (informational only):\n- Loans booked: 6\n- First lien - share of loans: 32.6%\n- First lien - share of volume: 32.0%\n- DPR metrics (30/60 DQ Resolution Rate, App Rate, Avg. Net New Money, Contacts per Worked Hour, Funded Rate, NMC, NMPH, Payment Rate, Production %)\n\n**Summary**: You met your DACC loans goal in September. The primary areas needing improvement are LPE, delinquency rates, cash advance volume, and outbound call/contact activity."
+ },
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": "D7",
+  "ask": "What's in my Success Plan for October?",
+  "seconds": 30.0,
+  "problems": [],
+  "answer": "## Your Success Plan for October 2026\n\n**Status:** Active (Not yet approved)  \n**Focus Type:** Metric & Competency\n\n### Goal Statement\nBuild consistency in LPE through daily routines.\n\n### Development Areas\n- **Metrics:** LPE, Contacts per Worked Hour, First Lien Rate\n- **Competencies:** Drive Results\n\n### Action Plan\nAsk the vehicle ownership question on every application; present secured options.\n\n### Success Measures\n- LPE at or above 1.00\n- Contacts per Worked Hour at or above 9.5\n- First Lien Rate at or above 42.0%\n\n### Monthly KPI Goals & Performance\n\n| Metric | October Goal | September Actual | YTD Average |\n|--------|--------------|------------------|-------------|\n| **LPE** | 1.00 | 0.29 | 0.52 |\n| **Contacts per Worked Hour** | 9.5 | \u2014 | \u2014 |\n| **First Lien Rate** | 42.0% | 32.0% | 38.8% |\n\nYour Success Plan is currently active but awaiting approval. Focus on the action plan to improve your LPE and First Lien Rate, which were both below goal in September."
+ },
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": "D8",
+  "ask": "What did I focus on in September, and did I hit it?",
+  "seconds": 23.0,
+  "problems": [],
+  "answer": "In **September 2026**, your Success Plan focused on:\n\n**Focus Areas:**\n- **Metrics:** LPE and DACC Loans\n- **Competency:** Communicates Effectively\n\n**Goal:** Build consistency in LPE through daily routines by asking the vehicle ownership question on every application and presenting secured options.\n\n**Success Measures:** LPE at or above 1.00, DACC Loans at or above 2\n\n---\n\n**Results:**\n\n| Metric | September Goal | September Actual | Hit Goal? | Previous Month | YTD Average |\n|--------|----------------|------------------|-----------|----------------|-------------|\n| **LPE** | 1.00 | 0.29 | \u274c No | 0.35 | 0.52 |\n| **DACC Loans** | 2 | 2 | \u2705 Yes | 1 | 2 |\n\n**Summary:** You hit your DACC Loans goal with 2 loans in September, but did not reach your LPE target\u2014you achieved 0.29 against a goal of 1.00. Your plan was approved and locked on 9/3/2026."
+ },
+ {
+  "conversation": "Act 1+2: Rowan Jessup",
+  "id": "D14",
+  "ask": "Do I have any coaching records waiting for my acknowledgement?",
+  "seconds": 19.8,
+  "problems": [],
+  "answer": "Yes, you have **4 coaching records** waiting for your acknowledgement:\n\n| Coaching Date | Trigger Type | Topic | KPI Focus | Observation Summary | Days Waiting |\n|--------------|--------------|-------|-----------|---------------------|--------------|\n| 2026-01-16 | kpi | performance | lpe | Rowan finished December at 0.23 LPE; pipeline reviews show several apps stalling after the first call. | 277 |\n| 2026-04-02 | kpi | performance | lpe | Rowan finished March at 0.47 LPE; pipeline reviews show several apps stalling after the first call. | 201 |\n| 2026-05-11 | kpi | performance | lpe | Rowan's LPE for April came in at 0.62 against a goal of 1.00, the lowest on the team. | 162 |\n| 2026-07-30 | branchVisit | performance | lpe | Rowan finished June at 0.48 LPE; pipeline reviews show several apps stalling after the first call. | 82 |\n\nAll four records focus on Loans Per Employee (LPE) performance and are pending your acknowledgement, with the oldest record waiting 277 days."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": null,
+  "ask": "/coaching360 Riley Quimby",
+  "seconds": 4.9,
+  "problems": [],
+  "answer": "\ud83d\udc4b Welcome to Coaching360, Riley.\n\nI can help you with:\n  Performance: your scorecard, KPIs, ACE goals, and rankings\n  Coaching: coaching records, Success Plans, and acknowledgements\n  Oversight: your team, branch visits, tasks, and follow-ups\n  How Coaching360 works\n\nTry: \"Show me my scorecard for September\" or \"What's in my Success Plan?\"\n\nCommands: /coaching360 <name> to view as someone else \u00b7 /coaching360 switch to change person \u00b7 /coaching360 exit to leave"
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D4",
+  "ask": "Show me my team's scorecard at Laurel Fork for September.",
+  "seconds": 33.8,
+  "problems": [],
+  "answer": "## Laurel Fork Team Scorecard \u2013 September 2026\n\n| Employee | Title | Total Loans | LPE | LPE Goal | LPE Status | Last Month LPE | DACC Loans | DACC Goal | DACC Status | Last Month DACC | Dlq Current | Dlq Goal | Dlq Status | Dlq 30-89 Day | Dlq 30-89 Goal | Dlq 30-89 Status | Last Month Dlq 30-89 | First Lien % | Outbound Calls | Calls Goal | Calls Status | Outbound Contacts | Contacts Goal | Contacts Status | LPE Rank in Branch | LPE Rank Overall |\n|----------|-------|-------------|-----|----------|------------|----------------|------------|-----------|-------------|-----------------|-------------|----------|------------|---------------|----------------|------------------|----------------------|--------------|----------------|------------|--------------|-------------------|---------------|-----------------|--------------------|--------------------|\n| Selena Driscoll | Assistant Branch Manager | 20 | 0.95 | 1.00 | Below goal | 0.80 | 4 | 2 | Met | 4 | 7.11% | 8.00% | Met | 2.98% | 3.40% | Met | 3.75% | 54.6% | 1,805 | 1,200 | Met | 416 | 300 | Met | 1 | 2 |\n| Avery Northcott | Account Representative | 18 | 0.86 | 1.00 | Below goal | 0.85 | 1 | 2 | Below goal | 3 | 6.85% | 8.00% | Met | 4.57% | 3.40% | Above goal | 4.17% | 43.2% | 1,443 | 1,200 | Met | 329 | 300 | Met | 2 | 4 |\n| Riley Quimby | Branch Manager | 10 | 0.48 | 1.00 | Below goal | 0.75 | 0 | 2 | Below goal | 1 | 10.57% | 8.00% | Above goal | 5.11% | 3.40% | Above goal | 4.56% | 27.5% | 431 | 900 | Below goal | 91 | 225 | Below goal | 3 | 6 |\n| Rowan Jessup | Account Representative | 6 | 0.29 | 1.00 | Below goal | 0.35 | 2 | 2 | Met | 1 | 8.34% | 8.00% | Above goal | 4.09% | 3.40% | Above goal | 4.67% | 32.6% | 1,102 | 1,200 | Below goal | 252 | 300 | Below goal | 4 | 8 |\n\n**Key Observations:**\n- All four team members are below the LPE goal of 1.00 for September\n- Selena Driscoll leads the branch with an LPE of 0.95 and ranks #2 overall\n- DACC loan performance is mixed: Selena met goal (4 loans), while Riley and Avery are below goal\n- Delinquency metrics show current month delinquency is controlled (all at or below 8% goal), but 30-89 day delinquency is elevated for three team members\n- Call activity is strong for Selena and Avery (both exceeding goals), but Riley and Rowan are below their outbound call and contact goals"
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D5",
+  "ask": "Who is the top performer at Laurel Fork, and who needs the most help?",
+  "seconds": 41.6,
+  "problems": [],
+  "answer": "At Laurel Fork in September 2026:\n\n**Top Performer: Selena Driscoll**\n- LPE: 0.9524\n- DACC Loans: 4\n- Current Month DLQ: 7.11% (Goal: 8.0%)\n- DLQ 30-89 Day: 2.98% (Goal: 3.4%)\n- First Lien Percentage: 54.58%\n\n**Needs the Most Help: Rowan Jessup**\n- LPE: 0.2857\n- DACC Loans: 2\n- Current Month DLQ: 8.34% (Goal: 8.0%)\n- DLQ 30-89 Day: 4.09% (Goal: 3.4%)\n- First Lien Percentage: 32.56%\n\nSelena is performing well above expectations with a strong LPE score and delinquency metrics under goal. Rowan's LPE is significantly lower, with delinquency rates above goal and fewer DACC loans, indicating an opportunity for focused coaching and support."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D6",
+  "ask": "Which employees are over the 30\u201389 day delinquency goal?",
+  "seconds": 23.2,
+  "problems": [],
+  "answer": "Based on the September 2026 data, the following employees are over the 30\u201389 day delinquency goal of 3.40%:\n\n| Employee Name | Branch | Title | 30-89 Day Delinquency | Goal | Status | Coverage |\n|---------------|--------|-------|----------------------|------|--------|----------|\n| Avery Northcott | Laurel Fork | Account Representative | 4.57% | 3.40% | Above goal | Own branch |\n| Riley Quimby | Laurel Fork | Branch Manager | 5.11% | 3.40% | Above goal | Own branch |\n| Rowan Jessup | Laurel Fork | Account Representative | 4.09% | 3.40% | Above goal | Own branch |\n| Reese Delacroix | Shenandoah Mills | Account Representative | 5.24% | 3.40% | Above goal | Relief coverage until 11/12/2026 |\n\n**Summary:** Four employees exceeded the 30\u201389 day delinquency goal in September 2026. Three are from Laurel Fork (including the Branch Manager Riley Quimby at 5.11%), and one is from Shenandoah Mills under relief coverage. Last month's 30\u201389 day delinquency rates for these employees ranged from 3.95% to 4.67%, indicating ongoing challenges in this area."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D9",
+  "ask": "Which Success Plans on my team still need my approval?",
+  "seconds": 27.0,
+  "problems": [],
+  "answer": "You have **3 Success Plans** on your team that still need your approval:\n\n| Employee | Branch | Coverage | Goal Month | Status | Due Date | Metric Focus Areas | Competency Focus Areas |\n|----------|--------|----------|------------|--------|----------|-------------------|----------------------|\n| Rowan Jessup | Laurel Fork | Own branch | October 2026 | Active | None | LPE, Contacts per Worked Hour, First Lien Rate | Drive Results |\n| Andre Valdez | Shenandoah Mills | Relief coverage until 11/12/2026 | October 2026 | Active | None | Outbound Calls, DACC Loans | None |\n| Reese Delacroix | Shenandoah Mills | Relief coverage until 11/12/2026 | October 2026 | Active | October 31, 2026 | LPE, Contacts per Worked Hour | Decision Quality |\n\n**Note:** Reese Delacroix's Success Plan has a due date of October 31, 2026, so approval is needed soon. The other two plans do not have specified due dates."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D10",
+  "ask": "Show me Rowan Jessup's coaching history.",
+  "seconds": 30.2,
+  "problems": [],
+  "answer": "## Rowan Jessup's Coaching History\n\nRowan Jessup has **16 coaching records in 2026** (11 of which are KPI-focused). Here's the complete coaching history:\n\n| Date | Trigger Type | Topic | KPI Focus | Competency | Observation Summary | Coaching Provided | Root Cause | Action Required | Status |\n|------|--------------|-------|-----------|------------|---------------------|-------------------|------------|-----------------|--------|\n| 2026-09-14 | Accountability Call | Performance | LPE | \u2014 | Rowan finished August at 0.35 LPE; pipeline reviews show several apps stalling after the first call. | Walked through the daily pipeline routine: first-hour callbacks, then aging apps, then renewals. Role-played the closing ask. | Process Gap | Target 5 closed loans per week for the rest of the month. | Submitted |\n| 2026-09-01 | Competency | Development | \u2014 | Action Oriented | Coaching conversation on Action Oriented. | Discussed acting on callbacks the same day instead of waiting. | Knowledge Gap | Pick one behavior to practice this week and review it Friday. | Submitted |\n| 2026-08-07 | KPI | Performance | Cash Advance | \u2014 | Net cash advanced was below the state average for Rowan in July (32%). | Reviewed how to present the full available amount responsibly and document the customer's decision. | System Issue | Review two closed files per week with the BM for missed opportunities. | Submitted |\n| 2026-07-30 | Branch Visit | Performance | LPE | \u2014 | Rowan finished June at 0.48 LPE; pipeline reviews show several apps stalling after the first call. | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Staffing Constraint | Complete a pipeline review every morning and log callbacks before 10am. | Pending Acknowledgement |\n| 2026-07-10 | KPI | Performance | LPE | \u2014 | Rowan's LPE for June came in at 0.48 against a goal of 1.00, the lowest on the team. | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Prioritization | Target 5 closed loans per week for the rest of the month. | Submitted |\n| 2026-06-29 | Competency | Development | \u2014 | Collaborates | Coaching conversation on Collaborates. | Discussed sharing walk-in coverage so call blocks are protected. | Process Gap | Share an example at the next team huddle. | Submitted |\n| 2026-05-11 | KPI | Performance | LPE | \u2014 | Rowan's LPE for April came in at 0.62 against a goal of 1.00, the lowest on the team. | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Prioritization | Target 5 closed loans per week for the rest of the month. | Pending Acknowledgement |\n| 2026-05-05 | Competency | Development | \u2014 | Communicates Effectively | Coaching conversation on Communicates Effectively. | Discussed keeping the team informed about pending files. | Prioritization | Share an example at the next team huddle. | Submitted |\n| 2026-05-01 | KPI | Performance | LPE | \u2014 | Rowan finished April at 0.52 LPE; pipeline reviews show several apps stalling after the first call. | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Knowledge Gap | Shadow the top producer in the branch for two afternoons this week. | Submitted |\n| 2026-04-23 | QA Review | Operational Controls | \u2014 | \u2014 | Cash drawer count discrepancy was noted on the daily audit. | Reviewed cash handling procedures and dual-control requirements. | Process Gap | Complete the file checklist on every loan for the next 30 days. | Submitted |\n| 2026-04-16 | Competency | Development | \u2014 | Drive Results | Coaching conversation on Drive Results. | Discussed ownership of monthly goals and breaking them into weekly targets. | Prioritization | Add this competency to next month's Success Plan. | Submitted |\n| 2026-04-02 | KPI | Performance | LPE | \u2014 | Rowan finished March at 0.47 LPE; pipeline reviews show several apps stalling after the first call. | Reviewed call scripts for the approval conversation and practiced handling the 'I need to think about it' objection. | Staffing Constraint | Complete a pipeline review every morning and log callbacks before 10am. | Pending Acknowledgement |\n| 2026-02-27 | KPI | Performance | LPE | \u2014 | Rowan finished January at 0.57 LPE; pipeline reviews show several apps stalling after the first call. | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Process Gap | Target 5 closed loans per week for the rest of the month. | Submitted |\n| 2026-01-29 | KPI | Performance | LPE | \u2014 | Production slipped in December: Rowan closed 5 loans for an LPE of 0.23 (goal 1.00). | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Prioritization | Shadow the top producer in the branch for two afternoons this week. | Submitted |\n| 2026-01-16 | KPI | Performance | LPE | \u2014 | Rowan finished December at 0.23 LPE; pipeline reviews show several apps stalling after the first call. | Reviewed call scripts for the approval conversation and practiced handling the 'I need to think about it' objection. | Knowledge Gap | Shadow the top producer in the branch for two afternoons this week. | Pending Acknowledgement |\n| 2026-01-08 | Accountability Call | Performance | LPE | \u2014 | Production slipped in December: Rowan closed 5 loans for an LPE of 0.23 (goal 1.00). | Set up a daily 15-minute pipeline huddle and showed how to prioritize apps by funding likelihood. | Process Gap | Target 5 closed loans per week for the rest of the month. | Submitted |\n\n**Key Patterns:**\n- **Primary Focus**: Loans Per Employee (LPE) performance \u2014 11 of 16 records address LPE challenges\n- **Root Causes**: Process gaps, prioritization issues, knowledge gaps, and staffing constraints\n- **Competency Development**: Action Oriented, Collaborates, Communicates Effectively, Drive Results\n- **Status**: 12 records submitted, 4 pending acknowledgement\n- **Other Topics**: Cash advance performance (August) and operational controls/cash handling (April)"
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D11",
+  "ask": "What did I coach Rowan on last, and what was the action plan?",
+  "seconds": 20.9,
+  "problems": [],
+  "answer": "Your most recent coaching session with Rowan Jessup was on **September 14, 2026**.\n\n**Topic:** Performance (LPE - Loans Per Employee)\n\n**Observation:**  \nRowan finished August at 0.35 LPE; pipeline reviews showed several apps stalling after the first call.\n\n**Coaching Provided:**  \nYou walked through the daily pipeline routine: first-hour callbacks, then aging apps, then renewals. You also role-played the closing ask.\n\n**Root Cause:**  \nProcess gap\n\n**Action Plan:**  \nTarget 5 closed loans per week for the rest of the month.\n\n**Status:** Submitted\n\nThis was an accountability call focused on improving Rowan's loan production through better pipeline management and closing techniques."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D12",
+  "ask": "Show Rowan's LPE for each month from May to September 2026.",
+  "seconds": 37.7,
+  "problems": [],
+  "answer": "Here is Rowan's LPE (Loans Per Employee) for each month from May to September 2026:\n\n| Month | LPE |\n|-------|-----|\n| May 2026 | 0.70 |\n| June 2026 | 0.48 |\n| July 2026 | 0.64 |\n| August 2026 | 0.35 |\n| September 2026 | 0.29 |\n\nThe data shows a declining trend in LPE from May through September, with the highest performance in May (0.70) and the lowest in September (0.29)."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D12b",
+  "ask": "Help me prepare a KPI coaching conversation with Rowan about LPE.",
+  "seconds": 45.4,
+  "problems": [],
+  "answer": "## LPE Coaching Conversation Preparation for Rowan Jessup\n\n**September 2026 Performance:**\n\n- **LPE Actual:** 0.29\n- **LPE Goal:** 1.00\n- **Gap:** 0.71 below goal\n\n**Supporting Metrics:**\n- **Total Loans:** 6\n- **DACC Loans:** 2\n- **First Lien:** 32.6%\n\n---\n\n### Coaching Conversation Guide\n\n**Key Discussion Points:**\n\n1. **Performance Gap:** Rowan's LPE of 0.29 is significantly below the goal of 1.00, indicating the branch is producing less than one loan per employee for the month.\n\n2. **Root Cause Exploration:**\n   - What obstacles are preventing loan production?\n   - Are there staffing challenges, training needs, or lead flow issues?\n   - How is the team converting opportunities to funded loans?\n\n3. **Loan Mix Analysis:**\n   - With only 6 total loans and 2 DACC loans, discuss whether the team is focusing on the right product mix\n   - First Lien at 32.6% \u2014 explore if there are opportunities to increase first lien production\n\n4. **Action Planning:**\n   - Set specific daily/weekly activity targets to close the gap\n   - Identify immediate opportunities in the pipeline\n   - Discuss any support needed (training, lead sources, process improvements)\n   - Establish check-in points to monitor progress\n\n5. **Accountability:** Agree on specific actions Rowan will take and timeline for improvement."
+ },
+ {
+  "conversation": "Act 1+3: Riley Quimby",
+  "id": "D13",
+  "ask": "Draft a recognition note for Selena Driscoll on her September results.",
+  "seconds": 27.5,
+  "problems": [],
+  "answer": "Based on Selena Driscoll's September 2026 performance at Laurel Fork, here's a recognition note:\n\n---\n\n**Recognition Note for Selena Driscoll**\n\nSelena,\n\nI want to take a moment to recognize your outstanding performance in September 2026. Your results demonstrate exceptional execution across multiple key metrics:\n\n**Delinquency Management Excellence:**\n- You achieved a current delinquency rate of **7.11%**, beating your goal of 8.0%\n- Your 30-60 day delinquency rate came in at **2.98%**, well under the 3.4% target\n- This disciplined approach to portfolio quality protects both our customers and the branch\n\n**Production & Quality:**\n- Your Loans Per Employee metric of **0.95** reflects strong productivity\n- You originated **4 DACC loans**, contributing to our strategic product mix\n- Your first lien percentage of **54.58%** shows balanced portfolio composition\n\nYour ability to maintain portfolio quality while driving production sets a strong example for the team. Keep up the excellent work!\n\n---\n\nThis note highlights Selena's specific achievements in delinquency management, where she exceeded both goals, along with her solid production metrics for the month."
+ },
+ {
+  "conversation": "Act 4: Felicia Umberto",
+  "id": null,
+  "ask": "/coaching360 Felicia Umberto",
+  "seconds": 4.6,
+  "problems": [],
+  "answer": "\ud83d\udc4b Welcome to Coaching360, Felicia.\n\nI can help you with:\n  Performance: your scorecard, KPIs, ACE goals, and rankings\n  Coaching: coaching records, Success Plans, and acknowledgements\n  Oversight: your team, branch visits, tasks, and follow-ups\n  How Coaching360 works\n\nTry: \"Show me my scorecard for September\" or \"What's in my Success Plan?\"\n\nCommands: /coaching360 <name> to view as someone else \u00b7 /coaching360 switch to change person \u00b7 /coaching360 exit to leave"
+ },
+ {
+  "conversation": "Act 4: Felicia Umberto",
+  "id": "D15",
+  "ask": "Give me an overview of the branches in my district.",
+  "seconds": 35.9,
+  "problems": [],
+  "answer": "Here's an overview of the branches in your Shenandoah district for September 2026:\n\n| Branch | Branch Manager | LPE | DACC Loans | Current Dlq | 30-89 Day Dlq | 30-89 Day Goal | 30-89 Day Status | First Lien | ROA | Total Volume | LPE Rank | Dlq 30-89 Rank | First Lien Rank | Volume Rank |\n|--------|---------------|-----|------------|-------------|---------------|----------------|------------------|------------|-----|--------------|----------|----------------|-----------------|-------------|\n| Blue Ridge Crossing (8007) | Casey Sherwood | 0.94 | 9 | 10.16% (Goal: 8.00%) | 4.11% | 3.40% | Above goal | 54.1% | 6.12 | $407,171 | 3 | 5 | 1 | 5 |\n| Rappahannock Hills (8008) | Isaac Zeller | 0.80 | 10 | 7.23% (Goal: 8.00%) | 3.22% | 3.40% | Met | 47.2% | 4.53 | $421,926 | 5 | 3 | 5 | 3 |\n| Stonewall Junction (8009) | Elliot Pemberton | 0.99 | 10 | 8.38% (Goal: 8.00%) | 2.62% | 3.40% | Met | 49.1% | 6.24 | $486,449 | 1 | 1 | 3 | 2 |\n| Pine Bluff (8010) | Colin Lindqvist | 0.95 | 14 | 4.64% (Goal: 8.00%) | 3.78% | 3.40% | Above goal | 51.4% | 4.90 | $672,673 | 2 | 4 | 2 | 1 |\n| Laurel Fork (8011) | Riley Quimby | 0.64 | 7 | 8.32% (Goal: 8.00%) | 4.19% | 3.40% | Above goal | 42.2% | 4.66 | $264,572 | 6 | 6 | 6 | 6 |\n| Shenandoah Mills (8012) | Andre Valdez | 0.86 | 10 | 7.28% (Goal: 8.00%) | 3.15% | 3.40% | Met | 48.7% | -0.73 | $410,958 | 4 | 2 | 4 | 4 |\n\n**Key Highlights:**\n- Your district has 6 branches with total volume ranging from $264,572 (Laurel Fork) to $672,673 (Pine Bluff)\n- **Top performer:** Stonewall Junction leads in LPE (0.99) and has the best 30-89 day delinquency rate (2.62%)\n- **Volume leader:** Pine Bluff generated the highest total volume ($672,673) and ranks #1 in the district\n- **Delinquency:** Three branches are above goal on 30-89 day delinquency, while three have met their goal\n- **Area of concern:** Laurel Fork ranks last across most metrics (LPE: 0.64, Volume: $264,572) and may need additional support"
+ },
+ {
+  "conversation": "Act 4: Felicia Umberto",
+  "id": "D16",
+  "ask": "Which branches have the most coaching records pending acknowledgement or open tasks?",
+  "seconds": 24.0,
+  "problems": [],
+  "answer": "Here are the branches with the most coaching records pending acknowledgement or open tasks:\n\n| Branch | Pending Acknowledgements | Open Tasks |\n|--------|------------------------:|----------:|\n| Pine Bluff | 6 | 33 |\n| Laurel Fork | 5 | 25 |\n| Blue Ridge Crossing | 3 | 25 |\n| Shenandoah Mills | 2 | 36 |\n| Stonewall Junction | 2 | 24 |\n| Rappahannock Hills | 2 | 21 |\n\n**Pine Bluff** leads with 6 pending acknowledgements and 33 open tasks. **Shenandoah Mills** has the highest number of open tasks at 36, though only 2 pending acknowledgements. **Laurel Fork** and **Blue Ridge Crossing** also show elevated activity with 5 and 3 pending acknowledgements respectively, and 25 open tasks each."
+ },
+ {
+  "conversation": "Act 4: Felicia Umberto",
+  "id": "D17",
+  "ask": "Help me plan my next visit to Laurel Fork. What should I know before I walk in?",
+  "seconds": 46.5,
+  "problems": [],
+  "answer": "## Laurel Fork Branch Visit Preparation\n\n**Branch Performance (September 2026)**\n- **LPE:** 0.64 (ranked 6 of 6 in district)\n- **DACC loans:** 7\n- **30-89 day delinquency:** 4.19% vs goal 3.40% (ranked 6 of 6, where 1 = lowest)\n- **Current-month delinquency:** 8.32% vs goal 8.00%\n- **First lien:** 42.2%\n\n**Employee Performance**\n\n| Employee | LPE | 30-89 Day Delinquency | DACC Loans | Pending Acknowledgements | Open Tasks (Overdue) | Success Plan |\n|----------|-----|----------------------|------------|-------------------------|---------------------|--------------|\n| Selena Driscoll | 0.95 (goal 1.00) | 2.98% (under goal) | 4 | 1 | 3 (2 overdue) | Locked |\n| Rowan Jessup | 0.29 (goal 1.00) | 4.09% (over goal) | 2 | 4 | 6 (2 overdue) | Active |\n| Avery Northcott | 0.86 (goal 1.00) | 4.57% (over goal) | 1 | 0 | 4 (3 overdue) | Locked |\n| Riley Quimby | 0.48 (goal 1.00) | 5.11% (over goal) | 0 | 0 | 10 (8 overdue) | Approved |\n\n**Key Issues to Address**\n- **Branch totals:** 5 coaching records pending acknowledgement; 25 open tasks (17 overdue)\n- **Success Plan awaiting approval:** Rowan Jessup (October 2026)\n- **Riley Quimby has 4 overdue visit follow-ups:**\n  - Competencies (4/2/2026 visit) - overdue, due 4/29/2026\n  - Sales Performance (5/15/2026 visit) - overdue, due 5/31/2026\n  - Sales Performance (7/21/2026 visit) - overdue, due 8/8/2026\n  - Competencies (9/8/2026 visit) - overdue, due 9/20/2026\n\n**Recent Visit History**\n- 10/7/2026: Laurel Fork - delinquency and staffing review (Submitted)\n- 9/8/2026: Laurel Fork branch visit (Submitted)\n- 8/27/2026: Laurel Fork monthly review (Submitted)\n\n**Focus Areas:** The branch is underperforming in both LPE and delinquency management. Riley Quimby needs immediate attention regarding overdue follow-ups, and the team has significant task completion issues. Delinquency is the most pressing concern, with three of four employees above goal."
+ },
+ {
+  "conversation": "Act 4: Felicia Umberto",
+  "id": "D18",
+  "ask": "What follow-ups came out of my October 7 visit to Laurel Fork, and are they done?",
+  "seconds": 31.4,
+  "problems": [],
+  "answer": "Your October 7 visit to Laurel Fork covered six topics: Competencies, Operational Controls, Other, Recognition, Sales Performance, and Collections.\n\nFive topics required no follow-up. One action item was assigned:\n\n| Topic | Action Plan | Assigned To | Due Date | Status | Completed |\n|-------|-------------|-------------|----------|--------|-----------|\n| Collections | Work the 30-day bucket every morning and review the aging report Fridays. | Riley Quimby | Oct 21, 2026 | Completed | Oct 19, 2026 |\n\n**Summary:** All follow-ups from your October 7 Laurel Fork visit are complete. Riley Quimby finished the Collections action item two days ahead of the October 21 deadline."
+ },
+ {
+  "conversation": "Act 4: Keisha Foxworth",
+  "id": null,
+  "ask": "/coaching360 Keisha Foxworth",
+  "seconds": 4.5,
+  "problems": [],
+  "answer": "\ud83d\udc4b Welcome to Coaching360, Keisha.\n\nI can help you with:\n  Performance: your scorecard, KPIs, ACE goals, and rankings\n  Coaching: coaching records, Success Plans, and acknowledgements\n  Oversight: your team, branch visits, tasks, and follow-ups\n  How Coaching360 works\n\nTry: \"Show me my scorecard for September\" or \"What's in my Success Plan?\"\n\nCommands: /coaching360 <name> to view as someone else \u00b7 /coaching360 switch to change person \u00b7 /coaching360 exit to leave"
+ },
+ {
+  "conversation": "Act 4: Keisha Foxworth",
+  "id": "D19",
+  "ask": "How is District 902 doing compared to the other districts in my region?",
+  "seconds": 34.5,
+  "problems": [],
+  "answer": "## District 902 (Shenandoah) Performance Comparison \u2013 September 2026\n\nHere's how District 902 compares to the other districts in your region:\n\n| District | District Name | DM Name | LPE | DACC Loans | Dlq Score | Dlq Goal Status | ROA Score | First Lien | Total Volume | LPE Rank | Dlq Rank | ROA Rank | First Lien Rank |\n|----------|---------------|---------|-----|------------|-----------|-----------------|-----------|------------|--------------|----------|----------|----------|-----------------|\n| 901 | Chesapeake | Nolan Ingram | 0.96 | 60 | 108.8 | Meets goal | 100.0 | 46.0% | $3,239,258 | 1 | 2 | 2 | 2 |\n| 902 | Shenandoah | Felicia Umberto | 0.87 | 60 | 96.8 | Misses goal | 90.1 | 49.1% | $2,663,748 | 3 | 3 | 3 | 1 |\n| 903 | Susquehanna | Olivia Northcott | 0.90 | 62 | 109.7 | Meets goal | 110.9 | 45.5% | $3,103,967 | 2 | 1 | 1 | 3 |\n\n**Key Observations:**\n\n- **District 902** ranks **3rd of 3** in LPE (0.87), Delinquency Score (96.8), and ROA Score (90.1)\n- District 902 **misses goal** on Delinquency Score, while Districts 901 and 903 meet their delinquency goals\n- District 902 leads in **First Lien percentage** at 49.1% (Rank 1)\n- Total Volume for District 902 is $2,663,748, the lowest among the three districts\n- District 902 originated 60 DACC Loans, tied with District 901\n\nDistrict 902 is currently trailing in most operational metrics but excels in first lien loan origination mix."
+ },
+ {
+  "conversation": "Act 4: Keisha Foxworth",
+  "id": "D20",
+  "ask": "Are my district managers keeping up with branch visits?",
+  "seconds": 35.6,
+  "problems": [],
+  "answer": "Your district managers are generally keeping up with branch visits, with some variation:\n\n| District Manager | District | Completed Visits | Scheduled Visits | Overdue Visits | Draft Visits | Visits This Month | Last Visit Date | Branches Not Visited in 30 Days | As of Date |\n|---|---|---:|---:|---:|---:|---:|---|---:|---|\n| Nolan Ingram | Chesapeake | 74 | 4 | 0 | 0 | 2 | 2026-10-15 | 2 | 2026-10-20 |\n| Felicia Umberto | Shenandoah | 76 | 2 | 1 | 1 | 7 | 2026-10-08 | 0 | 2026-10-20 |\n| Olivia Northcott | Susquehanna | 76 | 5 | 1 | 0 | 5 | 2026-10-13 | 0 | 2026-10-20 |\n\n**Summary:**\n- **Nolan Ingram (Chesapeake)** has no overdue visits but has 2 branches that haven't been visited in the last 30 days.\n- **Felicia Umberto (Shenandoah)** has 1 overdue visit and 1 draft visit, but all branches have been visited within 30 days. She completed 7 visits this month.\n- **Olivia Northcott (Susquehanna)** has 1 overdue visit but all branches have been visited within 30 days. She completed 5 visits this month.\n\nOverall, your DMs are maintaining active visit schedules with 74-76 completed visits each. The two overdue visits (Felicia and Olivia) should be addressed, and Nolan's 2 branches that haven't been visited in 30 days may need attention."
+ }
+]

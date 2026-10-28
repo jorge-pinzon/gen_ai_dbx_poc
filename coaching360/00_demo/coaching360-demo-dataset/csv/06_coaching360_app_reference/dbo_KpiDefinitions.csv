@@ -1,0 +1,10 @@
+KpiDefinitionId,KpiCode,KpiName,Category,Description,UnitOfMeasure,IsHigherBetter,IsActive,CreatedUtc,UpdatedUtc
+1,dpr-contacts-per-worked-hour,Contacts per Worked Hour,DPR Employee Scorecard,DPR source metric: Contacts per Worked Hour.,ContactsPerHour,1,1,2026-09-23 15:00:00.000,
+2,dpr-production-percent,Production %,DPR Employee Scorecard,DPR source metric: Production %.,Ratio,1,1,2026-09-23 15:00:00.000,
+3,dpr-app-rate,App Rate,DPR Employee Scorecard,DPR source metric: App Rate.,Ratio,1,1,2026-09-23 15:00:00.000,
+4,dpr-funded-rate,Funded Rate,DPR Employee Scorecard,DPR source metric: Funding Rate.,Ratio,1,1,2026-09-23 15:00:00.000,
+5,dpr-average-cashout,Avg. Net New Money,DPR Employee Scorecard,DPR source metric: Average Cashout.,Currency,1,1,2026-09-23 15:00:00.000,
+6,dpr-payment-rate,Payment Rate,DPR Employee Scorecard,DPR source metric: Payment Rate.,Ratio,1,1,2026-09-23 15:00:00.000,
+7,dpr-30-60-dq-resolution-rate,30/60 DQ Resolution Rate,DPR Employee Scorecard,DPR source metric: 30/60 DQ Resolution Rate.,Ratio,1,1,2026-09-23 15:00:00.000,
+8,dpr-nmc,NMC,DPR Employee Scorecard,DPR source metric: CEV1.,CurrencyPerContact,1,1,2026-09-23 15:00:00.000,
+9,dpr-nmph,NMPH,DPR Employee Scorecard,DPR source metric: EVPH.,CurrencyPerHour,1,1,2026-09-23 15:00:00.000,

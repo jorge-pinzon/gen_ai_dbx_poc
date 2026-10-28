@@ -16,6 +16,7 @@ import json
 import logging
 import math
 import multiprocessing as mp
+import re
 import statistics
 import time
 import uuid
@@ -43,12 +44,28 @@ def utc_now():
     return datetime.now(timezone.utc).isoformat()
 
 
+# Exceptions whose messages are fixed strings written by the app or this harness (plus, at most,
+# an endpoint error code), so they can be recorded. Any other message is never written.
+SAFE_MESSAGE_TYPES = {"SupervisorInvocationError", "CitationResolutionError", "StreamFailureError",
+                      "IncompleteStreamError"}
+SAFE_MESSAGE = re.compile(r"[A-Za-z0-9 _.,:;'()/=-]{1,200}")
+
+
+def safe_code(value):
+    """An endpoint error code or event type, or '' if it does not look like one."""
+    text = str(value or "")
+    return text if re.fullmatch(r"[A-Za-z0-9_.-]{1,64}", text) else ""
+
+
 def error_details(error):
     """Allowlist diagnostics; exception messages/response bodies can contain secrets."""
-    chain, seen, status = [], set(), None
+    chain, seen, status, detail = [], set(), None, ""
     while error is not None and id(error) not in seen:
         seen.add(id(error))
         chain.append(type(error).__name__)
+        message = str(error)
+        if type(error).__name__ in SAFE_MESSAGE_TYPES and SAFE_MESSAGE.fullmatch(message):
+            detail = message  # the innermost (most specific) safe message wins
         response = getattr(error, "response", None)
         code = getattr(response, "status_code", None)
         if isinstance(code, int):
@@ -70,7 +87,7 @@ def error_details(error):
     elif "StreamFailureError" in chain:
         category = "STREAM_ERROR"
     return {"error_category": category, "exception_chain": " -> ".join(chain),
-            "http_status": status}
+            "http_status": status, "error_detail": detail}
 
 
 class IncompleteStreamError(RuntimeError):
@@ -105,11 +122,18 @@ class StreamObserver:
                     if isinstance(event, dict):
                         kind = event.get("type")
                         if kind in {"error", "response.failed", "response.incomplete"} or event.get("error_code"):
-                            raise StreamFailureError("Endpoint reported a stream failure")
+                            error = event.get("error") if isinstance(event.get("error"), dict) else {}
+                            payload = event.get("response") if isinstance(event.get("response"), dict) else {}
+                            failure = payload.get("error") if isinstance(payload.get("error"), dict) else {}
+                            code = (safe_code(event.get("error_code")) or safe_code(error.get("code"))
+                                    or safe_code(failure.get("code")))
+                            raise StreamFailureError(f"Endpoint reported a stream failure: type={safe_code(kind)} code={code}")
                         if kind in {"response.done", "response.completed"}:
                             payload = event.get("response", {})
                             if isinstance(payload, dict) and payload.get("status") in {"failed", "incomplete", "cancelled"}:
-                                raise StreamFailureError("Endpoint reported unsuccessful completion")
+                                failure = payload.get("error") if isinstance(payload.get("error"), dict) else {}
+                                raise StreamFailureError("Endpoint reported unsuccessful completion: "
+                                                         f"status={safe_code(payload.get('status'))} code={safe_code(failure.get('code'))}")
                             self.terminal = kind
             yield line
 
@@ -160,9 +184,11 @@ class ObservedSupervisor(DatabricksSupervisorService):
                    "invocation_kind": "worker_continuation" if self.invocation > 1 else "initial",
                    "stage": self.stage, **fields})
 
-    def _continue_approved_worker_calls(self, url, response_input, response):
+    # Overrides forward extra keyword arguments (on_event, stream, live, ...) so they keep
+    # matching the production client as it gains options.
+    def _continue_approved_worker_calls(self, url, response_input, response, **kwargs):
         try:
-            return super()._continue_approved_worker_calls(url, response_input, response)
+            return super()._continue_approved_worker_calls(url, response_input, response, **kwargs)
         except Exception:
             if self.stage == "response_validation":
                 self.stage = "worker_continuation"
@@ -192,7 +218,7 @@ class ObservedSupervisor(DatabricksSupervisorService):
                       **{"http_status": self.last_status, "request_id": self.last_request_id, **fields})
             self.open_attempt = None
 
-    def _post_invocation(self, url, body, access_token):
+    def _post_invocation(self, url, body, access_token, **kwargs):
         self.stage = "invocation_http"
         self.attempt += 1
         self.last_status = None
@@ -201,7 +227,7 @@ class ObservedSupervisor(DatabricksSupervisorService):
         self.open_attempt = time.monotonic()
         self.emit("attempt", "START")
         try:
-            response = super()._post_invocation(url, body, access_token)
+            response = super()._post_invocation(url, body, access_token, **kwargs)
             self.last_status = response.status_code
             # Headers are metadata only; never emit Authorization or all headers.
             headers = getattr(response, "headers", {}) or {}
@@ -220,13 +246,13 @@ class ObservedSupervisor(DatabricksSupervisorService):
             self.finish_attempt("FAILED", **error_details(error))
             raise
 
-    def _parse_stream_response(self, response):
+    def _parse_stream_response(self, response, *args, **kwargs):
         self.stage = "stream"
         start = time.monotonic()
         self.emit("stream", "START")
         observed = StreamObserver(response)
         try:
-            payload = super()._parse_stream_response(observed)
+            payload = super()._parse_stream_response(observed, *args, **kwargs)
             if not observed.terminal:
                 raise IncompleteStreamError("Stream ended without a completion marker")
             self.emit("stream", "END", outcome="SUCCESS", stream_terminal=observed.terminal,
@@ -239,7 +265,7 @@ class ObservedSupervisor(DatabricksSupervisorService):
         finally:
             self.stream_terminal = observed.terminal
 
-    def _invoke(self, url, body):
+    def _invoke(self, url, body, **kwargs):
         self.invocation += 1
         self.attempt = 0
         self.stage = "invocation_http"
@@ -248,7 +274,7 @@ class ObservedSupervisor(DatabricksSupervisorService):
         start = time.monotonic()
         self.emit("invocation", "START")
         try:
-            result = super()._invoke(url, body)
+            result = super()._invoke(url, body, **kwargs)
         except Exception as error:
             details = error_details(error)
             self.finish_attempt("FAILED", **details)
@@ -312,9 +338,9 @@ def worker_main(connection, settings):
 
 EVENT_FIELDS = ["timestamp", "workflow_id", "phase", "kind", "event", "invocation", "attempt",
                 "invocation_kind", "stage", "outcome", "elapsed_seconds", "http_status", "request_id",
-                "stream_terminal", "error_category", "exception_chain"]
+                "stream_terminal", "error_category", "exception_chain", "error_detail"]
 WORKFLOW_FIELDS = ["workflow_id", "phase", "started_at", "finished_at", "offset_seconds", "minute",
-                   "outcome", "elapsed_seconds", "stage", "error_category", "exception_chain",
+                   "outcome", "elapsed_seconds", "stage", "error_category", "exception_chain", "error_detail",
                    "http_status", "invocation_count", "inference_outcome", "inference_seconds",
                    "citation_outcome", "citation_seconds", "agents_used", "source_count",
                    "has_sources", "expected_agent_reported", "usage"]
@@ -543,6 +569,7 @@ def summarize(results, phases, args, run_status):
             "failed_invocation_latency_seconds": latency_stats([
                 r["elapsed_seconds"] for r in invocations if r["outcome"] != "SUCCESS"]),
             "failure_categories": dict(Counter(r.get("error_category", "UNKNOWN") for r in failed)),
+            "failure_details": dict(Counter(r.get("error_detail") or "(none)" for r in failed).most_common()),
             "per_minute_start_cohorts": [
                 {"minute": minute, "started": len(group),
                  "outcomes": dict(Counter(r["outcome"] for r in group)),

@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mariner GenAI Migration Guide</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1f2328; --muted: #59636e; --line: #d8dee4;
+    --accent: #0b5cad; --accent-soft: #e6f0fa; --warn: #8a5a00; --warn-soft: #fff6e0;
+    --bad: #a40e26; --bad-soft: #ffebe9; --good: #1a7f37; --good-soft: #e6f6ea; --code: #f3f4f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1115; --surface: #171a21; --text: #e6e8eb; --muted: #9aa4af; --line: #2c323c;
+      --accent: #6cb6ff; --accent-soft: #15283d; --warn: #e3b341; --warn-soft: #2b2310;
+      --bad: #ff8182; --bad-soft: #2d1416; --good: #56d364; --good-soft: #12261a; --code: #1f232b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1115; --surface: #171a21; --text: #e6e8eb; --muted: #9aa4af; --line: #2c323c;
+    --accent: #6cb6ff; --accent-soft: #15283d; --warn: #e3b341; --warn-soft: #2b2310;
+    --bad: #ff8182; --bad-soft: #2d1416; --good: #56d364; --good-soft: #12261a; --code: #1f232b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); max-width: 1280px; margin: 0 auto; }
+  nav { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 28px 18px; border-right: 1px solid var(--line); }
+  nav h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; }
+  nav a { display: block; padding: 5px 8px; border-radius: 6px; color: var(--text); text-decoration: none; font-size: 14px; }
+  nav a:hover { background: var(--accent-soft); color: var(--accent); }
+  main { padding: 32px 40px 80px; min-width: 0; }
+  header.hero { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px 28px; margin-bottom: 28px; }
+  header.hero h1 { margin: 0 0 6px; font-size: 28px; }
+  header.hero p { margin: 4px 0; color: var(--muted); }
+  section { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 8px 28px 22px; margin-bottom: 24px; }
+  h2 { font-size: 21px; margin: 22px 0 10px; } h3 { font-size: 16.5px; margin: 22px 0 8px; }
+  p, li { max-width: 78ch; }
+  a { color: var(--accent); }
+  code { background: var(--code); padding: 1px 5px; border-radius: 4px; font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--code); padding: 12px 14px; border-radius: 8px; overflow-x: auto; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  pre code { background: none; padding: 0; }
+  .table-wrap { overflow-x: auto; margin: 10px 0 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); background: var(--bg); }
+  .note, .warn, .bad, .good { border-radius: 8px; padding: 10px 14px; margin: 12px 0; border: 1px solid; }
+  .note { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+  .warn { background: var(--warn-soft); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
+  .bad  { background: var(--bad-soft);  border-color: color-mix(in srgb, var(--bad) 40%, transparent); }
+  .good { background: var(--good-soft); border-color: color-mix(in srgb, var(--good) 40%, transparent); }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); background: var(--bg); white-space: nowrap; }
+  .tag.trial { color: var(--warn); } .tag.prod { color: var(--good); } .tag.both { color: var(--accent); }
+  ol.steps > li { margin-bottom: 10px; }
+  .check { list-style: none; padding-left: 0; } .check li { padding: 3px 0; }
+  .check input { margin-right: 8px; transform: translateY(1px); }
+  .diagram { width: 100%; height: auto; max-width: 880px; display: block; margin: 8px 0 4px; }
+  .diagram text { fill: var(--text); font: 12.5px -apple-system, Segoe UI, sans-serif; }
+  .diagram .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+  .diagram .accent { fill: var(--accent-soft); stroke: var(--accent); }
+  .diagram .data { fill: var(--good-soft); stroke: var(--good); }
+  .diagram line, .diagram path { stroke: var(--muted); stroke-width: 1.3; fill: none; }
+  .diagram .small { font-size: 11px; fill: var(--muted); }
+  .theme-toggle { float: right; font-size: 13px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--line); padding: 16px; }
+    main { padding: 16px; } section { padding: 4px 16px 16px; } header.hero { padding: 18px 16px; }
+  }
+  @media print { nav, .theme-toggle { display: none; } .layout { display: block; } section, header.hero { break-inside: avoid-page; border: 0; } }
+</style>
+</head>
+<body>
+<div class="layout">
+<nav aria-label="Contents">
+  <h2>Contents</h2>
+  <a href="#overview">1. What is being moved</a>
+  <a href="#files">2. Files in this folder</a>
+  <a href="#prereq">3. Before you start</a>
+  <a href="#order">4. Migration order</a>
+  <a href="#data">5. Data, documents and indexes</a>
+  <a href="#agentbricks">6. Agent Bricks agents</a>
+  <a href="#custom">7. Custom code agents</a>
+  <a href="#app">8. The Flask app</a>
+  <a href="#cost">9. Cost and speed settings</a>
+  <a href="#validate">10. Validate and cut over</a>
+  <a href="#issues">11. Known issues to fix</a>
+  <a href="#appendix">12. Appendix</a>
+</nav>
+<main>
+<header class="hero">
+  <button class="theme-toggle" type="button" id="themeToggle">Toggle theme</button>
+  <h1>Mariner GenAI: trial → prod migration guide</h1>
+  <p>How to recreate the Mariner employee-assistance system (agents, indexes, data, settings and app) in a new production Databricks account.</p>
+  <p>Built from a read-only export of the trial workspace <code>dbc-957e994b-63c5</code> on 2026-10-23. Every name, setting and row count below comes from that export.</p>
+  <p><strong>Updated 2026-10-28 with Coaching360</strong> (the <code>/coaching360</code> chat, its data and agents). Those parts come from the repo sources that built them in trial (<code>coaching360/</code>), not from <code>exports/</code>, which predates them.</p>
+</header>
+
+<section id="overview">
+<h2>1. What is being moved</h2>
+<p>The system answers employee questions about branch operations, the employee handbook, benefits and performance management, with verified sources. It has two kinds of agents:</p>
+<ul>
+  <li><strong>Agent Bricks agents</strong> (managed, configured not coded): three Knowledge Assistants, one Genie space and the Supervisor that routes between them.</li>
+  <li><strong>Custom code agents</strong> (MLflow models you log and serve): <code>perf_policy_citations_agent</code>, which returns Employee Performance Policy answers with registry-backed citations.</li>
+  <li><strong>Coaching360</strong> (app-directed): <code>/coaching360</code> picks a person, the app finds their level (employee, branch or district) and sends the Supervisor a routing directive. The Supervisor then uses only that level's Genie space or the Coaching360 Guide assistant. Each Genie space reads a <code>c360_&lt;level&gt;</code> schema whose views return only the rows the person may see.</li>
+</ul>
+<svg class="diagram" viewBox="0 0 880 330" role="img" aria-label="Architecture: the Flask app calls the Supervisor or, for slash commands, a specialist directly. Specialists read vector indexes and SQL views.">
+  <rect class="box accent" x="20" y="20" width="200" height="56" rx="8"/><text x="120" y="44" text-anchor="middle">Flask app (Databricks Apps)</text><text class="small" x="120" y="62" text-anchor="middle">guardrails · citations · streaming</text>
+  <rect class="box accent" x="340" y="20" width="200" height="56" rx="8"/><text x="440" y="44" text-anchor="middle">Supervisor (Agent Bricks)</text><text class="small" x="440" y="62" text-anchor="middle">mariner-supevisor_agent</text>
+  <line x1="220" y1="48" x2="340" y2="48"/><text class="small" x="280" y="40" text-anchor="middle">free-form</text>
+  <path d="M120 76 V110 H800 V130"/><text class="small" x="560" y="104" text-anchor="middle">slash commands go straight to a specialist</text>
+  <rect class="box" x="20" y="130" width="150" height="56" rx="8"/><text x="95" y="154" text-anchor="middle">Policy KA</text><text class="small" x="95" y="172" text-anchor="middle">/policy</text>
+  <rect class="box" x="190" y="130" width="150" height="56" rx="8"/><text x="265" y="154" text-anchor="middle">Handbook KA</text><text class="small" x="265" y="172" text-anchor="middle">/handbook</text>
+  <rect class="box" x="360" y="130" width="150" height="56" rx="8"/><text x="435" y="154" text-anchor="middle">Benefits KA</text><text class="small" x="435" y="172" text-anchor="middle">/benefits</text>
+  <rect class="box" x="530" y="130" width="150" height="56" rx="8"/><text x="605" y="154" text-anchor="middle">Genie space</text><text class="small" x="605" y="172" text-anchor="middle">performance data</text>
+  <rect class="box" x="700" y="130" width="160" height="56" rx="8"/><text x="780" y="154" text-anchor="middle">perf-policy-citations</text><text class="small" x="780" y="172" text-anchor="middle">custom agent · /performance</text>
+  <line x1="440" y1="76" x2="95" y2="130"/><line x1="440" y1="76" x2="265" y2="130"/><line x1="440" y1="76" x2="435" y2="130"/><line x1="440" y1="76" x2="605" y2="130"/><line x1="440" y1="76" x2="780" y2="130"/>
+  <rect class="box data" x="20" y="240" width="490" height="66" rx="8"/><text x="265" y="264" text-anchor="middle">Vector search (1 STANDARD endpoint, 6 TRIGGERED indexes)</text><text class="small" x="265" y="284" text-anchor="middle">built from chunk tables ← PDFs in 5 UC volumes (ai_parse_document)</text>
+  <rect class="box data" x="530" y="240" width="330" height="66" rx="8"/><text x="695" y="264" text-anchor="middle">Serverless SQL warehouse</text><text class="small" x="695" y="284" text-anchor="middle">performance + Coaching360 tables · views · registries</text>
+  <line x1="95" y1="186" x2="95" y2="240"/><line x1="265" y1="186" x2="265" y2="240"/><line x1="435" y1="186" x2="435" y2="240"/><line x1="605" y1="186" x2="695" y2="240"/><line x1="780" y1="186" x2="400" y2="240"/>
+</svg>
+<div class="table-wrap"><table>
+  <thead><tr><th>Component</th><th>Trial</th><th>Migrated?</th></tr></thead>
+  <tbody>
+    <tr><td>Knowledge Assistants</td><td>mariner-policy-assistant, mariner-handbook-assistant, mariner-benefits-assistant, mariner-performance-assistant</td><td>Policy, handbook and benefits: yes. Performance: optional (unused).</td></tr>
+    <tr><td>Genie space</td><td>mariner-performance-data-assitant (7 tables, 9 example SQLs, 8 joins)</td><td>Yes, on the <code>app_fast_*</code> copies</td></tr>
+    <tr><td>Supervisor</td><td>mariner-supevisor_agent (7,074-character instructions)</td><td>Yes, with the benefits KA in place of the custom benefits endpoint</td></tr>
+    <tr><td>Custom agents</td><td>perf-policy-citations-dev, benefits-agent-endpoint</td><td>perf-policy-citations: yes. benefits agent: not recommended (no retrieval, see §11).</td></tr>
+    <tr><td>Vector indexes</td><td>branch_ops_index (29), employee_handbook_new_index (90), benefits_new_index (6), performance_index (9), perf_policy_retrieval_index (9)</td><td>Yes, rebuilt from the PDFs</td></tr>
+    <tr><td>Performance data</td><td>18 source tables + evaluation set (2,758 rows), 7 views, 6 materialized views, 1 live view</td><td>Yes (rows copied, views recreated)</td></tr>
+    <tr><td>Documents</td><td>7 PDFs in 4 volumes (incl. <code>Lending/Autopay_Policy.pdf</code>)</td><td>Yes (files copied, parsed again in prod)</td></tr>
+    <tr><td>Coaching360 agents</td><td>Genie spaces <em>Coaching360 - My Development</em>, <em>- Branch Leader</em>, <em>- District and Above</em>; Knowledge Assistant <code>mariner-coaching360-guide</code>; 4 Supervisor tools and a Supervisor instructions section</td><td>Yes (notebook 06)</td></tr>
+    <tr><td>Coaching360 data</td><td><code>coaching360demo</code> (about 42 source tables: directory, Coaching360 app, BranchKPI, policy violations, ACE payout; BRD volume); 5 <code>c360_*</code> schemas (174 views, materialized views and functions)</td><td>Yes (rows copied by notebook 02, access layer rebuilt by 02b, BRD parsed by 03)</td></tr>
+    <tr><td>Flask app</td><td>Databricks App mariner-hr-supervisor (Medium)</td><td>Yes (app.yaml and env template). <code>COACHING360_ENABLED</code> ships <strong>false</strong>, see §11.</td></tr>
+    <tr><td>Not migrated</td><td colspan="2">Trace (otel) tables, legacy indexes (benefits_index, branch_operations_index, employee_handbook_index, app_policy_chunks_index), the <code>ask_mariner_perf_dev</code> dev copies, the lending/customer data project in <code>workspace.default</code>, chat history in <code>flask_app_logs</code> (optional).</td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="files">
+<h2>2. Files in this folder</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Path</th><th>What it is</th></tr></thead>
+  <tbody>
+    <tr><td><code>index.html</code></td><td>This guide.</td></tr>
+    <tr><td><code>notebooks/00_config.py</code> … <code>07_validate.py</code></td><td>Databricks notebooks (source format) that do the migration in order. Import the repo as a Git folder in prod and run them from there.</td></tr>
+    <tr><td><code>notebooks/02b_coaching360_views.py</code></td><td>Builds the Coaching360 access layer (<code>c360_*</code> schemas) through the SQL warehouse and grants the app what the chat needs.</td></tr>
+    <tr><td><code>sql/coaching360/*.sql</code></td><td>Coaching360 security, prepared tables, level views, Genie functions and grants, copied from <code>coaching360/sql</code> (generated by <code>coaching360/build_sql.py</code>; edit there and copy again). The trial-only upgrade scripts <code>01b</code>/<code>01c</code> are left out: <code>01_security</code> already holds their result.</td></tr>
+    <tr><td><code>sql/01…08_*.sql</code></td><td>Ordered DDL and refresh SQL generated from the live trial definitions (structure only, no data). Run by the notebooks; also usable in the SQL editor.</td></tr>
+    <tr><td><code>agents/agent_bricks/</code></td><td>Knowledge Assistant definitions and instructions (including <code>coaching360.json</code>), Supervisor instructions and tool list, Genie space definition (<code>serialized_space.json</code>). <code>coaching360/</code> holds the three level Genie spaces, the four Supervisor tools and the BRD pipeline SQL.</td></tr>
+    <tr><td><code>agents/custom/</code></td><td>Source code exported from the trial models: <code>perf_policy_citations_agent.py</code> and the legacy <code>benefits_agent/agent.py</code>, with requirements and input examples.</td></tr>
+    <tr><td><code>app/app.yaml</code>, <code>app/env.prod.template</code></td><td>Databricks Apps manifest and the full list of app settings for prod.</td></tr>
+    <tr><td><code>scripts/copy_between_workspaces.sh</code></td><td>Copies the PDFs (including the Coaching360 BRD) and the data export (performance and Coaching360) from trial to prod with the Databricks CLI.</td></tr>
+    <tr><td><code>scripts/retarget.py</code></td><td>Renames catalog and schemas in every file here, if prod does not use <code>workspace</code>; lists the app lines to change too.</td></tr>
+    <tr><td><code>exports/</code></td><td>Raw read-only exports from trial (agent configs, index specs, full schema DDL, volumes, grants, warehouse, app). Reference only; secrets and data rows are not included.</td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="prereq">
+<h2>3. Before you start</h2>
+<h3>In the prod account</h3>
+<ul class="check">
+  <li><label><input type="checkbox"> Unity Catalog metastore attached to the prod workspace; serverless compute enabled for notebooks, SQL and jobs.</label></li>
+  <li><label><input type="checkbox"> Mosaic AI Model Serving, Vector Search, Agent Bricks (Knowledge Assistant and Supervisor Agent), AI/BI Genie and Databricks Apps enabled. Agent Bricks features may need previews turned on by an account admin.</label></li>
+  <li><label><input type="checkbox"> Foundation model endpoints available in the prod region: <code>databricks-qwen3-embedding-0-6b</code> (embeddings), <code>databricks-claude-haiku-4-5</code> (performance agent), <code>databricks-gpt-5-4-mini</code> (fast path, non-prod only), and <code>ai_parse_document</code> for PDF parsing.</label></li>
+  <li><label><input type="checkbox"> A service principal for the app (note its <em>application ID</em> for <code>APP_SP</code>).</label></li>
+  <li><label><input type="checkbox"> A serverless SQL warehouse (see §9 for size and auto-stop). Coaching360's materialized views and SQL functions are created through it.</label></li>
+  <li><label><input type="checkbox"> Coaching360 for real users only: account groups <code>c360_employees</code>, <code>c360_branch_managers</code>, <code>c360_district_leaders</code>, each person in exactly one (see §11 before enabling).</label></li>
+  <li><label><input type="checkbox"> If the prod catalog is not <code>workspace</code>: run <code>python3 dbx_to_prod/scripts/retarget.py --catalog &lt;name&gt; --docs-schema &lt;s1&gt; --perf-schema &lt;s2&gt;</code> and change the app lines it lists.</label></li>
+</ul>
+<h3>On your machine</h3>
+<ul class="check">
+  <li><label><input type="checkbox"> Databricks CLI v0.205+ with two profiles in <code>~/.databrickscfg</code>: <code>[trial]</code> and <code>[prod]</code>.</label></li>
+  <li><label><input type="checkbox"> This repository pushed to Git, then added as a Git folder in the prod workspace (the notebooks read the SQL and agent files from it).</label></li>
+</ul>
+<div class="note">Keep the trial account running until §10 passes. Nothing in this kit changes the trial account except the optional <em>export</em> mode of notebook 02, which writes Parquet files into a new <code>migration_staging</code> volume.</div>
+</section>
+
+<section id="order">
+<h2>4. Migration order</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>#</th><th>Step</th><th>Where</th><th>How</th><th>Done when</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Settings</td><td><span class="tag prod">prod</span></td><td>Edit the first cell of <code>notebooks/00_config.py</code> (APP_SP, warehouse name).</td><td>It prints the dbx_to_prod root.</td></tr>
+    <tr><td>2</td><td>Unity Catalog objects</td><td><span class="tag prod">prod</span></td><td>Run <code>01_setup_unity_catalog</code>.</td><td>Schemas, 5 volumes, tables, views and log table exist; grants applied.</td></tr>
+    <tr><td>3</td><td>Export performance data</td><td><span class="tag trial">trial</span></td><td>Run <code>02_migrate_data</code> with mode = <em>export</em>.</td><td>19 Parquet folders in <code>migration_staging</code>, plus <code>coaching360demo/</code> with one folder per table and <code>_manifest.json</code> (DDL and row counts).</td></tr>
+    <tr><td>4</td><td>Copy files</td><td><span class="tag both">laptop</span></td><td><code>bash dbx_to_prod/scripts/copy_between_workspaces.sh trial prod</code></td><td>PDFs and Parquet listed in the prod volumes.</td></tr>
+    <tr><td>5</td><td>Import data + materialized views</td><td><span class="tag prod">prod</span></td><td>Run <code>02_migrate_data</code> with mode = <em>import</em>.</td><td>Row counts match (Coaching360: against the manifest); every <code>app_fast_*</code> identical to its <code>app_vw_*</code>.</td></tr>
+    <tr><td>5b</td><td>Coaching360 access layer</td><td><span class="tag prod">prod</span></td><td>Run <code>02b_coaching360_views</code>.</td><td>No missing objects; <code>data_status</code> has the latest KPI month; people at every level.</td></tr>
+    <tr><td>6</td><td>Parse documents, build chunks</td><td><span class="tag prod">prod</span></td><td>Run <code>03_ingest_documents</code>.</td><td>29 / 90 / 6 / 9 chunks, 9 approved retrieval passages, Coaching360 BRD chunks &gt; 0, 0 duplicate ids.</td></tr>
+    <tr><td>7</td><td>Vector search</td><td><span class="tag prod">prod</span></td><td>Run <code>04_vector_search</code>.</td><td>6 indexes ready with all rows (5 without Coaching360).</td></tr>
+    <tr><td>8</td><td>Custom agent</td><td><span class="tag prod">prod</span></td><td>Run <code>05_custom_agents</code>.</td><td><code>perf-policy-citations</code> ready, scale-to-zero on, local test returns citations.</td></tr>
+    <tr><td>9</td><td>Agent Bricks</td><td><span class="tag prod">prod</span></td><td>Run <code>06_agent_bricks</code> (UI fallback in §6).</td><td>4 KAs, 4 Genie spaces and the Supervisor (10 tools) ready; it prints the app settings.</td></tr>
+    <tr><td>10</td><td>App</td><td><span class="tag prod">prod</span></td><td>Deploy with <code>app/app.yaml</code> (§8).</td><td>App opens; a chat returns sources.</td></tr>
+    <tr><td>11</td><td>Validate</td><td><span class="tag prod">prod</span></td><td>Run <code>07_validate</code>, then the manual checks in §10.</td><td>All checks PASS.</td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="data">
+<h2>5. Data, documents and indexes</h2>
+<h3>Unity Catalog layout (same names as trial)</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Schema</th><th>Objects</th><th>Created by</th></tr></thead>
+  <tbody>
+    <tr><td><code>workspace.default</code></td><td>Volumes <code>branch_operations_docs</code>, <code>employee_handbook_docs</code>, <code>benefits_docs</code>; for each domain <code>*_parsed_documents</code>, <code>*_document_elements</code>, <code>*_chunks</code> (change data feed on); view <code>app_citation_registry</code>; table <code>flask_app_logs</code>.</td><td><code>sql/01, 02, 04, 06</code> · notebook 03</td></tr>
+    <tr><td><code>workspace.performance_test</code></td><td>Volume <code>data</code> (INSTRUCTIONS_PERFORMANCE.pdf); 18 source tables + <code>app_evaluation_dataset</code>; views <code>app_vw_*</code> (7); materialized views <code>app_fast_*</code> (6) + live view <code>app_fast_review_compliance</code>; <code>app_policy_chunks</code>, <code>perf_policy_retrieval</code> (+ <code>_rejects</code>); views <code>perf_policy_candidates_v</code>, <code>perf_citation_registry</code>.</td><td><code>sql/01, 03, 04, 05, 08</code> · notebooks 02, 03</td></tr>
+    <tr><td><code>workspace.default</code> (Coaching360)</td><td><code>coaching360_parsed_documents</code>, <code>coaching360_document_elements</code>, <code>coaching360_chunks</code> (the BRD, for <code>mariner-coaching360-guide</code>).</td><td><code>sql/02</code> · notebook 03</td></tr>
+    <tr><td><code>workspace.coaching360demo</code></td><td>Volume <code>coaching360_docs</code> (<code>Coaching_360_BRD_Version2.3.pdf</code>); the source tables, named <code>&lt;source&gt;__&lt;schema&gt;_&lt;table&gt;</code>: <code>org_hierarchy__eda_ref_*</code> (directory: users, branches, districts, regions, divisions), <code>coaching360_app_workflow__dbo_*</code> (coaching records, Success Plans, tasks, visits, accountability meetings), <code>coaching360_app_reference__dbo_*</code>, <code>coaching360_app_dpr__dbo_*</code>, <code>branchkpi_sources__*</code>, <code>policy_violations__*</code>, <code>crm_ace_payout__*</code>.</td><td><code>sql/01</code> · notebook 02</td></tr>
+    <tr><td><code>workspace.c360_security</code></td><td><code>user_map</code> (login → directory person), <code>user_level</code>, <code>branch_scope</code>, <code>persona</code>, <code>scope_branches</code>, <code>scope_people</code> (daily materialized views), <code>me()</code>, <code>my_level()</code>, <code>my_person</code> / <code>my_branches</code> / <code>my_team</code>. Admins only.</td><td><code>sql/coaching360/01</code> · notebook 02b</td></tr>
+    <tr><td><code>workspace.c360_prepared</code></td><td>Daily pre-joined sources: <code>data_status</code> (latest KPI month, as-of date), <code>kpi_goals</code>, employee KPIs, DPR metrics, coaching records, branch performance, employee overview.</td><td><code>sql/coaching360/01d</code> · notebook 02b</td></tr>
+    <tr><td><code>workspace.c360_employee</code>, <code>c360_branch</code>, <code>c360_district</code></td><td>Level views (33 / 53 / 59 objects), each filtered to the signed-in person and gated by their level; overview tables; trusted functions such as <code>my_scorecard</code>, <code>team_scorecard</code>, <code>visit_brief</code>.</td><td><code>sql/coaching360/02–04, 06</code> · notebook 02b</td></tr>
+  </tbody>
+</table></div>
+<div class="warn">The chunk tables (four, five with <code>coaching360_chunks</code>) feed Delta Sync indexes that sync <em>all</em> columns. Never <code>ALTER</code> their schema or bulk-<code>UPDATE</code> them by hand: that forces a full re-sync and can break Knowledge Assistant retrieval. Change documents in the volume and re-run notebooks 03 and 04 (or the upload tool) instead.</div>
+<h3>How documents become indexes</h3>
+<ol class="steps">
+  <li><strong>Parse</strong> (<code>ai_parse_document</code>, v2.0): only PDFs whose content <em>or</em> location is new. A moved or renamed PDF reuses its earlier parse, so it costs nothing and keeps the same chunk ids. This fix is in both notebook 03 and <code>simple_upload/app.py</code>.</li>
+  <li><strong>Elements</strong>: latest parse of each file still in the volume; if the same PDF sits in two folders, only the newest copy is used, so chunk ids stay unique.</li>
+  <li><strong>Chunks</strong>: about 3,500 characters per chunk within a page, with <code>embedding_text = "Document: …\nPage: …\n\n" + text</code>. Truncate and insert, so the change data feed drives the index sync.</li>
+  <li><strong>Performance policy</strong>: one chunk per page into <code>app_policy_chunks</code>; then <code>sql/08</code> approves only passages that match the citation registry exactly once (9 in trial) into <code>perf_policy_retrieval</code>.</li>
+  <li><strong>Coaching360 BRD</strong>: the same four steps as the other domains, from <code>agents/agent_bricks/coaching360/brd_pipeline_steps.json</code>.</li>
+  <li><strong>Sync</strong> the TRIGGERED indexes (notebook 04 or the upload tool's refresh button).</li>
+</ol>
+<h3>Vector search</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Index</th><th>Source table</th><th>Primary key</th><th>Embedded column</th><th>Used by</th><th>Trial rows</th></tr></thead>
+  <tbody>
+    <tr><td><code>default.branch_ops_index</code></td><td><code>branch_operations_chunks</code></td><td>chunk_id</td><td>embedding_text</td><td>Policy KA</td><td>29</td></tr>
+    <tr><td><code>default.employee_handbook_new_index</code></td><td><code>employee_handbook_chunks</code></td><td>chunk_id</td><td>embedding_text</td><td>Handbook KA</td><td>90</td></tr>
+    <tr><td><code>default.benefits_new_index</code></td><td><code>benefits_chunks</code></td><td>chunk_id</td><td>embedding_text</td><td>Benefits KA</td><td>6</td></tr>
+    <tr><td><code>performance_test.performance_index</code></td><td><code>app_policy_chunks</code></td><td>chunk_id</td><td>chunk_to_embed</td><td>Performance KA (optional)</td><td>9</td></tr>
+    <tr><td><code>performance_test.perf_policy_retrieval_index</code></td><td><code>perf_policy_retrieval</code></td><td>retrieval_id</td><td>chunk_text</td><td>perf-policy-citations</td><td>9</td></tr>
+    <tr><td><code>default.coaching360_index</code></td><td><code>coaching360_chunks</code></td><td>chunk_id</td><td>embedding_text</td><td>Coaching360 Guide KA</td><td>not recorded</td></tr>
+  </tbody>
+</table></div>
+<p>All on one endpoint, <code>mariner-bot-endpoint</code> (type <strong>STANDARD</strong>), with embedding model <code>databricks-qwen3-embedding-0-6b</code> and pipeline type <strong>TRIGGERED</strong>.</p>
+</section>
+
+<section id="agentbricks">
+<h2>6. Agent Bricks agents</h2>
+<p>Notebook <code>06_agent_bricks</code> creates these with the Databricks SDK services <code>knowledge_assistants</code> and <code>supervisor_agents</code>, and the Genie <code>POST /api/2.0/genie/spaces</code> API. It reuses objects that already exist. If an API call fails (Agent Bricks APIs are still changing), create the object in the UI with the values below; the notebook prints the same values.</p>
+<h3>6.1 Knowledge Assistants</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Name</th><th>Description</th><th>Knowledge source (vector index)</th><th>Text column / doc URI column</th><th>Instructions</th></tr></thead>
+  <tbody>
+    <tr><td>mariner-policy-assistant</td><td>This is the policy agent</td><td><code>workspace.default.branch_ops_index</code></td><td>embedding_text / document_title</td><td><code>knowledge_assistants/policy_instructions.md</code> (2,704 chars)</td></tr>
+    <tr><td>mariner-handbook-assistant</td><td>This is the handbook agent</td><td><code>workspace.default.employee_handbook_new_index</code></td><td>embedding_text / document_title</td><td><code>handbook_instructions.md</code> (4,295 chars)</td></tr>
+    <tr><td>mariner-benefits-assistant</td><td>This is the mariner benefits assistant.</td><td><code>workspace.default.benefits_new_index</code></td><td>embedding_text / document_title</td><td><code>benefits_instructions.md</code> (3,636 chars)</td></tr>
+    <tr><td>mariner-performance-assistant <span class="tag">optional</span></td><td>Answers questions about the employee performance management policy…</td><td><code>workspace.performance_test.performance_index</code></td><td>chunk_to_embed / document_title</td><td><code>performance_instructions.md</code> (3,314 chars)</td></tr>
+    <tr><td>mariner-coaching360-guide</td><td>Coaching360 Guide: answers how the Coaching360 application works … from the Coaching360 BRD. Not for anyone's personal data.</td><td><code>workspace.default.coaching360_index</code></td><td>embedding_text / document_title</td><td><code>coaching360_instructions.md</code> (968 chars)</td></tr>
+  </tbody>
+</table></div>
+<p><strong>UI steps</strong>: Agents → Knowledge Assistant → Create. Enter the name and description, paste the instructions file, then add a knowledge source of type <em>Vector Search Index</em> with the index, text column and doc URI column above. Use <code>document_title</code> as the doc URI column; the app matches citations by title.</p>
+<h3>6.2 Genie space</h3>
+<ul>
+  <li><strong>Title</strong>: mariner-performance-data-assitant (spelled as in trial). <strong>Description</strong>: Structured data agent for querying employee performance, loan production, competency ratings, goals, and review compliance.</li>
+  <li><strong>Definition</strong>: <code>agents/agent_bricks/genie/serialized_space.json</code>, with 7 <code>app_fast_*</code> tables, 9 example question/SQL pairs, 8 join specs and text instructions. Created with <code>POST /api/2.0/genie/spaces</code> (<code>warehouse_id</code>, <code>title</code>, <code>description</code>, <code>parent_path</code>, <code>serialized_space</code>). Join specs and SQL snippets must stay under <code>instructions</code>, as in this file, or the create call drops them.</li>
+  <li><strong>Warehouse</strong>: the prod serverless warehouse. The app service principal needs <em>Can run</em>.</li>
+  <li>A copy pointing at the live <code>app_vw_*</code> views is in <code>serialized_space_live_views.json</code>, if prod needs data fresher than the daily materialized-view refresh.</li>
+</ul>
+<h3>6.2b Coaching360 Genie spaces</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Title</th><th>Level / schema</th><th>Definition</th><th>Tables · functions · examples · joins</th></tr></thead>
+  <tbody>
+    <tr><td>Coaching360 - My Development</td><td>employee · <code>c360_employee</code></td><td><code>coaching360/genie_employee.json</code></td><td>19 · 4 · 20 · 3</td></tr>
+    <tr><td>Coaching360 - Branch Leader</td><td>branch · <code>c360_branch</code></td><td><code>coaching360/genie_branch.json</code></td><td>30 · 13 · 25 · 9</td></tr>
+    <tr><td>Coaching360 - District and Above</td><td>district · <code>c360_district</code></td><td><code>coaching360/genie_district.json</code></td><td>34 · 15 · 19 · 12</td></tr>
+  </tbody>
+</table></div>
+<p>Descriptions are in <code>coaching360/genie_spaces.json</code>. The functions must exist before the spaces are created (notebook 02b). Re-running notebook 06 PATCHes an existing space with the file, so edits made in the UI are overwritten: change <code>coaching360/build_agents.py</code>, regenerate and copy the JSON instead.</p>
+<h3>6.3 Supervisor</h3>
+<p><strong>Name</strong> mariner-supevisor_agent (the app matches both spellings of "supervisor", so renaming it is safe). <strong>Instructions</strong>: <code>agents/agent_bricks/supervisor/instructions.md</code> (the trimmed 7,074-character version: same routing and sources as the original, 30% shorter) plus the <em>COACHING360 (application-directed only)</em> section added in trial on 2026-10-23, about 7,980 characters in all. With <code>COACHING360 = False</code> notebook 06 leaves that section out; on an existing Supervisor it appends the section once.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Tool id</th><th>Type</th><th>Points to</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>branch_operations</td><td>knowledge_assistant</td><td>mariner-policy-assistant</td><td rowspan="5">From <code>supervisor/supervisor.json</code> (copied from trial).</td></tr>
+    <tr><td>employee_handbook</td><td>knowledge_assistant</td><td>mariner-handbook-assistant</td></tr>
+    <tr><td>employee_benefits</td><td>knowledge_assistant</td><td>mariner-benefits-assistant (replaces benefits-agent-endpoint)</td></tr>
+    <tr><td>performance_data</td><td>genie_space</td><td>mariner-performance-data-assitant</td></tr>
+    <tr><td>python_exec</td><td>uc_function</td><td><code>system.ai.python_exec</code></td></tr>
+    <tr><td>coaching360_employee_data</td><td>genie_space</td><td>Coaching360 - My Development</td><td rowspan="4">From <code>coaching360/supervisor_tools.json</code>. Used only when the app's routing directive names the level.</td></tr>
+    <tr><td>coaching360_branch_data</td><td>genie_space</td><td>Coaching360 - Branch Leader</td></tr>
+    <tr><td>coaching360_district_data</td><td>genie_space</td><td>Coaching360 - District and Above</td></tr>
+    <tr><td>coaching360_guide</td><td>knowledge_assistant</td><td>mariner-coaching360-guide</td></tr>
+    <tr><td>performance_policy</td><td>serving endpoint</td><td><code>perf-policy-citations</code></td><td>The SDK has no typed spec for this tool yet; the notebook tries the REST call, otherwise add it in the UI: Supervisor → Add agent → Agent endpoint.</td></tr>
+  </tbody>
+</table></div>
+<div class="note">The trial Supervisor calls the two serving-endpoint workers through MCP <em>approval requests</em>, which the app approves automatically. The app's allow-list already includes the prod tool name <code>endpoint-perf-policy-citations</code>. If you name the endpoint differently, add <code>endpoint-&lt;name&gt;</code> to <code>APPROVED_WORKER_TOOLS</code> in <code>src/mariner_genai_dbx/supervisor_service.py</code>. If Agent Bricks offers a setting to skip approval for read-only tools, turn it on: it removes one full model round trip per call.</div>
+</section>
+
+<section id="custom">
+<h2>7. Custom code agents</h2>
+<h3>7.1 perf_policy_citations_agent (migrate)</h3>
+<ul>
+  <li><strong>What it does</strong>: retrieves the top 5 passages from <code>perf_policy_retrieval_index</code>, asks <code>databricks-claude-haiku-4-5</code> to answer and pick passage labels, then builds citation objects in code from the retrieved metadata. It returns <code>{"answer", "citations"}</code> JSON, which the app validates against <code>app_citation_registry</code>.</li>
+  <li><strong>Type</strong>: MLflow <code>ResponsesAgent</code>, models-from-code (<code>agents/custom/perf_policy_citations_agent/perf_policy_citations_agent.py</code>), with streaming support.</li>
+  <li><strong>Prod name</strong>: model <code>workspace.performance_test.perf_policy_citations_agent</code> (trial: <code>workspace.ask_mariner_perf_dev…</code> v2), endpoint <code>perf-policy-citations</code>.</li>
+  <li><strong>Deploy</strong>: notebook 05 logs it with <em>resources</em> for the index and the model endpoint (automatic auth passthrough, no tokens), registers it in Unity Catalog, tests it locally and deploys with <code>databricks.agents.deploy(…, scale_to_zero=True)</code>.</li>
+  <li><strong>Change the code later</strong>: edit the .py file, re-run notebook 05 (it registers a new version and updates the endpoint). Keep <code>INDEX</code> and <code>LLM_ENDPOINT</code> in the file in line with <code>00_config</code>; the notebook stops if they differ.</li>
+</ul>
+<h3>7.2 benefits_agent (do not migrate)</h3>
+<div class="bad"><strong>This agent has no retrieval step.</strong> <code>agents/custom/benefits_agent/agent.py</code> sends the question with a system prompt to <code>databricks-claude-sonnet-4-5</code> and returns the reply. No knowledge base or tool is attached, so answers come from the model's own knowledge, and its <code>Source:</code> lines are not grounded. This matches the trial symptoms ("documentation does not provide enough information" for PTO; failed citation lookups for PPO). In prod, the Supervisor and <code>/benefits</code> use the <strong>mariner-benefits-assistant</strong> Knowledge Assistant instead. Notebook 05 can still deploy the old agent behind <code>DEPLOY_LEGACY_BENEFITS = True</code> if something else depends on it.</div>
+</section>
+
+<section id="app">
+<h2>8. The Flask app</h2>
+<ol class="steps">
+  <li>Create a Databricks App (compute <strong>Medium</strong>, as in trial) from the Git folder. Copy <code>dbx_to_prod/app/app.yaml</code> to the source root.</li>
+  <li>Add app resources: <code>sql-warehouse</code> (Can use), <code>supervisor-endpoint</code> (Can query) and <code>session-secret</code> (a secret with 32+ random characters).</li>
+  <li>Paste the <code>DIRECT_SPECIALIST_ROUTES_JSON</code> line printed by notebook 06 into <code>app.yaml</code>. Check every value against <code>app/env.prod.template</code>. Make sure <code>DATABRICKS_HOST</code> resolves to an <code>https://</code> URL; the app requires it.</li>
+  <li>Give the app's service principal Can query on the KA endpoints and <code>perf-policy-citations</code>, and Can run on the Genie spaces (notebooks 05 and 06 do this when <code>APP_SP</code> is set). For Coaching360 it also needs the grants in <code>sql/coaching360/05b_demo_grants_app.sql</code> (notebook 02b): the level views and functions, <code>user_map</code> (read and write) and the three directory tables for the name lookup.</li>
+  <li>Deploy. Open the app: a free-form question should show a progress message within about 5 seconds and then a cited answer.</li>
+</ol>
+<div class="warn"><code>COACHING360_ENABLED</code> ships <strong>false</strong>. Everything it needs is built by the notebooks, but the chat's persona model is demo-only (§11). Set it to <code>true</code>, with <code>COACHING360_TIMEOUT_SECONDS</code> at or below <code>GUNICORN_TIMEOUT_SECONDS</code>, only after that is fixed or for a closed pilot.</div>
+<div class="warn"><code>PERFORMANCE_FAST_PATH_ENABLED</code> stays <strong>false</strong> in prod. The fast path reads employee data with the app's identity instead of the signed-in manager's, so the app refuses to start it when <code>APP_ENV=production</code>. Turning it on needs per-manager access scoping first.</div>
+</section>
+
+<section id="cost">
+<h2>9. Cost and speed settings</h2>
+<p>These are the settings that worked in the trial account, with what was measured there. "Cost" means billable compute that runs while idle or per request.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Area</th><th>Setting for prod</th><th>Why</th><th>Measured in trial</th></tr></thead>
+  <tbody>
+    <tr><td>SQL warehouse</td><td>Serverless, <strong>Small</strong>, 1–2 clusters, auto-stop <strong>10 min</strong>, Photon on</td><td>Serverless restarts in seconds, so a short auto-stop saves idle cost. Queueing in trial came from one insert per chat, now batched.</td><td>Cold-start wait 0 ms at p90; queueing only on the 2026-10-15 stress test</td></tr>
+    <tr><td>Vector search</td><td><strong>One STANDARD endpoint</strong> for all 6 indexes; indexes <strong>TRIGGERED</strong>; do not recreate the legacy indexes</td><td>A vector search endpoint bills while it exists; triggered sync has no always-on pipeline.</td><td>Retrieval is 8–12% of answer time (0.6–0.7 s)</td></tr>
+    <tr><td>Custom endpoint</td><td><code>perf-policy-citations</code>: CPU Small, <strong>scale to zero on</strong></td><td>Chosen in trial: lower cost, accepting a cold start on the first call after idle.</td><td>Answer in 3.6–5 s when warm</td></tr>
+    <tr><td>Benefits</td><td>Use the benefits <strong>Knowledge Assistant</strong>, not a custom endpoint</td><td>One fewer serving endpoint, and the answers are grounded.</td><td>—</td></tr>
+    <tr><td>Unused agents</td><td>Skip mariner-performance-assistant (<code>CREATE_PERFORMANCE_KA = False</code>)</td><td>Every Knowledge Assistant is a serving endpoint.</td><td>Not called by the Supervisor or the app</td></tr>
+    <tr><td>Slash commands</td><td><code>DIRECT_SPECIALIST_ROUTES_JSON</code> set (app)</td><td>Skips the Supervisor's planning, approval and rewrite hops.</td><td>1.6–6.7× faster, same sources</td></tr>
+    <tr><td>Supervisor prompt</td><td>Trimmed instructions (7,074 chars)</td><td>Read on every hop.</td><td>Same routing and sources; no measurable speed change</td></tr>
+    <tr><td>Genie</td><td>Tables = <code>app_fast_*</code> materialized views</td><td>Views were recomputed on every query.</td><td>Example SQL 37% faster (22.2 s → 13.9 s for 9 queries)</td></tr>
+    <tr><td>Materialized views</td><td><code>SCHEDULE EVERY 1 DAY</code>; <code>REFRESH MATERIALIZED VIEW</code> after a data load</td><td>Six small daily refreshes; "overdue" stays live in a view.</td><td>Heaviest fast-path read 12.9 s → 4.1 s</td></tr>
+    <tr><td>Coaching360 data</td><td>14 materialized views (<code>c360_security</code>, <code>c360_prepared</code>) with <code>SCHEDULE EVERY 1 DAY</code>; run the <code>REFRESH</code> lines at the end of <code>sql/coaching360/01_security.sql</code> and <code>01d_prepared.sql</code> after each monthly load or directory change</td><td>Each level view does one small lookup instead of re-deriving the hierarchy; the data loads monthly.</td><td>Genie part of an answer shortened from 14–22 s (see <code>coaching360/README.md</code>, phase 4)</td></tr>
+    <tr><td>App server</td><td>2 workers × <strong>16 threads</strong>, timeouts <strong>180 s</strong>, <code>LOG_LEVEL=INFO</code></td><td>Requests mostly wait on Databricks; a 6000 s timeout held threads.</td><td>32 chats at once instead of 8</td></tr>
+    <tr><td>App code (built in)</td><td>Citation tables preloaded in memory; analytics inserts batched; one retry on 429/5xx; 6-turn history; warm-up per worker; streaming with checked previews</td><td>Removes SQL and waiting from the request path.</td><td>Citation lookup 3.9 s → 5 ms; first text about 4.5 s sooner on free-form questions</td></tr>
+    <tr><td>Parsing</td><td>Upload tool / notebook 03 only parse new or changed PDFs</td><td><code>ai_parse_document</code> is billed per page.</td><td>Moved PDF: 0 re-parses</td></tr>
+    <tr><td>Monitoring</td><td>If prod has AI Gateway: usage tracking + inference tables on custom endpoints. MLflow tracing on the Supervisor and Knowledge Assistants.</td><td>Per-hop latency was the main blind spot in trial (no AI Gateway access).</td><td>—</td></tr>
+    <tr><td>Cost tracking</td><td>Tag the warehouse, endpoints and app with <code>project=mariner-genai</code>, <code>env=prod</code>; add a serverless budget policy</td><td>Lets <code>system.billing.usage</code> show this system's spend.</td><td>—</td></tr>
+  </tbody>
+</table></div>
+<h3>Watch the spend</h3>
+<pre><code>-- Daily DBUs by product for the tagged resources (last 30 days)
+SELECT usage_date, billing_origin_product, ROUND(SUM(usage_quantity), 2) AS dbus
+FROM system.billing.usage
+WHERE usage_date &gt;= current_date() - INTERVAL 30 DAYS
+  AND custom_tags['project'] = 'mariner-genai'
+GROUP BY ALL
+ORDER BY usage_date DESC, dbus DESC;</code></pre>
+<h3>If cold starts matter more than cost</h3>
+<p>Instead of turning scale-to-zero off all day, schedule a job that turns it off at the start of business hours and back on in the evening (<code>serving_endpoints.update_config</code>). Measure first: in trial, cold starts mostly affected the custom endpoint (p50 72 s through the Supervisor).</p>
+</section>
+
+<section id="validate">
+<h2>10. Validate and cut over</h2>
+<h3>Automated</h3>
+<p>Set the endpoint names in <code>07_validate</code>, then Run all. It checks row counts, the Coaching360 schemas, <code>data_status</code>, people per level, Genie spaces and Supervisor tools, materialized views against the live views, chunk counts, index readiness and row counts, index pipeline type, endpoint scale-to-zero, sample answers from each specialist and the Supervisor, and warehouse settings.</p>
+<h3>Manual (in the prod app)</h3>
+<ul class="check">
+  <li><label><input type="checkbox"> <code>/policy How do I enroll a customer in Autopay?</code> → source Autopay_Policy, link opens <code>Lending/Autopay_Policy.pdf</code>.</label></li>
+  <li><label><input type="checkbox"> <code>/handbook What does the handbook say about jury duty leave?</code> → 2026 Employee Handbook v1, page 44.</label></li>
+  <li><label><input type="checkbox"> <code>/performance How often must managers hold performance meetings?</code> → INSTRUCTIONS_PERFORMANCE.pdf, page 3.</label></li>
+  <li><label><input type="checkbox"> <code>/benefits What PPO and HMO medical plans are available?</code> → a Benefits source (now from the Knowledge Assistant).</label></li>
+  <li><label><input type="checkbox"> "Which employees in the Dallas Central branch have the lowest loan attainment in Q3 2026?" → a Genie answer with a table.</label></li>
+  <li><label><input type="checkbox"> "What is the dress code at Mariner?" → progress message within about 5 s, live text, then a cited answer.</label></li>
+  <li><label><input type="checkbox"> <code>flask_app_logs</code> gets rows with <code>inference_ms</code>, <code>citations_ms</code> and <code>stage_timings_json</code> within a few seconds.</label></li>
+  <li><label><input type="checkbox"> Coaching360 (pilot with <code>COACHING360_ENABLED=true</code>): <code>/coaching360 Rowan Jessup</code> → "Show me my scorecard for September 2026." returns the KPI table; <code>/coaching360 Riley Quimby</code> → "Which Success Plans on my team still need my approval?"; "What is a Success Plan?" answers from the BRD with a Source line. The full demo script is <code>coaching360/tests/demo_cases.json</code>; <code>coaching360/tests/regression_test.py</code> runs it against a running app.</label></li>
+</ul>
+<h3>Cut over and roll back</h3>
+<ol class="steps">
+  <li>Run both systems side by side; compare answers for the questions above.</li>
+  <li>Point users to the prod app URL. Keep the trial app stopped but intact for one release cycle.</li>
+  <li>Roll back by sending users to the trial app (until the trial account expires). To roll back a single agent in prod, re-create it from the files in <code>agents/</code> or, for the Genie space, PATCH it with <code>serialized_space_live_views.json</code>.</li>
+  <li>After sign-off: drop <code>workspace.performance_test.migration_staging</code> in prod and trial.</li>
+</ol>
+</section>
+
+<section id="issues">
+<h2>11. Known issues to fix (found during the trial work)</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Issue</th><th>Impact</th><th>What to do in prod</th></tr></thead>
+  <tbody>
+    <tr><td>Custom benefits agent has no retrieval</td><td>Ungrounded benefits answers; citation failures</td><td>Use the benefits Knowledge Assistant (default in this kit).</td></tr>
+    <tr><td>Supervisor instructions name <code>mariner-performance-assistant</code> and <code>mariner-benefits-assistant</code>, which were not trial tools</td><td>Some performance questions went to Genie instead of the policy agent</td><td>After notebook 06, edit the "Directive names" list in the Supervisor instructions to the prod tool names (<code>employee_benefits</code>, <code>performance_policy</code>, <code>performance_data</code>).</td></tr>
+    <tr><td>Fast path blocked in production</td><td>Performance data questions use Genie (about 24–36 s) instead of 3–8 s</td><td>Needs per-manager access scoping before enabling.</td></tr>
+    <tr><td>Fast path matches exact branch names only</td><td>"Dallas" ≠ "Dallas Central" → falls back to the Supervisor</td><td>Optional: add cautious name matching (non-prod only today).</td></tr>
+    <tr><td>Old login code printed the password</td><td>Trial logs may hold it</td><td>Use a new <code>LOGIN_PASSWORD_HASH</code> and <code>SESSION_SECRET_KEY</code> in prod; never copy trial secrets.</td></tr>
+    <tr><td>No AI Gateway in trial</td><td>No per-hop latency or token usage</td><td>Check prod entitlements; enable usage tracking and inference tables if available.</td></tr>
+    <tr><td>Coaching360 persona is demo-only</td><td><strong>Blocks real users.</strong> Anyone can pick any person by name, and every user shares one <code>user_map</code> row (the app's service principal), so two people at once can see each other's person's data</td><td>Query as the signed-in user (on-behalf-of-user auth for the app, Genie and the Supervisor), so <code>current_user()</code> is the real employee and <code>me()</code> matches their directory e-mail; drop the name picker and the persona write. Until then keep <code>COACHING360_ENABLED=false</code>.</td></tr>
+    <tr><td>Coaching360 source data is a demo copy</td><td><code>coaching360demo</code> holds synthetic directory and app data, copied as-is</td><td>Load the real sources into tables with the same names and columns (or retarget <code>coaching360/build_sql.py</code>), then refresh the materialized views. The views read only these tables.</td></tr>
+    <tr><td>Trial service principal has <code>ALL PRIVILEGES</code> on <code>coaching360demo</code></td><td>Broader than needed</td><td>Not granted in prod: the kit grants only <code>05b</code> plus SELECT on the three directory tables.</td></tr>
+    <tr><td>Business Analyst and Coaching360 Application Administrator have no level</td><td>They see no Coaching360 data</td><td>Decide their level, then add the title in <code>coaching360/build_sql.py</code> (<code>user_level</code>).</td></tr>
+    <tr><td>Name typos (<code>supevisor</code>, <code>assitant</code>)</td><td>Cosmetic</td><td>Safe to correct in prod; the app does not depend on either spelling.</td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="appendix">
+<h2>12. Appendix</h2>
+<h3>Trial → prod names</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Trial</th><th>Prod</th></tr></thead>
+  <tbody>
+    <tr><td><code>mas-53dbd2d7-endpoint</code> (Supervisor)</td><td>New endpoint printed by notebook 06 → <code>DATABRICKS_SUPERVISOR_ENDPOINT</code></td></tr>
+    <tr><td><code>ka-bad183de-endpoint</code> / <code>ka-56b296c2-endpoint</code> / <code>ka-efbfbafe-endpoint</code></td><td>New KA endpoints → <code>DIRECT_SPECIALIST_ROUTES_JSON</code></td></tr>
+    <tr><td><code>perf-policy-citations-dev</code> (model in <code>ask_mariner_perf_dev</code>)</td><td><code>perf-policy-citations</code> (model in <code>performance_test</code>)</td></tr>
+    <tr><td><code>benefits-agent-endpoint</code></td><td>Not migrated (benefits KA instead)</td></tr>
+    <tr><td>Warehouse <code>55cdb78d4d2a62d0</code></td><td>Prod serverless warehouse id → <code>DATABRICKS_WAREHOUSE_ID</code></td></tr>
+    <tr><td>Genie space <code>01f1b5eef2931f378b995a88cde37a28</code></td><td>New space id (Supervisor tool)</td></tr>
+    <tr><td>Coaching360 Genie spaces (3), <code>mariner-coaching360-guide</code> endpoint</td><td>New ids, found by title; notebook 06 wires them to the Supervisor tools</td></tr>
+    <tr><td>App service principal <code>9480056c-…</code> in <code>coaching360/sql/05b</code>, <code>coaching360/notebooks/setup_agents.py</code></td><td><code>&lt;app-sp-application-id&gt;</code> in <code>sql/coaching360/05b</code>, filled from <code>APP_SP</code></td></tr>
+  </tbody>
+</table></div>
+<h3>Keeping documents current after go-live</h3>
+<p>Add, replace, move or delete PDFs in the domain's volume (sub-folders are fine), then run notebooks 03 and 04, or the upload tool's refresh for that domain only. Moving a file needs no other action: its parse is reused and its chunk ids stay the same.</p>
+<h3>Raw exports</h3>
+<p>Taken on 2026-10-23, before Coaching360 was added, so they contain no Coaching360 objects. <code>exports/agent_bricks/*.json</code>, <code>exports/custom_agents/*.json</code>, <code>exports/vector_search/*.json</code>, <code>exports/sql/ddl_*.sql</code> (the full schemas, including objects not migrated), <code>exports/platform/*.json</code> (inventory with row counts, volumes and files, grants, warehouse, app).</p>
+</section>
+</main>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement, key = "mariner-guide-theme";
+    try { var saved = localStorage.getItem(key); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+    document.getElementById("themeToggle").addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") === "dark" ||
+        (!root.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      var next = dark ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem(key, next); } catch (e) {}
+    });
+    document.querySelectorAll(".check input").forEach(function (box, i) {
+      var id = "mariner-guide-check-" + i;
+      try { box.checked = localStorage.getItem(id) === "1"; } catch (e) {}
+      box.addEventListener("change", function () { try { localStorage.setItem(id, box.checked ? "1" : "0"); } catch (e) {} });
+    });
+  })();
+</script>
+</body>
+</html>

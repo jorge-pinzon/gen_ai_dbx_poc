@@ -1,0 +1,19 @@
+DprScorecardMetricRejectionId,DprScorecardEtlBatchId,SourceRowNumber,SourceTellerId,SourceEmployeeName,EmployeeId,MetricMonthEndDate,MetricCode,RejectionCode,RejectionDetail,SourcePayloadJson,CreatedUtc
+1,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-contacts-per-worked-hour,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+2,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-production-percent,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+3,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-app-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+4,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-funded-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+5,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-average-cashout,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+6,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-payment-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+7,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-30-60-dq-resolution-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+8,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-nmc,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+9,291,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-nmph,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-19 10:03:29.000
+10,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-contacts-per-worked-hour,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+11,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-production-percent,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+12,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-app-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+13,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-funded-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+14,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-average-cashout,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+15,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-payment-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+16,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-30-60-dq-resolution-rate,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+17,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-nmc,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000
+18,292,407,INVALID,Unmatched Source Row,,2026-10-31 00:00:00.000,dpr-nmph,InvalidIdentity,Source TellerID is missing or invalid.,"{""TellerID"":"""",""Month"":""2026-10""}",2026-10-20 10:01:48.000

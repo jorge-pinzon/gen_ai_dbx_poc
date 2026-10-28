@@ -1,0 +1,17 @@
+{
+  "run_id": "STRESS-20261028_144434-2b6bae6c",
+  "started_at": "2026-10-28T14:44:34.611228+00:00",
+  "endpoint": "mas-53dbd2d7-endpoint",
+  "concurrency": 20,
+  "duration_seconds": 300.0,
+  "warmup_seconds": 60.0,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "network_timeout_seconds": 180,
+  "citation_lookup_enabled": true,
+  "min_reliability_percent": 99.0,
+  "expected_agent": "mariner-policy-assistant",
+  "question_characters": 334,
+  "question_sha256": "eaa187372f66c0fe2299f4944dd12e2d55defc5158d38b1e4560b731deaf2e62",
+  "run_note": "Stage 5: 20 clients"
+}

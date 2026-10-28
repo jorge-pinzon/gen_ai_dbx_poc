@@ -1,0 +1,13 @@
+ApplicationId,RoleId,RoleName,Description
+37,1,Admin,"Full Coaching 360 administration, all hierarchy, and all actions"
+37,2,Readonly Admin,Read-only Coaching 360 administration and all hierarchy
+37,3,Branch Operations,"Assigned branch hierarchy coaching, IDP, KPI, interaction, alert, and task access"
+37,4,Central Operations,"Assigned hierarchy central operations coaching, IDP, KPI, branch visit, accountability, alert, and task access"
+37,5,HR User,Governed HR read access within assigned Coaching 360 hierarchy and records
+37,6,Compliance User,Governed Compliance read access within assigned Coaching 360 hierarchy and records
+37,7,Legal User,Governed Legal read access within assigned Coaching 360 hierarchy and records
+37,8,Audit User,Governed Audit read access within assigned Coaching 360 hierarchy and records
+37,9,Executive User,Executive read access within assigned Coaching 360 hierarchy and reports
+37,10,PV Admin,Policy Violations administration
+37,11,PV Manager,Policy Violations manager actions
+37,12,PV Reader,Policy Violations read access

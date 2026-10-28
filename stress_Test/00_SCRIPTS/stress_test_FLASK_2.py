@@ -39,7 +39,7 @@ QUESTION = "/policy What does the policy say about record retention?"
 FIELDS = ["timestamp", "workflow_id", "phase", "event", "stage", "outcome",
           "started_at", "finished_at", "elapsed_seconds", "http_seconds", "offset_seconds", "minute",
           "conversation_id", "request_id", "header_request_id", "request_id_matches_header", "http_status", "content_type",
-          "response_bytes", "error_category", "app_error_code", "exception_chain", "source_count",
+          "response_bytes", "error_category", "app_error_code", "app_error_message", "exception_chain", "source_count",
           "has_sources", "mock_response_detected"]
 
 
@@ -84,6 +84,12 @@ def question_with_id(question, workflow_id):
 
 def public_code(value):
     return value if isinstance(value, str) and re.fullmatch(r"[A-Z][A-Z0-9_]{0,79}", value) else ""
+
+
+def public_message(value):
+    """The app's error message (fixed, user-facing text), or '' if it does not look like one."""
+    text = " ".join(value.split()) if isinstance(value, str) else ""
+    return text if re.fullmatch(r"[A-Za-z0-9 _.,:;!?'\"()/=+%&’-]{1,300}", text) else ""
 
 
 def setup_session(args):
@@ -167,6 +173,7 @@ def execute_request(session, provider, args, job, emit):
                 row["request_id"] = payload["requestId"][:256]
             if isinstance(payload.get("error"), dict):
                 row["app_error_code"] = public_code(payload["error"].get("code"))
+                row["app_error_message"] = public_message(payload["error"].get("message"))
         if response.status_code != 200:
             category = ("AUTHENTICATION" if response.status_code in (401, 403) else
                         "RATE_LIMITED" if response.status_code == 429 else "HTTP_ERROR")
@@ -399,6 +406,9 @@ def summarize(results, phases, args, status):
             "http_status_counts": dict(Counter(str(r.get("http_status", "NO_RESPONSE")) for r in rows)),
             "failure_categories": dict(Counter(r.get("error_category", "UNKNOWN") for r in bad)),
             "app_error_codes": dict(Counter(r["app_error_code"] for r in bad if r.get("app_error_code"))),
+            "failure_details": dict(Counter(
+                " · ".join(x for x in (r.get("app_error_code"), r.get("app_error_message")) if x) or "(none)"
+                for r in bad).most_common()),
             "per_minute_start_cohorts": [
                 {"minute": minute, "started": len(group),
                  "outcomes": dict(Counter(r["outcome"] for r in group)),

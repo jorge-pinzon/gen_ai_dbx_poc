@@ -1,0 +1,872 @@
+[
+  {
+    "object": "workspace.default.759781574023970_otel_annotations",
+    "type": "MANAGED",
+    "rows": 132
+  },
+  {
+    "object": "workspace.default.759781574023970_otel_logs",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.759781574023970_otel_metrics",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.759781574023970_otel_spans",
+    "type": "MANAGED",
+    "rows": 76
+  },
+  {
+    "object": "workspace.default.759781574023970_trace_metadata",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.759781574023970_trace_unified",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.759781574024206_otel_annotations",
+    "type": "MANAGED",
+    "rows": 154
+  },
+  {
+    "object": "workspace.default.759781574024206_otel_logs",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.759781574024206_otel_metrics",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.759781574024206_otel_spans",
+    "type": "MANAGED",
+    "rows": 100
+  },
+  {
+    "object": "workspace.default.759781574024206_trace_metadata",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.759781574024206_trace_unified",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.759781574024441_otel_annotations",
+    "type": "MANAGED",
+    "rows": 96
+  },
+  {
+    "object": "workspace.default.759781574024441_otel_logs",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.759781574024441_otel_metrics",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.759781574024441_otel_spans",
+    "type": "MANAGED",
+    "rows": 70
+  },
+  {
+    "object": "workspace.default.759781574024441_trace_metadata",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.759781574024441_trace_unified",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default._event_log_bronze_online_lending",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default._event_log_gold_customer_mart",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default._event_log_silver_business_vault",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default._event_log_silver_raw_vault",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default._permission_test_applicationdata",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.app_citation_registry",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.applicantdatas",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.applicantdatas_quarantine",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.applicationdata",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.applicationdata_quarantine",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.applications",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.benefits_agent_otel_annotations",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.benefits_agent_otel_logs",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.benefits_agent_otel_metrics",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.benefits_agent_otel_spans",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.default.benefits_agent_trace_metadata",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.benefits_agent_trace_unified",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.benefits_chunks",
+    "type": "MANAGED",
+    "rows": 6
+  },
+  {
+    "object": "workspace.default.benefits_document_elements",
+    "type": "MANAGED",
+    "rows": 70
+  },
+  {
+    "object": "workspace.default.benefits_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.benefits_new_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.benefits_parsed_documents",
+    "type": "MANAGED",
+    "rows": 1
+  },
+  {
+    "object": "workspace.default.branch_operations_chunks",
+    "type": "MANAGED",
+    "rows": 29
+  },
+  {
+    "object": "workspace.default.branch_operations_document_elements",
+    "type": "MANAGED",
+    "rows": 270
+  },
+  {
+    "object": "workspace.default.branch_operations_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.branch_operations_parsed_documents",
+    "type": "MANAGED",
+    "rows": 5
+  },
+  {
+    "object": "workspace.default.branch_ops_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.branches",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.bridge_customer_application",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.bronze_ol_applicationdata",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customer_application",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customer_profile",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customer_profile_pii",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customer_profile_protected",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customerdatas",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customerdatas_quarantine",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.customers",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.dim_loan_master",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.employee_handbook_chunks",
+    "type": "MANAGED",
+    "rows": 90
+  },
+  {
+    "object": "workspace.default.employee_handbook_document_elements",
+    "type": "MANAGED",
+    "rows": 527
+  },
+  {
+    "object": "workspace.default.employee_handbook_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.employee_handbook_new_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.employee_handbook_parsed_documents",
+    "type": "MANAGED",
+    "rows": 1
+  },
+  {
+    "object": "workspace.default.flask_app_logs",
+    "type": "MANAGED",
+    "rows": 6550
+  },
+  {
+    "object": "workspace.default.hub_applicant",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.hub_application",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.hub_customer",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.hub_verification",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.link_applicant_customer",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.link_applicant_verification",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.link_application_applicant",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.link_application_verification",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.link_customer_application",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.loan_payments",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.loans",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.metrics_applications_funnel",
+    "type": "METRIC_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.metrics_collections",
+    "type": "METRIC_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.metrics_loan_portfolio",
+    "type": "METRIC_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.payments",
+    "type": "MANAGED",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.pit_applicant",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.pit_application",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.pit_customer",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.pit_verification",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_bank",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_change_history",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_core",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_customer_effectivity",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_pii",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_processing",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_profile",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_protected",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_applicant_verification",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_applicant",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_applicant_effectivity",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_core",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_esign",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_marketing",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_original_offer",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_pii",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_processing",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_request",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_selected_offer",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_application_status_history",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_account",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_application_effectivity",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_change_history",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_core",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_email_verification",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_login",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_pii",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_preferences",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_customer_protected",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_change_history",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_checks",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_core",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_effectivity",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_payload",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_processing",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.sat_ol_verification_third_party_report",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.silver_applications",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.silver_branches",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.silver_customers",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.silver_loan_payments",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.silver_loans",
+    "type": "MATERIALIZED_VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.verificationdatas",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.default.verificationdatas_quarantine",
+    "type": "STREAMING_TABLE",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_evaluation_dataset",
+    "type": "MANAGED",
+    "rows": 30
+  },
+  {
+    "object": "workspace.performance_test.app_fast_branch_quarterly_summary",
+    "type": "MATERIALIZED_VIEW",
+    "rows": 42
+  },
+  {
+    "object": "workspace.performance_test.app_fast_employee_competency_summary",
+    "type": "MATERIALIZED_VIEW",
+    "rows": 420
+  },
+  {
+    "object": "workspace.performance_test.app_fast_employee_goal_status",
+    "type": "MATERIALIZED_VIEW",
+    "rows": 210
+  },
+  {
+    "object": "workspace.performance_test.app_fast_employee_performance_history",
+    "type": "MATERIALIZED_VIEW",
+    "rows": 105
+  },
+  {
+    "object": "workspace.performance_test.app_fast_employee_profile",
+    "type": "MATERIALIZED_VIEW",
+    "rows": 23
+  },
+  {
+    "object": "workspace.performance_test.app_fast_employee_quarterly_performance",
+    "type": "MATERIALIZED_VIEW",
+    "rows": 105
+  },
+  {
+    "object": "workspace.performance_test.app_fast_review_compliance",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_policy_chunks",
+    "type": "MANAGED",
+    "rows": 9
+  },
+  {
+    "object": "workspace.performance_test.app_policy_chunks_backup_20260924_205300",
+    "type": "MANAGED",
+    "rows": 6
+  },
+  {
+    "object": "workspace.performance_test.app_policy_chunks_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_policy_chunks_rebuild",
+    "type": "MANAGED",
+    "rows": 9
+  },
+  {
+    "object": "workspace.performance_test.app_vw_branch_quarterly_summary",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_vw_employee_competency_summary",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_vw_employee_goal_status",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_vw_employee_performance_history",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_vw_employee_profile",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_vw_employee_quarterly_performance",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.app_vw_review_compliance",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.branch",
+    "type": "MANAGED",
+    "rows": 6
+  },
+  {
+    "object": "workspace.performance_test.career_aspiration",
+    "type": "MANAGED",
+    "rows": 30
+  },
+  {
+    "object": "workspace.performance_test.competency",
+    "type": "MANAGED",
+    "rows": 4
+  },
+  {
+    "object": "workspace.performance_test.competency_rating",
+    "type": "MANAGED",
+    "rows": 420
+  },
+  {
+    "object": "workspace.performance_test.employee",
+    "type": "MANAGED",
+    "rows": 23
+  },
+  {
+    "object": "workspace.performance_test.employee_acknowledgment",
+    "type": "MANAGED",
+    "rows": 105
+  },
+  {
+    "object": "workspace.performance_test.employee_assignment",
+    "type": "MANAGED",
+    "rows": 23
+  },
+  {
+    "object": "workspace.performance_test.employee_review",
+    "type": "MANAGED",
+    "rows": 105
+  },
+  {
+    "object": "workspace.performance_test.goal_progress",
+    "type": "MANAGED",
+    "rows": 210
+  },
+  {
+    "object": "workspace.performance_test.job_role",
+    "type": "MANAGED",
+    "rows": 3
+  },
+  {
+    "object": "workspace.performance_test.loan_transaction",
+    "type": "MANAGED",
+    "rows": 953
+  },
+  {
+    "object": "workspace.performance_test.meeting_note",
+    "type": "MANAGED",
+    "rows": 420
+  },
+  {
+    "object": "workspace.performance_test.metric_snapshot",
+    "type": "MANAGED",
+    "rows": 105
+  },
+  {
+    "object": "workspace.performance_test.perf_citation_registry",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.perf_policy_candidates_v",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.perf_policy_retrieval",
+    "type": "MANAGED",
+    "rows": 9
+  },
+  {
+    "object": "workspace.performance_test.perf_policy_retrieval_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.perf_policy_retrieval_rejects",
+    "type": "MANAGED",
+    "rows": 0
+  },
+  {
+    "object": "workspace.performance_test.performance_cycle",
+    "type": "MANAGED",
+    "rows": 7
+  },
+  {
+    "object": "workspace.performance_test.performance_goal",
+    "type": "MANAGED",
+    "rows": 60
+  },
+  {
+    "object": "workspace.performance_test.performance_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.performance_test.performance_target",
+    "type": "MANAGED",
+    "rows": 147
+  },
+  {
+    "object": "workspace.performance_test.region",
+    "type": "MANAGED",
+    "rows": 2
+  },
+  {
+    "object": "workspace.performance_test.review_meeting",
+    "type": "MANAGED",
+    "rows": 105
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.app_policy_chunks_version_test",
+    "type": "MANAGED",
+    "rows": 9
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.bench_results",
+    "type": "MANAGED",
+    "rows": 228
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.perf_citation_registry",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.perf_policy_candidates_v",
+    "type": "VIEW",
+    "rows": null
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.perf_policy_retrieval",
+    "type": "MANAGED",
+    "rows": 9
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.perf_policy_retrieval_index",
+    "type": "VECTOR_INDEX (foreign)",
+    "rows": null
+  },
+  {
+    "object": "workspace.ask_mariner_perf_dev.perf_policy_retrieval_rejects",
+    "type": "MANAGED",
+    "rows": 0
+  }
+]

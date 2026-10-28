@@ -7,6 +7,42 @@ from mariner_genai_dbx.errors import ConfigurationError
 
 
 class ConfigurationTests(unittest.TestCase):
+    def test_performance_fast_path_requires_explicit_valid_configuration(self):
+        self.assertFalse(load_settings(environ={}).performance_fast_path_enabled)
+        with self.assertRaisesRegex(ConfigurationError, 'must be true or false'):
+            load_settings(environ={'PERFORMANCE_FAST_PATH_ENABLED': 'yes'})
+        with self.assertRaisesRegex(ConfigurationError, 'requires Databricks'):
+            load_settings(environ={'PERFORMANCE_FAST_PATH_ENABLED': 'true'})
+        with self.assertRaisesRegex(ConfigurationError, 'POC fast path'):
+            load_settings(environ={'PERFORMANCE_FAST_PATH_ENABLED': 'true', 'APP_ENV': 'production'})
+
+    def test_performance_view_prefix_defaults_to_live_views_and_is_allowlisted(self):
+        self.assertEqual(load_settings(environ={}).performance_view_prefix, 'app_vw_')
+        self.assertEqual(load_settings(environ={'PERFORMANCE_VIEW_PREFIX': 'app_fast_'}).performance_view_prefix,
+                         'app_fast_')
+        with self.assertRaisesRegex(ConfigurationError, 'PERFORMANCE_VIEW_PREFIX'):
+            load_settings(environ={'PERFORMANCE_VIEW_PREFIX': 'app_x_'})
+
+    def test_direct_specialist_routes_are_parsed_and_validated(self):
+        self.assertEqual(load_settings(environ={}).direct_specialist_routes, ())
+        settings = load_settings(environ={'DIRECT_SPECIALIST_ROUTES_JSON':
+            '{"/policy": {"endpoint": "ka-1-endpoint", "api": "responses", "agent": "mariner-policy-assistant"}}'})
+        [(command, route)] = settings.direct_specialist_routes
+        self.assertEqual((command, route.endpoint, route.api), ('/policy', 'ka-1-endpoint', 'responses'))
+        for bad in ('[]', '{"/other": {"endpoint": "e", "api": "chat", "agent": "a"}}',
+                    '{"/policy": {"endpoint": "e/../x", "api": "chat", "agent": "a"}}',
+                    '{"/policy": {"endpoint": "e", "api": "rpc", "agent": "a"}}', 'not json'):
+            with self.assertRaises(ConfigurationError):
+                load_settings(environ={'DIRECT_SPECIALIST_ROUTES_JSON': bad})
+
+    def test_registry_requires_warehouse_and_approved_catalogs(self):
+        with self.assertRaisesRegex(ConfigurationError, "registry requires"):
+            load_settings(environ={"DATABRICKS_CITATION_REGISTRY_TABLE": "main.docs.registry"})
+
+    def test_registry_rejects_unsafe_table_identifier(self):
+        with self.assertRaisesRegex(ConfigurationError, "fully qualified"):
+            load_settings(environ={"DATABRICKS_CITATION_REGISTRY_TABLE": "main.docs.registry;DROP"})
+
     def test_development_defaults_to_safe_mock_mode(self):
         settings = load_settings(environ={})
 

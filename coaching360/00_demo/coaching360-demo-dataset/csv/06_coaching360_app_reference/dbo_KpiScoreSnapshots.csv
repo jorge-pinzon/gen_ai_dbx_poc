@@ -1,0 +1,1 @@
+KpiScoreSnapshotId,EmployeeId,OrganizationalUnitId,KpiDefinitionId,ScorePeriodStartDate,ScorePeriodEndDate,ActualValue,TargetValue,ScoreValue,RankingValue,RankingScope,SourceSystem,SourceBatchId,CreatedUtc

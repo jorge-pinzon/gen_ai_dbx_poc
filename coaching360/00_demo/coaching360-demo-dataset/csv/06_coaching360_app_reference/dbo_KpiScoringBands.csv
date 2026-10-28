@@ -1,0 +1,106 @@
+KpiScoringBandId,KpiScoringRuleId,ScoreLevel,Label,MinValue,MaxValue,Tone,SortOrder
+1,1,1,Needs Improvement,0,0.7499,bad,10
+2,1,3,Meets Expectations,0.75,0.8999,good,20
+3,1,4,Exceeds Expectations,0.9,1.0999,good,30
+4,1,5,Outstanding,1.1,,good,40
+5,2,1,Needs Improvement,0,0.6999,bad,10
+6,2,3,Meets Expectations,0.7,0.8499,good,20
+7,2,4,Exceeds Expectations,0.85,0.9999,good,30
+8,2,5,Outstanding,1.0,,good,40
+9,3,1,Needs Improvement,0,84.99,bad,10
+10,3,3,Meets Expectations,85,94.99,good,20
+11,3,4,Exceeds Expectations,95,109.99,good,30
+12,3,5,Outstanding,110,,good,40
+13,4,1,Needs Improvement,0,84.99,bad,10
+14,4,3,Meets Expectations,85,94.99,good,20
+15,4,4,Exceeds Expectations,95,109.99,good,30
+16,4,5,Outstanding,110,,good,40
+17,5,1,Needs Improvement,0,84.99,bad,10
+18,5,3,Meets Expectations,85,94.99,good,20
+19,5,4,Exceeds Expectations,95,109.99,good,30
+20,5,5,Outstanding,110,,good,40
+21,6,1,Needs Improvement,0,84.99,bad,10
+22,6,3,Meets Expectations,85,94.99,good,20
+23,6,4,Exceeds Expectations,95,109.99,good,30
+24,6,5,Outstanding,110,,good,40
+25,7,1,Does Not Meet Expectations,0,24.99,bad,10
+26,7,2,Almost Meets Expectations,25,44.99,watch,20
+27,7,3,Meets Expectations,45,49.99,good,30
+28,7,4,Exceeds Expectations,50,54.99,good,40
+29,7,5,Outstanding,55,,good,50
+30,8,1,Needs Improvement,0,42.0,bad,10
+31,8,3,Meets Expectations,42.01,49.99,good,20
+32,8,4,Exceeds Expectations,50,55.99,good,30
+33,8,5,Outstanding,56,,good,40
+34,9,1,Needs Improvement,0,84.99,bad,10
+35,9,3,Meets Expectations,85,94.99,good,20
+36,9,4,Exceeds Expectations,95,109.99,good,30
+37,9,5,Outstanding,110,,good,40
+38,10,1,Needs Improvement,-1,1.9999,bad,10
+39,10,3,Meets Expectations,2.0,2.9999,good,20
+40,10,4,Exceeds Expectations,3.0,3.9999,good,30
+41,10,5,Outstanding,4.0,,good,40
+42,11,1,Needs Improvement,0,0.7499,bad,10
+43,11,3,Meets Expectations,0.75,0.8999,good,20
+44,11,4,Exceeds Expectations,0.9,1.0999,good,30
+45,11,5,Outstanding,1.1,,good,40
+46,12,1,Needs Improvement,0,0.6999,bad,10
+47,12,3,Meets Expectations,0.7,0.8499,good,20
+48,12,4,Exceeds Expectations,0.85,0.9999,good,30
+49,12,5,Outstanding,1.0,,good,40
+50,13,1,Needs Improvement,0,84.99,bad,10
+51,13,2,Meets,85,94.99,good,20
+52,13,3,Exceeds,95,109.99,good,30
+53,13,4,Outstanding,110,,good,40
+54,14,4,Outstanding,0,6.99,good,10
+55,14,3,Exceeds Expectations,7.0,7.99,good,20
+56,14,2,Meets Expectations,8.0,8.99,good,30
+57,14,1,Needs Improvement,9.0,,bad,40
+58,15,1,Needs Improvement,0,84.99,bad,10
+59,15,2,Meets,85,94.99,good,20
+60,15,3,Exceeds,95,109.99,good,30
+61,15,4,Outstanding,110,,good,40
+62,16,1,Needs Improvement,0,42.0,bad,10
+63,16,2,Meets,42.1,49.99,good,20
+64,16,3,Exceeds,50,55.99,good,30
+65,16,4,Outstanding,56,,good,40
+66,17,1,Needs Improvement,0,69.99,bad,10
+67,17,2,Meets,70,74.99,good,20
+68,17,3,Exceeds,75,80.99,good,30
+69,17,4,Outstanding,81,,good,40
+70,18,1,Needs Improvement,-1,1.5099,bad,10
+71,18,3,Meets Expectations,1.51,2.0999,good,20
+72,18,4,Exceeds Expectations,2.1,2.5099,good,30
+73,18,5,Outstanding,2.51,,good,40
+74,19,1,Needs Improvement,0,0.7499,bad,10
+75,19,3,Meets Expectations,0.75,0.8999,good,20
+76,19,4,Exceeds Expectations,0.9,1.0999,good,30
+77,19,5,Outstanding,1.1,,good,40
+78,20,1,Needs Improvement,0,0.6999,bad,10
+79,20,3,Meets Expectations,0.7,0.8499,good,20
+80,20,4,Exceeds Expectations,0.85,0.9999,good,30
+81,20,5,Outstanding,1.0,,good,40
+82,21,4,Outstanding,0,6.99,good,10
+83,21,3,Exceeds,7.0,7.99,good,20
+84,21,2,Meets,8.0,8.99,good,30
+85,21,1,Needs Improvement,9.0,,bad,40
+86,22,1,Needs Improvement,0,84.99,bad,10
+87,22,2,Meets,85,94.99,good,20
+88,22,3,Exceeds,95,109.99,good,30
+89,22,4,Outstanding,110,,good,40
+90,23,1,Needs Improvement,0,42.0,bad,10
+91,23,2,Meets,42.01,49.99,good,20
+92,23,3,Exceeds,50,55.99,good,30
+93,23,4,Outstanding,56,,good,40
+94,24,4,Outstanding,0,23.0,good,10
+95,24,3,Exceeds,23.1,26.0,good,20
+96,24,2,Meets,26.1,28.0,good,30
+97,24,1,Needs Improvement,28.1,,bad,40
+98,25,1,Needs Improvement,0,69.99,bad,10
+99,25,2,Meets,70,74.99,good,20
+100,25,3,Exceeds,75,80.99,good,30
+101,25,4,Outstanding,81,,good,40
+102,26,1,Needs Improvement,-1,1.9999,bad,10
+103,26,3,Meets Expectations,2.0,2.9999,good,20
+104,26,4,Exceeds Expectations,3.0,3.9999,good,30
+105,26,5,Outstanding,4.0,,good,40

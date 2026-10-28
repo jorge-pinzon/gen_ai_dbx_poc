@@ -1,0 +1,712 @@
+BranchVisitId,OrganizationalUnitId,VisitDate,VisitStatus,VisitPurpose,ConfidentialLeadershipFeedback,SubmittedUtc,CreatedUtc,UpdatedUtc,SubmittedByUserName,IsArchived,ArchivedUtc,ArchivedByUserName,IsConfidentialVisit
+1,3001,2026-01-07 00:00:00.000,Submitted,Fallston Ridge monthly review,,2026-01-09 15:58:16.149,2026-01-07 15:47:29.919,2026-01-09 15:58:16.149,Nolan Ingram,0,,,0
+2,3002,2026-01-07 00:00:00.000,Submitted,Harbor Point - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-01-08 14:26:44.494,2026-01-07 14:02:12.872,2026-01-08 14:26:44.494,Nolan Ingram,0,,,0
+3,3007,2026-01-07 00:00:00.000,Submitted,Blue Ridge Crossing - new BM support,,2026-01-08 00:23:00.787,2026-01-07 15:07:23.639,2026-01-08 00:23:00.787,Felicia Umberto,0,,,0
+4,3013,2026-01-06 00:00:00.000,Submitted,Laurel Highlands monthly review,,2026-01-07 18:28:37.839,2026-01-06 15:55:46.317,2026-01-07 18:28:37.839,Olivia Northcott,0,,,0
+5,3014,2026-01-08 00:00:00.000,Submitted,Susquehanna Flats - delinquency and staffing review,,2026-01-09 07:29:36.476,2026-01-08 13:07:29.853,2026-01-09 07:29:36.476,Olivia Northcott,0,,,0
+6,3019,2026-01-08 00:00:00.000,Submitted,Pamlico Shores - new BM support,,2026-01-09 14:41:31.980,2026-01-08 15:53:58.138,2026-01-09 14:41:31.980,Blake Norwood,0,,,0
+7,3025,2026-01-07 00:00:00.000,Submitted,Wateree Hills - new BM support,,2026-01-09 17:06:04.544,2026-01-07 15:21:57.939,2026-01-09 17:06:04.544,Nadia Ironside,0,,,0
+8,3033,2026-01-08 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-01-09 13:18:46.450,2026-01-08 15:18:37.868,2026-01-09 13:18:46.450,Logan Huxley,0,,,0
+9,3034,2026-01-09 00:00:00.000,Submitted,Satilla Crossing - delinquency and staffing review,,2026-01-11 02:23:14.913,2026-01-09 13:52:19.663,2026-01-11 02:23:14.913,Logan Huxley,0,,,0
+10,3041,2026-01-07 00:00:00.000,Submitted,Harpeth Valley - new BM support,,2026-01-08 08:06:37.302,2026-01-07 15:17:53.880,2026-01-08 08:06:37.302,Avery Eastwick,0,,,0
+11,3042,2026-01-07 00:00:00.000,Submitted,Clinch Mountain branch visit,,2026-01-08 22:24:04.552,2026-01-07 14:45:12.856,2026-01-08 22:24:04.552,Avery Eastwick,0,,,0
+12,3043,2026-01-08 00:00:00.000,Submitted,Hiwassee Station - new BM support,,2026-01-10 00:11:16.975,2026-01-08 13:13:58.876,2026-01-10 00:11:16.975,Avery Eastwick,0,,,0
+13,3047,2026-01-06 00:00:00.000,Submitted,Mobile Bay View - new BM support,,2026-01-07 03:57:35.417,2026-01-06 15:12:24.622,2026-01-07 03:57:35.417,Rashad Blackwood,0,,,0
+14,3048,2026-01-07 00:00:00.000,Submitted,Cahaba Hills monthly review,,2026-01-07 16:45:31.175,2026-01-07 14:43:48.019,2026-01-07 16:45:31.175,Rashad Blackwood,0,,,0
+15,3055,2026-01-07 00:00:00.000,Submitted,Pecos Station - new BM support,,2026-01-08 05:59:24.833,2026-01-07 13:15:31.765,2026-01-08 05:59:24.833,Kara Greenleaf,0,,,0
+16,3056,2026-01-08 00:00:00.000,Submitted,Guadalupe Springs - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-01-08 22:20:57.835,2026-01-08 15:28:35.560,2026-01-08 22:20:57.835,Kara Greenleaf,0,,,0
+17,3057,2026-01-08 00:00:00.000,Submitted,Llano Ridge - delinquency and staffing review,,2026-01-09 01:49:15.799,2026-01-08 15:09:27.931,2026-01-09 01:49:15.799,Kara Greenleaf,0,,,0
+18,3019,2026-01-07 00:00:00.000,Submitted,Pamlico Shores branch visit,,2026-01-08 21:01:19.467,2026-01-07 15:13:47.714,2026-01-08 21:01:19.467,Hayden Stanhope,0,,,0
+19,3003,2026-01-15 00:00:00.000,Submitted,Cedar Hollow monthly review,,2026-01-15 21:01:35.412,2026-01-15 15:14:52.564,2026-01-15 21:01:35.412,Nolan Ingram,0,,,0
+20,3004,2026-01-13 00:00:00.000,Submitted,Oak Glen - delinquency and staffing review,,2026-01-14 16:52:29.484,2026-01-13 15:16:14.144,2026-01-14 16:52:29.484,Nolan Ingram,0,,,0
+21,3008,2026-01-13 00:00:00.000,Submitted,Rappahannock Hills - delinquency and staffing review,,2026-01-15 10:01:40.556,2026-01-13 13:06:04.854,2026-01-15 10:01:40.556,Felicia Umberto,0,,,0
+22,3015,2026-01-15 00:00:00.000,Submitted,Brandywine Hollow - delinquency and staffing review,,2026-01-15 17:09:35.498,2026-01-15 13:23:28.530,2026-01-15 17:09:35.498,Olivia Northcott,0,,,0
+23,3021,2026-01-14 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-01-16 04:02:48.552,2026-01-14 14:12:02.629,2026-01-16 04:02:48.552,Blake Norwood,0,,,0
+24,3026,2026-01-13 00:00:00.000,Submitted,Congaree Point - new BM support,,2026-01-15 04:12:15.478,2026-01-13 14:36:36.104,2026-01-15 04:12:15.478,Nadia Ironside,0,,,0
+25,3028,2026-01-15 00:00:00.000,Submitted,Lowcountry Cove monthly review,,2026-01-15 21:22:54.228,2026-01-15 15:02:53.492,2026-01-15 21:22:54.228,Nadia Ironside,0,,,0
+26,3035,2026-01-13 00:00:00.000,Submitted,Altamaha Landing branch visit,,2026-01-14 03:34:45.553,2026-01-13 14:12:27.558,2026-01-14 03:34:45.553,Logan Huxley,0,,,0
+27,3036,2026-01-15 00:00:00.000,Submitted,Peachtree Hollow branch visit,,2026-01-16 12:29:13.741,2026-01-15 13:35:37.744,2026-01-16 12:29:13.741,Logan Huxley,0,,,0
+28,3037,2026-01-16 00:00:00.000,Submitted,Oconee Springs - delinquency and staffing review,,2026-01-17 08:09:52.198,2026-01-16 15:26:30.599,2026-01-17 08:09:52.198,Logan Huxley,0,,,0
+29,3044,2026-01-16 00:00:00.000,Submitted,Caney Fork monthly review,,2026-01-18 01:34:14.129,2026-01-16 14:13:41.510,2026-01-18 01:34:14.129,Avery Eastwick,0,,,0
+30,3045,2026-01-13 00:00:00.000,Submitted,Duck River Mills - new BM support,,2026-01-14 00:02:48.300,2026-01-13 15:01:16.712,2026-01-14 00:02:48.300,Avery Eastwick,0,,,0
+31,3046,2026-01-13 00:00:00.000,Submitted,Cumberland Gap - delinquency and staffing review,,2026-01-15 14:21:12.095,2026-01-13 15:05:15.067,2026-01-15 14:21:12.095,Avery Eastwick,0,,,0
+32,3050,2026-01-13 00:00:00.000,Submitted,Choctaw Springs monthly review,,2026-01-14 07:04:22.726,2026-01-13 14:19:15.064,2026-01-14 07:04:22.726,Rashad Blackwood,0,,,0
+33,3058,2026-01-13 00:00:00.000,Submitted,Nueces Landing - new BM support,,2026-01-14 06:40:59.287,2026-01-13 14:49:54.817,2026-01-14 06:40:59.287,Kara Greenleaf,0,,,0
+34,3059,2026-01-13 00:00:00.000,Submitted,Brazos Bend monthly review,,2026-01-13 21:44:25.587,2026-01-13 15:12:05.975,2026-01-13 21:44:25.587,Kara Greenleaf,0,,,0
+35,3008,2026-01-15 00:00:00.000,Submitted,Rappahannock Hills - delinquency and staffing review,,2026-01-16 15:21:39.657,2026-01-15 13:21:21.455,2026-01-16 15:21:39.657,Keisha Foxworth,0,,,0
+36,3030,2026-01-16 00:00:00.000,Submitted,Palmetto Ridge monthly review,,2026-01-18 01:27:30.671,2026-01-16 13:20:47.909,2026-01-18 01:27:30.671,Hayden Stanhope,0,,,1
+37,3057,2026-01-13 00:00:00.000,Submitted,Llano Ridge monthly review,,2026-01-13 19:06:42.110,2026-01-13 15:52:38.881,2026-01-13 19:06:42.110,Simone Mendoza,0,,,0
+38,3005,2026-01-20 00:00:00.000,Submitted,Severn Bend branch visit,,2026-01-22 05:18:20.778,2026-01-20 14:27:51.698,2026-01-22 05:18:20.778,Nolan Ingram,0,,,0
+39,3006,2026-01-22 00:00:00.000,Submitted,Patapsco Falls branch visit,,2026-01-23 21:22:48.205,2026-01-22 15:35:12.616,2026-01-23 21:22:48.205,Nolan Ingram,0,,,0
+40,3001,2026-01-20 00:00:00.000,Submitted,Fallston Ridge branch visit,,2026-01-22 12:16:14.024,2026-01-20 14:19:54.869,2026-01-22 12:16:14.024,Nolan Ingram,0,,,0
+41,3009,2026-01-20 00:00:00.000,Submitted,Stonewall Junction - new BM support,,2026-01-22 11:00:48.148,2026-01-20 15:30:24.767,2026-01-22 11:00:48.148,Felicia Umberto,0,,,0
+42,3010,2026-01-20 00:00:00.000,Submitted,Pine Bluff branch visit,,2026-01-21 05:27:52.769,2026-01-20 14:59:05.300,2026-01-21 05:27:52.769,Felicia Umberto,0,,,0
+43,3016,2026-01-21 00:00:00.000,Submitted,Lehigh Gap monthly review,Strong BM - succession candidate for larger branch.,2026-01-21 22:19:38.890,2026-01-21 15:19:54.095,2026-01-21 22:19:38.890,Olivia Northcott,0,,,0
+44,3017,2026-01-22 00:00:00.000,Submitted,Keystone Valley - delinquency and staffing review,,2026-01-23 13:24:41.661,2026-01-22 14:23:20.496,2026-03-02 23:13:43.861,Olivia Northcott,1,2026-03-02 23:13:43.861,Olivia Northcott,0
+45,3022,2026-01-21 00:00:00.000,Submitted,Piedmont Springs - delinquency and staffing review,,2026-01-22 02:08:00.748,2026-01-21 14:59:51.240,2026-01-22 02:08:00.748,Blake Norwood,0,,,0
+46,3023,2026-01-21 00:00:00.000,Submitted,Sandhill Commons branch visit,,2026-01-23 05:16:42.615,2026-01-21 13:20:58.835,2026-01-23 05:16:42.615,Blake Norwood,0,,,0
+47,3029,2026-01-21 00:00:00.000,Submitted,Pee Dee Crossing branch visit,,2026-01-22 02:34:19.692,2026-01-21 15:59:36.954,2026-01-22 02:34:19.692,Nadia Ironside,0,,,0
+48,3030,2026-01-21 00:00:00.000,Submitted,Palmetto Ridge - new BM support,,2026-01-23 08:24:06.524,2026-01-21 13:42:35.815,2026-01-23 08:24:06.524,Nadia Ironside,0,,,0
+49,3031,2026-01-23 00:00:00.000,Submitted,Edisto Bay branch visit,BM needs support with team accountability; consider leadership coaching.,2026-01-24 11:00:59.310,2026-01-23 13:04:00.416,2026-01-24 11:00:59.310,Nadia Ironside,0,,,0
+50,3038,2026-01-20 00:00:00.000,Submitted,Chattahoochee Bend monthly review,,2026-01-21 00:35:10.972,2026-01-20 15:16:20.054,2026-01-21 00:35:10.972,Logan Huxley,0,,,0
+51,3039,2026-01-23 00:00:00.000,Submitted,Ocmulgee Park - new BM support,,2026-01-25 03:35:31.188,2026-01-23 13:35:34.939,2026-01-25 03:35:31.188,Logan Huxley,0,,,0
+52,3041,2026-01-22 00:00:00.000,Submitted,Harpeth Valley branch visit,,2026-01-22 21:01:32.515,2026-01-22 14:16:20.158,2026-01-22 21:01:32.515,Avery Eastwick,0,,,0
+53,3051,2026-01-22 00:00:00.000,Submitted,Coosa Bend - new BM support,,2026-01-22 17:41:59.308,2026-01-22 14:55:11.075,2026-01-22 17:41:59.308,Rashad Blackwood,0,,,0
+54,3060,2026-01-20 00:00:00.000,Submitted,Trinity Mills branch visit,,2026-01-22 08:55:50.689,2026-01-20 14:20:08.685,2026-01-22 08:55:50.689,Kara Greenleaf,0,,,0
+55,3061,2026-01-20 00:00:00.000,Submitted,Sabine Point monthly review,BM needs support with team accountability; consider leadership coaching.,2026-01-22 07:12:18.479,2026-01-20 13:52:47.505,2026-01-22 07:12:18.479,Kara Greenleaf,0,,,0
+56,3041,2026-01-20 00:00:00.000,Submitted,Harpeth Valley branch visit,Strong BM - succession candidate for larger branch.,2026-01-21 01:22:08.709,2026-01-20 13:42:54.461,2026-01-21 01:22:08.709,Simone Mendoza,0,,,1
+57,3003,2026-01-30 00:00:00.000,Submitted,Cedar Hollow - new BM support,,2026-02-01 09:15:23.230,2026-01-30 13:07:12.010,2026-02-01 09:15:23.230,Nolan Ingram,0,,,0
+58,3011,2026-01-30 00:00:00.000,Submitted,Laurel Fork - delinquency and staffing review,Strong BM - succession candidate for larger branch.,2026-01-31 01:23:26.868,2026-01-30 13:38:26.382,2026-01-31 01:23:26.868,Felicia Umberto,0,,,0
+59,3012,2026-01-29 00:00:00.000,Submitted,Shenandoah Mills branch visit,,2026-01-29 17:16:05.118,2026-01-29 13:26:38.134,2026-01-29 17:16:05.118,Felicia Umberto,0,,,0
+60,3018,2026-01-30 00:00:00.000,Submitted,Penn Ridge monthly review,Strong BM - succession candidate for larger branch.,2026-02-01 06:22:37.626,2026-01-30 14:44:35.794,2026-02-01 06:22:37.626,Olivia Northcott,0,,,0
+61,3013,2026-01-29 00:00:00.000,Submitted,Laurel Highlands - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-01-29 21:44:47.906,2026-01-29 15:59:04.591,2026-01-29 21:44:47.906,Olivia Northcott,0,,,0
+62,3024,2026-01-30 00:00:00.000,Submitted,Neuse Bend - delinquency and staffing review,,2026-01-31 07:05:14.699,2026-01-30 14:49:21.356,2026-01-31 07:05:14.699,Blake Norwood,0,,,0
+63,3019,2026-01-29 00:00:00.000,Submitted,Pamlico Shores - delinquency and staffing review,,2026-01-31 12:10:15.888,2026-01-29 15:43:41.998,2026-02-22 15:20:17.475,Blake Norwood,1,2026-02-22 15:20:17.475,Blake Norwood,0
+64,3032,2026-01-29 00:00:00.000,Submitted,Saluda Mills - new BM support,,2026-01-30 14:05:28.012,2026-01-29 15:41:03.943,2026-01-30 14:05:28.012,Nadia Ironside,0,,,0
+65,3025,2026-01-29 00:00:00.000,Submitted,Wateree Hills - delinquency and staffing review,,2026-01-31 03:07:52.268,2026-01-29 14:09:41.346,2026-01-31 03:07:52.268,Nadia Ironside,0,,,0
+66,3033,2026-01-28 00:00:00.000,Submitted,Flint River Mills branch visit,,2026-01-29 13:51:04.151,2026-01-28 14:14:36.065,2026-01-29 13:51:04.151,Logan Huxley,0,,,0
+67,3042,2026-01-27 00:00:00.000,Submitted,Clinch Mountain - new BM support,,2026-01-28 16:57:29.517,2026-01-27 14:44:30.244,2026-01-28 16:57:29.517,Avery Eastwick,0,,,0
+68,3043,2026-01-28 00:00:00.000,Submitted,Hiwassee Station branch visit,BM needs support with team accountability; consider leadership coaching.,2026-01-29 09:20:58.684,2026-01-28 14:39:06.405,2026-01-29 09:20:58.684,Avery Eastwick,0,,,0
+69,3044,2026-01-28 00:00:00.000,Submitted,Caney Fork branch visit,Strong BM - succession candidate for larger branch.,2026-01-29 16:05:09.302,2026-01-28 15:10:30.682,2026-01-29 16:05:09.302,Avery Eastwick,0,,,0
+70,3052,2026-01-30 00:00:00.000,Submitted,Tombigbee Landing - new BM support,,2026-01-31 14:57:22.904,2026-01-30 14:56:28.233,2026-01-31 14:57:22.904,Rashad Blackwood,0,,,0
+71,3053,2026-01-27 00:00:00.000,Submitted,Sipsey Ridge - delinquency and staffing review,,2026-01-27 21:21:45.064,2026-01-27 15:43:29.677,2026-01-27 21:21:45.064,Rashad Blackwood,0,,,0
+72,3062,2026-01-30 00:00:00.000,Submitted,Hill Country Crossing monthly review,,2026-01-30 15:57:25.430,2026-01-30 13:14:51.210,2026-01-30 15:57:25.430,Kara Greenleaf,0,,,0
+73,3055,2026-01-29 00:00:00.000,Submitted,Pecos Station monthly review,,2026-01-29 22:53:07.410,2026-01-29 14:23:02.435,2026-01-29 22:53:07.410,Kara Greenleaf,0,,,0
+74,3056,2026-01-29 00:00:00.000,Submitted,Guadalupe Springs branch visit,,2026-01-31 16:07:10.672,2026-01-29 15:40:14.677,2026-01-31 16:07:10.672,Kara Greenleaf,0,,,0
+75,3013,2026-01-29 00:00:00.000,Submitted,Laurel Highlands - delinquency and staffing review,,2026-01-31 10:34:29.760,2026-01-29 14:50:04.933,2026-01-31 10:34:29.760,Keisha Foxworth,0,,,0
+76,3004,2026-02-03 00:00:00.000,Submitted,Oak Glen branch visit,,2026-02-05 14:18:02.225,2026-02-03 15:22:44.095,2026-02-05 14:18:02.225,Nolan Ingram,0,,,0
+77,3005,2026-02-03 00:00:00.000,Submitted,Severn Bend monthly review,Strong BM - succession candidate for larger branch.,2026-02-04 20:05:00.542,2026-02-03 14:32:24.942,2026-02-04 20:05:00.542,Nolan Ingram,0,,,0
+78,3007,2026-02-05 00:00:00.000,Submitted,Blue Ridge Crossing branch visit,,2026-02-06 18:51:15.606,2026-02-05 15:27:46.481,2026-02-06 18:51:15.606,Felicia Umberto,0,,,0
+79,3014,2026-02-03 00:00:00.000,Submitted,Susquehanna Flats monthly review,,2026-02-03 20:06:43.253,2026-02-03 14:28:18.383,2026-02-03 20:06:43.253,Olivia Northcott,0,,,0
+80,3015,2026-02-03 00:00:00.000,Submitted,Brandywine Hollow monthly review,,2026-02-03 17:55:13.489,2026-02-03 13:20:42.778,2026-02-03 17:55:13.489,Olivia Northcott,0,,,0
+81,3020,2026-02-05 00:00:00.000,Submitted,Yadkin Crossing - delinquency and staffing review,,2026-02-06 17:35:11.446,2026-02-05 15:15:09.434,2026-02-06 17:35:11.446,Blake Norwood,0,,,0
+82,3026,2026-02-06 00:00:00.000,Submitted,Congaree Point monthly review,,2026-02-07 19:51:32.760,2026-02-06 15:24:49.223,2026-02-07 19:51:32.760,Nadia Ironside,0,,,0
+83,3034,2026-02-03 00:00:00.000,Submitted,Satilla Crossing branch visit,,2026-02-03 23:45:45.937,2026-02-03 15:22:39.917,2026-02-03 23:45:45.937,Logan Huxley,0,,,0
+84,3035,2026-02-06 00:00:00.000,Submitted,Altamaha Landing - delinquency and staffing review,,2026-02-07 15:26:01.790,2026-02-06 15:30:54.700,2026-02-07 15:26:01.790,Logan Huxley,0,,,0
+85,3041,2026-02-05 00:00:00.000,Submitted,Harpeth Valley - delinquency and staffing review,,2026-02-07 05:19:20.241,2026-02-05 13:39:43.329,2026-02-07 05:19:20.241,Avery Eastwick,0,,,0
+86,3054,2026-02-06 00:00:00.000,Submitted,Black Warrior Crossing - new BM support,,2026-02-06 18:02:22.140,2026-02-06 14:07:51.534,2026-02-06 18:02:22.140,Rashad Blackwood,0,,,0
+87,3047,2026-02-03 00:00:00.000,Submitted,Mobile Bay View monthly review,,2026-02-05 16:07:04.947,2026-02-03 15:22:45.893,2026-02-05 16:07:04.947,Rashad Blackwood,0,,,0
+88,3057,2026-02-04 00:00:00.000,Submitted,Llano Ridge branch visit,Strong BM - succession candidate for larger branch.,2026-02-06 14:04:53.608,2026-02-04 15:23:38.281,2026-02-06 14:04:53.608,Kara Greenleaf,0,,,0
+89,3058,2026-02-04 00:00:00.000,Submitted,Nueces Landing - new BM support,,2026-02-05 22:18:54.289,2026-02-04 13:20:29.167,2026-02-05 22:18:54.289,Kara Greenleaf,0,,,0
+90,3038,2026-02-03 00:00:00.000,Submitted,Chattahoochee Bend - new BM support,,2026-02-04 01:43:50.957,2026-02-03 14:24:26.734,2026-02-04 01:43:50.957,Hayden Stanhope,0,,,1
+91,3006,2026-02-13 00:00:00.000,Submitted,Patapsco Falls - delinquency and staffing review,,2026-02-14 01:05:59.614,2026-02-13 15:19:10.469,2026-02-14 01:05:59.614,Nolan Ingram,0,,,0
+92,3001,2026-02-12 00:00:00.000,Submitted,Fallston Ridge - new BM support,,2026-02-13 15:31:18.291,2026-02-12 15:37:04.662,2026-02-13 15:31:18.291,Nolan Ingram,0,,,0
+93,3008,2026-02-12 00:00:00.000,Submitted,Rappahannock Hills - new BM support,,2026-02-14 03:13:05.647,2026-02-12 13:33:46.693,2026-02-14 03:13:05.647,Felicia Umberto,0,,,0
+94,3009,2026-02-10 00:00:00.000,Submitted,Stonewall Junction branch visit,,2026-02-11 04:50:59.667,2026-02-10 15:55:14.759,2026-02-11 04:50:59.667,Felicia Umberto,0,,,0
+95,3016,2026-02-11 00:00:00.000,Submitted,Lehigh Gap monthly review,,2026-02-13 15:26:29.626,2026-02-11 15:40:23.078,2026-02-13 15:26:29.626,Olivia Northcott,0,,,0
+96,3017,2026-02-12 00:00:00.000,Submitted,Keystone Valley branch visit,,2026-02-14 13:08:35.484,2026-02-12 14:28:39.539,2026-02-14 13:08:35.484,Olivia Northcott,0,,,0
+97,3021,2026-02-13 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-02-15 02:50:27.375,2026-02-13 14:41:20.258,2026-02-15 02:50:27.375,Blake Norwood,0,,,0
+98,3022,2026-02-12 00:00:00.000,Submitted,Piedmont Springs branch visit,,2026-02-13 12:27:06.704,2026-02-12 15:19:26.806,2026-02-13 12:27:06.704,Blake Norwood,0,,,0
+99,3023,2026-02-12 00:00:00.000,Submitted,Sandhill Commons branch visit,,2026-02-13 22:20:02.840,2026-02-12 15:40:28.900,2026-02-13 22:20:02.840,Blake Norwood,0,,,0
+100,3027,2026-02-10 00:00:00.000,Submitted,Santee Shoals - delinquency and staffing review,,2026-02-11 02:12:56.327,2026-02-10 13:57:19.401,2026-02-11 02:12:56.327,Nadia Ironside,0,,,0
+101,3028,2026-02-13 00:00:00.000,Submitted,Lowcountry Cove monthly review,,2026-02-14 12:29:40.624,2026-02-13 15:31:33.926,2026-02-14 12:29:40.624,Nadia Ironside,0,,,0
+102,3036,2026-02-10 00:00:00.000,Submitted,Peachtree Hollow branch visit,BM needs support with team accountability; consider leadership coaching.,2026-02-11 17:59:33.883,2026-02-10 15:55:15.878,2026-02-11 17:59:33.883,Logan Huxley,0,,,0
+103,3037,2026-02-10 00:00:00.000,Submitted,Oconee Springs - new BM support,,2026-02-12 06:07:27.602,2026-02-10 14:52:20.206,2026-02-12 06:07:27.602,Logan Huxley,0,,,0
+104,3042,2026-02-10 00:00:00.000,Submitted,Clinch Mountain - new BM support,,2026-02-11 22:42:05.161,2026-02-10 14:58:41.895,2026-02-11 22:42:05.161,Avery Eastwick,0,,,0
+105,3049,2026-02-10 00:00:00.000,Submitted,Tallapoosa Mills - new BM support,,2026-02-12 14:16:17.812,2026-02-10 13:26:03.809,2026-02-12 14:16:17.812,Rashad Blackwood,0,,,0
+106,3059,2026-02-10 00:00:00.000,Submitted,Brazos Bend branch visit,,2026-02-10 20:08:20.029,2026-02-10 14:36:54.429,2026-02-10 20:08:20.029,Kara Greenleaf,0,,,0
+107,3060,2026-02-11 00:00:00.000,Submitted,Trinity Mills branch visit,,2026-02-12 02:08:09.445,2026-02-11 14:01:56.676,2026-02-12 02:08:09.445,Kara Greenleaf,0,,,0
+108,3026,2026-02-12 00:00:00.000,Submitted,Congaree Point - delinquency and staffing review,Strong BM - succession candidate for larger branch.,2026-02-13 05:06:23.975,2026-02-12 13:27:28.595,2026-02-13 05:06:23.975,Hayden Stanhope,0,,,0
+109,3048,2026-02-10 00:00:00.000,Submitted,Cahaba Hills - new BM support,,2026-02-10 18:17:13.963,2026-02-10 14:20:52.398,2026-02-10 18:17:13.963,Simone Mendoza,0,,,1
+110,3002,2026-02-18 00:00:00.000,Submitted,Harbor Point - new BM support,,2026-02-19 11:05:05.928,2026-02-18 14:03:24.465,2026-02-19 11:05:05.928,Nolan Ingram,0,,,0
+111,3010,2026-02-17 00:00:00.000,Submitted,Pine Bluff monthly review,,2026-02-18 15:50:24.751,2026-02-17 14:47:30.846,2026-02-18 15:50:24.751,Felicia Umberto,0,,,0
+112,3018,2026-02-17 00:00:00.000,Submitted,Penn Ridge - delinquency and staffing review,,2026-02-17 19:06:43.142,2026-02-17 13:40:07.419,2026-02-17 19:06:43.142,Olivia Northcott,0,,,0
+113,3024,2026-02-20 00:00:00.000,Submitted,Neuse Bend - delinquency and staffing review,,2026-02-22 02:15:48.998,2026-02-20 14:14:43.731,2026-02-22 02:15:48.998,Blake Norwood,0,,,0
+114,3019,2026-02-20 00:00:00.000,Submitted,Pamlico Shores monthly review,,2026-02-21 12:32:44.727,2026-02-20 13:57:59.964,2026-02-21 12:32:44.727,Blake Norwood,0,,,0
+115,3020,2026-02-17 00:00:00.000,Submitted,Yadkin Crossing - delinquency and staffing review,,2026-02-19 10:33:35.525,2026-02-17 13:18:46.771,2026-02-19 10:33:35.525,Blake Norwood,0,,,0
+116,3029,2026-02-20 00:00:00.000,Submitted,Pee Dee Crossing monthly review,,2026-02-21 05:53:04.747,2026-02-20 13:42:29.828,2026-02-21 05:53:04.747,Nadia Ironside,0,,,0
+117,3038,2026-02-20 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,,2026-02-22 09:44:23.690,2026-02-20 14:10:27.880,2026-02-22 09:44:23.690,Logan Huxley,0,,,0
+118,3039,2026-02-17 00:00:00.000,Submitted,Ocmulgee Park - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-02-17 18:01:12.754,2026-02-17 14:42:29.899,2026-02-17 18:01:12.754,Logan Huxley,0,,,0
+119,3040,2026-02-17 00:00:00.000,Submitted,Etowah Ridge - delinquency and staffing review,,2026-02-17 22:44:55.700,2026-02-17 15:09:35.977,2026-02-17 22:44:55.700,Logan Huxley,0,,,0
+120,3043,2026-02-20 00:00:00.000,Submitted,Hiwassee Station branch visit,,2026-02-22 05:44:11.037,2026-02-20 13:46:08.956,2026-02-22 05:44:11.037,Avery Eastwick,0,,,0
+121,3050,2026-02-19 00:00:00.000,Submitted,Choctaw Springs - delinquency and staffing review,,2026-02-21 08:48:21.410,2026-02-19 13:00:05.043,2026-02-21 08:48:21.410,Rashad Blackwood,0,,,0
+122,3061,2026-02-20 00:00:00.000,Submitted,Sabine Point - delinquency and staffing review,,2026-02-22 05:31:43.121,2026-02-20 15:30:34.842,2026-02-22 05:31:43.121,Kara Greenleaf,0,,,0
+123,3062,2026-02-18 00:00:00.000,Submitted,Hill Country Crossing monthly review,Strong BM - succession candidate for larger branch.,2026-02-19 01:18:58.048,2026-02-18 13:30:40.966,2026-02-19 01:18:58.048,Kara Greenleaf,0,,,0
+124,3041,2026-02-18 00:00:00.000,Submitted,Harpeth Valley branch visit,,2026-02-20 04:52:26.564,2026-02-18 13:21:48.811,2026-02-20 04:52:26.564,Simone Mendoza,0,,,0
+125,3003,2026-02-26 00:00:00.000,Submitted,Cedar Hollow - delinquency and staffing review,,2026-02-27 14:06:29.481,2026-02-26 15:30:04.281,2026-02-27 14:06:29.481,Nolan Ingram,0,,,0
+126,3004,2026-02-27 00:00:00.000,Submitted,Oak Glen branch visit,Strong BM - succession candidate for larger branch.,2026-03-01 10:08:29.413,2026-02-27 15:00:31.614,2026-03-01 10:08:29.413,Nolan Ingram,0,,,0
+127,3011,2026-02-27 00:00:00.000,Submitted,Laurel Fork - new BM support,Strong BM - succession candidate for larger branch.,2026-02-28 11:54:58.668,2026-02-27 15:26:27.094,2026-02-28 11:54:58.668,Felicia Umberto,0,,,0
+128,3012,2026-02-27 00:00:00.000,Submitted,Shenandoah Mills branch visit,,2026-02-28 07:07:41.870,2026-02-27 14:57:29.136,2026-02-28 07:07:41.870,Felicia Umberto,0,,,0
+129,3021,2026-02-26 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-02-28 07:29:31.665,2026-02-26 15:51:35.418,2026-02-28 07:29:31.665,Blake Norwood,0,,,0
+130,3022,2026-02-24 00:00:00.000,Submitted,Piedmont Springs monthly review,,2026-02-26 02:07:27.089,2026-02-24 15:40:57.691,2026-02-26 02:07:27.089,Blake Norwood,0,,,0
+131,3030,2026-02-24 00:00:00.000,Submitted,Palmetto Ridge - new BM support,,2026-02-25 03:20:16.818,2026-02-24 14:40:16.338,2026-02-25 03:20:16.818,Nadia Ironside,0,,,0
+132,3031,2026-02-24 00:00:00.000,Submitted,Edisto Bay monthly review,,2026-02-24 21:13:49.705,2026-02-24 13:40:22.798,2026-02-24 21:13:49.705,Nadia Ironside,0,,,0
+133,3032,2026-02-24 00:00:00.000,Submitted,Saluda Mills branch visit,Strong BM - succession candidate for larger branch.,2026-02-25 08:26:24.027,2026-02-24 15:16:34.226,2026-02-25 08:26:24.027,Nadia Ironside,0,,,0
+134,3033,2026-02-27 00:00:00.000,Submitted,Flint River Mills monthly review,,2026-03-01 13:48:35.269,2026-02-27 13:12:09.483,2026-03-01 13:48:35.269,Logan Huxley,0,,,0
+135,3034,2026-02-25 00:00:00.000,Submitted,Satilla Crossing - new BM support,,2026-02-26 06:28:50.906,2026-02-25 14:40:35.294,2026-02-26 06:28:50.906,Logan Huxley,0,,,0
+136,3044,2026-02-25 00:00:00.000,Submitted,Caney Fork branch visit,,2026-02-26 02:16:45.964,2026-02-25 13:56:01.967,2026-02-26 02:16:45.964,Avery Eastwick,0,,,0
+137,3045,2026-02-24 00:00:00.000,Submitted,Duck River Mills branch visit,,2026-02-25 09:32:14.308,2026-02-24 14:18:01.234,2026-02-25 09:32:14.308,Avery Eastwick,0,,,0
+138,3055,2026-02-26 00:00:00.000,Submitted,Pecos Station monthly review,,2026-02-27 23:06:35.186,2026-02-26 14:32:09.134,2026-02-27 23:06:35.186,Kara Greenleaf,0,,,0
+139,3056,2026-02-24 00:00:00.000,Submitted,Guadalupe Springs branch visit,BM needs support with team accountability; consider leadership coaching.,2026-02-24 16:07:50.350,2026-02-24 13:51:03.081,2026-02-24 16:07:50.350,Kara Greenleaf,0,,,0
+140,3057,2026-02-25 00:00:00.000,Submitted,Llano Ridge branch visit,,2026-02-26 20:45:16.315,2026-02-25 14:53:27.664,2026-02-26 20:45:16.315,Kara Greenleaf,0,,,0
+141,3015,2026-02-26 00:00:00.000,Submitted,Brandywine Hollow monthly review,,2026-02-28 11:39:37.014,2026-02-26 15:10:46.509,2026-02-28 11:39:37.014,Keisha Foxworth,0,,,0
+142,3043,2026-02-26 00:00:00.000,Submitted,Hiwassee Station branch visit,,2026-02-28 12:44:44.195,2026-02-26 14:28:43.610,2026-02-28 12:44:44.195,Simone Mendoza,0,,,0
+143,3005,2026-03-05 00:00:00.000,Submitted,Severn Bend monthly review,,2026-03-06 10:13:10.573,2026-03-05 13:47:21.697,2026-03-06 10:13:10.573,Nolan Ingram,0,,,0
+144,3006,2026-03-06 00:00:00.000,Submitted,Patapsco Falls branch visit,,2026-03-06 23:04:25.924,2026-03-06 13:03:04.662,2026-03-06 23:04:25.924,Nolan Ingram,0,,,0
+145,3001,2026-03-03 00:00:00.000,Submitted,Fallston Ridge - delinquency and staffing review,,2026-03-05 16:32:48.617,2026-03-03 15:19:22.627,2026-03-05 16:32:48.617,Nolan Ingram,0,,,0
+146,3007,2026-03-03 00:00:00.000,Submitted,Blue Ridge Crossing monthly review,,2026-03-05 15:36:55.140,2026-03-03 14:01:33.024,2026-03-05 15:36:55.140,Felicia Umberto,0,,,0
+147,3008,2026-03-06 00:00:00.000,Submitted,Rappahannock Hills monthly review,,2026-03-08 07:02:22.794,2026-03-06 15:41:37.202,2026-03-08 07:02:22.794,Felicia Umberto,0,,,0
+148,3016,2026-03-05 00:00:00.000,Submitted,Lehigh Gap - delinquency and staffing review,,2026-03-06 19:10:00.506,2026-03-05 14:12:10.478,2026-03-06 19:10:00.506,Olivia Northcott,0,,,0
+149,3017,2026-03-04 00:00:00.000,Submitted,Keystone Valley branch visit,,2026-03-05 20:34:41.035,2026-03-04 14:03:32.622,2026-03-05 20:34:41.035,Olivia Northcott,0,,,0
+150,3023,2026-03-04 00:00:00.000,Submitted,Sandhill Commons - delinquency and staffing review,,2026-03-05 19:22:20.536,2026-03-04 13:36:23.764,2026-03-05 19:22:20.536,Blake Norwood,0,,,0
+151,3025,2026-03-05 00:00:00.000,Submitted,Wateree Hills - delinquency and staffing review,,2026-03-05 19:36:22.237,2026-03-05 15:24:56.282,2026-03-05 19:36:22.237,Nadia Ironside,0,,,0
+152,3035,2026-03-04 00:00:00.000,Submitted,Altamaha Landing - new BM support,,2026-03-06 02:38:25.520,2026-03-04 15:21:11.238,2026-03-06 02:38:25.520,Logan Huxley,0,,,0
+153,3036,2026-03-03 00:00:00.000,Submitted,Peachtree Hollow - new BM support,,2026-03-05 03:58:01.226,2026-03-03 13:26:20.818,2026-03-05 03:58:01.226,Logan Huxley,0,,,0
+154,3046,2026-03-05 00:00:00.000,Submitted,Cumberland Gap - new BM support,,2026-03-05 16:35:46.842,2026-03-05 13:00:56.569,2026-03-05 16:35:46.842,Avery Eastwick,0,,,0
+155,3052,2026-03-06 00:00:00.000,Submitted,Tombigbee Landing - delinquency and staffing review,,2026-03-07 20:42:00.035,2026-03-06 13:11:25.677,2026-03-07 20:42:00.035,Rashad Blackwood,0,,,0
+156,3058,2026-03-04 00:00:00.000,Submitted,Nueces Landing monthly review,,2026-03-05 18:02:18.563,2026-03-04 14:51:09.901,2026-03-05 18:02:18.563,Kara Greenleaf,0,,,0
+157,3033,2026-03-04 00:00:00.000,Submitted,Flint River Mills - new BM support,,2026-03-06 14:09:07.624,2026-03-04 14:00:23.654,2026-03-06 14:09:07.624,Hayden Stanhope,0,,,0
+158,3002,2026-03-11 00:00:00.000,Submitted,Harbor Point branch visit,,2026-03-12 19:07:21.850,2026-03-11 13:11:37.866,2026-03-12 19:07:21.850,Nolan Ingram,0,,,0
+159,3003,2026-03-10 00:00:00.000,Submitted,Cedar Hollow - delinquency and staffing review,,2026-03-10 20:53:52.310,2026-03-10 13:48:46.622,2026-03-10 20:53:52.310,Nolan Ingram,0,,,0
+160,3009,2026-03-12 00:00:00.000,Submitted,Stonewall Junction branch visit,,2026-03-13 03:32:19.317,2026-03-12 13:34:51.776,2026-03-13 03:32:19.317,Felicia Umberto,0,,,0
+161,3010,2026-03-13 00:00:00.000,Submitted,Pine Bluff - delinquency and staffing review,,2026-03-13 20:14:44.822,2026-03-13 13:20:00.029,2026-03-13 20:14:44.822,Felicia Umberto,0,,,0
+162,3011,2026-03-10 00:00:00.000,Submitted,Laurel Fork - delinquency and staffing review,,2026-03-12 03:26:57.066,2026-03-10 13:02:39.316,2026-03-12 03:26:57.066,Felicia Umberto,0,,,0
+163,3018,2026-03-11 00:00:00.000,Submitted,Penn Ridge monthly review,,2026-03-11 23:42:40.802,2026-03-11 13:30:37.520,2026-03-11 23:42:40.802,Olivia Northcott,0,,,0
+164,3013,2026-03-10 00:00:00.000,Submitted,Laurel Highlands monthly review,,2026-03-11 03:34:52.212,2026-03-10 13:26:02.348,2026-03-11 03:34:52.212,Olivia Northcott,0,,,0
+165,3014,2026-03-11 00:00:00.000,Submitted,Susquehanna Flats - delinquency and staffing review,,2026-03-12 07:19:12.603,2026-03-11 13:26:31.813,2026-03-12 07:19:12.603,Olivia Northcott,0,,,0
+166,3024,2026-03-11 00:00:00.000,Submitted,Neuse Bend - new BM support,,2026-03-13 11:05:01.188,2026-03-11 14:33:32.240,2026-03-13 11:05:01.188,Blake Norwood,0,,,0
+167,3019,2026-03-10 00:00:00.000,Submitted,Pamlico Shores branch visit,,2026-03-12 07:20:36.406,2026-03-10 15:55:07.067,2026-03-12 07:20:36.406,Blake Norwood,0,,,0
+168,3020,2026-03-12 00:00:00.000,Submitted,Yadkin Crossing branch visit,,2026-03-13 11:29:41.950,2026-03-12 13:02:39.190,2026-03-13 11:29:41.950,Blake Norwood,0,,,0
+169,3026,2026-03-13 00:00:00.000,Submitted,Congaree Point - new BM support,,2026-03-14 04:39:33.065,2026-03-13 15:06:23.802,2026-03-14 04:39:33.065,Nadia Ironside,0,,,0
+170,3027,2026-03-11 00:00:00.000,Submitted,Santee Shoals - new BM support,,2026-03-12 07:20:00.329,2026-03-11 13:29:47.872,2026-03-12 07:20:00.329,Nadia Ironside,0,,,0
+171,3037,2026-03-10 00:00:00.000,Submitted,Oconee Springs - new BM support,,2026-03-11 13:26:11.104,2026-03-10 14:31:30.769,2026-03-11 13:26:11.104,Logan Huxley,0,,,0
+172,3038,2026-03-11 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,,2026-03-12 04:06:37.349,2026-03-11 15:40:02.988,2026-03-12 04:06:37.349,Logan Huxley,0,,,0
+173,3041,2026-03-11 00:00:00.000,Submitted,Harpeth Valley monthly review,,2026-03-12 08:28:12.029,2026-03-11 14:35:25.056,2026-03-12 08:28:12.029,Avery Eastwick,0,,,0
+174,3042,2026-03-11 00:00:00.000,Submitted,Clinch Mountain branch visit,,2026-03-13 13:52:48.046,2026-03-11 13:40:56.712,2026-03-13 13:52:48.046,Avery Eastwick,0,,,0
+175,3053,2026-03-11 00:00:00.000,Submitted,Sipsey Ridge - new BM support,,2026-03-12 01:17:01.199,2026-03-11 15:06:33.296,2026-03-12 01:17:01.199,Rashad Blackwood,0,,,0
+176,3061,2026-03-13 00:00:00.000,Submitted,Sabine Point - delinquency and staffing review,,2026-03-14 11:29:31.376,2026-03-13 13:32:57.096,2026-03-14 11:29:31.376,Kara Greenleaf,0,,,0
+177,3005,2026-03-11 00:00:00.000,Submitted,Severn Bend branch visit,,2026-03-12 05:33:37.584,2026-03-11 15:27:35.403,2026-03-12 05:33:37.584,Keisha Foxworth,0,,,1
+178,3050,2026-03-13 00:00:00.000,Submitted,Choctaw Springs monthly review,,2026-03-14 03:54:29.480,2026-03-13 14:59:37.525,2026-03-14 03:54:29.480,Simone Mendoza,0,,,0
+179,3004,2026-03-19 00:00:00.000,Submitted,Oak Glen branch visit,,2026-03-19 20:22:39.393,2026-03-19 14:23:49.980,2026-03-19 20:22:39.393,Nolan Ingram,0,,,0
+180,3005,2026-03-19 00:00:00.000,Submitted,Severn Bend branch visit,,2026-03-20 04:13:05.591,2026-03-19 13:21:44.350,2026-03-20 04:13:05.591,Nolan Ingram,0,,,0
+181,3012,2026-03-17 00:00:00.000,Submitted,Shenandoah Mills monthly review,,2026-03-18 05:42:30.201,2026-03-17 14:56:05.945,2026-04-19 22:20:16.696,Felicia Umberto,1,2026-04-19 22:20:16.696,Felicia Umberto,0
+182,3015,2026-03-17 00:00:00.000,Submitted,Brandywine Hollow - new BM support,,2026-03-18 01:12:04.022,2026-03-17 15:46:17.627,2026-03-18 01:12:04.022,Olivia Northcott,0,,,0
+183,3016,2026-03-20 00:00:00.000,Submitted,Lehigh Gap branch visit,,2026-03-21 11:27:14.769,2026-03-20 13:02:23.488,2026-03-21 11:27:14.769,Olivia Northcott,0,,,0
+184,3021,2026-03-18 00:00:00.000,Submitted,Haw River Mills monthly review,,2026-03-19 06:43:27.352,2026-03-18 13:11:49.378,2026-03-19 06:43:27.352,Blake Norwood,0,,,0
+185,3028,2026-03-20 00:00:00.000,Submitted,Lowcountry Cove monthly review,BM needs support with team accountability; consider leadership coaching.,2026-03-21 12:50:22.054,2026-03-20 13:55:29.912,2026-03-21 12:50:22.054,Nadia Ironside,0,,,0
+186,3029,2026-03-20 00:00:00.000,Submitted,Pee Dee Crossing - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-03-22 02:30:00.868,2026-03-20 13:23:40.318,2026-03-22 02:30:00.868,Nadia Ironside,0,,,0
+187,3030,2026-03-20 00:00:00.000,Submitted,Palmetto Ridge monthly review,,2026-03-21 03:38:40.107,2026-03-20 13:06:21.094,2026-03-21 03:38:40.107,Nadia Ironside,0,,,0
+188,3039,2026-03-18 00:00:00.000,Submitted,Ocmulgee Park - new BM support,,2026-03-19 07:53:26.860,2026-03-18 15:44:32.062,2026-03-19 07:53:26.860,Logan Huxley,0,,,0
+189,3040,2026-03-19 00:00:00.000,Submitted,Etowah Ridge - new BM support,,2026-03-20 18:29:37.017,2026-03-19 15:19:47.332,2026-03-20 18:29:37.017,Logan Huxley,0,,,0
+190,3043,2026-03-20 00:00:00.000,Submitted,Hiwassee Station monthly review,,2026-03-21 02:40:22.561,2026-03-20 13:36:54.743,2026-03-21 02:40:22.561,Avery Eastwick,0,,,0
+191,3054,2026-03-17 00:00:00.000,Submitted,Black Warrior Crossing - delinquency and staffing review,Strong BM - succession candidate for larger branch.,2026-03-19 00:14:43.702,2026-03-17 13:49:08.829,2026-03-19 00:14:43.702,Rashad Blackwood,0,,,0
+192,3047,2026-03-17 00:00:00.000,Submitted,Mobile Bay View monthly review,Strong BM - succession candidate for larger branch.,2026-03-17 19:22:36.724,2026-03-17 15:05:06.673,2026-03-17 19:22:36.724,Rashad Blackwood,0,,,0
+193,3062,2026-03-19 00:00:00.000,Submitted,Hill Country Crossing branch visit,,2026-03-21 07:10:53.879,2026-03-19 13:46:22.700,2026-03-21 07:10:53.879,Kara Greenleaf,0,,,0
+194,3048,2026-03-17 00:00:00.000,Submitted,Cahaba Hills - new BM support,,2026-03-18 03:52:46.808,2026-03-17 15:53:10.336,2026-03-18 03:52:46.808,Simone Mendoza,0,,,0
+195,3006,2026-03-27 00:00:00.000,Submitted,Patapsco Falls - delinquency and staffing review,,2026-03-28 22:23:49.349,2026-03-27 15:54:49.098,2026-03-28 22:23:49.349,Nolan Ingram,0,,,0
+196,3001,2026-03-24 00:00:00.000,Submitted,Fallston Ridge - delinquency and staffing review,,2026-03-26 09:18:15.317,2026-03-24 15:52:01.919,2026-03-26 09:18:15.317,Nolan Ingram,0,,,0
+197,3007,2026-03-26 00:00:00.000,Submitted,Blue Ridge Crossing - delinquency and staffing review,,2026-03-27 17:37:33.617,2026-03-26 15:50:41.936,2026-03-27 17:37:33.617,Felicia Umberto,0,,,0
+198,3008,2026-03-25 00:00:00.000,Submitted,Rappahannock Hills - delinquency and staffing review,,2026-03-27 11:37:33.163,2026-03-25 15:44:48.063,2026-03-27 11:37:33.163,Felicia Umberto,0,,,0
+199,3009,2026-03-25 00:00:00.000,Submitted,Stonewall Junction - delinquency and staffing review,,2026-03-25 20:24:01.533,2026-03-25 15:51:30.526,2026-03-25 20:24:01.533,Felicia Umberto,0,,,0
+200,3017,2026-03-26 00:00:00.000,Submitted,Keystone Valley - delinquency and staffing review,,2026-03-27 11:02:38.047,2026-03-26 15:19:05.743,2026-03-27 11:02:38.047,Olivia Northcott,0,,,0
+201,3018,2026-03-25 00:00:00.000,Submitted,Penn Ridge - new BM support,,2026-03-26 02:31:47.762,2026-03-25 15:42:17.767,2026-03-26 02:31:47.762,Olivia Northcott,0,,,0
+202,3022,2026-03-25 00:00:00.000,Submitted,Piedmont Springs branch visit,,2026-03-25 22:20:41.928,2026-03-25 13:03:09.612,2026-03-25 22:20:41.928,Blake Norwood,0,,,0
+203,3023,2026-03-26 00:00:00.000,Submitted,Sandhill Commons - delinquency and staffing review,,2026-03-28 08:11:11.004,2026-03-26 13:13:10.581,2026-03-28 08:11:11.004,Blake Norwood,0,,,0
+204,3031,2026-03-24 00:00:00.000,Submitted,Edisto Bay monthly review,,2026-03-25 05:36:37.597,2026-03-24 14:46:38.655,2026-03-25 05:36:37.597,Nadia Ironside,0,,,0
+205,3032,2026-03-26 00:00:00.000,Submitted,Saluda Mills branch visit,,2026-03-27 09:52:53.141,2026-03-26 13:46:36.735,2026-03-27 09:52:53.141,Nadia Ironside,0,,,0
+206,3033,2026-03-26 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-03-28 04:52:45.625,2026-03-26 13:16:54.485,2026-03-28 04:52:45.625,Logan Huxley,0,,,0
+207,3034,2026-03-27 00:00:00.000,Submitted,Satilla Crossing branch visit,,2026-03-27 19:28:56.444,2026-03-27 14:54:45.802,2026-03-27 19:28:56.444,Logan Huxley,0,,,0
+208,3035,2026-03-26 00:00:00.000,Submitted,Altamaha Landing monthly review,,2026-03-28 12:47:57.965,2026-03-26 13:31:06.631,2026-03-28 12:47:57.965,Logan Huxley,0,,,0
+209,3044,2026-03-27 00:00:00.000,Submitted,Caney Fork branch visit,,2026-03-28 14:32:07.737,2026-03-27 13:13:51.697,2026-03-28 14:32:07.737,Avery Eastwick,0,,,0
+210,3048,2026-03-27 00:00:00.000,Submitted,Cahaba Hills - new BM support,,2026-03-29 10:01:38.809,2026-03-27 15:34:55.959,2026-03-29 10:01:38.809,Rashad Blackwood,0,,,0
+211,3055,2026-03-26 00:00:00.000,Submitted,Pecos Station monthly review,BM needs support with team accountability; consider leadership coaching.,2026-03-28 01:11:03.913,2026-03-26 14:40:47.674,2026-03-28 01:11:03.913,Kara Greenleaf,0,,,0
+212,3056,2026-03-27 00:00:00.000,Submitted,Guadalupe Springs branch visit,,2026-03-27 19:08:56.524,2026-03-27 15:47:49.432,2026-03-27 19:08:56.524,Kara Greenleaf,0,,,0
+213,3018,2026-03-25 00:00:00.000,Submitted,Penn Ridge branch visit,,2026-03-26 17:29:34.837,2026-03-25 13:10:45.589,2026-03-26 17:29:34.837,Keisha Foxworth,0,,,0
+214,3039,2026-03-27 00:00:00.000,Submitted,Ocmulgee Park monthly review,,2026-03-28 15:57:18.633,2026-03-27 14:33:25.232,2026-03-28 15:57:18.633,Hayden Stanhope,0,,,0
+215,3060,2026-03-26 00:00:00.000,Submitted,Trinity Mills monthly review,BM needs support with team accountability; consider leadership coaching.,2026-03-28 12:10:30.993,2026-03-26 15:00:04.649,2026-03-28 12:10:30.993,Simone Mendoza,0,,,0
+216,3002,2026-04-02 00:00:00.000,Submitted,Harbor Point - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-04-04 04:31:58.023,2026-04-02 15:04:54.724,2026-04-04 04:31:58.023,Nolan Ingram,0,,,0
+217,3003,2026-04-03 00:00:00.000,Submitted,Cedar Hollow monthly review,,2026-04-03 23:50:47.966,2026-04-03 13:02:55.575,2026-04-03 23:50:47.966,Nolan Ingram,0,,,0
+218,3010,2026-04-01 00:00:00.000,Submitted,Pine Bluff monthly review,,2026-04-02 19:35:50.036,2026-04-01 14:21:55.004,2026-04-02 19:35:50.036,Felicia Umberto,0,,,0
+219,3011,2026-04-02 00:00:00.000,Submitted,Laurel Fork monthly review,,2026-04-03 10:02:41.029,2026-04-02 14:20:38.154,2026-04-03 10:02:41.029,Felicia Umberto,0,,,0
+220,3013,2026-04-02 00:00:00.000,Submitted,Laurel Highlands monthly review,,2026-04-03 16:56:54.201,2026-04-02 15:49:22.428,2026-04-03 16:56:54.201,Olivia Northcott,0,,,0
+221,3014,2026-04-01 00:00:00.000,Submitted,Susquehanna Flats branch visit,,2026-04-01 23:08:46.442,2026-04-01 13:34:25.321,2026-04-01 23:08:46.442,Olivia Northcott,0,,,0
+222,3024,2026-04-02 00:00:00.000,Submitted,Neuse Bend - new BM support,,2026-04-03 14:49:10.874,2026-04-02 15:25:27.154,2026-04-03 14:49:10.874,Blake Norwood,0,,,0
+223,3025,2026-04-02 00:00:00.000,Submitted,Wateree Hills branch visit,,2026-04-04 16:26:19.397,2026-04-02 14:57:23.124,2026-04-04 16:26:19.397,Nadia Ironside,0,,,0
+224,3036,2026-04-02 00:00:00.000,Submitted,Peachtree Hollow - delinquency and staffing review,,2026-04-04 03:28:05.702,2026-04-02 15:48:35.727,2026-04-04 03:28:05.702,Logan Huxley,0,,,0
+225,3037,2026-04-02 00:00:00.000,Submitted,Oconee Springs branch visit,,2026-04-04 09:48:45.199,2026-04-02 14:30:08.488,2026-04-04 09:48:45.199,Logan Huxley,0,,,0
+226,3045,2026-04-02 00:00:00.000,Submitted,Duck River Mills - delinquency and staffing review,,2026-04-04 06:58:30.936,2026-04-02 14:28:56.625,2026-04-04 06:58:30.936,Avery Eastwick,0,,,0
+227,3046,2026-04-03 00:00:00.000,Submitted,Cumberland Gap branch visit,,2026-04-05 03:05:09.474,2026-04-03 14:02:35.835,2026-04-15 06:05:33.424,Avery Eastwick,1,2026-04-15 06:05:33.424,Avery Eastwick,0
+228,3049,2026-04-02 00:00:00.000,Submitted,Tallapoosa Mills - delinquency and staffing review,,2026-04-02 16:47:49.910,2026-04-02 14:03:52.234,2026-04-02 16:47:49.910,Rashad Blackwood,0,,,0
+229,3050,2026-03-31 00:00:00.000,Submitted,Choctaw Springs branch visit,,2026-04-01 18:16:31.980,2026-03-31 13:26:35.478,2026-04-01 18:16:31.980,Rashad Blackwood,0,,,0
+230,3051,2026-04-02 00:00:00.000,Submitted,Coosa Bend branch visit,,2026-04-03 18:51:14.674,2026-04-02 15:31:44.806,2026-04-03 18:51:14.674,Rashad Blackwood,0,,,0
+231,3057,2026-04-01 00:00:00.000,Submitted,Llano Ridge monthly review,,2026-04-02 11:15:30.577,2026-04-01 15:15:31.017,2026-04-02 11:15:30.577,Kara Greenleaf,0,,,0
+232,3058,2026-03-31 00:00:00.000,Submitted,Nueces Landing - delinquency and staffing review,,2026-04-01 19:10:26.640,2026-03-31 15:12:11.973,2026-04-01 19:10:26.640,Kara Greenleaf,0,,,0
+233,3004,2026-04-01 00:00:00.000,Submitted,Oak Glen - new BM support,,2026-04-02 18:42:44.147,2026-04-01 14:16:59.275,2026-04-02 18:42:44.147,Keisha Foxworth,0,,,0
+234,3004,2026-04-08 00:00:00.000,Submitted,Oak Glen - delinquency and staffing review,,2026-04-09 11:40:12.238,2026-04-08 13:07:37.491,2026-04-09 11:40:12.238,Nolan Ingram,0,,,0
+235,3005,2026-04-10 00:00:00.000,Submitted,Severn Bend branch visit,,2026-04-12 08:14:56.524,2026-04-10 13:40:48.221,2026-04-12 08:14:56.524,Nolan Ingram,0,,,0
+236,3006,2026-04-09 00:00:00.000,Submitted,Patapsco Falls monthly review,,2026-04-11 08:06:17.793,2026-04-09 14:55:02.955,2026-04-11 08:06:17.793,Nolan Ingram,0,,,0
+237,3012,2026-04-08 00:00:00.000,Submitted,Shenandoah Mills - delinquency and staffing review,,2026-04-09 06:25:44.120,2026-04-08 14:38:18.375,2026-04-09 06:25:44.120,Felicia Umberto,0,,,0
+238,3007,2026-04-07 00:00:00.000,Submitted,Blue Ridge Crossing monthly review,,2026-04-09 04:18:48.449,2026-04-07 14:46:39.289,2026-04-09 04:18:48.449,Felicia Umberto,0,,,0
+239,3015,2026-04-09 00:00:00.000,Submitted,Brandywine Hollow - delinquency and staffing review,,2026-04-10 18:36:03.667,2026-04-09 13:43:42.295,2026-04-10 18:36:03.667,Olivia Northcott,0,,,0
+240,3016,2026-04-09 00:00:00.000,Submitted,Lehigh Gap branch visit,,2026-04-10 04:31:15.144,2026-04-09 14:10:07.760,2026-04-10 04:31:15.144,Olivia Northcott,0,,,0
+241,3019,2026-04-10 00:00:00.000,Submitted,Pamlico Shores monthly review,,2026-04-12 12:45:40.138,2026-04-10 14:03:40.585,2026-04-12 12:45:40.138,Blake Norwood,0,,,0
+242,3020,2026-04-10 00:00:00.000,Submitted,Yadkin Crossing - delinquency and staffing review,,2026-04-10 21:43:51.427,2026-04-10 15:09:31.934,2026-04-10 21:43:51.427,Blake Norwood,0,,,0
+243,3026,2026-04-07 00:00:00.000,Submitted,Congaree Point branch visit,Strong BM - succession candidate for larger branch.,2026-04-07 21:17:59.445,2026-04-07 13:55:19.959,2026-04-07 21:17:59.445,Nadia Ironside,0,,,0
+244,3027,2026-04-08 00:00:00.000,Submitted,Santee Shoals - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-04-09 17:14:34.328,2026-04-08 15:45:25.045,2026-04-09 17:14:34.328,Nadia Ironside,0,,,0
+245,3038,2026-04-10 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,,2026-04-11 23:03:58.358,2026-04-10 15:20:41.708,2026-04-11 23:03:58.358,Logan Huxley,0,,,0
+246,3039,2026-04-08 00:00:00.000,Submitted,Ocmulgee Park - delinquency and staffing review,,2026-04-10 13:04:08.664,2026-04-08 15:27:07.201,2026-04-10 13:04:08.664,Logan Huxley,0,,,0
+247,3040,2026-04-10 00:00:00.000,Submitted,Etowah Ridge - delinquency and staffing review,,2026-04-11 16:06:37.250,2026-04-10 14:06:10.253,2026-04-11 16:06:37.250,Logan Huxley,0,,,0
+248,3041,2026-04-08 00:00:00.000,Submitted,Harpeth Valley - delinquency and staffing review,,2026-04-10 05:32:02.936,2026-04-08 15:49:50.728,2026-04-10 05:32:02.936,Avery Eastwick,0,,,0
+249,3052,2026-04-09 00:00:00.000,Submitted,Tombigbee Landing - delinquency and staffing review,,2026-04-10 01:21:43.912,2026-04-09 15:31:59.987,2026-05-14 01:36:15.539,Rashad Blackwood,1,2026-05-14 01:36:15.539,Rashad Blackwood,0
+250,3053,2026-04-07 00:00:00.000,Submitted,Sipsey Ridge - delinquency and staffing review,,2026-04-08 21:55:13.146,2026-04-07 13:43:51.062,2026-04-08 21:55:13.146,Rashad Blackwood,0,,,0
+251,3059,2026-04-09 00:00:00.000,Submitted,Brazos Bend - new BM support,Strong BM - succession candidate for larger branch.,2026-04-10 04:20:00.545,2026-04-09 13:33:06.579,2026-04-10 04:20:00.545,Kara Greenleaf,0,,,0
+252,3060,2026-04-07 00:00:00.000,Submitted,Trinity Mills - new BM support,,2026-04-08 19:11:40.206,2026-04-07 15:11:58.185,2026-04-08 19:11:40.206,Kara Greenleaf,0,,,0
+253,3061,2026-04-07 00:00:00.000,Submitted,Sabine Point - delinquency and staffing review,,2026-04-09 14:57:54.477,2026-04-07 14:54:48.628,2026-04-09 14:57:54.477,Kara Greenleaf,0,,,0
+254,3060,2026-04-07 00:00:00.000,Submitted,Trinity Mills - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-04-09 02:06:26.266,2026-04-07 14:17:20.365,2026-04-09 02:06:26.266,Simone Mendoza,0,,,1
+255,3001,2026-04-16 00:00:00.000,Submitted,Fallston Ridge - delinquency and staffing review,,2026-04-16 21:07:36.118,2026-04-16 13:46:27.052,2026-04-16 21:07:36.118,Nolan Ingram,0,,,0
+256,3002,2026-04-16 00:00:00.000,Submitted,Harbor Point monthly review,BM needs support with team accountability; consider leadership coaching.,2026-04-17 23:17:06.960,2026-04-16 13:05:40.117,2026-04-17 23:17:06.960,Nolan Ingram,0,,,0
+257,3008,2026-04-15 00:00:00.000,Submitted,Rappahannock Hills branch visit,,2026-04-17 05:10:16.816,2026-04-15 13:33:35.149,2026-04-17 05:10:16.816,Felicia Umberto,0,,,0
+258,3009,2026-04-14 00:00:00.000,Submitted,Stonewall Junction - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-04-15 09:05:05.238,2026-04-14 13:13:47.569,2026-04-15 09:05:05.238,Felicia Umberto,0,,,0
+259,3010,2026-04-17 00:00:00.000,Submitted,Pine Bluff monthly review,,2026-04-18 16:27:16.415,2026-04-17 15:10:28.622,2026-04-18 16:27:16.415,Felicia Umberto,0,,,0
+260,3017,2026-04-15 00:00:00.000,Submitted,Keystone Valley - new BM support,,2026-04-17 10:37:25.007,2026-04-15 13:46:14.571,2026-04-17 10:37:25.007,Olivia Northcott,0,,,0
+261,3021,2026-04-17 00:00:00.000,Submitted,Haw River Mills branch visit,,2026-04-17 22:32:23.666,2026-04-17 13:32:03.194,2026-04-17 22:32:23.666,Blake Norwood,0,,,0
+262,3022,2026-04-15 00:00:00.000,Submitted,Piedmont Springs - new BM support,,2026-04-16 11:41:19.747,2026-04-15 15:30:43.906,2026-04-16 11:41:19.747,Blake Norwood,0,,,0
+263,3023,2026-04-15 00:00:00.000,Submitted,Sandhill Commons monthly review,,2026-04-17 10:08:09.515,2026-04-15 14:32:34.726,2026-04-17 10:08:09.515,Blake Norwood,0,,,0
+264,3029,2026-04-14 00:00:00.000,Submitted,Pee Dee Crossing branch visit,,2026-04-14 19:53:22.073,2026-04-14 15:01:53.199,2026-04-14 19:53:22.073,Nadia Ironside,0,,,0
+265,3033,2026-04-17 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-04-18 10:47:05.792,2026-04-17 14:05:47.243,2026-04-18 10:47:05.792,Logan Huxley,0,,,0
+266,3034,2026-04-14 00:00:00.000,Submitted,Satilla Crossing - new BM support,,2026-04-16 08:33:41.251,2026-04-14 14:14:47.646,2026-04-16 08:33:41.251,Logan Huxley,0,,,0
+267,3035,2026-04-15 00:00:00.000,Submitted,Altamaha Landing branch visit,,2026-04-16 16:33:11.549,2026-04-15 14:27:21.577,2026-04-16 16:33:11.549,Logan Huxley,0,,,0
+268,3042,2026-04-14 00:00:00.000,Submitted,Clinch Mountain - delinquency and staffing review,,2026-04-15 10:00:12.323,2026-04-14 13:17:07.390,2026-04-15 10:00:12.323,Avery Eastwick,0,,,0
+269,3054,2026-04-17 00:00:00.000,Submitted,Black Warrior Crossing - delinquency and staffing review,,2026-04-19 08:37:32.003,2026-04-17 13:48:14.029,2026-04-19 08:37:32.003,Rashad Blackwood,0,,,0
+270,3062,2026-04-14 00:00:00.000,Submitted,Hill Country Crossing - new BM support,,2026-04-14 21:57:49.656,2026-04-14 15:19:52.633,2026-04-14 21:57:49.656,Kara Greenleaf,0,,,0
+271,3055,2026-04-14 00:00:00.000,Submitted,Pecos Station - delinquency and staffing review,,2026-04-15 02:13:58.983,2026-04-14 13:43:33.145,2026-05-08 01:30:17.188,Kara Greenleaf,1,2026-05-08 01:30:17.188,Kara Greenleaf,0
+272,3004,2026-04-15 00:00:00.000,Submitted,Oak Glen monthly review,BM needs support with team accountability; consider leadership coaching.,2026-04-16 20:39:54.408,2026-04-15 13:33:09.039,2026-04-16 20:39:54.408,Keisha Foxworth,0,,,0
+273,3058,2026-04-17 00:00:00.000,Submitted,Nueces Landing monthly review,,2026-04-19 14:55:48.637,2026-04-17 14:03:17.534,2026-04-19 14:55:48.637,Simone Mendoza,0,,,1
+274,3004,2026-04-23 00:00:00.000,Submitted,Oak Glen - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-04-23 21:12:23.442,2026-04-23 14:23:51.771,2026-05-01 14:42:28.749,Nolan Ingram,1,2026-05-01 14:42:28.749,Nolan Ingram,0
+275,3011,2026-04-22 00:00:00.000,Submitted,Laurel Fork - new BM support,,2026-04-23 18:26:57.738,2026-04-22 13:54:09.127,2026-04-23 18:26:57.738,Felicia Umberto,0,,,0
+276,3013,2026-04-24 00:00:00.000,Submitted,Laurel Highlands - new BM support,Strong BM - succession candidate for larger branch.,2026-04-25 07:45:51.997,2026-04-24 14:05:15.074,2026-04-25 07:45:51.997,Olivia Northcott,0,,,0
+277,3024,2026-04-23 00:00:00.000,Submitted,Neuse Bend - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-04-25 07:05:39.304,2026-04-23 15:40:43.681,2026-04-25 07:05:39.304,Blake Norwood,0,,,0
+278,3019,2026-04-24 00:00:00.000,Submitted,Pamlico Shores - new BM support,,2026-04-25 12:56:40.794,2026-04-24 15:44:20.332,2026-04-25 12:56:40.794,Blake Norwood,0,,,0
+279,3030,2026-04-23 00:00:00.000,Submitted,Palmetto Ridge branch visit,,2026-04-24 10:42:15.487,2026-04-23 14:26:53.045,2026-04-24 10:42:15.487,Nadia Ironside,0,,,0
+280,3036,2026-04-24 00:00:00.000,Submitted,Peachtree Hollow branch visit,BM needs support with team accountability; consider leadership coaching.,2026-04-25 09:47:52.918,2026-04-24 13:10:40.312,2026-04-25 09:47:52.918,Logan Huxley,0,,,0
+281,3037,2026-04-24 00:00:00.000,Submitted,Oconee Springs monthly review,Strong BM - succession candidate for larger branch.,2026-04-24 23:44:09.107,2026-04-24 15:47:33.225,2026-04-24 23:44:09.107,Logan Huxley,0,,,0
+282,3043,2026-04-24 00:00:00.000,Submitted,Hiwassee Station branch visit,,2026-04-25 05:09:04.834,2026-04-24 15:48:54.584,2026-04-25 05:09:04.834,Avery Eastwick,0,,,0
+283,3044,2026-04-22 00:00:00.000,Submitted,Caney Fork monthly review,,2026-04-23 08:07:03.761,2026-04-22 13:26:21.268,2026-04-23 08:07:03.761,Avery Eastwick,0,,,0
+284,3047,2026-04-23 00:00:00.000,Submitted,Mobile Bay View branch visit,,2026-04-24 01:20:53.298,2026-04-23 14:06:55.657,2026-04-24 01:20:53.298,Rashad Blackwood,0,,,0
+285,3048,2026-04-21 00:00:00.000,Submitted,Cahaba Hills - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-04-21 17:56:26.162,2026-04-21 15:22:01.056,2026-04-21 17:56:26.162,Rashad Blackwood,0,,,0
+286,3056,2026-04-22 00:00:00.000,Submitted,Guadalupe Springs - delinquency and staffing review,,2026-04-24 12:30:34.093,2026-04-22 15:29:36.205,2026-04-24 12:30:34.093,Kara Greenleaf,0,,,0
+287,3052,2026-04-24 00:00:00.000,Submitted,Tombigbee Landing monthly review,,2026-04-26 14:41:56.126,2026-04-24 14:47:59.718,2026-04-26 14:41:56.126,Simone Mendoza,0,,,0
+288,3006,2026-04-29 00:00:00.000,Submitted,Patapsco Falls monthly review,Strong BM - succession candidate for larger branch.,2026-04-29 21:18:29.604,2026-04-29 14:48:50.038,2026-04-29 21:18:29.604,Nolan Ingram,0,,,0
+289,3007,2026-04-29 00:00:00.000,Submitted,Blue Ridge Crossing - new BM support,,2026-05-01 04:50:23.186,2026-04-29 14:53:17.186,2026-05-01 04:50:23.186,Felicia Umberto,0,,,0
+290,3008,2026-04-30 00:00:00.000,Submitted,Rappahannock Hills branch visit,,2026-05-02 01:39:05.368,2026-04-30 15:36:37.968,2026-05-02 01:39:05.368,Felicia Umberto,0,,,0
+291,3014,2026-04-29 00:00:00.000,Submitted,Susquehanna Flats - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-04-30 01:43:50.537,2026-04-29 14:05:05.433,2026-04-30 01:43:50.537,Olivia Northcott,0,,,0
+292,3020,2026-05-01 00:00:00.000,Submitted,Yadkin Crossing - new BM support,,2026-05-02 06:18:44.702,2026-05-01 14:17:39.408,2026-05-02 06:18:44.702,Blake Norwood,0,,,0
+293,3021,2026-05-01 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-05-02 12:09:13.305,2026-05-01 14:25:37.799,2026-05-02 12:09:13.305,Blake Norwood,0,,,0
+294,3031,2026-04-28 00:00:00.000,Submitted,Edisto Bay branch visit,,2026-04-30 06:06:38.350,2026-04-28 13:48:35.793,2026-04-30 06:06:38.350,Nadia Ironside,0,,,0
+295,3032,2026-04-30 00:00:00.000,Submitted,Saluda Mills branch visit,,2026-05-01 14:17:43.393,2026-04-30 15:07:12.042,2026-05-01 14:17:43.393,Nadia Ironside,0,,,0
+296,3038,2026-04-29 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,,2026-04-30 23:47:53.579,2026-04-29 15:09:49.860,2026-04-30 23:47:53.579,Logan Huxley,0,,,0
+297,3039,2026-04-28 00:00:00.000,Submitted,Ocmulgee Park monthly review,,2026-04-28 21:14:12.434,2026-04-28 14:49:11.109,2026-04-28 21:14:12.434,Logan Huxley,0,,,0
+298,3040,2026-04-28 00:00:00.000,Submitted,Etowah Ridge - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-04-30 12:21:11.905,2026-04-28 14:34:00.642,2026-04-30 12:21:11.905,Logan Huxley,0,,,0
+299,3049,2026-04-29 00:00:00.000,Submitted,Tallapoosa Mills - new BM support,,2026-05-01 12:08:51.875,2026-04-29 15:02:44.868,2026-05-01 12:08:51.875,Rashad Blackwood,0,,,0
+300,3050,2026-04-30 00:00:00.000,Submitted,Choctaw Springs - delinquency and staffing review,,2026-05-02 00:27:26.327,2026-04-30 14:35:42.521,2026-05-02 00:27:26.327,Rashad Blackwood,0,,,0
+301,3051,2026-05-01 00:00:00.000,Submitted,Coosa Bend - new BM support,,2026-05-02 10:00:34.013,2026-05-01 15:08:53.497,2026-05-02 10:00:34.013,Rashad Blackwood,0,,,0
+302,3057,2026-05-01 00:00:00.000,Submitted,Llano Ridge monthly review,,2026-05-03 12:28:54.884,2026-05-01 13:59:44.545,2026-05-03 12:28:54.884,Kara Greenleaf,0,,,0
+303,3058,2026-05-01 00:00:00.000,Submitted,Nueces Landing - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-05-02 01:49:19.576,2026-05-01 13:05:10.780,2026-05-02 01:49:19.576,Kara Greenleaf,0,,,0
+304,3059,2026-04-29 00:00:00.000,Submitted,Brazos Bend branch visit,,2026-04-29 21:12:15.901,2026-04-29 13:46:56.661,2026-04-29 21:12:15.901,Kara Greenleaf,0,,,0
+305,3003,2026-04-30 00:00:00.000,Submitted,Cedar Hollow branch visit,,2026-05-02 04:52:11.092,2026-04-30 14:15:42.119,2026-05-02 04:52:11.092,Keisha Foxworth,0,,,1
+306,3041,2026-04-28 00:00:00.000,Submitted,Harpeth Valley branch visit,,2026-04-28 17:49:17.876,2026-04-28 15:01:29.998,2026-04-28 17:49:17.876,Simone Mendoza,0,,,0
+307,3002,2026-05-05 00:00:00.000,Submitted,Harbor Point branch visit,,2026-05-07 09:56:02.579,2026-05-05 15:29:10.661,2026-05-07 09:56:02.579,Nolan Ingram,0,,,0
+308,3009,2026-05-08 00:00:00.000,Submitted,Stonewall Junction - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-05-10 12:09:46.375,2026-05-08 13:04:29.900,2026-05-10 12:09:46.375,Felicia Umberto,0,,,0
+309,3010,2026-05-05 00:00:00.000,Submitted,Pine Bluff - delinquency and staffing review,,2026-05-06 16:58:15.119,2026-05-05 15:43:11.432,2026-05-06 16:58:15.119,Felicia Umberto,0,,,0
+310,3011,2026-05-05 00:00:00.000,Submitted,Laurel Fork branch visit,,2026-05-07 12:04:49.392,2026-05-05 13:47:05.876,2026-05-07 12:04:49.392,Felicia Umberto,0,,,0
+311,3016,2026-05-06 00:00:00.000,Submitted,Lehigh Gap monthly review,BM needs support with team accountability; consider leadership coaching.,2026-05-07 12:24:07.037,2026-05-06 14:35:37.112,2026-05-07 12:24:07.037,Olivia Northcott,0,,,0
+312,3023,2026-05-05 00:00:00.000,Submitted,Sandhill Commons monthly review,Strong BM - succession candidate for larger branch.,2026-05-06 01:11:31.008,2026-05-05 13:33:59.342,2026-05-06 01:11:31.008,Blake Norwood,0,,,0
+313,3024,2026-05-06 00:00:00.000,Submitted,Neuse Bend monthly review,,2026-05-08 07:25:49.771,2026-05-06 13:51:39.774,2026-05-08 07:25:49.771,Blake Norwood,0,,,0
+314,3025,2026-05-08 00:00:00.000,Submitted,Wateree Hills - new BM support,,2026-05-10 10:07:01.397,2026-05-08 13:10:31.604,2026-05-10 10:07:01.397,Nadia Ironside,0,,,0
+315,3033,2026-05-05 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-05-06 07:20:57.587,2026-05-05 15:47:40.055,2026-05-06 07:20:57.587,Logan Huxley,0,,,0
+316,3034,2026-05-07 00:00:00.000,Submitted,Satilla Crossing - new BM support,,2026-05-07 20:21:57.205,2026-05-07 15:26:03.589,2026-05-07 20:21:57.205,Logan Huxley,0,,,0
+317,3035,2026-05-08 00:00:00.000,Submitted,Altamaha Landing - new BM support,Strong BM - succession candidate for larger branch.,2026-05-08 22:19:29.598,2026-05-08 14:13:32.380,2026-05-08 22:19:29.598,Logan Huxley,0,,,0
+318,3046,2026-05-07 00:00:00.000,Submitted,Cumberland Gap - delinquency and staffing review,Strong BM - succession candidate for larger branch.,2026-05-09 16:05:35.296,2026-05-07 14:56:38.767,2026-05-09 16:05:35.296,Avery Eastwick,0,,,0
+319,3041,2026-05-08 00:00:00.000,Submitted,Harpeth Valley - new BM support,,2026-05-09 13:38:07.484,2026-05-08 13:24:31.253,2026-05-09 13:38:07.484,Avery Eastwick,0,,,0
+320,3052,2026-05-06 00:00:00.000,Submitted,Tombigbee Landing - new BM support,,2026-05-08 03:53:59.034,2026-05-06 15:56:25.267,2026-05-08 03:53:59.034,Rashad Blackwood,0,,,0
+321,3053,2026-05-08 00:00:00.000,Submitted,Sipsey Ridge - new BM support,,2026-05-10 07:33:12.585,2026-05-08 13:00:52.091,2026-05-10 07:33:12.585,Rashad Blackwood,0,,,0
+322,3054,2026-05-05 00:00:00.000,Submitted,Black Warrior Crossing - delinquency and staffing review,Strong BM - succession candidate for larger branch.,2026-05-06 20:59:02.998,2026-05-05 15:43:33.788,2026-05-06 20:59:02.998,Rashad Blackwood,0,,,0
+323,3060,2026-05-07 00:00:00.000,Submitted,Trinity Mills monthly review,,2026-05-09 11:01:04.291,2026-05-07 14:51:06.975,2026-05-09 11:01:04.291,Kara Greenleaf,0,,,0
+324,3061,2026-05-06 00:00:00.000,Submitted,Sabine Point - new BM support,,2026-05-06 21:50:44.506,2026-05-06 14:15:15.112,2026-05-06 21:50:44.506,Kara Greenleaf,0,,,0
+325,3003,2026-05-14 00:00:00.000,Submitted,Cedar Hollow branch visit,,2026-05-15 07:22:58.818,2026-05-14 15:04:54.004,2026-05-15 07:22:58.818,Nolan Ingram,0,,,0
+326,3012,2026-05-14 00:00:00.000,Submitted,Shenandoah Mills - delinquency and staffing review,,2026-05-16 02:08:31.424,2026-05-14 14:55:27.110,2026-05-16 02:08:31.424,Felicia Umberto,0,,,0
+327,3017,2026-05-12 00:00:00.000,Submitted,Keystone Valley monthly review,,2026-05-14 05:31:19.967,2026-05-12 14:11:17.914,2026-05-14 05:31:19.967,Olivia Northcott,0,,,0
+328,3018,2026-05-12 00:00:00.000,Submitted,Penn Ridge - new BM support,,2026-05-13 07:18:15.807,2026-05-12 13:26:38.901,2026-05-13 07:18:15.807,Olivia Northcott,0,,,0
+329,3019,2026-05-15 00:00:00.000,Submitted,Pamlico Shores - delinquency and staffing review,,2026-05-16 22:22:43.908,2026-05-15 15:36:26.036,2026-05-16 22:22:43.908,Blake Norwood,0,,,0
+330,3020,2026-05-14 00:00:00.000,Submitted,Yadkin Crossing - delinquency and staffing review,,2026-05-15 17:06:08.725,2026-05-14 14:08:01.513,2026-05-15 17:06:08.725,Blake Norwood,0,,,0
+331,3027,2026-05-14 00:00:00.000,Submitted,Santee Shoals - delinquency and staffing review,,2026-05-15 10:02:22.594,2026-05-14 14:40:12.448,2026-05-15 10:02:22.594,Nadia Ironside,0,,,0
+332,3028,2026-05-14 00:00:00.000,Submitted,Lowcountry Cove monthly review,,2026-05-16 04:37:46.103,2026-05-14 13:29:26.858,2026-05-16 04:37:46.103,Nadia Ironside,0,,,0
+333,3029,2026-05-15 00:00:00.000,Submitted,Pee Dee Crossing monthly review,,2026-05-17 09:34:13.777,2026-05-15 15:57:11.275,2026-05-17 09:34:13.777,Nadia Ironside,0,,,0
+334,3036,2026-05-15 00:00:00.000,Submitted,Peachtree Hollow branch visit,BM needs support with team accountability; consider leadership coaching.,2026-05-15 16:19:48.447,2026-05-15 13:54:30.297,2026-05-15 16:19:48.447,Logan Huxley,0,,,0
+335,3037,2026-05-13 00:00:00.000,Submitted,Oconee Springs - delinquency and staffing review,,2026-05-15 01:34:35.448,2026-05-13 14:53:49.460,2026-05-15 01:34:35.448,Logan Huxley,0,,,0
+336,3043,2026-05-12 00:00:00.000,Submitted,Hiwassee Station - new BM support,,2026-05-12 16:56:30.728,2026-05-12 13:44:55.656,2026-05-12 16:56:30.728,Avery Eastwick,0,,,0
+337,3047,2026-05-12 00:00:00.000,Submitted,Mobile Bay View - delinquency and staffing review,,2026-05-14 12:29:56.776,2026-05-12 15:22:33.169,2026-05-14 12:29:56.776,Rashad Blackwood,0,,,0
+338,3048,2026-05-14 00:00:00.000,Submitted,Cahaba Hills branch visit,,2026-05-15 11:57:02.083,2026-05-14 13:22:51.343,2026-05-15 11:57:02.083,Rashad Blackwood,0,,,0
+339,3062,2026-05-13 00:00:00.000,Submitted,Hill Country Crossing branch visit,,2026-05-15 14:08:44.178,2026-05-13 15:20:28.507,2026-05-15 14:08:44.178,Kara Greenleaf,0,,,0
+340,3011,2026-05-15 00:00:00.000,Submitted,Laurel Fork branch visit,,2026-05-16 12:53:58.623,2026-05-15 13:00:45.658,2026-05-16 12:53:58.623,Keisha Foxworth,0,,,0
+341,3032,2026-05-12 00:00:00.000,Submitted,Saluda Mills - delinquency and staffing review,,2026-05-13 00:10:58.520,2026-05-12 15:10:54.000,2026-05-13 00:10:58.520,Hayden Stanhope,0,,,0
+342,3054,2026-05-12 00:00:00.000,Submitted,Black Warrior Crossing monthly review,,2026-05-13 18:19:59.320,2026-05-12 15:25:03.908,2026-05-13 18:19:59.320,Simone Mendoza,0,,,1
+343,3004,2026-05-19 00:00:00.000,Submitted,Oak Glen monthly review,,2026-05-20 19:28:36.350,2026-05-19 13:25:02.252,2026-05-20 19:28:36.350,Nolan Ingram,0,,,0
+344,3007,2026-05-22 00:00:00.000,Submitted,Blue Ridge Crossing - delinquency and staffing review,,2026-05-24 10:17:50.972,2026-05-22 15:17:44.693,2026-05-24 10:17:50.972,Felicia Umberto,0,,,0
+345,3008,2026-05-20 00:00:00.000,Submitted,Rappahannock Hills monthly review,,2026-05-20 22:54:55.979,2026-05-20 13:49:17.316,2026-05-20 22:54:55.979,Felicia Umberto,0,,,0
+346,3013,2026-05-20 00:00:00.000,Submitted,Laurel Highlands - new BM support,,2026-05-22 10:55:57.672,2026-05-20 14:30:11.671,2026-05-22 10:55:57.672,Olivia Northcott,0,,,0
+347,3014,2026-05-21 00:00:00.000,Submitted,Susquehanna Flats branch visit,,2026-05-22 19:53:16.013,2026-05-21 13:28:05.973,2026-05-22 19:53:16.013,Olivia Northcott,0,,,0
+348,3015,2026-05-20 00:00:00.000,Submitted,Brandywine Hollow - delinquency and staffing review,,2026-05-21 20:57:15.708,2026-05-20 13:15:02.319,2026-05-21 20:57:15.708,Olivia Northcott,0,,,0
+349,3021,2026-05-20 00:00:00.000,Submitted,Haw River Mills branch visit,,2026-05-21 22:04:41.836,2026-05-20 15:23:48.233,2026-05-21 22:04:41.836,Blake Norwood,0,,,0
+350,3022,2026-05-20 00:00:00.000,Submitted,Piedmont Springs monthly review,,2026-05-22 09:44:17.716,2026-05-20 14:29:57.174,2026-05-22 09:44:17.716,Blake Norwood,0,,,0
+351,3030,2026-05-20 00:00:00.000,Submitted,Palmetto Ridge - new BM support,,2026-05-22 06:58:54.380,2026-05-20 15:52:15.421,2026-05-22 06:58:54.380,Nadia Ironside,0,,,0
+352,3039,2026-05-21 00:00:00.000,Submitted,Ocmulgee Park - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-05-22 09:16:18.256,2026-05-21 14:05:26.399,2026-05-22 09:16:18.256,Logan Huxley,0,,,0
+353,3040,2026-05-21 00:00:00.000,Submitted,Etowah Ridge - delinquency and staffing review,,2026-05-22 02:51:34.971,2026-05-21 14:23:01.117,2026-05-22 02:51:34.971,Logan Huxley,0,,,0
+354,3044,2026-05-22 00:00:00.000,Submitted,Caney Fork branch visit,,2026-05-24 07:37:25.314,2026-05-22 13:53:16.119,2026-05-24 07:37:25.314,Avery Eastwick,0,,,0
+355,3055,2026-05-22 00:00:00.000,Submitted,Pecos Station monthly review,,2026-05-24 05:25:53.701,2026-05-22 15:23:47.347,2026-05-24 05:25:53.701,Kara Greenleaf,0,,,0
+356,3056,2026-05-20 00:00:00.000,Submitted,Guadalupe Springs branch visit,,2026-05-21 11:17:17.809,2026-05-20 15:22:11.195,2026-05-21 11:17:17.809,Kara Greenleaf,0,,,0
+357,3044,2026-05-19 00:00:00.000,Submitted,Caney Fork branch visit,,2026-05-20 22:25:34.578,2026-05-19 15:11:27.500,2026-05-20 22:25:34.578,Simone Mendoza,0,,,0
+358,3005,2026-05-28 00:00:00.000,Submitted,Severn Bend - delinquency and staffing review,,2026-05-30 11:09:32.908,2026-05-28 14:06:19.558,2026-05-30 11:09:32.908,Nolan Ingram,0,,,0
+359,3006,2026-05-29 00:00:00.000,Submitted,Patapsco Falls - new BM support,,2026-05-31 07:35:33.848,2026-05-29 14:32:37.174,2026-05-31 07:35:33.848,Nolan Ingram,0,,,0
+360,3001,2026-05-27 00:00:00.000,Submitted,Fallston Ridge - new BM support,,2026-05-28 07:29:46.616,2026-05-27 15:55:13.769,2026-05-28 07:29:46.616,Nolan Ingram,0,,,0
+361,3009,2026-05-27 00:00:00.000,Submitted,Stonewall Junction monthly review,,2026-05-28 20:03:36.288,2026-05-27 13:08:18.753,2026-05-28 20:03:36.288,Felicia Umberto,0,,,0
+362,3010,2026-05-26 00:00:00.000,Submitted,Pine Bluff - delinquency and staffing review,,2026-05-27 20:59:51.071,2026-05-26 13:38:52.607,2026-05-27 20:59:51.071,Felicia Umberto,0,,,0
+363,3016,2026-05-28 00:00:00.000,Submitted,Lehigh Gap - delinquency and staffing review,,2026-05-29 05:16:15.363,2026-05-28 15:08:46.110,2026-05-29 05:16:15.363,Olivia Northcott,0,,,0
+364,3017,2026-05-29 00:00:00.000,Submitted,Keystone Valley - new BM support,,2026-05-30 16:08:34.555,2026-05-29 13:11:30.967,2026-05-30 16:08:34.555,Olivia Northcott,0,,,0
+365,3023,2026-05-28 00:00:00.000,Submitted,Sandhill Commons monthly review,,2026-05-28 23:29:08.427,2026-05-28 14:48:43.697,2026-05-28 23:29:08.427,Blake Norwood,0,,,0
+366,3031,2026-05-26 00:00:00.000,Submitted,Edisto Bay monthly review,,2026-05-28 05:15:06.376,2026-05-26 14:57:06.643,2026-05-28 05:15:06.376,Nadia Ironside,0,,,0
+367,3032,2026-05-29 00:00:00.000,Submitted,Saluda Mills - new BM support,,2026-05-30 00:53:12.865,2026-05-29 14:58:24.838,2026-05-30 00:53:12.865,Nadia Ironside,0,,,0
+368,3033,2026-05-26 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-05-27 00:28:12.764,2026-05-26 13:29:10.737,2026-05-27 00:28:12.764,Logan Huxley,0,,,0
+369,3034,2026-05-27 00:00:00.000,Submitted,Satilla Crossing branch visit,,2026-05-29 14:51:22.334,2026-05-27 13:57:37.738,2026-05-29 14:51:22.334,Logan Huxley,0,,,0
+370,3035,2026-05-26 00:00:00.000,Submitted,Altamaha Landing - new BM support,,2026-05-27 00:48:09.195,2026-05-26 15:48:49.932,2026-05-27 00:48:09.195,Logan Huxley,0,,,0
+371,3045,2026-05-29 00:00:00.000,Submitted,Duck River Mills - new BM support,,2026-05-30 07:14:04.259,2026-05-29 15:33:14.792,2026-05-30 07:14:04.259,Avery Eastwick,0,,,0
+372,3046,2026-05-27 00:00:00.000,Submitted,Cumberland Gap - delinquency and staffing review,,2026-05-28 02:22:12.195,2026-05-27 13:46:45.371,2026-05-28 02:22:12.195,Avery Eastwick,0,,,0
+373,3041,2026-05-28 00:00:00.000,Submitted,Harpeth Valley - new BM support,,2026-05-30 12:21:07.313,2026-05-28 14:36:49.139,2026-05-30 12:21:07.313,Avery Eastwick,0,,,0
+374,3050,2026-05-26 00:00:00.000,Submitted,Choctaw Springs - delinquency and staffing review,,2026-05-27 23:58:26.981,2026-05-26 14:35:20.787,2026-05-27 23:58:26.981,Rashad Blackwood,0,,,0
+375,3057,2026-05-29 00:00:00.000,Submitted,Llano Ridge - new BM support,,2026-05-31 00:23:50.768,2026-05-29 14:50:04.386,2026-05-31 00:23:50.768,Kara Greenleaf,0,,,0
+376,3058,2026-05-27 00:00:00.000,Submitted,Nueces Landing - delinquency and staffing review,,2026-05-27 23:00:08.785,2026-05-27 13:21:05.327,2026-05-27 23:00:08.785,Kara Greenleaf,0,,,0
+377,3059,2026-05-27 00:00:00.000,Submitted,Brazos Bend branch visit,,2026-05-28 14:49:14.839,2026-05-27 15:18:18.349,2026-05-28 14:49:14.839,Kara Greenleaf,0,,,0
+378,3002,2026-05-28 00:00:00.000,Submitted,Harbor Point - new BM support,,2026-05-28 22:22:03.895,2026-05-28 14:50:01.137,2026-06-08 01:28:26.738,Keisha Foxworth,1,2026-06-08 01:28:26.738,Keisha Foxworth,0
+379,3040,2026-05-27 00:00:00.000,Submitted,Etowah Ridge branch visit,BM needs support with team accountability; consider leadership coaching.,2026-05-28 04:34:38.213,2026-05-27 15:38:09.644,2026-05-28 04:34:38.213,Hayden Stanhope,0,,,1
+380,3003,2026-06-03 00:00:00.000,Submitted,Cedar Hollow - delinquency and staffing review,,2026-06-05 06:45:04.923,2026-06-03 14:38:16.534,2026-06-05 06:45:04.923,Nolan Ingram,0,,,0
+381,3004,2026-06-04 00:00:00.000,Submitted,Oak Glen - delinquency and staffing review,,2026-06-06 05:42:09.782,2026-06-04 15:56:32.722,2026-06-06 05:42:09.782,Nolan Ingram,0,,,0
+382,3011,2026-06-02 00:00:00.000,Submitted,Laurel Fork monthly review,,2026-06-03 12:48:05.951,2026-06-02 15:39:50.950,2026-06-03 12:48:05.951,Felicia Umberto,0,,,0
+383,3012,2026-06-05 00:00:00.000,Submitted,Shenandoah Mills - new BM support,,2026-06-07 09:01:34.987,2026-06-05 13:11:00.446,2026-06-07 09:01:34.987,Felicia Umberto,0,,,0
+384,3007,2026-06-05 00:00:00.000,Submitted,Blue Ridge Crossing - new BM support,,2026-06-06 22:25:58.125,2026-06-05 13:50:20.040,2026-06-06 22:25:58.125,Felicia Umberto,0,,,0
+385,3018,2026-06-03 00:00:00.000,Submitted,Penn Ridge monthly review,,2026-06-04 02:19:42.372,2026-06-03 15:47:58.583,2026-06-04 02:19:42.372,Olivia Northcott,0,,,0
+386,3013,2026-06-03 00:00:00.000,Submitted,Laurel Highlands branch visit,,2026-06-04 22:17:56.089,2026-06-03 15:19:14.442,2026-06-04 22:17:56.089,Olivia Northcott,0,,,0
+387,3014,2026-06-04 00:00:00.000,Submitted,Susquehanna Flats branch visit,,2026-06-05 12:40:51.850,2026-06-04 15:56:00.009,2026-06-05 12:40:51.850,Olivia Northcott,0,,,0
+388,3024,2026-06-05 00:00:00.000,Submitted,Neuse Bend - new BM support,,2026-06-07 05:36:31.810,2026-06-05 15:00:23.297,2026-06-07 05:36:31.810,Blake Norwood,0,,,0
+389,3025,2026-06-04 00:00:00.000,Submitted,Wateree Hills monthly review,,2026-06-04 23:08:59.576,2026-06-04 15:37:30.511,2026-06-04 23:08:59.576,Nadia Ironside,0,,,0
+390,3036,2026-06-02 00:00:00.000,Submitted,Peachtree Hollow - new BM support,,2026-06-04 06:52:01.803,2026-06-02 14:32:22.796,2026-06-04 06:52:01.803,Logan Huxley,0,,,0
+391,3042,2026-06-03 00:00:00.000,Submitted,Clinch Mountain - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-06-05 00:08:47.739,2026-06-03 13:11:11.161,2026-06-05 00:08:47.739,Avery Eastwick,0,,,0
+392,3051,2026-06-04 00:00:00.000,Submitted,Coosa Bend - delinquency and staffing review,,2026-06-05 11:16:46.754,2026-06-04 15:31:36.826,2026-06-05 11:16:46.754,Rashad Blackwood,0,,,0
+393,3060,2026-06-03 00:00:00.000,Submitted,Trinity Mills - delinquency and staffing review,,2026-06-04 16:00:08.562,2026-06-03 13:07:45.587,2026-06-04 16:00:08.562,Kara Greenleaf,0,,,0
+394,3055,2026-06-05 00:00:00.000,Submitted,Pecos Station - delinquency and staffing review,,2026-06-05 16:06:22.619,2026-06-05 13:45:49.840,2026-06-05 16:06:22.619,Simone Mendoza,0,,,0
+395,3005,2026-06-10 00:00:00.000,Submitted,Severn Bend branch visit,,2026-06-11 04:02:08.801,2026-06-10 13:20:48.011,2026-06-11 04:02:08.801,Nolan Ingram,0,,,0
+396,3006,2026-06-10 00:00:00.000,Submitted,Patapsco Falls monthly review,,2026-06-11 18:22:47.247,2026-06-10 13:59:51.612,2026-06-11 18:22:47.247,Nolan Ingram,0,,,0
+397,3008,2026-06-10 00:00:00.000,Submitted,Rappahannock Hills monthly review,,2026-06-11 09:30:50.634,2026-06-10 15:54:39.162,2026-06-11 09:30:50.634,Felicia Umberto,0,,,0
+398,3009,2026-06-12 00:00:00.000,Submitted,Stonewall Junction branch visit,,2026-06-14 11:21:02.907,2026-06-12 15:34:17.003,2026-07-18 04:17:27.105,Felicia Umberto,1,2026-07-18 04:17:27.105,Felicia Umberto,0
+399,3015,2026-06-12 00:00:00.000,Submitted,Brandywine Hollow - new BM support,,2026-06-13 23:12:25.277,2026-06-12 14:03:10.502,2026-06-13 23:12:25.277,Olivia Northcott,0,,,0
+400,3020,2026-06-09 00:00:00.000,Submitted,Yadkin Crossing branch visit,,2026-06-10 16:13:04.678,2026-06-09 15:23:05.869,2026-06-10 16:13:04.678,Blake Norwood,0,,,0
+401,3021,2026-06-10 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-06-12 00:25:57.003,2026-06-10 13:21:48.918,2026-06-12 00:25:57.003,Blake Norwood,0,,,0
+402,3022,2026-06-10 00:00:00.000,Submitted,Piedmont Springs - new BM support,,2026-06-11 02:12:42.791,2026-06-10 15:25:04.563,2026-06-11 02:12:42.791,Blake Norwood,0,,,0
+403,3026,2026-06-11 00:00:00.000,Submitted,Congaree Point monthly review,,2026-06-13 03:30:34.805,2026-06-11 13:50:31.474,2026-06-13 03:30:34.805,Nadia Ironside,0,,,0
+404,3027,2026-06-12 00:00:00.000,Submitted,Santee Shoals monthly review,,2026-06-12 23:16:40.489,2026-06-12 13:40:33.937,2026-06-12 23:16:40.489,Nadia Ironside,0,,,0
+405,3028,2026-06-12 00:00:00.000,Submitted,Lowcountry Cove branch visit,,2026-06-14 06:58:12.103,2026-06-12 14:26:32.083,2026-06-14 06:58:12.103,Nadia Ironside,0,,,0
+406,3037,2026-06-09 00:00:00.000,Submitted,Oconee Springs branch visit,,2026-06-11 10:44:17.536,2026-06-09 13:59:01.096,2026-06-11 10:44:17.536,Logan Huxley,0,,,0
+407,3043,2026-06-11 00:00:00.000,Submitted,Hiwassee Station - delinquency and staffing review,,2026-06-11 20:12:01.211,2026-06-11 14:11:21.114,2026-06-11 20:12:01.211,Avery Eastwick,0,,,0
+408,3044,2026-06-10 00:00:00.000,Submitted,Caney Fork - new BM support,,2026-06-10 22:48:12.534,2026-06-10 13:00:26.059,2026-06-10 22:48:12.534,Avery Eastwick,0,,,0
+409,3053,2026-06-12 00:00:00.000,Submitted,Sipsey Ridge monthly review,,2026-06-13 21:03:04.076,2026-06-12 15:52:08.855,2026-06-13 21:03:04.076,Rashad Blackwood,0,,,0
+410,3062,2026-06-10 00:00:00.000,Submitted,Hill Country Crossing branch visit,,2026-06-11 20:30:50.781,2026-06-10 13:04:45.296,2026-06-11 20:30:50.781,Kara Greenleaf,0,,,0
+411,3001,2026-06-19 00:00:00.000,Submitted,Fallston Ridge - new BM support,,2026-06-20 16:44:58.477,2026-06-19 14:52:57.248,2026-06-20 16:44:58.477,Nolan Ingram,0,,,0
+412,3002,2026-06-16 00:00:00.000,Submitted,Harbor Point - delinquency and staffing review,,2026-06-17 20:12:33.954,2026-06-16 15:31:35.586,2026-06-17 20:12:33.954,Nolan Ingram,0,,,0
+413,3016,2026-06-16 00:00:00.000,Submitted,Lehigh Gap - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-06-16 19:00:53.658,2026-06-16 13:02:39.814,2026-06-16 19:00:53.658,Olivia Northcott,0,,,0
+414,3024,2026-06-19 00:00:00.000,Submitted,Neuse Bend branch visit,,2026-06-19 20:30:49.600,2026-06-19 13:18:17.332,2026-06-19 20:30:49.600,Blake Norwood,0,,,0
+415,3030,2026-06-18 00:00:00.000,Submitted,Palmetto Ridge - delinquency and staffing review,,2026-06-18 20:42:46.128,2026-06-18 14:05:10.195,2026-06-18 20:42:46.128,Nadia Ironside,0,,,0
+416,3038,2026-06-16 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,,2026-06-18 06:42:32.097,2026-06-16 15:19:56.246,2026-06-18 06:42:32.097,Logan Huxley,0,,,0
+417,3039,2026-06-19 00:00:00.000,Submitted,Ocmulgee Park - new BM support,Strong BM - succession candidate for larger branch.,2026-06-21 07:29:06.721,2026-06-19 15:01:17.174,2026-06-21 07:29:06.721,Logan Huxley,0,,,0
+418,3045,2026-06-16 00:00:00.000,Submitted,Duck River Mills - new BM support,,2026-06-16 21:51:44.121,2026-06-16 14:44:30.229,2026-06-16 21:51:44.121,Avery Eastwick,0,,,0
+419,3046,2026-06-19 00:00:00.000,Submitted,Cumberland Gap - delinquency and staffing review,,2026-06-19 16:12:02.333,2026-06-19 13:01:36.175,2026-06-19 16:12:02.333,Avery Eastwick,0,,,0
+420,3041,2026-06-18 00:00:00.000,Submitted,Harpeth Valley branch visit,BM needs support with team accountability; consider leadership coaching.,2026-06-19 23:01:32.077,2026-06-18 15:45:40.162,2026-06-19 23:01:32.077,Avery Eastwick,0,,,0
+421,3054,2026-06-16 00:00:00.000,Submitted,Black Warrior Crossing - delinquency and staffing review,,2026-06-18 00:23:47.792,2026-06-16 14:04:21.655,2026-06-18 00:23:47.792,Rashad Blackwood,0,,,0
+422,3055,2026-06-16 00:00:00.000,Submitted,Pecos Station monthly review,,2026-06-17 19:56:07.986,2026-06-16 15:08:22.359,2026-06-17 19:56:07.986,Kara Greenleaf,0,,,0
+423,3010,2026-06-18 00:00:00.000,Submitted,Pine Bluff - new BM support,,2026-06-19 09:42:48.290,2026-06-18 15:29:00.757,2026-06-19 09:42:48.290,Keisha Foxworth,0,,,0
+424,3045,2026-06-18 00:00:00.000,Submitted,Duck River Mills - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-06-20 13:01:34.479,2026-06-18 14:56:07.009,2026-06-20 13:01:34.479,Simone Mendoza,0,,,0
+425,3003,2026-06-25 00:00:00.000,Submitted,Cedar Hollow - delinquency and staffing review,,2026-06-26 19:24:05.516,2026-06-25 15:58:40.757,2026-06-26 19:24:05.516,Nolan Ingram,0,,,0
+426,3004,2026-06-24 00:00:00.000,Submitted,Oak Glen - new BM support,,2026-06-24 17:49:43.757,2026-06-24 13:05:47.661,2026-06-24 17:49:43.757,Nolan Ingram,0,,,0
+427,3011,2026-06-23 00:00:00.000,Submitted,Laurel Fork monthly review,,2026-06-24 08:01:25.895,2026-06-23 15:36:55.473,2026-06-24 08:01:25.895,Felicia Umberto,0,,,0
+428,3012,2026-06-23 00:00:00.000,Submitted,Shenandoah Mills branch visit,,2026-06-25 10:38:49.845,2026-06-23 13:40:48.355,2026-06-25 10:38:49.845,Felicia Umberto,0,,,0
+429,3017,2026-06-26 00:00:00.000,Submitted,Keystone Valley - delinquency and staffing review,,2026-06-28 10:28:38.003,2026-06-26 13:53:30.796,2026-06-28 10:28:38.003,Olivia Northcott,0,,,0
+430,3018,2026-06-25 00:00:00.000,Submitted,Penn Ridge - new BM support,,2026-06-27 12:49:01.754,2026-06-25 15:42:11.979,2026-06-27 12:49:01.754,Olivia Northcott,0,,,0
+431,3019,2026-06-24 00:00:00.000,Submitted,Pamlico Shores monthly review,,2026-06-25 01:54:09.296,2026-06-24 13:39:02.336,2026-06-25 01:54:09.296,Blake Norwood,0,,,0
+432,3020,2026-06-24 00:00:00.000,Submitted,Yadkin Crossing - new BM support,,2026-06-25 20:21:46.634,2026-06-24 13:58:45.313,2026-06-25 20:21:46.634,Blake Norwood,0,,,0
+433,3031,2026-06-26 00:00:00.000,Submitted,Edisto Bay monthly review,,2026-06-27 13:58:12.598,2026-06-26 14:35:38.610,2026-06-27 13:58:12.598,Nadia Ironside,0,,,0
+434,3032,2026-06-24 00:00:00.000,Submitted,Saluda Mills - new BM support,,2026-06-25 00:25:08.378,2026-06-24 13:17:19.819,2026-06-25 00:25:08.378,Nadia Ironside,0,,,0
+435,3040,2026-06-23 00:00:00.000,Submitted,Etowah Ridge monthly review,BM needs support with team accountability; consider leadership coaching.,2026-06-24 18:18:49.123,2026-06-23 14:28:59.778,2026-06-24 18:18:49.123,Logan Huxley,0,,,0
+436,3042,2026-06-25 00:00:00.000,Submitted,Clinch Mountain monthly review,,2026-06-27 07:35:29.160,2026-06-25 13:36:18.057,2026-06-27 07:35:29.160,Avery Eastwick,0,,,0
+437,3047,2026-06-23 00:00:00.000,Submitted,Mobile Bay View monthly review,,2026-06-24 22:04:59.412,2026-06-23 14:12:38.240,2026-06-24 22:04:59.412,Rashad Blackwood,0,,,0
+438,3048,2026-06-24 00:00:00.000,Submitted,Cahaba Hills - new BM support,,2026-06-26 10:11:32.431,2026-06-24 15:33:48.405,2026-06-26 10:11:32.431,Rashad Blackwood,0,,,0
+439,3056,2026-06-25 00:00:00.000,Submitted,Guadalupe Springs branch visit,,2026-06-26 08:09:31.184,2026-06-25 15:25:06.017,2026-06-26 08:09:31.184,Kara Greenleaf,0,,,0
+440,3005,2026-07-02 00:00:00.000,Submitted,Severn Bend - new BM support,Strong BM - succession candidate for larger branch.,2026-07-03 02:54:56.765,2026-07-02 14:50:29.634,2026-07-03 02:54:56.765,Nolan Ingram,0,,,0
+441,3006,2026-07-03 00:00:00.000,Submitted,Patapsco Falls - new BM support,,2026-07-05 05:01:31.839,2026-07-03 15:33:24.712,2026-07-05 05:01:31.839,Nolan Ingram,0,,,0
+442,3007,2026-07-03 00:00:00.000,Submitted,Blue Ridge Crossing - delinquency and staffing review,,2026-07-04 14:06:40.310,2026-07-03 13:59:50.365,2026-07-04 14:06:40.310,Felicia Umberto,0,,,0
+443,3008,2026-07-03 00:00:00.000,Submitted,Rappahannock Hills monthly review,,2026-07-04 13:45:34.908,2026-07-03 15:06:14.952,2026-07-04 13:45:34.908,Felicia Umberto,0,,,0
+444,3013,2026-06-30 00:00:00.000,Submitted,Laurel Highlands - delinquency and staffing review,,2026-07-01 12:25:32.366,2026-06-30 13:35:36.362,2026-07-01 12:25:32.366,Olivia Northcott,0,,,0
+445,3014,2026-07-02 00:00:00.000,Submitted,Susquehanna Flats monthly review,,2026-07-02 20:34:47.070,2026-07-02 15:56:23.585,2026-07-02 20:34:47.070,Olivia Northcott,0,,,0
+446,3015,2026-07-02 00:00:00.000,Submitted,Brandywine Hollow - new BM support,,2026-07-03 16:25:03.699,2026-07-02 15:23:46.382,2026-07-03 16:25:03.699,Olivia Northcott,0,,,0
+447,3021,2026-07-01 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-07-02 01:43:52.304,2026-07-01 15:07:03.655,2026-07-02 01:43:52.304,Blake Norwood,0,,,0
+448,3022,2026-07-03 00:00:00.000,Submitted,Piedmont Springs - delinquency and staffing review,,2026-07-04 07:46:25.490,2026-07-03 15:53:54.247,2026-07-04 07:46:25.490,Blake Norwood,0,,,0
+449,3023,2026-07-01 00:00:00.000,Submitted,Sandhill Commons monthly review,,2026-07-03 15:43:36.213,2026-07-01 15:30:37.809,2026-07-03 15:43:36.213,Blake Norwood,0,,,0
+450,3025,2026-06-30 00:00:00.000,Submitted,Wateree Hills monthly review,,2026-07-01 19:21:08.663,2026-06-30 15:05:00.472,2026-07-01 19:21:08.663,Nadia Ironside,0,,,0
+451,3033,2026-07-02 00:00:00.000,Submitted,Flint River Mills monthly review,,2026-07-04 09:23:01.231,2026-07-02 13:57:58.502,2026-07-04 09:23:01.231,Logan Huxley,0,,,0
+452,3034,2026-07-03 00:00:00.000,Submitted,Satilla Crossing - delinquency and staffing review,,2026-07-03 23:31:35.562,2026-07-03 13:11:09.364,2026-07-03 23:31:35.562,Logan Huxley,0,,,0
+453,3035,2026-07-02 00:00:00.000,Submitted,Altamaha Landing - delinquency and staffing review,,2026-07-03 01:07:48.254,2026-07-02 14:42:03.917,2026-08-05 03:47:17.632,Logan Huxley,1,2026-08-05 03:47:17.632,Logan Huxley,0
+454,3043,2026-07-02 00:00:00.000,Submitted,Hiwassee Station - delinquency and staffing review,,2026-07-04 08:43:19.330,2026-07-02 14:01:01.925,2026-07-04 08:43:19.330,Avery Eastwick,0,,,0
+455,3049,2026-06-30 00:00:00.000,Submitted,Tallapoosa Mills branch visit,,2026-07-02 00:53:27.925,2026-06-30 15:26:44.303,2026-07-02 00:53:27.925,Rashad Blackwood,0,,,0
+456,3050,2026-07-03 00:00:00.000,Submitted,Choctaw Springs - new BM support,,2026-07-03 22:01:48.168,2026-07-03 14:58:23.283,2026-07-03 22:01:48.168,Rashad Blackwood,0,,,0
+457,3057,2026-06-30 00:00:00.000,Submitted,Llano Ridge - new BM support,,2026-07-02 13:50:39.762,2026-06-30 14:44:25.334,2026-07-02 13:50:39.762,Kara Greenleaf,0,,,0
+458,3058,2026-07-02 00:00:00.000,Submitted,Nueces Landing monthly review,,2026-07-03 21:14:09.322,2026-07-02 15:11:46.508,2026-07-03 21:14:09.322,Kara Greenleaf,0,,,0
+459,3050,2026-06-30 00:00:00.000,Submitted,Choctaw Springs - new BM support,,2026-07-01 21:02:14.025,2026-06-30 15:19:22.298,2026-07-01 21:02:14.025,Simone Mendoza,0,,,0
+460,3002,2026-07-08 00:00:00.000,Submitted,Harbor Point - new BM support,,2026-07-10 11:07:26.984,2026-07-08 15:03:42.472,2026-07-10 11:07:26.984,Nolan Ingram,0,,,0
+461,3009,2026-07-07 00:00:00.000,Submitted,Stonewall Junction - delinquency and staffing review,,2026-07-09 05:39:49.693,2026-07-07 15:26:03.907,2026-07-09 05:39:49.693,Felicia Umberto,0,,,0
+462,3016,2026-07-09 00:00:00.000,Submitted,Lehigh Gap - new BM support,,2026-07-11 03:03:36.997,2026-07-09 13:58:03.834,2026-07-11 03:03:36.997,Olivia Northcott,0,,,0
+463,3017,2026-07-09 00:00:00.000,Submitted,Keystone Valley branch visit,,2026-07-10 10:57:14.997,2026-07-09 15:24:05.504,2026-07-10 10:57:14.997,Olivia Northcott,0,,,0
+464,3018,2026-07-07 00:00:00.000,Submitted,Penn Ridge - delinquency and staffing review,,2026-07-08 14:26:46.263,2026-07-07 14:20:58.770,2026-07-08 14:26:46.263,Olivia Northcott,0,,,0
+465,3024,2026-07-10 00:00:00.000,Submitted,Neuse Bend monthly review,,2026-07-11 20:06:45.327,2026-07-10 14:29:54.816,2026-07-11 20:06:45.327,Blake Norwood,0,,,0
+466,3027,2026-07-08 00:00:00.000,Submitted,Santee Shoals - new BM support,,2026-07-10 11:41:10.032,2026-07-08 13:40:38.179,2026-07-10 11:41:10.032,Nadia Ironside,0,,,0
+467,3036,2026-07-10 00:00:00.000,Submitted,Peachtree Hollow branch visit,,2026-07-12 04:10:46.466,2026-07-10 15:47:53.292,2026-07-12 04:10:46.466,Logan Huxley,0,,,0
+468,3037,2026-07-07 00:00:00.000,Submitted,Oconee Springs - delinquency and staffing review,,2026-07-08 00:59:29.378,2026-07-07 15:12:02.557,2026-07-08 00:59:29.378,Logan Huxley,0,,,0
+469,3045,2026-07-10 00:00:00.000,Submitted,Duck River Mills monthly review,,2026-07-11 01:28:41.841,2026-07-10 13:11:27.388,2026-07-11 01:28:41.841,Avery Eastwick,0,,,0
+470,3051,2026-07-09 00:00:00.000,Submitted,Coosa Bend monthly review,,2026-07-11 10:16:23.630,2026-07-09 14:12:31.930,2026-07-11 10:16:23.630,Rashad Blackwood,0,,,0
+471,3052,2026-07-09 00:00:00.000,Submitted,Tombigbee Landing - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-07-11 05:54:41.783,2026-07-09 14:26:19.816,2026-07-11 05:54:41.783,Rashad Blackwood,0,,,0
+472,3059,2026-07-10 00:00:00.000,Submitted,Brazos Bend monthly review,,2026-07-10 19:51:57.563,2026-07-10 13:07:25.902,2026-07-10 19:51:57.563,Kara Greenleaf,0,,,0
+473,3060,2026-07-07 00:00:00.000,Submitted,Trinity Mills branch visit,,2026-07-08 22:19:12.496,2026-07-07 13:30:01.785,2026-07-08 22:19:12.496,Kara Greenleaf,0,,,0
+474,3017,2026-07-08 00:00:00.000,Submitted,Keystone Valley branch visit,,2026-07-09 09:14:53.735,2026-07-08 15:19:54.221,2026-08-05 19:22:59.271,Keisha Foxworth,1,2026-08-05 19:22:59.271,Keisha Foxworth,0
+475,3003,2026-07-14 00:00:00.000,Submitted,Cedar Hollow branch visit,,2026-07-16 13:15:11.782,2026-07-14 13:35:45.877,2026-07-16 13:15:11.782,Nolan Ingram,0,,,0
+476,3004,2026-07-15 00:00:00.000,Submitted,Oak Glen branch visit,Strong BM - succession candidate for larger branch.,2026-07-15 16:04:23.038,2026-07-15 13:47:53.641,2026-07-15 16:04:23.038,Nolan Ingram,0,,,0
+477,3005,2026-07-17 00:00:00.000,Submitted,Severn Bend branch visit,,2026-07-18 09:21:06.585,2026-07-17 15:19:13.198,2026-07-18 09:21:06.585,Nolan Ingram,0,,,0
+478,3011,2026-07-15 00:00:00.000,Submitted,Laurel Fork - new BM support,,2026-07-16 03:23:26.734,2026-07-15 15:32:41.345,2026-07-16 03:23:26.734,Felicia Umberto,0,,,0
+479,3013,2026-07-15 00:00:00.000,Submitted,Laurel Highlands monthly review,,2026-07-16 03:22:56.746,2026-07-15 14:51:07.492,2026-07-16 03:22:56.746,Olivia Northcott,0,,,0
+480,3014,2026-07-14 00:00:00.000,Submitted,Susquehanna Flats - new BM support,,2026-07-15 00:16:32.894,2026-07-14 14:05:59.462,2026-07-15 00:16:32.894,Olivia Northcott,0,,,0
+481,3019,2026-07-15 00:00:00.000,Submitted,Pamlico Shores - delinquency and staffing review,,2026-07-17 04:48:28.326,2026-07-15 15:20:31.143,2026-07-17 04:48:28.326,Blake Norwood,0,,,0
+482,3020,2026-07-16 00:00:00.000,Submitted,Yadkin Crossing - new BM support,,2026-07-18 11:56:32.698,2026-07-16 14:36:23.399,2026-07-18 11:56:32.698,Blake Norwood,0,,,0
+483,3028,2026-07-15 00:00:00.000,Submitted,Lowcountry Cove monthly review,,2026-07-16 16:46:02.702,2026-07-15 15:26:53.370,2026-07-16 16:46:02.702,Nadia Ironside,0,,,0
+484,3029,2026-07-17 00:00:00.000,Submitted,Pee Dee Crossing monthly review,,2026-07-17 17:56:50.294,2026-07-17 13:10:00.407,2026-07-17 17:56:50.294,Nadia Ironside,0,,,0
+485,3038,2026-07-14 00:00:00.000,Submitted,Chattahoochee Bend - new BM support,,2026-07-15 17:55:51.819,2026-07-14 13:20:34.274,2026-07-15 17:55:51.819,Logan Huxley,0,,,0
+486,3039,2026-07-17 00:00:00.000,Submitted,Ocmulgee Park branch visit,,2026-07-18 12:08:07.551,2026-07-17 13:18:37.088,2026-07-18 12:08:07.551,Logan Huxley,0,,,0
+487,3040,2026-07-17 00:00:00.000,Submitted,Etowah Ridge monthly review,,2026-07-19 02:25:20.987,2026-07-17 14:01:37.816,2026-07-19 02:25:20.987,Logan Huxley,0,,,0
+488,3046,2026-07-15 00:00:00.000,Submitted,Cumberland Gap branch visit,,2026-07-15 20:36:00.605,2026-07-15 13:21:34.626,2026-07-15 20:36:00.605,Avery Eastwick,0,,,0
+489,3053,2026-07-15 00:00:00.000,Submitted,Sipsey Ridge - delinquency and staffing review,,2026-07-16 16:53:28.141,2026-07-15 15:31:18.695,2026-07-16 16:53:28.141,Rashad Blackwood,0,,,0
+490,3054,2026-07-15 00:00:00.000,Submitted,Black Warrior Crossing - delinquency and staffing review,,2026-07-17 16:48:14.186,2026-07-15 15:56:43.674,2026-07-17 16:48:14.186,Rashad Blackwood,0,,,0
+491,3061,2026-07-16 00:00:00.000,Submitted,Sabine Point branch visit,,2026-07-17 04:48:15.701,2026-07-16 14:07:59.932,2026-07-17 04:48:15.701,Kara Greenleaf,0,,,0
+492,3062,2026-07-15 00:00:00.000,Submitted,Hill Country Crossing monthly review,,2026-07-16 08:51:31.454,2026-07-15 13:19:55.184,2026-07-16 08:51:31.454,Kara Greenleaf,0,,,0
+493,3006,2026-07-21 00:00:00.000,Submitted,Patapsco Falls monthly review,,2026-07-22 08:24:49.600,2026-07-21 14:31:23.817,2026-08-09 16:44:38.918,Nolan Ingram,1,2026-08-09 16:44:38.918,Nolan Ingram,0
+494,3007,2026-07-21 00:00:00.000,Submitted,Blue Ridge Crossing - new BM support,,2026-07-22 20:08:21.601,2026-07-21 14:01:32.367,2026-07-22 20:08:21.601,Felicia Umberto,0,,,0
+495,3008,2026-07-23 00:00:00.000,Submitted,Rappahannock Hills - delinquency and staffing review,,2026-07-24 11:21:25.994,2026-07-23 13:37:45.520,2026-07-24 11:21:25.994,Felicia Umberto,0,,,0
+496,3015,2026-07-24 00:00:00.000,Submitted,Brandywine Hollow monthly review,,2026-07-25 17:32:42.436,2026-07-24 15:18:39.334,2026-07-25 17:32:42.436,Olivia Northcott,0,,,0
+497,3016,2026-07-24 00:00:00.000,Submitted,Lehigh Gap - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-07-25 00:18:10.769,2026-07-24 14:43:47.446,2026-07-25 00:18:10.769,Olivia Northcott,0,,,0
+498,3021,2026-07-24 00:00:00.000,Submitted,Haw River Mills branch visit,,2026-07-25 11:42:04.004,2026-07-24 15:39:28.053,2026-07-25 11:42:04.004,Blake Norwood,0,,,0
+499,3022,2026-07-21 00:00:00.000,Submitted,Piedmont Springs branch visit,,2026-07-21 22:01:47.810,2026-07-21 15:32:04.848,2026-07-21 22:01:47.810,Blake Norwood,0,,,0
+500,3030,2026-07-23 00:00:00.000,Submitted,Palmetto Ridge - new BM support,,2026-07-25 17:37:29.100,2026-07-23 15:53:41.451,2026-07-25 17:37:29.100,Nadia Ironside,0,,,0
+501,3033,2026-07-21 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-07-22 19:40:12.591,2026-07-21 14:31:47.002,2026-07-22 19:40:12.591,Logan Huxley,0,,,0
+502,3041,2026-07-21 00:00:00.000,Submitted,Harpeth Valley branch visit,,2026-07-22 23:13:39.863,2026-07-21 13:08:45.348,2026-08-30 15:36:51.267,Avery Eastwick,1,2026-08-30 15:36:51.267,Avery Eastwick,0
+503,3042,2026-07-21 00:00:00.000,Submitted,Clinch Mountain - delinquency and staffing review,,2026-07-23 15:25:28.001,2026-07-21 14:38:36.429,2026-07-23 15:25:28.001,Avery Eastwick,0,,,0
+504,3047,2026-07-24 00:00:00.000,Submitted,Mobile Bay View branch visit,,2026-07-25 06:41:42.427,2026-07-24 14:49:19.426,2026-07-25 06:41:42.427,Rashad Blackwood,0,,,0
+505,3048,2026-07-23 00:00:00.000,Submitted,Cahaba Hills - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-07-25 12:26:21.663,2026-07-23 13:17:47.997,2026-07-25 12:26:21.663,Rashad Blackwood,0,,,0
+506,3049,2026-07-22 00:00:00.000,Submitted,Tallapoosa Mills - delinquency and staffing review,,2026-07-24 07:16:26.794,2026-07-22 13:24:07.516,2026-07-24 07:16:26.794,Rashad Blackwood,0,,,0
+507,3055,2026-07-23 00:00:00.000,Submitted,Pecos Station branch visit,BM needs support with team accountability; consider leadership coaching.,2026-07-24 11:51:11.002,2026-07-23 15:29:58.359,2026-07-24 11:51:11.002,Kara Greenleaf,0,,,0
+508,3056,2026-07-21 00:00:00.000,Submitted,Guadalupe Springs - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-07-23 16:32:05.801,2026-07-21 15:38:27.724,2026-07-23 16:32:05.801,Kara Greenleaf,0,,,0
+509,3057,2026-07-24 00:00:00.000,Submitted,Llano Ridge monthly review,,2026-07-25 17:22:20.364,2026-07-24 13:31:05.243,2026-07-25 17:22:20.364,Kara Greenleaf,0,,,0
+510,3011,2026-07-21 00:00:00.000,Submitted,Laurel Fork monthly review,,2026-07-23 04:34:49.894,2026-07-21 13:20:57.326,2026-07-23 04:34:49.894,Keisha Foxworth,0,,,0
+511,3002,2026-07-31 00:00:00.000,Submitted,Harbor Point - delinquency and staffing review,,2026-08-01 12:12:49.983,2026-07-31 15:50:47.304,2026-08-01 12:12:49.983,Nolan Ingram,0,,,0
+512,3009,2026-07-30 00:00:00.000,Submitted,Stonewall Junction - new BM support,,2026-07-31 09:42:18.274,2026-07-30 14:38:05.516,2026-07-31 09:42:18.274,Felicia Umberto,0,,,0
+513,3017,2026-07-31 00:00:00.000,Submitted,Keystone Valley - delinquency and staffing review,,2026-08-01 08:32:08.138,2026-07-31 14:58:39.725,2026-08-01 08:32:08.138,Olivia Northcott,0,,,0
+514,3013,2026-07-30 00:00:00.000,Submitted,Laurel Highlands - delinquency and staffing review,,2026-08-01 12:08:57.869,2026-07-30 15:33:59.736,2026-08-01 12:08:57.869,Olivia Northcott,0,,,0
+515,3023,2026-07-31 00:00:00.000,Submitted,Sandhill Commons branch visit,BM needs support with team accountability; consider leadership coaching.,2026-08-01 04:47:07.598,2026-07-31 15:18:43.524,2026-08-01 04:47:07.598,Blake Norwood,0,,,0
+516,3024,2026-07-29 00:00:00.000,Submitted,Neuse Bend branch visit,,2026-07-29 18:14:37.029,2026-07-29 14:19:19.638,2026-07-29 18:14:37.029,Blake Norwood,0,,,0
+517,3032,2026-07-28 00:00:00.000,Submitted,Saluda Mills - new BM support,,2026-07-29 18:47:56.760,2026-07-28 14:01:25.052,2026-07-29 18:47:56.760,Nadia Ironside,0,,,0
+518,3025,2026-07-30 00:00:00.000,Submitted,Wateree Hills branch visit,,2026-07-31 16:16:37.655,2026-07-30 13:38:46.185,2026-07-31 16:16:37.655,Nadia Ironside,0,,,0
+519,3035,2026-07-30 00:00:00.000,Submitted,Altamaha Landing monthly review,,2026-07-30 21:14:23.117,2026-07-30 14:38:30.604,2026-07-30 21:14:23.117,Logan Huxley,0,,,0
+520,3036,2026-07-29 00:00:00.000,Submitted,Peachtree Hollow branch visit,,2026-07-29 19:32:45.453,2026-07-29 14:59:15.873,2026-07-29 19:32:45.453,Logan Huxley,0,,,0
+521,3043,2026-07-29 00:00:00.000,Submitted,Hiwassee Station branch visit,,2026-07-30 02:43:08.771,2026-07-29 15:27:31.384,2026-07-30 02:43:08.771,Avery Eastwick,0,,,0
+522,3044,2026-07-29 00:00:00.000,Submitted,Caney Fork - new BM support,,2026-07-31 17:20:18.572,2026-07-29 15:48:02.800,2026-07-31 17:20:18.572,Avery Eastwick,0,,,0
+523,3050,2026-07-30 00:00:00.000,Submitted,Choctaw Springs - delinquency and staffing review,,2026-07-31 03:14:54.572,2026-07-30 15:49:57.502,2026-07-31 03:14:54.572,Rashad Blackwood,0,,,0
+524,3051,2026-07-30 00:00:00.000,Submitted,Coosa Bend - delinquency and staffing review,,2026-07-30 21:55:35.000,2026-07-30 15:45:35.312,2026-07-30 21:55:35.000,Rashad Blackwood,0,,,0
+525,3058,2026-07-31 00:00:00.000,Submitted,Nueces Landing - new BM support,,2026-08-02 09:54:33.333,2026-07-31 14:30:35.902,2026-08-02 09:54:33.333,Kara Greenleaf,0,,,0
+526,3059,2026-07-28 00:00:00.000,Submitted,Brazos Bend monthly review,,2026-07-29 19:28:54.781,2026-07-28 13:04:20.125,2026-08-11 01:27:13.084,Kara Greenleaf,1,2026-08-11 01:27:13.084,Kara Greenleaf,0
+527,3033,2026-07-29 00:00:00.000,Submitted,Flint River Mills monthly review,BM needs support with team accountability; consider leadership coaching.,2026-07-31 00:51:04.041,2026-07-29 15:23:46.955,2026-07-31 00:51:04.041,Hayden Stanhope,0,,,1
+528,3003,2026-08-05 00:00:00.000,Submitted,Cedar Hollow branch visit,,2026-08-06 02:00:35.805,2026-08-05 14:39:27.201,2026-08-06 02:00:35.805,Nolan Ingram,0,,,0
+529,3004,2026-08-05 00:00:00.000,Submitted,Oak Glen - delinquency and staffing review,,2026-08-07 12:01:17.095,2026-08-05 15:26:02.718,2026-08-07 12:01:17.095,Nolan Ingram,0,,,0
+530,3005,2026-08-07 00:00:00.000,Submitted,Severn Bend - new BM support,Strong BM - succession candidate for larger branch.,2026-08-09 11:05:12.934,2026-08-07 14:44:33.448,2026-08-09 11:05:12.934,Nolan Ingram,0,,,0
+531,3010,2026-08-04 00:00:00.000,Submitted,Pine Bluff - delinquency and staffing review,,2026-08-05 05:54:42.738,2026-08-04 13:40:31.960,2026-08-05 05:54:42.738,Felicia Umberto,0,,,0
+532,3011,2026-08-04 00:00:00.000,Submitted,Laurel Fork branch visit,,2026-08-06 16:52:16.045,2026-08-04 15:12:12.806,2026-08-06 16:52:16.045,Felicia Umberto,0,,,0
+533,3012,2026-08-05 00:00:00.000,Submitted,Shenandoah Mills - delinquency and staffing review,,2026-08-07 07:17:07.175,2026-08-05 13:59:17.737,2026-08-07 07:17:07.175,Felicia Umberto,0,,,0
+534,3014,2026-08-07 00:00:00.000,Submitted,Susquehanna Flats branch visit,,2026-08-07 18:57:21.791,2026-08-07 13:45:06.506,2026-08-07 18:57:21.791,Olivia Northcott,0,,,0
+535,3015,2026-08-07 00:00:00.000,Submitted,Brandywine Hollow branch visit,Strong BM - succession candidate for larger branch.,2026-08-08 08:25:04.287,2026-08-07 14:50:17.936,2026-08-08 08:25:04.287,Olivia Northcott,0,,,0
+536,3020,2026-08-05 00:00:00.000,Submitted,Yadkin Crossing - new BM support,,2026-08-06 14:34:00.634,2026-08-05 15:59:16.670,2026-08-22 22:20:36.122,Blake Norwood,1,2026-08-22 22:20:36.122,Blake Norwood,0
+537,3026,2026-08-06 00:00:00.000,Submitted,Congaree Point branch visit,,2026-08-08 05:31:47.267,2026-08-06 14:43:48.684,2026-08-08 05:31:47.267,Nadia Ironside,0,,,0
+538,3027,2026-08-06 00:00:00.000,Submitted,Santee Shoals - new BM support,,2026-08-06 16:00:46.007,2026-08-06 13:45:55.505,2026-08-06 16:00:46.007,Nadia Ironside,0,,,0
+539,3028,2026-08-05 00:00:00.000,Submitted,Lowcountry Cove monthly review,,2026-08-07 14:54:37.621,2026-08-05 14:05:43.001,2026-08-07 14:54:37.621,Nadia Ironside,0,,,0
+540,3037,2026-08-05 00:00:00.000,Submitted,Oconee Springs - delinquency and staffing review,,2026-08-05 19:46:57.302,2026-08-05 15:03:28.908,2026-08-05 19:46:57.302,Logan Huxley,0,,,0
+541,3038,2026-08-04 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,,2026-08-05 13:14:48.839,2026-08-04 15:24:45.168,2026-08-05 13:14:48.839,Logan Huxley,0,,,0
+542,3039,2026-08-05 00:00:00.000,Submitted,Ocmulgee Park monthly review,BM needs support with team accountability; consider leadership coaching.,2026-08-07 02:15:25.396,2026-08-05 14:40:04.326,2026-08-07 02:15:25.396,Logan Huxley,0,,,0
+543,3045,2026-08-04 00:00:00.000,Submitted,Duck River Mills monthly review,,2026-08-06 00:30:12.208,2026-08-04 14:13:38.756,2026-08-06 00:30:12.208,Avery Eastwick,0,,,0
+544,3052,2026-08-05 00:00:00.000,Submitted,Tombigbee Landing monthly review,,2026-08-06 14:05:56.287,2026-08-05 14:18:23.055,2026-08-06 14:05:56.287,Rashad Blackwood,0,,,0
+545,3053,2026-08-06 00:00:00.000,Submitted,Sipsey Ridge - new BM support,,2026-08-07 06:06:40.185,2026-08-06 14:57:58.436,2026-08-07 06:06:40.185,Rashad Blackwood,0,,,0
+546,3060,2026-08-07 00:00:00.000,Submitted,Trinity Mills - delinquency and staffing review,,2026-08-08 03:19:04.636,2026-08-07 14:17:48.566,2026-08-08 03:19:04.636,Kara Greenleaf,0,,,0
+547,3019,2026-08-04 00:00:00.000,Submitted,Pamlico Shores - delinquency and staffing review,,2026-08-04 21:54:55.331,2026-08-04 13:44:58.308,2026-08-04 21:54:55.331,Hayden Stanhope,0,,,0
+548,3006,2026-08-12 00:00:00.000,Submitted,Patapsco Falls branch visit,,2026-08-12 23:01:24.736,2026-08-12 13:57:59.093,2026-08-12 23:01:24.736,Nolan Ingram,0,,,0
+549,3007,2026-08-12 00:00:00.000,Submitted,Blue Ridge Crossing - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-08-13 11:30:15.643,2026-08-12 15:07:18.164,2026-08-13 11:30:15.643,Felicia Umberto,0,,,0
+550,3008,2026-08-11 00:00:00.000,Submitted,Rappahannock Hills - delinquency and staffing review,,2026-08-12 16:48:40.548,2026-08-11 13:08:21.239,2026-08-12 16:48:40.548,Felicia Umberto,0,,,0
+551,3016,2026-08-13 00:00:00.000,Submitted,Lehigh Gap - delinquency and staffing review,,2026-08-15 13:11:14.517,2026-08-13 15:48:19.000,2026-08-15 13:11:14.517,Olivia Northcott,0,,,0
+552,3021,2026-08-14 00:00:00.000,Submitted,Haw River Mills - new BM support,,2026-08-16 16:22:24.710,2026-08-14 14:30:27.841,2026-08-16 16:22:24.710,Blake Norwood,0,,,0
+553,3022,2026-08-12 00:00:00.000,Submitted,Piedmont Springs - new BM support,,2026-08-13 12:23:41.679,2026-08-12 14:54:04.079,2026-08-13 12:23:41.679,Blake Norwood,0,,,0
+554,3023,2026-08-13 00:00:00.000,Submitted,Sandhill Commons branch visit,,2026-08-14 18:45:52.584,2026-08-13 14:13:10.302,2026-08-14 18:45:52.584,Blake Norwood,0,,,0
+555,3029,2026-08-12 00:00:00.000,Submitted,Pee Dee Crossing monthly review,,2026-08-13 11:05:21.709,2026-08-12 15:49:52.863,2026-08-13 11:05:21.709,Nadia Ironside,0,,,0
+556,3030,2026-08-11 00:00:00.000,Submitted,Palmetto Ridge - delinquency and staffing review,,2026-08-11 17:56:03.166,2026-08-11 13:15:30.171,2026-08-11 17:56:03.166,Nadia Ironside,0,,,0
+557,3031,2026-08-12 00:00:00.000,Submitted,Edisto Bay monthly review,,2026-08-14 08:58:43.192,2026-08-12 15:18:05.242,2026-08-14 08:58:43.192,Nadia Ironside,0,,,0
+558,3040,2026-08-11 00:00:00.000,Submitted,Etowah Ridge branch visit,,2026-08-11 21:34:48.274,2026-08-11 15:08:39.469,2026-08-11 21:34:48.274,Logan Huxley,0,,,0
+559,3033,2026-08-14 00:00:00.000,Submitted,Flint River Mills - new BM support,,2026-08-15 08:51:24.456,2026-08-14 15:37:47.129,2026-08-15 08:51:24.456,Logan Huxley,0,,,0
+560,3034,2026-08-12 00:00:00.000,Submitted,Satilla Crossing monthly review,,2026-08-13 02:58:34.351,2026-08-12 14:20:39.064,2026-08-13 02:58:34.351,Logan Huxley,0,,,0
+561,3046,2026-08-11 00:00:00.000,Submitted,Cumberland Gap branch visit,,2026-08-12 01:33:50.107,2026-08-11 13:03:59.849,2026-08-12 01:33:50.107,Avery Eastwick,0,,,0
+562,3041,2026-08-13 00:00:00.000,Submitted,Harpeth Valley - delinquency and staffing review,,2026-08-15 07:30:08.315,2026-08-13 13:13:16.681,2026-08-15 07:30:08.315,Avery Eastwick,0,,,0
+563,3054,2026-08-13 00:00:00.000,Submitted,Black Warrior Crossing monthly review,,2026-08-14 03:36:16.833,2026-08-13 15:43:27.996,2026-08-14 03:36:16.833,Rashad Blackwood,0,,,0
+564,3062,2026-08-12 00:00:00.000,Submitted,Hill Country Crossing - new BM support,,2026-08-13 23:20:04.572,2026-08-12 14:01:01.089,2026-08-13 23:20:04.572,Kara Greenleaf,0,,,0
+565,3055,2026-08-13 00:00:00.000,Submitted,Pecos Station - new BM support,,2026-08-14 01:47:54.910,2026-08-13 13:09:07.430,2026-08-14 01:47:54.910,Kara Greenleaf,0,,,0
+566,3056,2026-08-12 00:00:00.000,Submitted,Guadalupe Springs monthly review,,2026-08-13 08:00:39.549,2026-08-12 15:10:14.127,2026-08-13 08:00:39.549,Kara Greenleaf,0,,,0
+567,3034,2026-08-12 00:00:00.000,Submitted,Satilla Crossing monthly review,,2026-08-14 00:30:51.652,2026-08-12 14:41:52.045,2026-08-14 00:30:51.652,Hayden Stanhope,0,,,1
+568,3057,2026-08-11 00:00:00.000,Submitted,Llano Ridge branch visit,,2026-08-13 08:11:18.872,2026-08-11 15:28:44.333,2026-08-13 08:11:18.872,Simone Mendoza,0,,,1
+569,3001,2026-08-18 00:00:00.000,Submitted,Fallston Ridge branch visit,,2026-08-19 02:18:33.541,2026-08-18 14:33:33.118,2026-08-19 02:18:33.541,Nolan Ingram,0,,,0
+570,3002,2026-08-21 00:00:00.000,Submitted,Harbor Point - delinquency and staffing review,,2026-08-23 12:26:45.102,2026-08-21 15:37:22.282,2026-08-23 12:26:45.102,Nolan Ingram,0,,,0
+571,3003,2026-08-18 00:00:00.000,Submitted,Cedar Hollow monthly review,,2026-08-19 04:29:13.512,2026-08-18 13:28:59.989,2026-08-19 04:29:13.512,Nolan Ingram,0,,,0
+572,3009,2026-08-21 00:00:00.000,Submitted,Stonewall Junction monthly review,,2026-08-22 16:02:14.354,2026-08-21 13:42:57.847,2026-08-22 16:02:14.354,Felicia Umberto,0,,,0
+573,3018,2026-08-19 00:00:00.000,Submitted,Penn Ridge branch visit,,2026-08-20 13:39:07.748,2026-08-19 13:43:10.241,2026-09-24 03:18:18.314,Olivia Northcott,1,2026-09-24 03:18:18.314,Olivia Northcott,0
+574,3013,2026-08-19 00:00:00.000,Submitted,Laurel Highlands - new BM support,,2026-08-20 09:53:44.763,2026-08-19 13:41:15.088,2026-08-20 09:53:44.763,Olivia Northcott,0,,,0
+575,3024,2026-08-18 00:00:00.000,Submitted,Neuse Bend monthly review,,2026-08-19 02:58:48.430,2026-08-18 13:42:29.486,2026-08-19 02:58:48.430,Blake Norwood,0,,,0
+576,3019,2026-08-18 00:00:00.000,Submitted,Pamlico Shores monthly review,Strong BM - succession candidate for larger branch.,2026-08-20 11:05:53.212,2026-08-18 15:07:16.440,2026-08-20 11:05:53.212,Blake Norwood,0,,,0
+577,3032,2026-08-19 00:00:00.000,Submitted,Saluda Mills - delinquency and staffing review,,2026-08-20 02:55:20.730,2026-08-19 14:02:45.296,2026-08-20 02:55:20.730,Nadia Ironside,0,,,0
+578,3035,2026-08-21 00:00:00.000,Submitted,Altamaha Landing branch visit,,2026-08-23 12:00:11.407,2026-08-21 13:45:06.975,2026-08-23 12:00:11.407,Logan Huxley,0,,,0
+579,3036,2026-08-18 00:00:00.000,Submitted,Peachtree Hollow - delinquency and staffing review,,2026-08-20 17:06:21.409,2026-08-18 15:21:39.619,2026-08-20 17:06:21.409,Logan Huxley,0,,,0
+580,3042,2026-08-18 00:00:00.000,Submitted,Clinch Mountain monthly review,,2026-08-19 16:34:04.141,2026-08-18 15:39:02.560,2026-08-19 16:34:04.141,Avery Eastwick,0,,,0
+581,3047,2026-08-19 00:00:00.000,Submitted,Mobile Bay View - new BM support,,2026-08-19 17:47:42.538,2026-08-19 13:12:55.436,2026-08-19 17:47:42.538,Rashad Blackwood,0,,,0
+582,3057,2026-08-21 00:00:00.000,Submitted,Llano Ridge - delinquency and staffing review,,2026-08-22 08:28:20.456,2026-08-21 13:42:18.122,2026-08-22 08:28:20.456,Kara Greenleaf,0,,,0
+583,3007,2026-08-21 00:00:00.000,Submitted,Blue Ridge Crossing - delinquency and staffing review,,2026-08-23 02:46:28.936,2026-08-21 13:27:03.253,2026-08-23 02:46:28.936,Keisha Foxworth,0,,,0
+584,3022,2026-08-21 00:00:00.000,Submitted,Piedmont Springs - new BM support,Strong BM - succession candidate for larger branch.,2026-08-22 16:04:12.598,2026-08-21 14:01:31.677,2026-08-22 16:04:12.598,Hayden Stanhope,0,,,0
+585,3053,2026-08-21 00:00:00.000,Submitted,Sipsey Ridge - new BM support,,2026-08-22 16:27:04.349,2026-08-21 15:51:54.654,2026-08-22 16:27:04.349,Simone Mendoza,0,,,0
+586,3004,2026-08-25 00:00:00.000,Submitted,Oak Glen monthly review,,2026-08-26 09:50:38.152,2026-08-25 13:21:08.952,2026-08-26 09:50:38.152,Nolan Ingram,0,,,0
+587,3011,2026-08-27 00:00:00.000,Submitted,Laurel Fork monthly review,BM needs support with team accountability; consider leadership coaching.,2026-08-28 05:18:52.445,2026-08-27 13:51:59.927,2026-08-28 05:18:52.445,Felicia Umberto,0,,,0
+588,3014,2026-08-27 00:00:00.000,Submitted,Susquehanna Flats monthly review,,2026-08-28 16:10:27.136,2026-08-27 15:34:34.678,2026-08-28 16:10:27.136,Olivia Northcott,0,,,0
+589,3015,2026-08-27 00:00:00.000,Submitted,Brandywine Hollow monthly review,,2026-08-27 19:59:24.015,2026-08-27 14:43:23.525,2026-08-27 19:59:24.015,Olivia Northcott,0,,,0
+590,3020,2026-08-27 00:00:00.000,Submitted,Yadkin Crossing branch visit,,2026-08-28 21:07:07.662,2026-08-27 15:20:25.975,2026-08-28 21:07:07.662,Blake Norwood,0,,,0
+591,3021,2026-08-25 00:00:00.000,Submitted,Haw River Mills branch visit,,2026-08-27 03:54:12.697,2026-08-25 14:37:06.440,2026-08-27 03:54:12.697,Blake Norwood,0,,,0
+592,3025,2026-08-25 00:00:00.000,Submitted,Wateree Hills - delinquency and staffing review,,2026-08-27 07:29:35.243,2026-08-25 13:49:16.576,2026-08-27 07:29:35.243,Nadia Ironside,0,,,0
+593,3026,2026-08-28 00:00:00.000,Submitted,Congaree Point branch visit,,2026-08-30 05:32:38.110,2026-08-28 14:17:12.499,2026-08-30 05:32:38.110,Nadia Ironside,0,,,0
+594,3027,2026-08-26 00:00:00.000,Submitted,Santee Shoals - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-08-28 04:39:09.367,2026-08-26 13:24:18.298,2026-08-28 04:39:09.367,Nadia Ironside,0,,,0
+595,3037,2026-08-26 00:00:00.000,Submitted,Oconee Springs - delinquency and staffing review,,2026-08-27 15:28:08.373,2026-08-26 15:56:47.838,2026-08-27 15:28:08.373,Logan Huxley,0,,,0
+596,3038,2026-08-25 00:00:00.000,Submitted,Chattahoochee Bend monthly review,,2026-08-27 07:00:11.759,2026-08-25 14:57:31.909,2026-08-27 07:00:11.759,Logan Huxley,0,,,0
+597,3039,2026-08-27 00:00:00.000,Submitted,Ocmulgee Park monthly review,,2026-08-28 01:34:18.650,2026-08-27 14:03:55.981,2026-08-28 01:34:18.650,Logan Huxley,0,,,0
+598,3043,2026-08-26 00:00:00.000,Submitted,Hiwassee Station - delinquency and staffing review,,2026-08-28 07:17:07.601,2026-08-26 15:21:51.169,2026-08-28 07:17:07.601,Avery Eastwick,0,,,0
+599,3044,2026-08-27 00:00:00.000,Submitted,Caney Fork branch visit,,2026-08-27 22:14:44.555,2026-08-27 13:16:32.123,2026-08-27 22:14:44.555,Avery Eastwick,0,,,0
+600,3048,2026-08-25 00:00:00.000,Submitted,Cahaba Hills - new BM support,,2026-08-26 06:40:54.553,2026-08-25 15:43:07.703,2026-08-26 06:40:54.553,Rashad Blackwood,0,,,0
+601,3049,2026-08-26 00:00:00.000,Submitted,Tallapoosa Mills - new BM support,,2026-08-28 10:32:39.158,2026-08-26 14:19:34.214,2026-08-28 10:32:39.158,Rashad Blackwood,0,,,0
+602,3058,2026-08-26 00:00:00.000,Submitted,Nueces Landing - new BM support,,2026-08-27 09:32:45.283,2026-08-26 14:55:41.341,2026-08-27 09:32:45.283,Kara Greenleaf,0,,,0
+603,3059,2026-08-27 00:00:00.000,Submitted,Brazos Bend - delinquency and staffing review,,2026-08-27 17:49:50.375,2026-08-27 13:31:21.607,2026-08-27 17:49:50.375,Kara Greenleaf,0,,,0
+604,3005,2026-09-02 00:00:00.000,Submitted,Severn Bend monthly review,,2026-09-04 11:10:24.346,2026-09-02 14:52:05.683,2026-09-04 11:10:24.346,Nolan Ingram,0,,,0
+605,3012,2026-09-01 00:00:00.000,Submitted,Shenandoah Mills - new BM support,,2026-09-01 18:47:06.138,2026-09-01 15:43:05.168,2026-09-01 18:47:06.138,Felicia Umberto,0,,,0
+606,3016,2026-09-03 00:00:00.000,Submitted,Lehigh Gap - new BM support,,2026-09-05 00:26:44.412,2026-09-03 14:06:23.460,2026-09-05 00:26:44.412,Olivia Northcott,0,,,0
+607,3017,2026-09-02 00:00:00.000,Submitted,Keystone Valley branch visit,,2026-09-04 10:11:16.846,2026-09-02 13:20:51.303,2026-09-04 10:11:16.846,Olivia Northcott,0,,,0
+608,3022,2026-09-01 00:00:00.000,Submitted,Piedmont Springs branch visit,,2026-09-02 05:28:54.328,2026-09-01 15:02:50.634,2026-09-02 05:28:54.328,Blake Norwood,0,,,0
+609,3029,2026-09-03 00:00:00.000,Submitted,Pee Dee Crossing - new BM support,,2026-09-04 00:32:50.993,2026-09-03 14:33:35.773,2026-09-04 00:32:50.993,Nadia Ironside,0,,,0
+610,3030,2026-09-02 00:00:00.000,Submitted,Palmetto Ridge - new BM support,,2026-09-03 23:57:21.102,2026-09-02 13:47:08.678,2026-09-03 23:57:21.102,Nadia Ironside,0,,,0
+611,3045,2026-09-03 00:00:00.000,Submitted,Duck River Mills - delinquency and staffing review,,2026-09-04 05:14:12.094,2026-09-03 14:20:33.851,2026-09-04 05:14:12.094,Avery Eastwick,0,,,0
+612,3046,2026-09-03 00:00:00.000,Submitted,Cumberland Gap monthly review,,2026-09-05 14:50:47.299,2026-09-03 15:27:54.440,2026-09-05 14:50:47.299,Avery Eastwick,0,,,0
+613,3050,2026-09-04 00:00:00.000,Submitted,Choctaw Springs monthly review,,2026-09-05 21:34:19.518,2026-09-04 15:23:52.435,2026-09-05 21:34:19.518,Rashad Blackwood,0,,,0
+614,3051,2026-09-03 00:00:00.000,Submitted,Coosa Bend - new BM support,,2026-09-03 17:36:14.534,2026-09-03 14:46:16.456,2026-09-03 17:36:14.534,Rashad Blackwood,0,,,0
+615,3060,2026-09-03 00:00:00.000,Submitted,Trinity Mills - new BM support,,2026-09-04 23:54:48.281,2026-09-03 13:32:44.287,2026-09-04 23:54:48.281,Kara Greenleaf,0,,,0
+616,3006,2026-09-10 00:00:00.000,Submitted,Patapsco Falls - new BM support,,2026-09-12 11:21:42.900,2026-09-10 15:18:41.723,2026-09-12 11:21:42.900,Nolan Ingram,0,,,0
+617,3001,2026-09-09 00:00:00.000,Submitted,Fallston Ridge monthly review,,2026-09-10 03:06:10.435,2026-09-09 13:39:13.023,2026-09-10 03:06:10.435,Nolan Ingram,0,,,0
+618,3009,2026-09-09 00:00:00.000,Submitted,Stonewall Junction monthly review,BM needs support with team accountability; consider leadership coaching.,2026-09-09 23:07:31.231,2026-09-09 13:55:32.690,2026-09-09 23:07:31.231,Felicia Umberto,0,,,0
+619,3010,2026-09-11 00:00:00.000,Submitted,Pine Bluff monthly review,,2026-09-13 08:37:54.284,2026-09-11 14:47:52.241,2026-09-13 08:37:54.284,Felicia Umberto,0,,,0
+620,3011,2026-09-08 00:00:00.000,Submitted,Laurel Fork branch visit,,2026-09-09 10:19:53.478,2026-09-08 13:23:19.853,2026-09-09 10:19:53.478,Felicia Umberto,0,,,0
+621,3018,2026-09-08 00:00:00.000,Submitted,Penn Ridge - delinquency and staffing review,,2026-09-09 03:42:32.092,2026-09-08 13:21:33.931,2026-09-09 03:42:32.092,Olivia Northcott,0,,,0
+622,3013,2026-09-08 00:00:00.000,Submitted,Laurel Highlands - new BM support,,2026-09-09 11:33:15.737,2026-09-08 15:52:03.803,2026-09-09 11:33:15.737,Olivia Northcott,0,,,0
+623,3023,2026-09-11 00:00:00.000,Submitted,Sandhill Commons - delinquency and staffing review,,2026-09-12 20:25:13.062,2026-09-11 15:26:06.240,2026-09-12 20:25:13.062,Blake Norwood,0,,,0
+624,3032,2026-09-10 00:00:00.000,Submitted,Saluda Mills branch visit,,2026-09-11 13:46:21.639,2026-09-10 14:43:39.846,2026-09-11 13:46:21.639,Nadia Ironside,0,,,0
+625,3033,2026-09-08 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-09-10 14:03:35.285,2026-09-08 14:07:44.287,2026-09-10 14:03:35.285,Logan Huxley,0,,,0
+626,3034,2026-09-09 00:00:00.000,Submitted,Satilla Crossing monthly review,,2026-09-10 18:07:50.706,2026-09-09 15:49:11.178,2026-09-10 18:07:50.706,Logan Huxley,0,,,0
+627,3035,2026-09-08 00:00:00.000,Submitted,Altamaha Landing - new BM support,,2026-09-10 08:30:09.863,2026-09-08 14:08:01.679,2026-09-10 08:30:09.863,Logan Huxley,0,,,0
+628,3041,2026-09-10 00:00:00.000,Submitted,Harpeth Valley branch visit,,2026-09-11 15:38:16.612,2026-09-10 13:47:05.918,2026-09-11 15:38:16.612,Avery Eastwick,0,,,0
+629,3042,2026-09-10 00:00:00.000,Submitted,Clinch Mountain monthly review,,2026-09-12 06:38:48.976,2026-09-10 14:32:43.281,2026-09-12 06:38:48.976,Avery Eastwick,0,,,0
+630,3043,2026-09-11 00:00:00.000,Submitted,Hiwassee Station - delinquency and staffing review,,2026-09-12 12:13:59.890,2026-09-11 15:29:21.573,2026-09-12 12:13:59.890,Avery Eastwick,0,,,0
+631,3052,2026-09-11 00:00:00.000,Submitted,Tombigbee Landing - new BM support,,2026-09-11 20:11:51.425,2026-09-11 13:58:57.312,2026-09-11 20:11:51.425,Rashad Blackwood,0,,,0
+632,3053,2026-09-08 00:00:00.000,Submitted,Sipsey Ridge - new BM support,,2026-09-09 06:58:36.768,2026-09-08 15:03:27.227,2026-09-22 05:12:42.303,Rashad Blackwood,1,2026-09-22 05:12:42.303,Rashad Blackwood,0
+633,3061,2026-09-11 00:00:00.000,Submitted,Sabine Point - delinquency and staffing review,,2026-09-11 17:29:28.027,2026-09-11 13:53:05.452,2026-09-11 17:29:28.027,Kara Greenleaf,0,,,0
+634,3019,2026-09-08 00:00:00.000,Submitted,Pamlico Shores monthly review,,2026-09-09 03:35:15.668,2026-09-08 13:17:16.608,2026-09-09 03:35:15.668,Hayden Stanhope,0,,,0
+635,3003,2026-09-15 00:00:00.000,Submitted,Cedar Hollow - delinquency and staffing review,,2026-09-16 09:47:51.277,2026-09-15 13:33:28.796,2026-09-16 09:47:51.277,Nolan Ingram,0,,,0
+636,3012,2026-09-16 00:00:00.000,Submitted,Shenandoah Mills monthly review,,2026-09-17 13:42:41.017,2026-09-16 13:16:25.952,2026-09-17 13:42:41.017,Felicia Umberto,0,,,0
+637,3007,2026-09-16 00:00:00.000,Submitted,Blue Ridge Crossing branch visit,,2026-09-18 15:08:32.915,2026-09-16 14:56:07.617,2026-09-18 15:08:32.915,Felicia Umberto,0,,,0
+638,3014,2026-09-16 00:00:00.000,Submitted,Susquehanna Flats branch visit,Strong BM - succession candidate for larger branch.,2026-09-18 10:00:11.698,2026-09-16 14:24:01.090,2026-09-18 10:00:11.698,Olivia Northcott,0,,,0
+639,3015,2026-09-15 00:00:00.000,Submitted,Brandywine Hollow - delinquency and staffing review,,2026-09-16 06:59:14.375,2026-09-15 13:38:53.868,2026-09-16 06:59:14.375,Olivia Northcott,0,,,0
+640,3024,2026-09-18 00:00:00.000,Submitted,Neuse Bend branch visit,,2026-09-19 17:02:41.374,2026-09-18 14:27:30.290,2026-09-19 17:02:41.374,Blake Norwood,0,,,0
+641,3036,2026-09-15 00:00:00.000,Submitted,Peachtree Hollow branch visit,,2026-09-16 01:49:48.709,2026-09-15 13:43:07.338,2026-09-16 01:49:48.709,Logan Huxley,0,,,0
+642,3038,2026-09-17 00:00:00.000,Submitted,Chattahoochee Bend branch visit,,2026-09-18 13:46:43.745,2026-09-17 15:24:53.129,2026-09-18 13:46:43.745,Logan Huxley,0,,,0
+643,3044,2026-09-15 00:00:00.000,Submitted,Caney Fork - new BM support,,2026-09-16 06:45:35.903,2026-09-15 13:48:30.145,2026-09-16 06:45:35.903,Avery Eastwick,0,,,0
+644,3045,2026-09-17 00:00:00.000,Submitted,Duck River Mills monthly review,,2026-09-18 18:10:33.068,2026-09-17 15:45:23.122,2026-09-18 18:10:33.068,Avery Eastwick,0,,,0
+645,3047,2026-09-17 00:00:00.000,Submitted,Mobile Bay View - new BM support,,2026-09-18 17:53:36.463,2026-09-17 14:47:41.989,2026-09-18 17:53:36.463,Rashad Blackwood,0,,,0
+646,3048,2026-09-17 00:00:00.000,Submitted,Cahaba Hills - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-09-19 04:31:27.599,2026-09-17 14:47:36.927,2026-09-19 04:31:27.599,Rashad Blackwood,0,,,0
+647,3062,2026-09-16 00:00:00.000,Submitted,Hill Country Crossing - new BM support,,2026-09-18 02:14:54.015,2026-09-16 13:49:19.576,2026-09-18 02:14:54.015,Kara Greenleaf,0,,,0
+648,3055,2026-09-18 00:00:00.000,Submitted,Pecos Station monthly review,,2026-09-19 01:37:16.620,2026-09-18 15:32:43.655,2026-09-19 01:37:16.620,Kara Greenleaf,0,,,0
+649,3004,2026-09-23 00:00:00.000,Submitted,Oak Glen - delinquency and staffing review,,2026-09-24 20:24:29.924,2026-09-23 13:41:28.962,2026-09-24 20:24:29.924,Nolan Ingram,0,,,0
+650,3008,2026-09-24 00:00:00.000,Submitted,Rappahannock Hills monthly review,,2026-09-26 14:49:50.647,2026-09-24 13:39:18.799,2026-09-26 14:49:50.647,Felicia Umberto,0,,,0
+651,3016,2026-09-24 00:00:00.000,Submitted,Lehigh Gap monthly review,BM needs support with team accountability; consider leadership coaching.,2026-09-26 09:36:15.709,2026-09-24 15:17:23.027,2026-09-26 09:36:15.709,Olivia Northcott,0,,,0
+652,3017,2026-09-25 00:00:00.000,Submitted,Keystone Valley monthly review,,2026-09-27 01:24:38.392,2026-09-25 13:39:10.847,2026-09-27 01:24:38.392,Olivia Northcott,0,,,0
+653,3019,2026-09-24 00:00:00.000,Submitted,Pamlico Shores branch visit,,2026-09-25 07:06:08.897,2026-09-24 13:55:09.361,2026-10-19 03:41:11.311,Blake Norwood,1,2026-10-19 03:41:11.311,Blake Norwood,0
+654,3020,2026-09-24 00:00:00.000,Submitted,Yadkin Crossing - new BM support,,2026-09-24 18:32:20.208,2026-09-24 15:20:21.780,2026-09-24 18:32:20.208,Blake Norwood,0,,,0
+655,3026,2026-09-24 00:00:00.000,Submitted,Congaree Point branch visit,,2026-09-24 22:08:58.924,2026-09-24 15:07:02.644,2026-09-24 22:08:58.924,Nadia Ironside,0,,,0
+656,3039,2026-09-23 00:00:00.000,Submitted,Ocmulgee Park - new BM support,,2026-09-25 07:42:06.492,2026-09-23 15:55:30.244,2026-09-25 07:42:06.492,Logan Huxley,0,,,0
+657,3040,2026-09-25 00:00:00.000,Submitted,Etowah Ridge monthly review,,2026-09-26 19:05:29.395,2026-09-25 14:02:12.709,2026-09-26 19:05:29.395,Logan Huxley,0,,,0
+658,3033,2026-09-22 00:00:00.000,Submitted,Flint River Mills - delinquency and staffing review,,2026-09-24 08:54:58.463,2026-09-22 13:12:50.511,2026-09-24 08:54:58.463,Logan Huxley,0,,,0
+659,3046,2026-09-24 00:00:00.000,Submitted,Cumberland Gap branch visit,,2026-09-25 15:34:59.495,2026-09-24 13:42:01.930,2026-10-20 09:20:12.343,Avery Eastwick,1,2026-10-20 09:20:12.343,Avery Eastwick,0
+660,3041,2026-09-23 00:00:00.000,Submitted,Harpeth Valley branch visit,BM needs support with team accountability; consider leadership coaching.,2026-09-25 07:10:15.144,2026-09-23 14:51:17.519,2026-09-25 07:10:15.144,Avery Eastwick,0,,,0
+661,3049,2026-09-24 00:00:00.000,Submitted,Tallapoosa Mills - new BM support,,2026-09-26 15:30:37.040,2026-09-24 15:59:18.390,2026-09-26 15:30:37.040,Rashad Blackwood,0,,,0
+662,3050,2026-09-23 00:00:00.000,Submitted,Choctaw Springs monthly review,Strong BM - succession candidate for larger branch.,2026-09-24 13:11:00.274,2026-09-23 13:48:57.360,2026-09-24 13:11:00.274,Rashad Blackwood,0,,,0
+663,3056,2026-09-22 00:00:00.000,Submitted,Guadalupe Springs - delinquency and staffing review,,2026-09-24 06:44:01.581,2026-09-22 15:22:39.288,2026-09-24 06:44:01.581,Kara Greenleaf,0,,,0
+664,3006,2026-09-25 00:00:00.000,Submitted,Patapsco Falls - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-09-27 06:54:13.748,2026-09-25 15:55:12.388,2026-09-27 06:54:13.748,Keisha Foxworth,0,,,1
+665,3060,2026-09-24 00:00:00.000,Submitted,Trinity Mills branch visit,,2026-09-26 03:20:54.352,2026-09-24 13:03:39.265,2026-09-26 03:20:54.352,Simone Mendoza,0,,,0
+666,3005,2026-09-30 00:00:00.000,Submitted,Severn Bend - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-10-01 12:42:31.446,2026-09-30 14:00:13.450,2026-10-01 12:42:31.446,Nolan Ingram,0,,,0
+667,3009,2026-10-02 00:00:00.000,Submitted,Stonewall Junction monthly review,,2026-10-02 21:17:59.340,2026-10-02 13:04:28.571,2026-10-02 21:17:59.340,Felicia Umberto,0,,,0
+668,3010,2026-10-01 00:00:00.000,Submitted,Pine Bluff branch visit,,2026-10-02 01:39:33.229,2026-10-01 13:41:38.434,2026-10-02 01:39:33.229,Felicia Umberto,0,,,0
+669,3018,2026-10-02 00:00:00.000,Submitted,Penn Ridge - delinquency and staffing review,,2026-10-03 21:58:24.594,2026-10-02 14:02:58.420,2026-10-03 21:58:24.594,Olivia Northcott,0,,,0
+670,3013,2026-10-02 00:00:00.000,Submitted,Laurel Highlands branch visit,,2026-10-04 09:03:48.305,2026-10-02 15:20:13.804,2026-10-04 09:03:48.305,Olivia Northcott,0,,,0
+671,3028,2026-09-29 00:00:00.000,Submitted,Lowcountry Cove branch visit,,2026-09-30 13:11:05.518,2026-09-29 13:45:25.796,2026-09-30 13:11:05.518,Nadia Ironside,0,,,0
+672,3034,2026-10-02 00:00:00.000,Submitted,Satilla Crossing monthly review,,2026-10-03 18:09:07.662,2026-10-02 15:07:12.627,2026-10-03 18:09:07.662,Logan Huxley,0,,,0
+673,3042,2026-10-02 00:00:00.000,Submitted,Clinch Mountain - new BM support,,2026-10-04 02:43:01.604,2026-10-02 15:42:01.586,2026-10-04 02:43:01.604,Avery Eastwick,0,,,0
+674,3043,2026-10-01 00:00:00.000,Submitted,Hiwassee Station - delinquency and staffing review,,2026-10-02 21:11:20.149,2026-10-01 14:31:09.872,2026-10-02 21:11:20.149,Avery Eastwick,0,,,0
+675,3044,2026-10-02 00:00:00.000,Submitted,Caney Fork branch visit,,2026-10-02 23:05:32.631,2026-10-02 14:02:57.659,2026-10-02 23:05:32.631,Avery Eastwick,0,,,0
+676,3051,2026-09-30 00:00:00.000,Submitted,Coosa Bend branch visit,,2026-10-01 17:18:50.693,2026-09-30 13:23:00.893,2026-10-01 17:18:50.693,Rashad Blackwood,0,,,0
+677,3058,2026-10-02 00:00:00.000,Submitted,Nueces Landing - delinquency and staffing review,,2026-10-02 22:00:16.314,2026-10-02 14:29:19.246,2026-10-02 22:00:16.314,Kara Greenleaf,0,,,0
+678,3059,2026-10-02 00:00:00.000,Submitted,Brazos Bend - new BM support,,2026-10-04 07:09:15.747,2026-10-02 15:03:58.228,2026-10-04 07:09:15.747,Kara Greenleaf,0,,,0
+679,3006,2026-10-07 00:00:00.000,Submitted,Patapsco Falls monthly review,,2026-10-09 01:32:28.817,2026-10-07 13:06:52.736,2026-10-09 01:32:28.817,Nolan Ingram,0,,,0
+680,3011,2026-10-07 00:00:00.000,Submitted,Laurel Fork - delinquency and staffing review,,2026-10-07 18:58:09.057,2026-10-07 14:22:46.355,2026-10-07 18:58:09.057,Felicia Umberto,0,,,0
+681,3012,2026-10-06 00:00:00.000,Submitted,Shenandoah Mills monthly review,,2026-10-07 13:06:12.227,2026-10-06 13:46:43.249,2026-10-07 13:06:12.227,Felicia Umberto,0,,,0
+682,3007,2026-10-06 00:00:00.000,Submitted,Blue Ridge Crossing - delinquency and staffing review,,2026-10-08 03:20:49.825,2026-10-06 15:14:42.225,2026-10-08 03:20:49.825,Felicia Umberto,0,,,0
+683,3014,2026-10-09 00:00:00.000,Submitted,Susquehanna Flats - delinquency and staffing review,,2026-10-10 12:48:59.775,2026-10-09 14:26:22.418,2026-10-10 12:48:59.775,Olivia Northcott,0,,,0
+684,3022,2026-10-08 00:00:00.000,Submitted,Piedmont Springs - new BM support,,2026-10-09 14:59:01.899,2026-10-08 14:52:08.779,2026-10-09 14:59:01.899,Blake Norwood,0,,,0
+685,3029,2026-10-08 00:00:00.000,Submitted,Pee Dee Crossing monthly review,,2026-10-10 00:58:42.315,2026-10-08 13:03:57.549,2026-10-10 00:58:42.315,Nadia Ironside,0,,,0
+686,3036,2026-10-07 00:00:00.000,Submitted,Peachtree Hollow monthly review,,2026-10-08 04:53:27.970,2026-10-07 15:56:10.827,2026-10-08 04:53:27.970,Logan Huxley,0,,,0
+687,3045,2026-10-07 00:00:00.000,Submitted,Duck River Mills - delinquency and staffing review,,2026-10-08 21:42:29.597,2026-10-07 13:48:23.158,2026-10-08 21:42:29.597,Avery Eastwick,0,,,0
+688,3046,2026-10-06 00:00:00.000,Submitted,Cumberland Gap - new BM support,,2026-10-06 16:27:32.428,2026-10-06 13:13:35.208,2026-10-06 16:27:32.428,Avery Eastwick,0,,,0
+689,3052,2026-10-08 00:00:00.000,Submitted,Tombigbee Landing - new BM support,BM needs support with team accountability; consider leadership coaching.,2026-10-09 23:34:01.007,2026-10-08 15:22:53.142,2026-10-09 23:34:01.007,Rashad Blackwood,0,,,0
+690,3053,2026-10-07 00:00:00.000,Submitted,Sipsey Ridge - new BM support,Strong BM - succession candidate for larger branch.,2026-10-07 16:37:39.720,2026-10-07 14:34:26.444,2026-10-07 16:37:39.720,Rashad Blackwood,0,,,0
+691,3054,2026-10-08 00:00:00.000,Submitted,Black Warrior Crossing branch visit,,2026-10-09 06:42:46.804,2026-10-08 13:41:12.870,2026-10-09 06:42:46.804,Rashad Blackwood,0,,,0
+692,3060,2026-10-06 00:00:00.000,Submitted,Trinity Mills - delinquency and staffing review,,2026-10-07 20:13:47.963,2026-10-06 13:11:49.733,2026-10-07 20:13:47.963,Kara Greenleaf,0,,,0
+693,3012,2026-10-08 00:00:00.000,Submitted,Shenandoah Mills - delinquency and staffing review,,2026-10-09 14:04:49.781,2026-10-08 14:48:19.461,2026-10-09 14:04:49.781,Keisha Foxworth,0,,,0
+694,3030,2026-10-09 00:00:00.000,Submitted,Palmetto Ridge monthly review,,2026-10-10 19:26:23.393,2026-10-09 15:29:07.797,2026-10-10 19:26:23.393,Hayden Stanhope,0,,,0
+695,3002,2026-10-15 00:00:00.000,Submitted,Harbor Point monthly review,,2026-10-17 07:08:12.464,2026-10-15 15:42:06.301,2026-10-17 07:08:12.464,Nolan Ingram,0,,,0
+696,3008,2026-10-16 00:00:00.000,Draft,Rappahannock Hills branch visit,,,2026-10-16 15:51:12.655,2026-10-16 16:51:12.655,,0,,,0
+697,3015,2026-10-13 00:00:00.000,Submitted,Brandywine Hollow - delinquency and staffing review,,2026-10-15 07:44:56.336,2026-10-13 15:27:13.481,2026-10-15 07:44:56.336,Olivia Northcott,0,,,0
+698,3016,2026-10-13 00:00:00.000,Submitted,Lehigh Gap - delinquency and staffing review,,2026-10-14 16:03:55.918,2026-10-13 14:36:14.049,2026-10-14 16:03:55.918,Olivia Northcott,0,,,0
+699,3023,2026-10-15 00:00:00.000,Submitted,Sandhill Commons - new BM support,,2026-10-17 08:30:24.168,2026-10-15 15:50:18.453,2026-10-17 08:30:24.168,Blake Norwood,0,,,0
+700,3024,2026-10-14 00:00:00.000,Submitted,Neuse Bend monthly review,,2026-10-14 20:10:37.331,2026-10-14 13:43:03.900,2026-10-14 20:10:37.331,Blake Norwood,0,,,0
+701,3031,2026-10-13 00:00:00.000,Submitted,Edisto Bay monthly review,,2026-10-15 07:00:32.514,2026-10-13 14:32:27.941,2026-10-15 07:00:32.514,Nadia Ironside,0,,,0
+702,3032,2026-10-13 00:00:00.000,Submitted,Saluda Mills monthly review,,2026-10-15 04:56:36.405,2026-10-13 13:59:05.948,2026-10-15 04:56:36.405,Nadia Ironside,0,,,0
+703,3025,2026-10-15 00:00:00.000,Submitted,Wateree Hills branch visit,,2026-10-15 16:48:14.353,2026-10-15 13:30:29.688,2026-10-15 16:48:14.353,Nadia Ironside,0,,,0
+704,3038,2026-10-15 00:00:00.000,Submitted,Chattahoochee Bend - delinquency and staffing review,BM needs support with team accountability; consider leadership coaching.,2026-10-17 04:37:41.281,2026-10-15 14:30:31.794,2026-10-17 04:37:41.281,Logan Huxley,0,,,0
+705,3041,2026-10-15 00:00:00.000,Submitted,Harpeth Valley branch visit,,2026-10-16 20:02:38.871,2026-10-15 14:19:23.690,2026-10-16 20:02:38.871,Avery Eastwick,0,,,0
+706,3042,2026-10-15 00:00:00.000,Submitted,Clinch Mountain - new BM support,,2026-10-16 08:13:45.326,2026-10-15 15:28:27.512,2026-10-16 08:13:45.326,Avery Eastwick,0,,,0
+707,3047,2026-10-16 00:00:00.000,Draft,Mobile Bay View - new BM support,,,2026-10-16 13:05:16.469,2026-10-16 14:05:16.469,,0,,,0
+708,3048,2026-10-16 00:00:00.000,Draft,Cahaba Hills monthly review,,,2026-10-16 15:11:59.074,2026-10-16 16:11:59.074,,0,,,0
+709,3061,2026-10-16 00:00:00.000,Draft,Sabine Point - new BM support,,,2026-10-16 14:14:32.390,2026-10-16 15:14:32.390,,0,,,0
+710,3062,2026-10-15 00:00:00.000,Submitted,Hill Country Crossing branch visit,,2026-10-16 13:44:19.752,2026-10-15 14:49:48.212,2026-10-16 13:44:19.752,Kara Greenleaf,0,,,0
+711,3021,2026-10-16 00:00:00.000,Submitted,Haw River Mills monthly review,,2026-10-18 13:27:42.367,2026-10-16 13:59:03.581,2026-10-18 13:27:42.367,Hayden Stanhope,0,,,1

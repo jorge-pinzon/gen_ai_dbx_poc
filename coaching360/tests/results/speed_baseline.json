@@ -1,0 +1,443 @@
+{
+ "label": "baseline",
+ "rows": [
+  {
+   "level": "employee",
+   "question": "What was my production last month?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 25.15,
+   "plan": 4.07,
+   "genie": 17.38,
+   "rewrite": 3.7,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "Show me my scorecard for September",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 39.95,
+   "plan": 4.0,
+   "genie": 31.27,
+   "rewrite": 4.68,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "What's in my Success Plan?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 37.53,
+   "plan": 4.87,
+   "genie": 26.69,
+   "rewrite": 5.97,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "What are my open tasks?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 26.32,
+   "plan": 3.74,
+   "genie": 17.78,
+   "rewrite": 4.8,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "What coaching have I received recently?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 43.22,
+   "plan": 4.3,
+   "genie": 29.39,
+   "rewrite": 9.53,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "How many outbound calls did I make last month?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 25.12,
+   "plan": 3.92,
+   "genie": 19.35,
+   "rewrite": 1.85,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "What is my estimated ACE payout?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 29.49,
+   "plan": 3.49,
+   "genie": 18.54,
+   "rewrite": 7.46,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "Do I have any open policy violations?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 26.25,
+   "plan": 3.73,
+   "genie": 20.56,
+   "rewrite": 1.96,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "How has my volume trended over the last six months?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 24.99,
+   "plan": 3.65,
+   "genie": 15.97,
+   "rewrite": 5.37,
+   "answer": ""
+  },
+  {
+   "level": "employee",
+   "question": "Who is my manager?",
+   "tools": [
+    "coaching360_employee_data"
+   ],
+   "total": 25.06,
+   "plan": 4.89,
+   "genie": 18.12,
+   "rewrite": 2.05,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "Who are my employees?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 26.01,
+   "plan": 3.7,
+   "genie": 19.78,
+   "rewrite": 2.53,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "Rank my team by volume last month",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 30.74,
+   "plan": 4.02,
+   "genie": 22.16,
+   "rewrite": 4.56,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "Which team members have overdue tasks?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 34.4,
+   "plan": 6.39,
+   "genie": 20.48,
+   "rewrite": 7.53,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "Which coaching records are waiting for acknowledgement?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 27.44,
+   "plan": 4.21,
+   "genie": 18.43,
+   "rewrite": 4.8,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "How did each employee do on the DPR scorecard this month?",
+   "tools": [
+    "coaching360_branch_data",
+    "coaching360_branch_data",
+    "coaching360_branch_data"
+   ],
+   "total": 111.73,
+   "plan": 5.31,
+   "genie": 102.24,
+   "rewrite": 4.18,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "How is my branch scorecard trending?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 52.65,
+   "plan": 3.96,
+   "genie": 37.47,
+   "rewrite": 11.22,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "What came out of the latest branch visit?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 38.77,
+   "plan": 4.11,
+   "genie": 30.21,
+   "rewrite": 4.45,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "What are the estimated ACE payouts for my team?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 30.87,
+   "plan": 3.55,
+   "genie": 22.51,
+   "rewrite": 4.81,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "Which employees have no coaching in the last 90 days?",
+   "tools": [
+    "coaching360_branch_data"
+   ],
+   "total": 42.0,
+   "plan": 3.5,
+   "genie": 34.7,
+   "rewrite": 3.8,
+   "answer": ""
+  },
+  {
+   "level": "branch",
+   "question": "Give me an overview of my team",
+   "tools": [
+    "coaching360_branch_data",
+    "coaching360_branch_data",
+    "coaching360_branch_data"
+   ],
+   "total": 166.45,
+   "plan": 4.08,
+   "genie": 158.5,
+   "rewrite": 3.87,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Compare the branches in my district by volume last month",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 36.47,
+   "plan": 4.62,
+   "genie": 25.37,
+   "rewrite": 6.48,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Which branches have the most overdue tasks?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 29.08,
+   "plan": 4.19,
+   "genie": 20.51,
+   "rewrite": 4.38,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Who are the branch managers in my area?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 24.13,
+   "plan": 3.89,
+   "genie": 17.01,
+   "rewrite": 3.23,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "How is my district scorecard trending?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 50.42,
+   "plan": 6.08,
+   "genie": 34.51,
+   "rewrite": 9.83,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "How much coaching did each branch document in the last 90 days?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 46.24,
+   "plan": 3.61,
+   "genie": 38.0,
+   "rewrite": 4.63,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Which branches had a visit this quarter?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 24.55,
+   "plan": 3.71,
+   "genie": 17.96,
+   "rewrite": 2.88,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Open policy violations by branch",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 24.95,
+   "plan": 3.72,
+   "genie": 17.15,
+   "rewrite": 4.08,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "What is the trailing 12-month turnover for my district?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 27.66,
+   "plan": 3.97,
+   "genie": 20.89,
+   "rewrite": 2.8,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Which branch has the highest delinquency?",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 30.2,
+   "plan": 4.09,
+   "genie": 23.95,
+   "rewrite": 2.16,
+   "answer": ""
+  },
+  {
+   "level": "district",
+   "question": "Rank all employees in my district by volume last month",
+   "tools": [
+    "coaching360_district_data"
+   ],
+   "total": 39.1,
+   "plan": 3.47,
+   "genie": 25.46,
+   "rewrite": 10.17,
+   "answer": ""
+  }
+ ],
+ "summary": {
+  "employee": {
+   "total": {
+    "p50": 26.2,
+    "p90": 40.0
+   },
+   "plan": {
+    "p50": 3.9,
+    "p90": 4.9
+   },
+   "genie": {
+    "p50": 18.5,
+    "p90": 29.4
+   },
+   "rewrite": {
+    "p50": 4.7,
+    "p90": 7.5
+   }
+  },
+  "branch": {
+   "total": {
+    "p50": 34.4,
+    "p90": 111.7
+   },
+   "plan": {
+    "p50": 4.0,
+    "p90": 5.3
+   },
+   "genie": {
+    "p50": 22.5,
+    "p90": 102.2
+   },
+   "rewrite": {
+    "p50": 4.5,
+    "p90": 7.5
+   }
+  },
+  "district": {
+   "total": {
+    "p50": 29.1,
+    "p90": 46.2
+   },
+   "plan": {
+    "p50": 3.9,
+    "p90": 4.6
+   },
+   "genie": {
+    "p50": 20.9,
+    "p90": 34.5
+   },
+   "rewrite": {
+    "p50": 4.1,
+    "p90": 9.8
+   }
+  },
+  "all": {
+   "total": {
+    "p50": 30.2,
+    "p90": 50.4
+   },
+   "plan": {
+    "p50": 4.0,
+    "p90": 4.9
+   },
+   "genie": {
+    "p50": 20.9,
+    "p90": 37.5
+   },
+   "rewrite": {
+    "p50": 4.5,
+    "p90": 9.5
+   }
+  }
+ }
+}

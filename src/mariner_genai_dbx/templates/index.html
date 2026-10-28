@@ -93,7 +93,7 @@
               </form>
             {% endif %}
           </div>
-          <p class="test-data-warning" role="note">PROTOTYPE — data is synthetic or incomplete and may not represent real company information.</p>
+          <!-- <p class="test-data-warning" role="note">PROTOTYPE — data is synthetic or incomplete and may not represent real company information.</p> -->
 
         </header>
 
@@ -131,8 +131,14 @@
               <li class="topic-ready" data-command="/benefits" role="button" tabindex="0" aria-label="Use /benefits for Benefits">
                 <span>Benefits</span><code>/benefits</code>
               </li>
-              <li class="topic-ready" data-command="/coaching" role="button" tabindex="0" aria-label="Use /coaching for Performance">
-                <span>Coaching 360</span><code>/coaching</code>
+              <li class="topic-ready" data-command="/performance" role="button" tabindex="0" aria-label="Use /performance for Q performance">
+                <span>Q performance</span><code>/performance</code>
+              </li>
+              <li class="topic-ready" data-command="/coaching360" data-submit="true" role="button" tabindex="0" aria-label="Start Coaching 360">
+                <span>Coaching 360</span><code>/coaching360</code>
+              </li>
+              <li id="coaching360-exit" class="topic-ready topic-exit" data-command="/coaching360 exit" data-submit="true" role="button" tabindex="0" aria-label="Close Coaching 360" hidden>
+                <span>Close Coaching 360</span><code>/coaching360 exit</code>
               </li>
               <li class="topic-pending" aria-label="Security, pending">
                 <span>Security</span><small>Coming soon</small>
@@ -144,9 +150,9 @@
           </div>
         </aside>
 
-        {% if local_mode %}
+        <!-- {% if local_mode %}
           <p class="environment-banner">Local test mode — mock Supervisor and local identity.</p>
-        {% endif %}
+        {% endif %} -->
 
         <section id="messages" class="messages" aria-live="polite" aria-label="Chat messages"></section>
 
@@ -162,12 +168,14 @@
               required
             ></textarea>
             <button id="send" type="submit">Send</button>
+            <button id="cancel" type="button" hidden>Cancel</button>
           </div>
           <span id="status" role="status"></span>
         </form>
       </section>
     </main>
     <script src="{{ url_for('static', filename='markdown.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='chat-stream.js') }}" defer></script>
     <script src="{{ url_for('static', filename='chat.js') }}" defer></script>
   </body>
 </html>

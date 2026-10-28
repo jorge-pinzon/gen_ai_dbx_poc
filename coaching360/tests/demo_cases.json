@@ -1,0 +1,268 @@
+{
+ "about": "Demo script questions (demo_script.html). Same format as regression_cases.json; each conversation's 'act' places it in the story.",
+ "max_seconds": 120,
+ "always_reject": [
+  "technical issue",
+  "unable to retrieve",
+  "configuration (error|issue)",
+  "temporarily unavailable"
+ ],
+ "conversations": [
+  {
+   "name": "Act 1+2: Rowan Jessup",
+   "turns": [
+    {
+     "ask": "/coaching360 Rowan Jessup",
+     "expect": [
+      "Welcome to Coaching360, Rowan"
+     ]
+    },
+    {
+     "id": "D1",
+     "ask": "Show me my scorecard for September 2026.",
+     "expect": [
+      "0\\.29",
+      "1\\.00",
+      "4\\.09",
+      "3\\.40?\\s*%",
+      "1,102",
+      "\\b252\\b"
+     ]
+    },
+    {
+     "id": "D2",
+     "ask": "How does my September LPE compare to my goal and to August?",
+     "expect": [
+      "0\\.29",
+      "1\\.00",
+      "0\\.35",
+      "0\\.52"
+     ]
+    },
+    {
+     "id": "D3",
+     "ask": "Which of my September metrics met goal and which missed?",
+     "expect": [
+      "DACC",
+      "4\\.09",
+      "1,102",
+      "\\b252\\b"
+     ]
+    },
+    {
+     "id": "D7",
+     "ask": "What's in my Success Plan for October?",
+     "expect": [
+      "Drive Results",
+      "Build consistency in LPE",
+      "not (yet )?approved|awaiting|pending"
+     ]
+    },
+    {
+     "id": "D8",
+     "ask": "What did I focus on in September, and did I hit it?",
+     "expect": [
+      "Communicates Effectively",
+      "DACC",
+      "0\\.29",
+      "1\\.00"
+     ]
+    },
+    {
+     "id": "D14",
+     "ask": "Do I have any coaching records waiting for my acknowledgement?",
+     "expect": [
+      "\\b4\\b|four",
+      "LPE",
+      "0?7[-/]30|July 30"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Act 1+3: Riley Quimby",
+   "turns": [
+    {
+     "ask": "/coaching360 Riley Quimby",
+     "expect": [
+      "Welcome to Coaching360, Riley"
+     ]
+    },
+    {
+     "id": "D4",
+     "ask": "Show me my team's scorecard at Laurel Fork for September.",
+     "expect": [
+      "Selena Driscoll",
+      "0\\.95",
+      "Avery Northcott",
+      "0\\.86",
+      "0\\.48",
+      "Rowan Jessup",
+      "0\\.29",
+      "4\\.09"
+     ]
+    },
+    {
+     "id": "D5",
+     "ask": "Who is the top performer at Laurel Fork, and who needs the most help?",
+     "expect": [
+      "Selena Driscoll",
+      "0\\.95",
+      "Rowan Jessup",
+      "0\\.(29|2857)"
+     ]
+    },
+    {
+     "id": "D6",
+     "ask": "Which employees are over the 30–89 day delinquency goal?",
+     "expect": [
+      "Reese Delacroix",
+      "5\\.24",
+      "relief",
+      "5\\.11",
+      "4\\.57",
+      "4\\.09"
+     ]
+    },
+    {
+     "id": "D9",
+     "ask": "Which Success Plans on my team still need my approval?",
+     "expect": [
+      "Rowan Jessup",
+      "Andre Valdez",
+      "Reese Delacroix"
+     ]
+    },
+    {
+     "id": "D10",
+     "ask": "Show me Rowan Jessup's coaching history.",
+     "expect": [
+      "0?9[-/]14|September 14",
+      "LPE",
+      "0?7[-/]30|July 30"
+     ]
+    },
+    {
+     "id": "D11",
+     "ask": "What did I coach Rowan on last, and what was the action plan?",
+     "expect": [
+      "0?9[-/]14|September 14",
+      "5 (closed )?loans|five",
+      "pipeline"
+     ]
+    },
+    {
+     "id": "D12",
+     "ask": "Show Rowan's LPE for each month from May to September 2026.",
+     "expect": [
+      "0\\.29",
+      "0\\.35"
+     ]
+    },
+    {
+     "id": "D12b",
+     "ask": "Help me prepare a KPI coaching conversation with Rowan about LPE.",
+     "expect": [
+      "0\\.29",
+      "1\\.00"
+     ]
+    },
+    {
+     "id": "D13",
+     "ask": "Draft a recognition note for Selena Driscoll on her September results.",
+     "expect": [
+      "0\\.95",
+      "DACC",
+      "2\\.98"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Act 4: Felicia Umberto",
+   "turns": [
+    {
+     "ask": "/coaching360 Felicia Umberto",
+     "expect": [
+      "Welcome to Coaching360, Felicia"
+     ]
+    },
+    {
+     "id": "D15",
+     "ask": "Give me an overview of the branches in my district.",
+     "expect": [
+      "0\\.94",
+      "0\\.99",
+      "0\\.64",
+      "4\\.19",
+      "Laurel Fork",
+      "Stonewall Junction"
+     ]
+    },
+    {
+     "id": "D16",
+     "ask": "Which branches have the most coaching records pending acknowledgement or open tasks?",
+     "expect": [
+      "Pine Bluff",
+      "\\b36\\b",
+      "\\b33\\b"
+     ]
+    },
+    {
+     "id": "D17",
+     "ask": "Help me plan my next visit to Laurel Fork. What should I know before I walk in?",
+     "expect": [
+      "0\\.64",
+      "4\\.19",
+      "Rowan",
+      "Selena",
+      "10[-/]0?7|October 7"
+     ]
+    },
+    {
+     "id": "D18",
+     "ask": "What follow-ups came out of my October 7 visit to Laurel Fork, and are they done?",
+     "expect": [
+      "Collections",
+      "Riley Quimby",
+      "Completed",
+      "10[-/]19|Oct(ober)? 19"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Act 4: Keisha Foxworth",
+   "turns": [
+    {
+     "ask": "/coaching360 Keisha Foxworth",
+     "expect": [
+      "Welcome to Coaching360, Keisha"
+     ]
+    },
+    {
+     "id": "D19",
+     "ask": "How is District 902 doing compared to the other districts in my region?",
+     "expect": [
+      "Chesapeake",
+      "0\\.96",
+      "0\\.87",
+      "Susquehanna",
+      "0\\.90"
+     ]
+    },
+    {
+     "id": "D20",
+     "ask": "Are my district managers keeping up with branch visits?",
+     "expect": [
+      "Felicia Umberto",
+      "\\b76\\b",
+      "Nolan Ingram",
+      "\\b74\\b",
+      "Olivia Northcott"
+     ]
+    }
+   ]
+  }
+ ]
+}

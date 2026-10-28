@@ -1,0 +1,13 @@
+{
+  "name": "mariner-benefits-assistant",
+  "description": "This is the mariner benefits assistant. ",
+  "instructions_file": "benefits_instructions.md",
+  "knowledge_source": {
+    "name": "benefits_new_index",
+    "description": "Managed Vector Index with Delta Sync",
+    "index": "workspace.default.benefits_new_index",
+    "text_col": "embedding_text",
+    "doc_uri_col": "document_title"
+  },
+  "trial_endpoint_name": "ka-efbfbafe-endpoint"
+}

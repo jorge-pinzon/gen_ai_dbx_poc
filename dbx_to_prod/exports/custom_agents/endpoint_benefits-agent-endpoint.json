@@ -1,0 +1,27 @@
+{
+  "name": "benefits-agent-endpoint",
+  "task": "agent/v2/chat",
+  "served_entities": [
+    {
+      "entity_name": "workspace.default.benefits_agent_model",
+      "entity_version": "3",
+      "workload_size": null,
+      "workload_type": "CPU",
+      "scale_to_zero_enabled": true,
+      "min_provisioned_concurrency": 0,
+      "max_provisioned_concurrency": 4,
+      "environment_variable_names": []
+    }
+  ],
+  "ai_gateway": {
+    "usage_tracking_config": {
+      "enabled": false
+    },
+    "inference_table_config": {
+      "catalog_name": "workspace",
+      "schema_name": "ai_monitoring",
+      "table_name_prefix": "benefits_agent_endpoint",
+      "enabled": true
+    }
+  }
+}

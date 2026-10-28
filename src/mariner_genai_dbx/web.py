@@ -3,14 +3,17 @@
 from __future__ import annotations
 
 import logging
+import json
 import hmac
+import inspect
+import queue
 import re
 import secrets
 import time
 from datetime import datetime, timezone
 from hashlib import sha256
-from pathlib import PurePosixPath
-from threading import Lock
+from pathlib import Path, PurePosixPath
+from threading import Lock, Thread
 from uuid import UUID, uuid4
 
 from flask import (
@@ -22,6 +25,7 @@ from flask import (
     render_template,
     request,
     session,
+    stream_with_context,
     url_for,
 )
 from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
@@ -31,9 +35,11 @@ from werkzeug.security import check_password_hash
 from .analytics import ChatLogEvent
 from .bootstrap import (
     create_analytics_service,
+    create_coaching360_service,
     create_conversation_persistence,
     create_source_catalog_service,
     create_supervisor_service,
+    shared_workspace_client,
 )
 from .config import Settings, load_settings
 from .errors import (
@@ -46,12 +52,16 @@ from .errors import (
     SourceCatalogError,
     SupervisorInvocationError,
 )
-from .models import ConversationHistory, ConversationTurn
+from .models import AgentAnswer, ConversationHistory, ConversationTurn
+from .live_preview import LivePreview, tidy_table
 from .logging_config import configure_logging
 
 
 MAX_REQUEST_BYTES = 16 * 1024
 READINESS_CACHE_SECONDS = 30
+# Static URLs carry a content hash, so browsers may keep them for a year and
+# still fetch a new file as soon as a deploy changes it.
+STATIC_MAX_AGE_SECONDS = 365 * 24 * 60 * 60
 LOCAL_USER_ID = "local-development-user"
 logger = logging.getLogger(__name__)
 BRANCH_OPERATIONS_SPECIALIST = (
@@ -65,7 +75,7 @@ SUPERVISOR_ROUTE_COMMANDS = {
     "/benfits": "Benefits Agent",
     "/benefits": "Benefits Agent",
     "/handbook": EMPLOYEE_HANDBOOK_SPECIALIST,
-    "/coaching": "Employee Performance Agent",
+    "/performance": "Employee Performance Agent",
 }
 
 # Application-layer guardrail configuration. Keep patterns and user-facing
@@ -272,17 +282,28 @@ def create_app(
     analytics_service=None,
     identity_provider=None,
     readiness_cache: ReadinessCache | None = None,
+    coaching360_service=None,
 ) -> Flask:
     application_settings = settings or load_settings()
     configure_logging(application_settings.log_level)
-    service = supervisor_service or create_supervisor_service(application_settings)
-    analytics = analytics_service or create_analytics_service(application_settings)
+    client_factory = shared_workspace_client(application_settings)
+    service = supervisor_service or create_supervisor_service(
+        application_settings, workspace_client_factory=client_factory
+    )
+    analytics = analytics_service or create_analytics_service(
+        application_settings, workspace_client_factory=client_factory
+    )
     persistence = conversation_persistence or create_conversation_persistence(
         application_settings
     )
+    coaching360 = coaching360_service or create_coaching360_service(
+        application_settings, workspace_client_factory=client_factory
+    )
     catalog_service = source_catalog_service
     if catalog_service is None:
-        catalog_service = create_source_catalog_service(application_settings)
+        catalog_service = create_source_catalog_service(
+            application_settings, workspace_client_factory=client_factory
+        )
     if identity_provider is None:
         if application_settings.auth_mode == "local":
             identity_provider = lambda: LOCAL_USER_ID
@@ -308,7 +329,25 @@ def create_app(
         analytics_service=analytics,
         identity_provider=identity_provider,
         readiness_cache=readiness_cache or ReadinessCache(),
+        coaching360_service=coaching360,
     )
+    if application_settings.app_env != "development":
+        app.config["SEND_FILE_MAX_AGE_DEFAULT"] = STATIC_MAX_AGE_SECONDS
+        static_versions = {}
+
+        @app.url_defaults
+        def version_static_urls(endpoint, values):
+            filename = values.get("filename")
+            if endpoint != "static" or not filename or "v" in values:
+                return
+            if filename not in static_versions:
+                try:
+                    contents = (Path(app.static_folder) / filename).read_bytes()
+                except OSError:
+                    return
+                static_versions[filename] = sha256(contents).hexdigest()[:12]
+            values["v"] = static_versions[filename]
+
     source_link_serializer = URLSafeTimedSerializer(
         app.config["SECRET_KEY"], salt="mariner-source-link"
     )
@@ -325,14 +364,25 @@ def create_app(
         started_at = getattr(g, "request_started_at", time.monotonic())
         duration_ms = round((time.monotonic() - started_at) * 1000)
         response.headers["X-Request-ID"] = request_id
+        response.headers["Server-Timing"] = f"{'app_headers' if response.is_streamed else 'app'};dur={duration_ms}"
+        metadata = {
+            "request_id": request_id, "method": request.method,
+            "route": _route_template(), "status": response.status_code,
+        }
+        if response.is_streamed:
+            logger.info("HTTP stream started", extra={
+                **metadata, "event": "http_stream_started", "duration_ms": duration_ms,
+            })
+            response.call_on_close(lambda: logger.info("HTTP request completed", extra={
+                **metadata, "event": "http_request_completed",
+                "duration_ms": round((time.monotonic() - started_at) * 1000),
+            }))
+            return response
         logger.info(
             "HTTP request completed",
             extra={
                 "event": "http_request_completed",
-                "request_id": request_id,
-                "method": request.method,
-                "route": _route_template(),
-                "status": response.status_code,
+                **metadata,
                 "duration_ms": duration_ms,
             },
         )
@@ -366,21 +416,17 @@ def create_app(
         if request.method == "POST":
             username = request.form.get("username", "")
             password = request.form.get("password", "")
-            print(20*'******', password)
             username_matches = hmac.compare_digest(
                 username, application_settings.login_username or ""
             )
 
             # Get the hash value
             stored_hash = application_settings.login_password_hash
-            print(20*'******', stored_hash)
             # Strictly ensure stored_hash is a text string and password is not empty
             if isinstance(stored_hash, str) and password:
                 password_matches = check_password_hash(stored_hash, password)
             else:
                 password_matches = False
-
-            print(20*'******', password_matches)
 
             if username_matches and password_matches:
                 session.clear()
@@ -414,6 +460,7 @@ def create_app(
         status_code = 200 if is_ready else 503
         return jsonify(status="ready" if is_ready else "unavailable"), status_code
 
+    @app.post("/api/v1/chat/stream")
     @app.post("/api/v1/chat")
     def chat():
         started_at = time.monotonic()
@@ -481,7 +528,8 @@ def create_app(
         session_id = _supervisor_session_id(user_id, conversation_id)
 
         def record_event(
-            status, *, answer="", sources=(), agents_used=(), error_message="", usage=None
+            status, *, answer="", sources=(), agents_used=(), error_message="", usage=None,
+            inference_ms=None, citations_ms=None, stage_ms=None,
         ):
             try:
                 analytics.record(
@@ -499,6 +547,9 @@ def create_app(
                         agents_used=tuple(agents_used),
                         error_message=error_message,
                         usage=usage,
+                        inference_ms=inference_ms,
+                        citations_ms=citations_ms,
+                        stage_ms=stage_ms,
                     )
                 )
             except Exception as error:
@@ -519,18 +570,186 @@ def create_app(
                 503,
             )
 
+        # Coaching360 demo flow: setup steps are answered here; questions go to the Supervisor
+        # with a level directive instead of the normal routing.
+        coaching = None
+        stage_ms = {}  # where the time went, for the analytics log
+        if coaching360 is not None:
+            try:
+                coaching_started = time.monotonic()
+                coaching = coaching360.handle(user_id, conversation_id, message)
+                if coaching is not None:
+                    stage_ms["coaching360"] = round((time.monotonic() - coaching_started) * 1000)
+            except Exception as error:
+                logger.error("Coaching360 failed; request_id=%s error_type=%s", request_id, type(error).__name__)
+                record_event("error", error_message="coaching360_unavailable")
+                return _error_response(
+                    "AGENT_UNAVAILABLE", "Coaching360 is temporarily unavailable. Please try again.", request_id, 503
+                )
+        if coaching is not None and coaching.reply is not None:
+            try:
+                persistence.record_turn(ConversationTurn(
+                    conversation_id=conversation_id, request_id=request_id, user_id=user_id,
+                    created_at=datetime.now(timezone.utc), question=message, answer=coaching.reply,
+                ), history)
+            except ConversationPersistenceError:
+                pass  # setup replies are not needed for later turns
+            record_event("success", answer=coaching.reply, agents_used=("coaching360-setup",))
+            if request.path.endswith("/stream"):
+                events = (
+                    _chat_event("status", {"conversationId": conversation_id, "requestId": request_id, "phase": "generating"})
+                    + _chat_event("answer", {"conversationId": conversation_id, "requestId": request_id,
+                                             "answer": coaching.reply, "citationStatus": "none"})
+                    + _chat_event("sources", {"sources": []})
+                    + _chat_event("done", {"conversationId": conversation_id, "requestId": request_id})
+                )
+                return Response(events, mimetype="text/event-stream", headers={
+                    "Cache-Control": "no-cache, no-store, private", "X-Accel-Buffering": "no"})
+            return jsonify(conversationId=conversation_id, requestId=request_id, answer=coaching.reply, sources=[])
+        supervisor_message = coaching.supervisor_message if coaching is not None else _supervisor_input(message)
+        fresh_history = coaching is not None or _has_direct_route(message)
+
+        if request.path.endswith("/stream"):
+            @stream_with_context
+            def stream_answer():
+                finished = False
+                marks = {}  # seconds since the model call started, per stage
+                try:
+                    yield _chat_event("status", {
+                        "conversationId": conversation_id, "requestId": request_id,
+                        "phase": "generating",
+                    })
+                    supervisor_history = ConversationHistory() if fresh_history else history
+                    progressive = callable(getattr(service, "prepare_answer", None)) and callable(
+                        getattr(service, "resolve_answer", None)
+                    )
+                    direct = (
+                        _direct_route(message)
+                        if coaching is None and callable(getattr(service, "prepare_direct_answer", None)) else None
+                    )
+                    if progressive:
+                        target = service.prepare_direct_answer if direct else service.prepare_answer
+
+                        def prepare(**live):
+                            if direct:
+                                return service.prepare_direct_answer(
+                                    *direct, _supervisor_input(message), session_id, **live
+                                )
+                            return service.prepare_answer(
+                                supervisor_message, session_id, supervisor_history, **live
+                            )
+
+                        if _accepts_live_events(target):
+                            pending = yield from _prepare_with_live_events(
+                                prepare, marks,
+                                timeout_seconds=application_settings.coaching360_timeout_seconds if coaching is not None else None,
+                            )
+                            stage_ms.update(_milliseconds(marks))
+                        else:
+                            pending = prepare()
+                    if progressive:
+                        raw_answer = pending.answer
+                        needs_citations = pending.citations_pending
+                    else:
+                        # Compatibility with mock and injected synchronous services.
+                        result = service.answer(
+                            supervisor_message, session_id, supervisor_history
+                        )
+                        raw_answer = result.answer
+                        needs_citations = False
+                    safe_answer, categories, blocked = _apply_output_guardrails(raw_answer)
+                    if categories:
+                        logger.warning(
+                            "Stream output filtered; request_id=%s categories=%s action=%s",
+                            request_id, ",".join(categories), "replaced" if blocked else "masked",
+                        )
+                    yield _chat_event("answer", {
+                        "conversationId": conversation_id, "requestId": request_id,
+                        "answer": safe_answer,
+                        "citationStatus": "pending" if needs_citations and not blocked else "none",
+                    })
+                    # Yield the checked draft before running citation SQL. Do not
+                    # persist or mark the turn complete until validation succeeds.
+                    if progressive:
+                        result = (
+                            AgentAnswer(answer=safe_answer, usage=pending.usage,
+                                        agents_used=pending.agents_used,
+                                        inference_ms=pending.inference_ms)
+                            if blocked else service.resolve_answer(pending)
+                        )
+                    safe_sources = () if blocked else result.sources
+                    public_sources = [_public_source(source, catalog_service) for source in safe_sources]
+                    persistence.record_turn(ConversationTurn(
+                        conversation_id=conversation_id, request_id=request_id,
+                        user_id=user_id, created_at=datetime.now(timezone.utc),
+                        question=message, answer=safe_answer, sources=safe_sources,
+                        usage=result.usage,
+                    ), history)
+                    yield _chat_event("sources", {"sources": public_sources})
+                    if stage_ms:
+                        logger.info("Chat stages; request_id=%s stage_ms=%s", request_id,
+                                    json.dumps(stage_ms, separators=(",", ":")))
+                    record_event(
+                        "success", answer=safe_answer, sources=safe_sources,
+                        agents_used=result.agents_used, usage=_reported_usage(result.usage),
+                        inference_ms=result.inference_ms, citations_ms=result.citations_ms,
+                        stage_ms=stage_ms or None,
+                    )
+                    finished = True
+                    yield _chat_event("done", {
+                        "conversationId": conversation_id, "requestId": request_id,
+                    })
+                except GeneratorExit:
+                    if not finished:
+                        # flask_app_logs.status allows success, error and timeout only.
+                        record_event("error", error_message="stream_disconnected")
+                    raise
+                except AnswerTimeout:
+                    stage_ms.update(_milliseconds(marks))
+                    logger.warning("Chat stream timed out; request_id=%s stage_ms=%s", request_id,
+                                   json.dumps(stage_ms, separators=(",", ":")))
+                    record_event("timeout", error_message="answer_timeout", stage_ms=stage_ms or None)
+                    yield _chat_event("error", {"code": "TIMEOUT", "message": COACHING360_TIMEOUT_MESSAGE})
+                except Exception as error:
+                    if isinstance(error, CitationResolutionError):
+                        code = "CITATIONS_UNAVAILABLE"
+                        text = "Sources could not be verified. Treat this answer as unverified. Please try again."
+                    elif isinstance(error, ConversationPersistenceError):
+                        code = "CONVERSATION_UNAVAILABLE"
+                        text = "The answer could not be saved. Please try again."
+                    else:
+                        code = "AGENT_UNAVAILABLE"
+                        text = "The employee support service is temporarily unavailable. Please try again."
+                    logger.error(
+                        "Chat stream failed; request_id=%s error_type=%s", request_id, type(error).__name__
+                    )
+                    record_event("error", error_message=code.lower())
+                    yield _chat_event("error", {"code": code, "message": text})
+
+            return Response(stream_answer(), mimetype="text/event-stream", headers={
+                "Cache-Control": "no-cache, no-store, private",
+                "X-Accel-Buffering": "no",
+            })
+
         try:
             # Explicit slash commands are authoritative one-shot routes. Do not
             # let prior cross-domain turns bias the selected specialist's answer;
             # the completed turn is still persisted in the current conversation.
-            supervisor_history = (
-                ConversationHistory() if _has_direct_route(message) else history
+            supervisor_history = ConversationHistory() if fresh_history else history
+            direct = (
+                _direct_route(message)
+                if coaching is None and callable(getattr(service, "prepare_direct_answer", None)) else None
             )
-            result = service.answer(
-                _supervisor_input(message),
-                session_id,
-                supervisor_history,
-            )
+            if direct and callable(getattr(service, "resolve_answer", None)):
+                result = service.resolve_answer(service.prepare_direct_answer(
+                    *direct, _supervisor_input(message), session_id
+                ))
+            else:
+                result = service.answer(
+                    supervisor_message,
+                    session_id,
+                    supervisor_history,
+                )
         except InvalidQuestionError:
             record_event("error", error_message="invalid_question")
             return _error_response(
@@ -611,6 +830,8 @@ def create_app(
             sources=safe_sources,
             agents_used=result.agents_used,
             usage=_reported_usage(result.usage),
+            inference_ms=result.inference_ms,
+            citations_ms=result.citations_ms,
         )
         return jsonify(
             conversationId=conversation_id,
@@ -834,6 +1055,142 @@ def create_app(
     return app
 
 
+def start_warm_up(app: Flask) -> Thread | None:
+    """Warm Databricks connections in the background so the worker serves at once."""
+    warm_up = getattr(app.extensions.get("supervisor_service"), "warm_up", None)
+    if not callable(warm_up):
+        return None
+
+    def run():
+        started_at = time.monotonic()
+        try:
+            warm_up()
+        except Exception as error:
+            logger.warning("Warm-up failed; error_type=%s", type(error).__name__)
+            return
+        logger.info(
+            "Warm-up completed; duration_ms=%s",
+            round((time.monotonic() - started_at) * 1000),
+        )
+
+    thread = Thread(target=run, name="warm-up", daemon=True)
+    thread.start()
+    return thread
+
+
+def _accepts_live_events(prepare) -> bool:
+    try:
+        return "on_event" in inspect.signature(prepare).parameters
+    except (TypeError, ValueError):
+        return False
+
+
+INTERIM_RESULT_LEAD = "Here is what I found. Writing up the answer…\n\n"
+COACHING360_TIMEOUT_MESSAGE = (
+    "This Coaching360 question is taking longer than expected, so I stopped waiting. "
+    "Please try again, or ask about one person, branch or month at a time."
+)
+
+
+class AnswerTimeout(Exception):
+    """The answer did not arrive within the allowed time."""
+
+
+def _interim_result(tool, text):
+    """A Coaching360 data table to show while the Supervisor writes the answer, or None."""
+    if not (str(tool).startswith("coaching360_") and str(tool).endswith("_data")):
+        return None
+    table = tidy_table(text)
+    return INTERIM_RESULT_LEAD + table if table else None
+
+
+def _prepare_with_live_events(prepare, timings=None, timeout_seconds=None):
+    """Run prepare(on_event=...) in a worker thread, yielding progress and checked text.
+
+    Returns the prepared answer; its full output checks still run afterwards.
+    When given, timings receives seconds since start for the first "tool"
+    call, the tool "result", the first answer "text" and "prepared".
+    With timeout_seconds, raises AnswerTimeout when the answer is not ready in
+    time (the worker is left to finish in the background; its result is dropped).
+    """
+    events = queue.Queue()
+    result = {}
+    started = time.monotonic()
+    mark = (lambda name: timings.setdefault(name, round(time.monotonic() - started, 3))) if timings is not None else (lambda name: None)
+
+    def work():
+        try:
+            result["pending"] = prepare(on_event=lambda kind, value: events.put((kind, value)))
+        except BaseException as error:  # re-raised in the request thread below
+            result["error"] = error
+        finally:
+            events.put(None)
+
+    Thread(target=work, name="chat-live", daemon=True).start()
+    preview = LivePreview(check=_apply_output_guardrails, mask=_mask_personal_data)
+    last_progress = None
+    deadline = started + timeout_seconds if timeout_seconds else None
+    while True:
+        try:
+            item = events.get(timeout=max(0.0, deadline - time.monotonic()) if deadline else None)
+        except queue.Empty:
+            mark("timeout")
+            raise AnswerTimeout() from None
+        if item is None:
+            break
+        kind, value = item
+        out = []
+        if kind == "progress":
+            mark("tool")
+            text = _progress_message(value)
+            if text != last_progress:
+                last_progress = text
+                out = [("progress", {"message": text})]
+        elif kind == "result":
+            mark("result")
+            interim = _interim_result(*value)
+            out = preview.interim(interim) if interim else []
+        elif kind == "text":
+            mark("text")
+            out = preview.feed(value)
+        elif kind == "reset":
+            out = preview.reset()
+        for event, payload in out:
+            yield _chat_event(event, payload)
+    mark("prepared")
+    if "error" in result:
+        raise result["error"]
+    return result["pending"]
+
+
+def _milliseconds(marks):
+    return {name: round(seconds * 1000) for name, seconds in marks.items()}
+
+
+def _progress_message(name) -> str:
+    """A user-facing activity label; internal agent and tool names are never shown."""
+    name = str(name or "").casefold()
+    if "coaching360" in name:
+        return "Checking the Coaching360 Guide…" if "guide" in name else "Looking up your Coaching360 data…"
+    if "handbook" in name:
+        return "Checking the Employee Handbook…"
+    if "benefit" in name:
+        return "Checking the benefits documentation…"
+    if "genie" in name or "fast-path" in name:
+        return "Looking up performance data…"
+    if "perf" in name:
+        return "Checking the performance policy…"
+    if "policy" in name or "branch" in name:
+        return "Checking the branch operations policies…"
+    return "Consulting a specialist…"
+
+
+def _mask_personal_data(text: str) -> str:
+    for _category, pattern, replacement in OUTPUT_PII_PATTERNS:
+        text = pattern.sub(replacement, text)
+    return text
+
+
 def _require_identity(identity_provider):
     if identity_provider():
         return None
@@ -944,6 +1301,10 @@ def _is_uuid(value) -> bool:
     return True
 
 
+def _chat_event(event: str, payload: dict) -> str:
+    return f"event: {event}\ndata: {json.dumps(payload, ensure_ascii=False)}\n\n"
+
+
 def _error_response(code: str, message: str, request_id: str, status_code: int):
     return jsonify(error={"code": code, "message": message}, requestId=request_id), status_code
 
@@ -955,13 +1316,13 @@ def _citation_recovery_message(message: str) -> str:
         "/handbook": '/handbook What does the handbook say about jury duty leave?',
         "/benefits": '/benefits How many PTO hours do full-time employees receive?',
         "/benfits": '/benefits How many PTO hours do full-time employees receive?',
-        "/coaching": '/coaching What do the performance ratings from 1 to 5 mean?',
+        "/performance": '/performance What do the performance ratings from 1 to 5 mean?',
     }
     example = examples.get(command)
     direct_option = (
         f'1. Ask a more specific question, for example: "{example}"'
         if example
-        else "1. Route directly with /policy, /handbook, /benefits, or /coaching and ask a specific question."
+        else "1. Route directly with /policy, /handbook, /benefits, or /performance and ask a specific question."
     )
     return (
         "I found a response, but could not match it to an approved source document, "
@@ -986,15 +1347,38 @@ def _public_source(source, catalog_service) -> dict:
     return public
 
 
+DEFAULT_SPECIALIST_QUESTION = (
+    "Introduce the topics you support and ask me for my specific question."
+)
+CHART_REQUEST_PATTERN = re.compile(
+    r"\b(?:chart|graph|plot|visualize|visualise|visualization)\b", re.IGNORECASE
+)
+CHART_FORMAT_REQUIREMENT = (
+    "\n\nApplication chart format requirement: Include exactly one fenced code "
+    "block whose language is mariner-chart. The block must contain strict JSON "
+    "with this shape: {\"type\":\"bar\",\"title\":\"Chart title\","
+    "\"xLabel\":\"Category label\",\"yLabel\":\"Metric label\","
+    "\"unit\":\"optional unit\",\"labels\":[\"A\",\"B\"],"
+    "\"values\":[1,2]}. Use a bar chart, 1 to 30 labels, finite "
+    "non-negative numeric values, and matching label/value counts. Base the "
+    "chart only on grounded data from the current answer or conversation. Do "
+    "not claim that a chart was created unless this block is present. A short "
+    "written interpretation may follow the block."
+)
+TABLE_FORMAT_REQUIREMENT = (
+    "\n\nApplication table format requirement: Return a valid Markdown table. "
+    "Put each column heading in its own cell, include a separator row with the "
+    "same number of cells, and keep every data row at that same column count."
+)
+
+
 def _supervisor_input(message: str) -> str:
     command, _, question = message.strip().partition(" ")
     specialist = SUPERVISOR_ROUTE_COMMANDS.get(command.casefold())
     if specialist is None:
         supervisor_message = message
     else:
-        employee_question = question.strip() or (
-            "Introduce the topics you support and ask me for my specific question."
-        )
+        employee_question = question.strip() or DEFAULT_SPECIALIST_QUESTION
         supervisor_message = (
             f"Mandatory application routing directive: Call the {specialist} "
             "subagent/tool now and wait for it to complete. Return the worker's final "
@@ -1004,32 +1388,28 @@ def _supervisor_input(message: str) -> str:
             f"Employee question: {employee_question}"
         )
 
-    if re.search(
-        r"\b(?:chart|graph|plot|visualize|visualise|visualization)\b",
-        message,
-        re.IGNORECASE,
-    ):
-        supervisor_message += (
-            "\n\nApplication chart format requirement: Include exactly one fenced code "
-            "block whose language is mariner-chart. The block must contain strict JSON "
-            "with this shape: {\"type\":\"bar\",\"title\":\"Chart title\","
-            "\"xLabel\":\"Category label\",\"yLabel\":\"Metric label\","
-            "\"unit\":\"optional unit\",\"labels\":[\"A\",\"B\"],"
-            "\"values\":[1,2]}. Use a bar chart, 1 to 30 labels, finite "
-            "non-negative numeric values, and matching label/value counts. Base the "
-            "chart only on grounded data from the current answer or conversation. Do "
-            "not claim that a chart was created unless this block is present. A short "
-            "written interpretation may follow the block."
-        )
+    if CHART_REQUEST_PATTERN.search(message):
+        supervisor_message += CHART_FORMAT_REQUIREMENT
 
     if re.search(r"\btable\b", message, re.IGNORECASE):
-        supervisor_message += (
-            "\n\nApplication table format requirement: Return a valid Markdown table. "
-            "Put each column heading in its own cell, include a separator row with the "
-            "same number of cells, and keep every data row at that same column count."
-        )
+        supervisor_message += TABLE_FORMAT_REQUIREMENT
 
     return supervisor_message
+
+
+def _direct_route(message: str) -> tuple[str, str] | None:
+    """Return (command, specialist question) when a slash command can skip the Supervisor.
+
+    Chart requests stay on the Supervisor route, which produces the mariner-chart block.
+    """
+    command, _, question = message.strip().partition(" ")
+    command = command.casefold()
+    if command not in SUPERVISOR_ROUTE_COMMANDS or CHART_REQUEST_PATTERN.search(message):
+        return None
+    specialist_question = question.strip() or DEFAULT_SPECIALIST_QUESTION
+    if re.search(r"\btable\b", message, re.IGNORECASE):
+        specialist_question += TABLE_FORMAT_REQUIREMENT
+    return ("/benefits" if command == "/benfits" else command), specialist_question
 
 
 def _has_direct_route(message: str) -> bool:

@@ -1,0 +1,433 @@
+{
+ "about": "Coaching360 regression. 'Demo' conversations are the 20 demo questions (Q1-Q20) with the key numbers from the reviewer's expected answers; 'Extra' conversations are additional checks. Each conversation runs in order through the app; 'expect' entries are case-insensitive regular expressions that must match the answer, 'reject' entries must not. Data: workspace.coaching360demo, latest complete KPI month September 2026, as-of date 2026-10-20.",
+ "max_seconds": 120,
+ "always_reject": [
+  "technical issue",
+  "unable to retrieve",
+  "configuration (error|issue)",
+  "temporarily unavailable"
+ ],
+ "conversations": [
+  {
+   "name": "Demo: employee (Rowan Jessup, Account Representative)",
+   "turns": [
+    {
+     "ask": "/coaching360 Rowan Jessup",
+     "expect": [
+      "Welcome to Coaching360, Rowan"
+     ]
+    },
+    {
+     "id": "Q1",
+     "ask": "Show me my scorecard for September 2026.",
+     "expect": [
+      "0\\.29",
+      "1\\.00",
+      "\\b6\\b",
+      "4\\.09",
+      "3\\.40?\\s*%",
+      "32\\.6",
+      "56,8\\d\\d|56[,.]9",
+      "67,1\\d\\d|67[,.]1",
+      "1,102",
+      "1,200",
+      "\\b252\\b",
+      "\\b300\\b"
+     ],
+     "reject": [
+      "October"
+     ]
+    },
+    {
+     "id": "Q2",
+     "ask": "How does my LPE compare to my goal and to last month?",
+     "expect": [
+      "0\\.29",
+      "1\\.00",
+      "0\\.35",
+      "August|last month",
+      "0\\.52"
+     ]
+    },
+    {
+     "id": "Q3",
+     "ask": "Which of my metrics are above goal and which are below?",
+     "expect": [
+      "DACC",
+      "4\\.09",
+      "4\\.67",
+      "1,102",
+      "\\b252\\b"
+     ]
+    },
+    {
+     "id": "Q7",
+     "ask": "What's in my Success Plan for October?",
+     "expect": [
+      "Drive Results",
+      "Build consistency in LPE",
+      "not (yet )?approved|awaiting (your manager's )?approval|pending approval"
+     ]
+    },
+    {
+     "id": "Q8",
+     "ask": "What did I focus on in September, and did I hit it?",
+     "expect": [
+      "Locked",
+      "Communicates Effectively",
+      "DACC",
+      "0\\.29",
+      "1\\.00"
+     ]
+    },
+    {
+     "id": "Q14",
+     "ask": "Do I have any coaching records waiting for my acknowledgement?",
+     "expect": [
+      "\\b4\\b|four",
+      "LPE",
+      "0?7[-/]30|July 30",
+      "0?1[-/]16|January 16"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Demo: Branch Manager (Riley Quimby, Laurel Fork + relief Shenandoah Mills)",
+   "turns": [
+    {
+     "ask": "/coaching360 Riley Quimby",
+     "expect": [
+      "Welcome to Coaching360, Riley"
+     ]
+    },
+    {
+     "id": "Q4",
+     "ask": "Show me my team's scorecard at Laurel Fork for September.",
+     "expect": [
+      "Selena Driscoll",
+      "0\\.95",
+      "Avery Northcott",
+      "0\\.86",
+      "Riley Quimby",
+      "0\\.48",
+      "Rowan Jessup",
+      "0\\.29",
+      "2\\.98",
+      "4\\.57",
+      "5\\.11",
+      "4\\.09",
+      "54\\.6",
+      "0\\.64",
+      "4\\.19",
+      "42\\.2"
+     ]
+    },
+    {
+     "id": "Q5",
+     "ask": "Who is my top performer and who needs the most help?",
+     "expect": [
+      "Selena Driscoll",
+      "Rowan Jessup",
+      "0\\.95",
+      "0\\.29"
+     ]
+    },
+    {
+     "id": "Q6",
+     "ask": "Which employees are over the 30–89 day delinquency goal?",
+     "expect": [
+      "Reese Delacroix",
+      "5\\.24",
+      "relief",
+      "Riley Quimby",
+      "5\\.11",
+      "Avery Northcott",
+      "4\\.57",
+      "Rowan Jessup",
+      "4\\.09"
+     ],
+     "reject": [
+      "Selena Driscoll[^\\n]{0,40}(over|above) the"
+     ]
+    },
+    {
+     "id": "Q9",
+     "ask": "Which Success Plans on my team still need my approval?",
+     "expect": [
+      "Rowan Jessup",
+      "Andre Valdez",
+      "Reese Delacroix",
+      "relief",
+      "10/31|October 31"
+     ]
+    },
+    {
+     "id": "Q10",
+     "ask": "Show me Rowan Jessup's coaching history.",
+     "expect": [
+      "\\b16\\b",
+      "0?9[-/]14|September 14",
+      "LPE",
+      "0?7[-/]30|July 30"
+     ]
+    },
+    {
+     "id": "Q11",
+     "ask": "What did I coach Rowan on last, and what was the action plan?",
+     "expect": [
+      "0?9[-/]14|September 14",
+      "5 (closed )?loans|five (closed )?loans",
+      "pipeline"
+     ]
+    },
+    {
+     "id": "Q12",
+     "ask": "Help me prepare a KPI coaching conversation with Rowan about LPE.",
+     "expect": [
+      "0\\.29",
+      "1\\.00",
+      "0\\.70",
+      "0\\.48",
+      "0\\.64",
+      "0\\.35"
+     ]
+    },
+    {
+     "id": "Q13",
+     "ask": "Draft a recognition note for Selena Driscoll on her September results.",
+     "expect": [
+      "0\\.95",
+      "0\\.80",
+      "\\b4\\b",
+      "2\\.98",
+      "3\\.40?\\s*%",
+      "54\\.6"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Demo: District Manager (Felicia Umberto, District 902 Shenandoah)",
+   "turns": [
+    {
+     "ask": "/coaching360 Felicia Umberto",
+     "expect": [
+      "Welcome to Coaching360, Felicia"
+     ]
+    },
+    {
+     "id": "Q15",
+     "ask": "Give me an overview of the branches in my district.",
+     "expect": [
+      "0\\.94",
+      "0\\.80",
+      "0\\.99",
+      "0\\.95",
+      "0\\.64",
+      "0\\.86",
+      "4\\.11",
+      "4\\.19",
+      "Laurel Fork",
+      "Stonewall Junction"
+     ]
+    },
+    {
+     "id": "Q16",
+     "ask": "Which branches have the most coaching records pending acknowledgement or open tasks?",
+     "expect": [
+      "Pine Bluff",
+      "\\b6\\b",
+      "\\b36\\b",
+      "\\b33\\b",
+      "\\b25\\b"
+     ]
+    },
+    {
+     "id": "Q17",
+     "ask": "Help me plan my next visit to Laurel Fork. What should I know before I walk in?",
+     "expect": [
+      "0\\.64",
+      "4\\.19",
+      "Rowan",
+      "0\\.29",
+      "5\\.11",
+      "Selena",
+      "10[-/]0?7|October 7"
+     ]
+    },
+    {
+     "id": "Q18",
+     "ask": "What follow-ups came out of my October 7 visit to Laurel Fork, and are they done?",
+     "expect": [
+      "Collections",
+      "30-day bucket",
+      "Riley Quimby",
+      "10[-/]21|October 21",
+      "Completed",
+      "10[-/]19|October 19"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Demo: Regional VP (Keisha Foxworth, Mid-Atlantic)",
+   "turns": [
+    {
+     "ask": "/coaching360 Keisha Foxworth",
+     "expect": [
+      "Welcome to Coaching360, Keisha"
+     ]
+    },
+    {
+     "id": "Q19",
+     "ask": "How is District 902 doing compared to the other districts in my region?",
+     "expect": [
+      "Chesapeake",
+      "0\\.96",
+      "0\\.87",
+      "Susquehanna",
+      "0\\.90",
+      "108\\.8",
+      "96\\.8",
+      "109\\.7",
+      "49\\.1"
+     ]
+    },
+    {
+     "id": "Q20",
+     "ask": "Are my district managers keeping up with branch visits?",
+     "expect": [
+      "Felicia Umberto",
+      "\\b76\\b",
+      "Nolan Ingram",
+      "\\b74\\b",
+      "Olivia Northcott"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Extra: Employee scorecard (Selena Westbrook, Account Representative)",
+   "turns": [
+    {
+     "ask": "/coaching360 Selena Westbrook",
+     "expect": [
+      "Welcome to Coaching360, Selena"
+     ]
+    },
+    {
+     "ask": "Show me my scorecard for September",
+     "expect": [
+      "September",
+      "0\\.86",
+      "1\\.00",
+      "1,542",
+      "1,200",
+      "346",
+      "300",
+      "7\\.69\\s*%",
+      "8\\.00?\\s*%",
+      "2\\.46\\s*%",
+      "3\\.4\\s*%",
+      "30.{1,3}89"
+     ],
+     "reject": [
+      "LPE[^\\n]{0,40}2\\.00"
+     ]
+    },
+    {
+     "ask": "What is my LPE goal?",
+     "expect": [
+      "1\\.00?\\b"
+     ],
+     "reject": [
+      "2\\.00",
+      "no goal"
+     ]
+    },
+    {
+     "ask": "How is my delinquency?",
+     "expect": [
+      "September",
+      "7\\.69\\s*%",
+      "2\\.46\\s*%",
+      "3\\.4\\s*%",
+      "30.{1,3}89"
+     ],
+     "reject": [
+      "October"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Extra: Branch Manager with relief coverage (Riley Quimby)",
+   "turns": [
+    {
+     "ask": "/coaching360 Riley Quimby",
+     "expect": [
+      "Welcome to Coaching360, Riley"
+     ]
+    },
+    {
+     "ask": "How is my team doing against their goals?",
+     "expect": [
+      "Selena Driscoll",
+      "0\\.95",
+      "Shenandoah Mills",
+      "relief"
+     ]
+    },
+    {
+     "ask": "Write recognition notes for my top performers",
+     "expect": [
+      "Selena Driscoll",
+      "0\\.95",
+      "\\b4\\b[^\\n]{0,20}DACC|DACC[^\\n]{0,30}\\b4\\b"
+     ]
+    },
+    {
+     "ask": "What is the status of the follow-up from my latest Laurel Fork branch visit?",
+     "expect": [
+      "Completed",
+      "10/19|October 19|2026-10-19"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Extra: District Manager visit brief (Felicia Umberto)",
+   "turns": [
+    {
+     "ask": "/coaching360 Felicia Umberto",
+     "expect": [
+      "Welcome to Coaching360, Felicia"
+     ]
+    },
+    {
+     "ask": "Prepare a visit brief for Laurel Fork",
+     "expect": [
+      "Laurel Fork",
+      "October 7|10/7|2026-10-07",
+      "Collections",
+      "Completed"
+     ],
+     "reject": [
+      "not in your scope",
+      "isn't in your scope",
+      "not part of your"
+     ]
+    },
+    {
+     "ask": "Which branch has the highest delinquency?",
+     "expect": [
+      "30.{1,3}89",
+      "3\\.4\\s*%",
+      "current"
+     ]
+    }
+   ]
+  }
+ ]
+}

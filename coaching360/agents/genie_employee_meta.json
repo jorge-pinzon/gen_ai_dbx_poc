@@ -1,0 +1,6 @@
+{
+ "title": "Coaching360 - My Development",
+ "warehouse_id": "55cdb78d4d2a62d0",
+ "serialized_space_file": "genie_employee.json",
+ "description": "Coaching360 data for an employee (Account Representative, Assistant Branch Manager, Branch Manager Trainee): their own KPIs, DPR scorecard, calls, coaching records, Success Plans, tasks, ACE payout estimate and policy violations. Use only when the Coaching360 directive says level employee."
+}

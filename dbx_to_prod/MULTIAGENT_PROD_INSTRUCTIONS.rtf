@@ -1,0 +1,178 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fmodern\fcharset0 Courier;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+\f3\fmodern\fcharset0 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;\red178\green178\blue178;\red19\green20\blue21;\red121\green121\blue121;
+\red29\green29\blue29;\red59\green142\blue187;}
+{\*\expandedcolortbl;;\cssrgb\c74902\c74902\c74902;\cssrgb\c9804\c10196\c10588;\cssrgb\c54902\c54902\c54902;
+\cssrgb\c14902\c14902\c14902;\cssrgb\c28235\c62745\c78039;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid401\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa51\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Written for: you as the engineer running the migration, and anyone on the team who follows the guide in the prod account.\
+The migration kit is in 
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 dbx_to_prod/
+\f0\fs26 \cf2 \cb3 \strokec2  (43 files, plus raw exports). Open {\field{\*\fldinst{HYPERLINK "vscode-webview://0vut3krlpv3hr209m36hnjonnrvvu9v67n44uocnnvbqeseti6eg/dbx_to_prod/index.html"}}{\fldrslt \cf6 \strokec6 dbx_to_prod/index.html}} first. None of it has been run in a prod account yet: I don't have access to one, so everything was checked against the trial account only.\
+\pard\pardeftab720\sa51\partightenfactor0
+
+\f2\b \cf2 What's in it
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Guide
+\f0\b0 \'a0({\field{\*\fldinst{HYPERLINK "vscode-webview://0vut3krlpv3hr209m36hnjonnrvvu9v67n44uocnnvbqeseti6eg/dbx_to_prod/index.html"}}{\fldrslt \cf6 \ul \ulc6 \strokec6 index.html}}): 12 sections covering what is moved and what is left behind, prerequisites, an 11-step order of work, data and indexes, both agent types, the app, cost and speed settings with the numbers measured in trial, validation and cutover, known issues, and a table of trial-to-prod names. It works offline, and its checklists remember what you've ticked.\cb1 \
+\ls1\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Notebooks 00\'9607
+\f0\b0 \'a0({\field{\*\fldinst{HYPERLINK "vscode-webview://0vut3krlpv3hr209m36hnjonnrvvu9v67n44uocnnvbqeseti6eg/dbx_to_prod/notebooks/"}}{\fldrslt \cf6 \ul \ulc6 \strokec6 dbx_to_prod/notebooks/}}), in Databricks source format, run in order:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls1\ilvl1\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 00: settings (app service principal, warehouse name);\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 01: Unity Catalog objects and grants;\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 02: performance data export (in trial) and import (in prod), then the materialized views;\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 03: PDF parsing and chunk tables, with the moved-file fix;\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 04: vector search endpoint and the 5 indexes;\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 05: the custom performance policy agent, logged, registered and served with scale-to-zero;\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 06: the Knowledge Assistants, the Genie space and the Supervisor;\cb1 \
+\ls1\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 07: checks that print PASS or FAIL.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Agent definitions
+\f0\b0 \'a0({\field{\*\fldinst{HYPERLINK "vscode-webview://0vut3krlpv3hr209m36hnjonnrvvu9v67n44uocnnvbqeseti6eg/dbx_to_prod/agents/"}}{\fldrslt \cf6 \ul \ulc6 \strokec6 dbx_to_prod/agents/}}): instructions and settings for all four Knowledge Assistants, the Supervisor (trimmed instructions and tool list) and the Genie space. Also the source code of both custom agents, downloaded from the trial models.\cb1 \
+\ls1\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 SQL scripts 01\'9608
+\f0\b0 , the app settings (
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 app.yaml
+\f0\fs26 \cf2 \cb3 \strokec2 ,\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 env.prod.template
+\f0\fs26 \cf2 \cb3 \strokec2 ), a script to copy files between workspaces, and a script that renames catalog and schemas if prod doesn't use\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 workspace
+\f0\fs26 \cf2 \cb3 \strokec2 .\cb1 \
+\pard\pardeftab720\sa51\partightenfactor0
+
+\f2\b \cf2 \cb3 What I checked against the trial account (read-only)
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 All 10 view definitions run against the live data.\cb1 \
+\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The script that rebuilds the policy retrieval table selects exactly the 9 passages that are live today.\cb1 \
+\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The ingestion SQL in notebook 03 is byte-for-byte what the upload tool runs.\cb1 \
+\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 All notebooks pass a Python syntax check, the guide's HTML is well-formed, and no secrets or data rows are in the kit.\cb1 \
+\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 218 of 225 app tests pass; the 7 errors are the same environment problems as before (missing\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 scrypt
+\f0\fs26 \cf2 \cb3 \strokec2 \'a0and the stress-test imports).\cb1 \
+\pard\pardeftab720\sa51\partightenfactor0
+
+\f2\b \cf2 \cb3 What's untested until it runs in prod
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\f2\b \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Creating Agent Bricks objects:
+\f0\b0 \'a0notebook 06 uses the Knowledge Assistant and Supervisor create calls from the Databricks SDK reference, but I could only read these objects in trial, never create them. Those APIs are still changing, so the guide gives the same values for the UI.\cb1 \
+\ls3\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The performance policy endpoint as a Supervisor tool:
+\f0\b0 \'a0the SDK has no settings type for it. The notebook tries a raw API call, and otherwise tells you to add it in the UI.\cb1 \
+\ls3\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Materialized views:
+\f0\b0 \'a0serverless notebooks may refuse to create them. If so, run\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 sql/05_fast_views.sql
+\f0\fs26 \cf2 \cb3 \strokec2 \'a0in the SQL editor.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\f3\b\fs23\fsmilli11700 \cf4 \cb5 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 DATABRICKS_HOST
+\f2\fs26 \cf2 \cb3 \strokec2 \'a0on Databricks Apps:
+\f0\b0 \'a0the app requires a URL starting with\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 https://
+\f0\fs26 \cf2 \cb3 \strokec2 . Check what the platform provides.\cb1 \
+\pard\pardeftab720\sa51\partightenfactor0
+
+\f2\b \cf2 \cb3 Findings that change the migration
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0
+\f2\b \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The custom benefits agent has no retrieval at all.
+\f0\b0 \'a0Its code sends the question straight to Claude Sonnet, with no knowledge base attached, so its "Source:" lines aren't grounded. That probably explains the PTO and PPO problems we saw earlier. The kit uses the existing Benefits Knowledge Assistant instead, which also means one less endpoint to pay for.\cb1 \
+\ls4\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 One app code change was needed.
+\f0\b0 \'a0The app only accepts worker tools it knows by name, so I added the production name\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 endpoint-perf-policy-citations
+\f0\fs26 \cf2 \cb3 \strokec2 \'a0to that list in\'a0{\field{\*\fldinst{HYPERLINK "vscode-webview://0vut3krlpv3hr209m36hnjonnrvvu9v67n44uocnnvbqeseti6eg/src/mariner_genai_dbx/supervisor_service.py"}}{\fldrslt \cf6 \ul \ulc6 \strokec6 supervisor_service.py}}.\cb1 \
+\ls4\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The performance Knowledge Assistant is skipped by default to save cost.
+\f0\b0 \'a0Neither the Supervisor nor the app calls it.\cb1 \
+\pard\pardeftab720\sa51\partightenfactor0
+
+\f2\b \cf2 \cb3 Before you start in prod
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Set the app's service principal ID in\'a0
+\f1\fs23\fsmilli11700 \cf4 \cb5 \strokec4 00_config.py
+\f0\fs26 \cf2 \cb3 \strokec2 .\cb1 \
+\ls5\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Create two Databricks CLI profiles, one for trial and one for prod.\cb1 \
+\ls5\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Push the repo and add it as a Git folder in the prod workspace.\cb1 \
+\ls5\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Use a new password hash and session secret in prod; don't copy them from trial.\cb1 \
+\pard\pardeftab720\sa51\partightenfactor0
+\cf2 \cb3 The kit and today's other changes are not committed yet.\
+Sources:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0\cf6 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://databricks-sdk-py.readthedocs.io/en/latest/workspace/knowledgeassistants/knowledge_assistants.html"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Databricks SDK for Python: Knowledge Assistants service}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://databricks-sdk-py.readthedocs.io/en/latest/dbdataclasses/knowledgeassistants.html"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Knowledge Assistants dataclasses}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://databricks-sdk-py.readthedocs.io/en/latest/workspace/supervisoragents/supervisor_agents.html"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Supervisor Agents service}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://databricks-sdk-py.readthedocs.io/en/latest/dbdataclasses/supervisoragents.html"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Supervisor Agents dataclasses}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://databricks-sdk-py.readthedocs.io/en/latest/workspace/agentbricks/index.html"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Agent Bricks overview in the SDK docs}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://docs.databricks.com/api/genie/v1/create-space"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Genie API: create space}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://community.databricks.com/t5/data-engineering/issues-creating-genie-space-via-api-join-specs-are-not-persisted/td-p/141520"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Community thread: Genie join specs not persisted on create}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://docs.databricks.com/aws/en/generative-ai/agent-bricks/multi-agent-supervisor"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Supervisor Agent (Agent Bricks) docs}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\ls6\ilvl0\cf6 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://skills.cat/skills/databricks-solutions/ai-dev-kit/databricks-agent-bricks"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec6 Databricks AI dev kit: Agent Bricks skill}}\cf2 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+}

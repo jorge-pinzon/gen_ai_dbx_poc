@@ -1,0 +1,150 @@
+{
+  "test_type": "flask_http",
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "passed": true,
+  "target_seconds": 60,
+  "deadline_seconds": 180,
+  "required_reliability_percent": 99,
+  "reliability_percent": 100.0,
+  "workflows_started": 290,
+  "outcomes": {
+    "SUCCESS_WITHIN_TARGET": 290
+  },
+  "successful_latency_seconds": {
+    "count": 290,
+    "mean": 15.980070234679593,
+    "max": 46.06282912500319,
+    "p50": 14.595125833002385,
+    "p95": 28.89993354200851,
+    "p99": 42.18594674998894
+  },
+  "failed_latency_seconds": {
+    "count": 0,
+    "mean": null,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "max": null
+  },
+  "completed_workflows_per_second_including_drain": 0.9094052547099242,
+  "successful_workflows_per_second_including_drain": 0.9094052547099242,
+  "http_attempt_outcomes": {
+    "SUCCESS_WITHIN_TARGET": 290
+  },
+  "http_status_counts": {
+    "200": 290
+  },
+  "failure_categories": {},
+  "app_error_codes": {},
+  "failure_details": {},
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 67,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 67
+      },
+      "successful_latency_seconds": {
+        "count": 67,
+        "mean": 15.311449676029273,
+        "max": 29.631527165998705,
+        "p50": 15.02349691701238,
+        "p95": 18.6632747919939,
+        "p99": 29.631527165998705
+      }
+    },
+    {
+      "minute": 1,
+      "started": 59,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 59
+      },
+      "successful_latency_seconds": {
+        "count": 59,
+        "mean": 15.300815496509856,
+        "max": 30.690477083000587,
+        "p50": 14.772673500003293,
+        "p95": 20.407798333995743,
+        "p99": 30.690477083000587
+      }
+    },
+    {
+      "minute": 2,
+      "started": 51,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 51
+      },
+      "successful_latency_seconds": {
+        "count": 51,
+        "mean": 17.21566871162869,
+        "max": 42.18594674998894,
+        "p50": 14.484141374996398,
+        "p95": 37.78953233300126,
+        "p99": 42.18594674998894
+      }
+    },
+    {
+      "minute": 3,
+      "started": 64,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 64
+      },
+      "successful_latency_seconds": {
+        "count": 64,
+        "mean": 15.77094492193828,
+        "max": 44.5617701250012,
+        "p50": 14.195608874986647,
+        "p95": 29.712341167003615,
+        "p99": 44.5617701250012
+      }
+    },
+    {
+      "minute": 4,
+      "started": 49,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 49
+      },
+      "successful_latency_seconds": {
+        "count": 49,
+        "mean": 16.69929686065155,
+        "max": 46.06282912500319,
+        "p50": 14.49991987500107,
+        "p95": 35.246675375005,
+        "p99": 46.06282912500319
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "started": 1,
+      "submission_window_seconds": 13.581925249978667,
+      "elapsed_with_drain_seconds": 13.581928916973993
+    },
+    {
+      "phase": "warmup",
+      "started": 61,
+      "submission_window_seconds": 60,
+      "elapsed_with_drain_seconds": 78.83778212501784
+    },
+    {
+      "phase": "measurement",
+      "started": 290,
+      "submission_window_seconds": 300.0,
+      "elapsed_with_drain_seconds": 318.8897342499986
+    }
+  ],
+  "notes": [
+    "One process and persistent HTTP session per simulated client; no think time.",
+    "Backend mode is operator-declared; HTTP success does not prove live inference or answer quality.",
+    "Each workflow uses a fresh conversation UUID; correlation marker preserves slash routing.",
+    "No automatic chat retries; internal Databricks invocations are not observable here.",
+    "HTTP attempts can finish before parent receipt; workflow timing includes dispatch/collection.",
+    "Stopping a local worker does not cancel Flask or Databricks work already running.",
+    "Remote proxy, Flask, backend, persistence and analytics latency are included.",
+    "Interrupted or errored runs cannot pass; small samples do not prove long-term reliability."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-28T16:21:35.027941+00:00"
+}

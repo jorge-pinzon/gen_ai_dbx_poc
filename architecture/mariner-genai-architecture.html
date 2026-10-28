@@ -1,0 +1,263 @@
+<title>Mariner GenAI Architecture</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one wide request-flow diagram, browser → app → Databricks, left to right; rows line up so every edge is straight. */
+:root {
+  --bg: #F3F5F4; --surface: #FFFFFF; --ink: #15201E; --muted: #5A6663; --line: #C9D2CF; --edge: #3E4B48;
+  --app: #0E6E66; --app-tint: #E3F1EE;
+  --dbx: #B0431B; --dbx-tint: #FBEBE3;
+  --data: #7A5E12; --data-tint: #F5EED9;
+  --mon: #9A5B00; --mon-tint: #FCEFD9;
+  --font-display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0E1312; --surface: #162020; --ink: #E4EBE9; --muted: #98A5A1; --line: #2E3A38; --edge: #A9B6B2;
+  --app: #5BCDBE; --app-tint: #112D29; --dbx: #F08A5D; --dbx-tint: #36201A;
+  --data: #D8B85E; --data-tint: #2C2614; --mon: #F0B35A; --mon-tint: #33270F; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0E1312; --surface: #162020; --ink: #E4EBE9; --muted: #98A5A1; --line: #2E3A38; --edge: #A9B6B2;
+  --app: #5BCDBE; --app-tint: #112D29; --dbx: #F08A5D; --dbx-tint: #36201A;
+  --data: #D8B85E; --data-tint: #2C2614; --mon: #F0B35A; --mon-tint: #33270F; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 40px; }
+.wrap { max-width: 1480px; margin: 0 auto; display: grid; gap: 20px; }
+header h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 4px 0 0; color: var(--muted); max-width: 72ch; }
+.canvas { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+svg { display: block; width: 100%; min-width: 1100px; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 22px; color: var(--muted); font-size: 13px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.sw { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid; }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.notes div { min-width: 0; }
+.notes h2 { font-family: var(--font-display); font-size: 15px; margin: 0 0 4px; }
+.notes p { margin: 0; color: var(--muted); font-size: 13.5px; }
+code { font-family: var(--font-mono); font-size: 0.92em; }
+
+/* SVG parts */
+.zone { stroke-width: 1.5; }
+.z-browser { fill: var(--bg); stroke: var(--line); }
+.z-app { fill: var(--app-tint); stroke: var(--app); }
+.z-dbx { fill: var(--dbx-tint); stroke: var(--dbx); }
+.z-sub { fill: var(--surface); stroke: var(--line); opacity: 0.7; }
+.z-data { fill: var(--data-tint); stroke: var(--data); }
+.card { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+.card.app { stroke: var(--app); }
+.card.dbx { stroke: var(--dbx); }
+.card.data { stroke: var(--data); }
+.card.mon { fill: var(--mon-tint); stroke: var(--mon); }
+.card.key { stroke-width: 2.2; }
+.group { fill: none; stroke: var(--dbx); stroke-dasharray: 3 3; stroke-width: 1.2; }
+.item { fill: var(--dbx-tint); stroke: none; }
+.zt { font-family: var(--font-display); font-weight: 700; font-size: 19px; fill: var(--ink); }
+.zs { font-family: var(--font-body); font-size: 12px; fill: var(--muted); }
+.st { font-family: var(--font-body); font-weight: 600; font-size: 10.5px; letter-spacing: 0.12em; fill: var(--muted); }
+.ct { font-family: var(--font-body); font-weight: 600; font-size: 13.5px; fill: var(--ink); }
+.cs { font-family: var(--font-body); font-size: 11.5px; fill: var(--muted); }
+.mono { font-family: var(--font-mono); font-size: 11.5px; fill: var(--muted); }
+.it { font-family: var(--font-body); font-size: 12px; fill: var(--ink); }
+.gh { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.06em; fill: var(--dbx); }
+.edge { fill: none; stroke: var(--edge); stroke-width: 1.6; }
+.edge.direct { stroke-dasharray: 6 4; }
+.arrow { fill: var(--edge); }
+.el { font-family: var(--font-body); font-size: 10.5px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Mariner GenAI · application architecture</h1>
+    <p>How a question travels from the employee's browser through the Flask app to the Databricks agents and data. Rows line up with the calls they make.</p>
+  </header>
+
+  <div class="canvas">
+  <svg viewBox="0 0 1420 920" role="img" aria-labelledby="dtitle">
+    <title id="dtitle">Mariner GenAI architecture: browser, Flask app on AWS, Databricks agents and data</title>
+    <defs>
+      <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="arrow" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Browser -->
+    <rect class="zone z-browser" x="20" y="40" width="240" height="640" rx="16"/>
+    <text class="zt" x="40" y="72">Employee browser</text>
+    <rect class="card" x="40" y="110" width="200" height="50" rx="10"/>
+    <text class="ct" x="54" y="131">Chat UI</text>
+    <text class="cs" x="54" y="149">streams the answer as it arrives</text>
+    <rect class="card" x="40" y="172" width="200" height="50" rx="10"/>
+    <text class="ct" x="54" y="193">Live progress</text>
+    <text class="cs" x="54" y="211">agent steps and interim tables</text>
+    <rect class="card" x="40" y="234" width="200" height="126" rx="10"/>
+    <text class="ct" x="54" y="256">Slash commands</text>
+    <text class="mono" x="54" y="277">/policy</text>
+    <text class="mono" x="54" y="295">/handbook</text>
+    <text class="mono" x="54" y="313">/benefits</text>
+    <text class="mono" x="54" y="331">/performance</text>
+    <text class="mono" x="54" y="349">/coaching360</text>
+    <rect class="card" x="40" y="604" width="200" height="50" rx="10"/>
+    <text class="ct" x="54" y="625">Source viewer</text>
+    <text class="cs" x="54" y="643">opens the cited PDF page</text>
+
+    <rect class="card mon" x="40" y="794" width="220" height="50" rx="10"/>
+    <text class="ct" x="54" y="815">Central monitoring</text>
+    <text class="cs" x="54" y="833">JSON logs from container stdout</text>
+
+    <!-- Flask app -->
+    <rect class="zone z-app" x="300" y="40" width="420" height="844" rx="16"/>
+    <text class="zt" x="320" y="72">Mariner GenAI app</text>
+    <text class="zs" x="320" y="91">Flask + Gunicorn (2 workers × 16 threads) · Docker image on AWS</text>
+
+    <rect class="card app key" x="320" y="110" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="131">Chat API · /api/v1/chat/stream</text>
+    <text class="cs" x="334" y="149">sign-in: local, password or Databricks OAuth · SSE events</text>
+
+    <text class="st" x="320" y="186">ROUTES</text>
+    <rect class="card app" x="320" y="196" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="217">Direct specialist route</text>
+    <text class="cs" x="334" y="235">slash command goes straight to its specialist</text>
+    <rect class="card app" x="320" y="258" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="279">Coaching360 flow</text>
+    <text class="cs" x="334" y="297">finds the person, then sends a level directive</text>
+    <rect class="card app key" x="320" y="320" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="341">Supervisor route</text>
+    <text class="cs" x="334" y="359">default for every other question</text>
+    <rect class="card app" x="320" y="382" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="403">Performance fast path</text>
+    <text class="cs" x="334" y="421">plan, one batched read, write; falls back to Supervisor</text>
+
+    <text class="st" x="320" y="470">ANSWER PIPELINE</text>
+    <rect class="card app" x="320" y="480" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="501">Output guardrails</text>
+    <text class="cs" x="334" y="519">masks personal data before display</text>
+    <rect class="card app" x="320" y="542" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="563">Citation resolver + registry</text>
+    <text class="cs" x="334" y="581">maps answer references to approved chunks</text>
+    <rect class="card app" x="320" y="604" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="625">Source catalog</text>
+    <text class="cs" x="334" y="643">serves the cited PDFs from the volumes</text>
+
+    <text class="st" x="320" y="680">STATE AND TELEMETRY</text>
+    <rect class="card app" x="320" y="690" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="711">Conversation store</text>
+    <text class="cs" x="334" y="729">in memory, per worker</text>
+    <rect class="card app" x="320" y="752" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="773">Analytics</text>
+    <text class="cs" x="334" y="791">one row per request, with stage timings</text>
+    <rect class="card app" x="320" y="814" width="380" height="50" rx="10"/>
+    <text class="ct" x="334" y="835">JSON logs</text>
+    <text class="cs" x="334" y="853">no credentials, cookies, questions or answers</text>
+
+    <!-- Databricks -->
+    <rect class="zone z-dbx" x="770" y="40" width="630" height="844" rx="16"/>
+    <text class="zt" x="790" y="72">Databricks workspace</text>
+
+    <rect class="zone z-sub" x="790" y="86" width="590" height="370" rx="12"/>
+    <text class="st" x="806" y="108">MODEL SERVING · AGENT BRICKS</text>
+
+    <rect class="group" x="806" y="122" width="182" height="186" rx="10"/>
+    <text class="gh" x="818" y="142">KNOWLEDGE ASSISTANTS</text>
+    <rect class="item" x="816" y="154" width="162" height="30" rx="7"/><text class="it" x="826" y="174">Branch operations</text>
+    <rect class="item" x="816" y="190" width="162" height="30" rx="7"/><text class="it" x="826" y="210">Employee handbook</text>
+    <rect class="item" x="816" y="226" width="162" height="30" rx="7"/><text class="it" x="826" y="246">Coaching360 guide</text>
+
+    <rect class="group" x="998" y="122" width="182" height="186" rx="10"/>
+    <text class="gh" x="1010" y="142">GENIE SPACES</text>
+    <rect class="item" x="1008" y="154" width="162" height="30" rx="7"/><text class="it" x="1018" y="174">Performance data</text>
+    <rect class="item" x="1008" y="190" width="162" height="30" rx="7"/><text class="it" x="1018" y="210">C360 · Employee</text>
+    <rect class="item" x="1008" y="226" width="162" height="30" rx="7"/><text class="it" x="1018" y="246">C360 · Branch leader</text>
+    <rect class="item" x="1008" y="262" width="162" height="30" rx="7"/><text class="it" x="1018" y="282">C360 · District and above</text>
+
+    <rect class="group" x="1190" y="122" width="182" height="186" rx="10"/>
+    <text class="gh" x="1202" y="142">AGENT ENDPOINTS</text>
+    <rect class="item" x="1200" y="154" width="162" height="30" rx="7"/><text class="it" x="1210" y="174">perf-policy-citations</text>
+    <rect class="item" x="1200" y="190" width="162" height="30" rx="7"/><text class="it" x="1210" y="210">benefits-agent</text>
+    <rect class="item" x="1200" y="226" width="162" height="30" rx="7"/><text class="it" x="1210" y="246">python_exec (UC function)</text>
+
+    <path class="edge" d="M897,320 V310" marker-end="url(#a)"/>
+    <path class="edge" d="M1089,320 V310" marker-end="url(#a)"/>
+    <path class="edge" d="M1281,320 V310" marker-end="url(#a)"/>
+    <rect class="card dbx key" x="806" y="320" width="566" height="50" rx="10"/>
+    <text class="ct" x="820" y="341">Supervisor agent <tspan class="mono" dx="6">mas-53dbd2d7-endpoint</tspan></text>
+    <text class="cs" x="820" y="359">routes to 10 tools · Coaching360 tools only when the app sends a directive</text>
+    <rect class="card dbx" x="806" y="382" width="566" height="50" rx="10"/>
+    <text class="ct" x="820" y="403">Foundation model <tspan class="mono" dx="6">databricks-gpt-5-4-mini</tspan></text>
+    <text class="cs" x="820" y="421">fast path only: builds the retrieval plan, then writes the answer</text>
+
+    <rect class="zone z-data" x="790" y="470" width="590" height="400" rx="12"/>
+    <text class="st" x="806" y="492">DATA · UNITY CATALOG</text>
+
+    <rect class="card data key" x="806" y="542" width="262" height="50" rx="10"/>
+    <text class="ct" x="820" y="563">SQL warehouse (serverless)</text>
+    <text class="cs" x="820" y="581">citations, fast views, persona lookup</text>
+    <rect class="card data" x="806" y="604" width="262" height="50" rx="10"/>
+    <text class="ct" x="820" y="625">Document volumes</text>
+    <text class="cs" x="820" y="643">source PDFs, 5 domains</text>
+    <rect class="card data" x="806" y="752" width="262" height="50" rx="10"/>
+    <text class="ct" x="820" y="773">flask_app_logs</text>
+    <text class="mono" x="820" y="791">workspace.default</text>
+
+    <rect class="card data" x="1088" y="506" width="284" height="50" rx="10"/>
+    <text class="ct" x="1102" y="527">Vector Search</text>
+    <text class="cs" x="1102" y="545">mariner-bot-endpoint · 6 indexes, triggered sync</text>
+    <rect class="card data" x="1088" y="568" width="284" height="50" rx="10"/>
+    <text class="ct" x="1102" y="589">Chunk tables</text>
+    <text class="cs" x="1102" y="607">parsed from the volumes, feed the indexes</text>
+    <rect class="card data" x="1088" y="630" width="284" height="50" rx="10"/>
+    <text class="ct" x="1102" y="651">performance_test</text>
+    <text class="cs" x="1102" y="669">19 tables · app_fast_* daily materialized views</text>
+    <rect class="card data" x="1088" y="692" width="284" height="50" rx="10"/>
+    <text class="ct" x="1102" y="713">coaching360demo + c360_*</text>
+    <text class="cs" x="1102" y="731">~42 source tables · level views by role</text>
+    <text class="cs" x="1088" y="780">Knowledge Assistants search the indexes.</text>
+    <text class="cs" x="1088" y="798">Genie spaces query the tables through</text>
+    <text class="cs" x="1088" y="816">the SQL warehouse.</text>
+
+    <!-- Edges: browser ↔ app -->
+    <path class="edge" d="M242,135 H318" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text class="el" x="280" y="127" text-anchor="middle">HTTPS · SSE</text>
+    <path class="edge" d="M318,629 H242" marker-end="url(#a)"/>
+    <text class="el" x="280" y="621" text-anchor="middle">PDF</text>
+    <path class="edge" d="M318,839 H262" marker-end="url(#a)"/>
+    <text class="el" x="290" y="831" text-anchor="middle">stdout</text>
+
+    <!-- Edges: app → agents -->
+    <path class="edge direct" d="M702,221 H804" marker-end="url(#a)"/>
+    <text class="el" x="752" y="213" text-anchor="middle">skips Supervisor</text>
+    <path class="edge" d="M702,283 H745 V335 H804" marker-end="url(#a)"/>
+    <text class="el" x="752" y="275" text-anchor="middle">level directive</text>
+    <path class="edge" d="M702,355 H804" marker-end="url(#a)"/>
+    <text class="el" x="752" y="372" text-anchor="middle">Responses API</text>
+    <path class="edge" d="M702,402 H804" marker-end="url(#a)"/>
+    <text class="el" x="752" y="394" text-anchor="middle">plan + write</text>
+    <path class="edge" d="M702,420 H755 V557 H804" marker-end="url(#a)"/>
+
+    <!-- Edges: app → data -->
+    <path class="edge" d="M702,575 H804" marker-end="url(#a)"/>
+    <text class="el" x="735" y="590" text-anchor="middle">SQL</text>
+    <path class="edge" d="M702,629 H804" marker-end="url(#a)"/>
+    <text class="el" x="752" y="621" text-anchor="middle">read PDF</text>
+    <path class="edge" d="M702,777 H804" marker-end="url(#a)"/>
+    <text class="el" x="752" y="769" text-anchor="middle">insert rows</text>
+  </svg>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw" style="border-color:var(--line);background:var(--bg)"></i>Employee's device</span>
+    <span><i class="sw" style="border-color:var(--app);background:var(--app-tint)"></i>App container (AWS)</span>
+    <span><i class="sw" style="border-color:var(--dbx);background:var(--dbx-tint)"></i>Databricks serving</span>
+    <span><i class="sw" style="border-color:var(--data);background:var(--data-tint)"></i>Databricks data</span>
+    <span><svg width="34" height="10" style="min-width:0;width:34px"><path d="M0,5 H34" class="edge"/></svg>call</span>
+    <span><svg width="34" height="10" style="min-width:0;width:34px"><path d="M0,5 H34" class="edge direct"/></svg>direct call, skips the Supervisor</span>
+  </div>
+
+  <div class="notes">
+    <div><h2>Routes</h2><p>Coaching360 chats are handled first, then slash commands. Performance questions try the fast path; anything it can't answer, and every other question, goes to the Supervisor.</p></div>
+    <div><h2>Citations</h2><p>Agents return references; the app checks them against the chunk tables through the SQL warehouse and links each one to its PDF page.</p></div>
+    <div><h2>Precomputed data</h2><p>The fast-path views and the Coaching360 prepared tables are materialized views refreshed daily, so the app and Genie read them without rebuilding joins.</p></div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+{
+  "name": "mariner-supevisor_agent",
+  "description": "Routes Mariner employee questions to the authorized Branch Operations, Employee Handbook, and Benefits specialists, then returns concise grounded answers while preserving specialist source references.",
+  "instructions_file": "instructions.md",
+  "agents": [
+    {
+      "agent_type": "knowledge-assistant",
+      "knowledge_assistant": "mariner-policy-assistant",
+      "description": "Answers questions about branch operations policies and procedures, including daily branch operations, operational controls, branch audits, loan-file and document retention, staffing, travel booking and Navan accounts, expense management, corporate cards, mileage reimbursement, and business expenses."
+    },
+    {
+      "agent_type": "knowledge-assistant",
+      "knowledge_assistant": "mariner-handbook-assistant",
+      "description": "Answers questions about the Mariner Employee Handbook, including attendance, timekeeping, workplace expectations, employee conduct, dress code, social media guidelines, acceptable technology use, confidentiality, workplace safety, reporting concerns, disciplinary processes, jury duty leave, voting leave, and civic-duty leave."
+    },
+    {
+      "agent_type": "genie-space",
+      "genie_space": "mariner-performance-data-assitant",
+      "description": "Queries structured employee performance data across 7 views: employee profiles, quarterly performance ratings and loan production (target vs. funded amounts, attainment %), competency ratings (Business Domain Knowledge, Communication, Career Development, Strategy and Execution), goal status and completion tracking, branch-level quarterly summaries (avg rating, attainment, funded loans), review compliance (overdue reviews, missing meetings, missing acknowledgments), and multi-quarter performance history. Covers Q1 2025 through Q3 2026, Great Lakes and Southwest regions."
+    },
+    {
+      "agent_type": "unity-catalog-function",
+      "unity_catalog_function": "system.ai.python_exec",
+      "description": "Executes Python code in a stateless sandboxed environment and returns its stdout. The runtime cannot access files or read previous executions' output. All operations must be self-contained, using only standard Python libraries. Calls to other tools are prohibited."
+    },
+    {
+      "agent_type": "serving-endpoint (agent endpoint)",
+      "serving_endpoint": "perf-policy-citations-dev",
+      "description": "Answers Employee Performance Policy questions (rating definitions, meeting requirements, bonus and promotion criteria, PIPs) with registry-backed structured citations.",
+      "note": "Called by the trial Supervisor through MCP approval requests. Rename to perf-policy-citations in prod."
+    },
+    {
+      "agent_type": "serving-endpoint (agent endpoint)",
+      "serving_endpoint": "benefits-agent-endpoint",
+      "description": "Answers employee benefits questions: eligibility, enrollment, medical/dental/vision, PPO/HMO plans, retirement, insurance, wellness, qualifying life events.",
+      "note": "NOT RECOMMENDED for prod: this custom agent has no retrieval. Use the mariner-benefits-assistant Knowledge Assistant instead (same description)."
+    },
+    {
+      "agent_type": "genie-space",
+      "genie_space": "Coaching360 - My Development",
+      "tool_id": "coaching360_employee_data",
+      "description": "Coaching360 data for an employee (Account Representative, Assistant Branch Manager, Branch Manager Trainee): their own KPIs, DPR scorecard, calls, coaching records, Success Plans, tasks, ACE payout estimate and policy violations. Use only when the Coaching360 directive says level employee.",
+      "note": "Coaching360 (added 2026-10-23). Called only when the app sends a Coaching360 routing directive."
+    },
+    {
+      "agent_type": "genie-space",
+      "genie_space": "Coaching360 - Branch Leader",
+      "tool_id": "coaching360_branch_data",
+      "description": "Coaching360 data for a Branch Manager: team KPIs and rankings, branch scorecard, coaching records and comments, Success Plans, tasks, accountability meetings, branch visits, payout estimates and policy violations for their branches. Use only when the Coaching360 directive says level branch.",
+      "note": "Coaching360 (added 2026-10-23). Called only when the app sends a Coaching360 routing directive."
+    },
+    {
+      "agent_type": "genie-space",
+      "genie_space": "Coaching360 - District and Above",
+      "tool_id": "coaching360_district_data",
+      "description": "Coaching360 data for District Managers, AVPs and senior leaders: branch and district scorecards, turnover, coaching activity, branch visits, accountability meetings, payout estimates and policy violations for their districts. Use only when the Coaching360 directive says level district.",
+      "note": "Coaching360 (added 2026-10-23). Called only when the app sends a Coaching360 routing directive."
+    },
+    {
+      "agent_type": "knowledge-assistant",
+      "knowledge_assistant": "mariner-coaching360-guide",
+      "tool_id": "coaching360_guide",
+      "description": "Coaching360 Guide: answers how the Coaching360 application works (features, workflows, KPI scoring rules, statuses, roles) from the Coaching360 BRD. Not for anyone's personal data.",
+      "note": "Coaching360 (added 2026-10-23). Called only when the app sends a Coaching360 routing directive."
+    }
+  ]
+}

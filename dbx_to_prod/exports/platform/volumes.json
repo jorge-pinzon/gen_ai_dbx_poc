@@ -1,0 +1,77 @@
+[
+  {
+    "volume": "workspace.default.benefits_docs",
+    "type": "MANAGED",
+    "files": [
+      "Benefits _ Mariner Finance.pdf"
+    ]
+  },
+  {
+    "volume": "workspace.default.branch_operations_docs",
+    "type": "MANAGED",
+    "files": [
+      "BRANCH_OPERATIONS_BRANCH_ASSIST_BRANCH_PROCEDURES.pdf",
+      "BRANCH_OPERATIONS_RECORD_RETENTION.pdf",
+      "EMPLOYEE_REIMBURSEMENT_AND_BUSINESS_TRAVEL_EXPENSES.pdf",
+      "Lending/Autopay_Policy.pdf"
+    ]
+  },
+  {
+    "volume": "workspace.default.bronze_ol_checkpoints",
+    "type": "MANAGED",
+    "files": []
+  },
+  {
+    "volume": "workspace.default.bronze_ol_quarantine",
+    "type": "MANAGED",
+    "files": []
+  },
+  {
+    "volume": "workspace.default.consumer_lending",
+    "type": "MANAGED",
+    "files": []
+  },
+  {
+    "volume": "workspace.default.customer_dm",
+    "type": "MANAGED",
+    "files": []
+  },
+  {
+    "volume": "workspace.default.employee_handbook_docs",
+    "type": "MANAGED",
+    "files": [
+      "2026 Employee Handbook v1.pdf"
+    ]
+  },
+  {
+    "volume": "workspace.default.mariner",
+    "type": "MANAGED",
+    "files": [
+      "applicationdata.json",
+      "applications.csv",
+      "branches.csv",
+      "customers.csv",
+      "dimloanmaster_202609161206.csv",
+      "loans.csv",
+      "online_lending/applicantdatas_2.json",
+      "online_lending/applicationdatas_2.json",
+      "payments.csv"
+    ]
+  },
+  {
+    "volume": "workspace.default.mariner_data",
+    "type": "MANAGED",
+    "files": []
+  },
+  {
+    "volume": "workspace.performance_test.data",
+    "type": "MANAGED",
+    "files": [
+      "INSTRUCTIONS_PERFORMANCE.pdf",
+      "employee_performance_synthetic_data.xlsx",
+      "er_diagram.png",
+      "performance_test_ER_diagram",
+      "performance_test_ER_diagram.dot"
+    ]
+  }
+]

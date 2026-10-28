@@ -1,0 +1,1180 @@
+{
+ "version": "2",
+ "data_sources": {
+  "tables": [
+   {
+    "identifier": "workspace.c360_district.accountability_meetings",
+    "description": [
+     "Branch meetings and district (DM with BMs) meetings in scope."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.accountability_participants",
+    "description": [
+     "Participant notes and plans of action for those meetings."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.ace_payouts",
+    "description": [
+     "ACE incentive payout estimates for employees and BMs at those branches."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.avp_payouts",
+    "description": [
+     "District manager (AVP) ACE payout estimates."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.branch_monthly_performance",
+    "description": [
+     "Branch / BM monthly scorecard inputs, with BranchName, BMName, DistrictName and KpiMonth."
+    ],
+    "column_configs": [
+     {
+      "column_name": "BranchName",
+      "description": [
+       "Branch name."
+      ],
+      "synonyms": [
+       "branch",
+       "location",
+       "office"
+      ]
+     },
+     {
+      "column_name": "Branch_ROA_Percentage",
+      "description": [
+       "Branch return on assets (fraction, higher is better)."
+      ],
+      "synonyms": [
+       "ROA",
+       "return on assets"
+      ]
+     },
+     {
+      "column_name": "DLQ3060DayPerc_Actual",
+      "description": [
+       "30-89 day delinquency rate (fraction, lower is better). The source column name says 3060 but it holds the 30-89 day rate."
+      ],
+      "synonyms": [
+       "30-89 day delinquency",
+       "30 to 89 day DLQ",
+       "delinquency 30-89"
+      ]
+     },
+     {
+      "column_name": "DLQ3089DayPerc_Goal",
+      "description": [
+       "Goal for the 30-89 day delinquency rate (fraction)."
+      ],
+      "synonyms": [
+       "30-89 day delinquency goal"
+      ]
+     },
+     {
+      "column_name": "DLQCurrentMonthPerc_Actual",
+      "description": [
+       "Current-month delinquency rate (fraction, lower is better)."
+      ],
+      "synonyms": [
+       "delinquency",
+       "DLQ",
+       "past due rate"
+      ]
+     },
+     {
+      "column_name": "DLQCurrentMonthPerc_Goal",
+      "description": [
+       "Current-month delinquency goal (fraction)."
+      ],
+      "synonyms": [
+       "delinquency goal",
+       "DLQ goal"
+      ]
+     },
+     {
+      "column_name": "Direct_Loans_MTD_LPE",
+      "description": [
+       "Branch loans per employee, month to date."
+      ],
+      "synonyms": [
+       "branch LPE"
+      ]
+     },
+     {
+      "column_name": "KpiMonth",
+      "description": [
+       "First day of the KPI month."
+      ],
+      "synonyms": [
+       "month",
+       "period"
+      ]
+     },
+     {
+      "column_name": "TotalVolumeDollars",
+      "description": [
+       "Total loan volume in US dollars for the month (higher is better)."
+      ],
+      "synonyms": [
+       "volume",
+       "dollar volume",
+       "production dollars",
+       "sales"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.branch_turnover",
+    "description": [
+     "Branch YTD turnover (retired from the BM scorecard)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.branch_visit_plans",
+    "description": [
+     "Planned branch visits."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.branch_visit_topics",
+    "description": [
+     "Discussion topics and follow-ups from those visits."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.branch_visits",
+    "description": [
+     "Branch visit reports, including confidential leadership feedback."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.branches",
+    "description": [
+     "Branches I can see, with district, region and Coverage (own branch, relief coverage until a date, or in scope)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.call_activity",
+    "description": [
+     "Daily outbound calls for the team."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.call_goals",
+    "description": [
+     "Outbound call and contact targets for the team."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.coaching_acknowledgements",
+    "description": [
+     "Employee acknowledgements of those coaching records."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.coaching_comments",
+    "description": [
+     "Comments on those coaching records, including internal manager notes."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.coaching_records",
+    "description": [
+     "All coaching records at those branches."
+    ],
+    "column_configs": [
+     {
+      "column_name": "Status",
+      "description": [
+       "Submitted or PendingAcknowledgement."
+      ],
+      "synonyms": [
+       "coaching status"
+      ]
+     },
+     {
+      "column_name": "TopicCode",
+      "description": [
+       "Coaching topic."
+      ],
+      "synonyms": [
+       "topic",
+       "subject"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.data_status",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.district_monthly_performance",
+    "description": [
+     "District / AVP monthly scorecard inputs."
+    ],
+    "column_configs": [
+     {
+      "column_name": "DLQ_30_89_Percentage",
+      "description": [
+       "District 30-89 day delinquency score (100 = on goal, higher is better). A score, not a rate."
+      ],
+      "synonyms": [
+       "DLQ score",
+       "delinquency score"
+      ]
+     },
+     {
+      "column_name": "DistrictLPE",
+      "description": [
+       "District loans per employee."
+      ],
+      "synonyms": [
+       "LPE",
+       "district LPE"
+      ]
+     },
+     {
+      "column_name": "ROA_Percentage",
+      "description": [
+       "District ROA score (100 = on goal, higher is better)."
+      ],
+      "synonyms": [
+       "ROA score",
+       "return on assets"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.district_turnover",
+    "description": [
+     "Monthly district turnover % (2026+ KPI = trailing 12-month sum, lower is better)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.districts",
+    "description": [
+     "Districts I can see."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.dpr_scorecard",
+    "description": [
+     "Published DPR scorecard metrics for the team, with EmployeeName, KpiName and MetricMonth."
+    ],
+    "column_configs": [
+     {
+      "column_name": "KpiName",
+      "description": [
+       "Scorecard KPI name."
+      ],
+      "synonyms": [
+       "KPI",
+       "metric",
+       "measure"
+      ]
+     },
+     {
+      "column_name": "MetricMonth",
+      "description": [
+       "First day of the scorecard month."
+      ],
+      "synonyms": [
+       "month"
+      ]
+     },
+     {
+      "column_name": "MetricValue",
+      "description": [
+       "Scorecard value; ratios are fractions (0.25 = 25%)."
+      ],
+      "synonyms": [
+       "score",
+       "value",
+       "result"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.employee_monthly_kpis",
+    "description": [
+     "Monthly production and delinquency per employee, with EmployeeName, UserTitle, BranchName and KpiMonth."
+    ],
+    "column_configs": [
+     {
+      "column_name": "DLQ3060DayPerc_Actual",
+      "description": [
+       "30-89 day delinquency rate (fraction, lower is better). The source column name says 3060 but it holds the 30-89 day rate."
+      ],
+      "synonyms": [
+       "30-89 day delinquency",
+       "30 to 89 day DLQ",
+       "delinquency 30-89"
+      ]
+     },
+     {
+      "column_name": "DLQ3089DayPerc_Goal",
+      "description": [
+       "Goal for the 30-89 day delinquency rate (fraction)."
+      ],
+      "synonyms": [
+       "30-89 day delinquency goal"
+      ]
+     },
+     {
+      "column_name": "DLQCurrentMonthPerc_Actual",
+      "description": [
+       "Current-month delinquency rate (fraction, lower is better)."
+      ],
+      "synonyms": [
+       "delinquency",
+       "DLQ",
+       "past due rate"
+      ]
+     },
+     {
+      "column_name": "DLQCurrentMonthPerc_Goal",
+      "description": [
+       "Current-month delinquency goal (fraction)."
+      ],
+      "synonyms": [
+       "delinquency goal",
+       "DLQ goal"
+      ]
+     },
+     {
+      "column_name": "EmployeeName",
+      "description": [
+       "Employee full name."
+      ],
+      "synonyms": [
+       "employee",
+       "rep",
+       "team member"
+      ]
+     },
+     {
+      "column_name": "KpiMonth",
+      "description": [
+       "First day of the KPI month."
+      ],
+      "synonyms": [
+       "month",
+       "period"
+      ]
+     },
+     {
+      "column_name": "LPE",
+      "description": [
+       "Loans per employee for the month."
+      ],
+      "synonyms": [
+       "loans per employee"
+      ]
+     },
+     {
+      "column_name": "TotalLoans",
+      "description": [
+       "Number of loans booked in the month."
+      ],
+      "synonyms": [
+       "loans",
+       "loan count",
+       "units",
+       "deals"
+      ]
+     },
+     {
+      "column_name": "TotalVolumeDollars",
+      "description": [
+       "Total loan volume in US dollars for the month (higher is better)."
+      ],
+      "synonyms": [
+       "volume",
+       "dollar volume",
+       "production dollars",
+       "sales"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.kpi_definitions",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.kpi_goals",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.kpi_review_exclusions",
+    "description": [
+     "Employee months excluded from KPI review averages."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.kpi_scoring_bands",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.kpi_scoring_rules",
+    "description": [
+     "Reference data (same for every level)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.policy_violations",
+    "description": [
+     "Policy violations at those branches (account numbers masked)."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.review_comment_approvals",
+    "description": [
+     "Branch months excluded from rolling averages."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.success_plan_comments",
+    "description": [
+     "Comments on the team's Success Plans."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.success_plans",
+    "description": [
+     "Monthly Success Plans (IDPs) for the team."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.tasks",
+    "description": [
+     "Tasks assigned to the team (and to me)."
+    ],
+    "column_configs": [
+     {
+      "column_name": "DueDate",
+      "description": [
+       "Date the task is due."
+      ],
+      "synonyms": [
+       "deadline",
+       "due"
+      ]
+     },
+     {
+      "column_name": "Status",
+      "description": [
+       "Open, In Progress, Escalated or Completed."
+      ],
+      "synonyms": [
+       "task status"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.team_members",
+    "description": [
+     "Employees assigned to those branches."
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.team_overview",
+    "description": [
+     "One row per employee: name, title, branch, latest-month KPIs and rank in branch, open and overdue tasks, coaching in the last 90 days, pending acknowledgements, Success Plan status and open violations. Start here for team questions."
+    ],
+    "column_configs": [
+     {
+      "column_name": "CoachingRecordsLast90Days",
+      "description": [
+       "Coaching records dated in the last 90 days."
+      ],
+      "synonyms": [
+       "recent coaching",
+       "coaching count"
+      ]
+     },
+     {
+      "column_name": "LatestKpiMonth",
+      "description": [
+       "Month the KPI columns refer to (latest month in the data)."
+      ],
+      "synonyms": [
+       "month"
+      ]
+     },
+     {
+      "column_name": "Name",
+      "description": [
+       "Employee full name."
+      ],
+      "synonyms": [
+       "employee",
+       "team member",
+       "rep",
+       "staff"
+      ]
+     },
+     {
+      "column_name": "OpenPolicyViolations",
+      "description": [
+       "Policy violations without completed corrective action."
+      ],
+      "synonyms": [
+       "open violations",
+       "compliance issues"
+      ]
+     },
+     {
+      "column_name": "OpenTasks",
+      "description": [
+       "Tasks not completed."
+      ],
+      "synonyms": [
+       "open tasks",
+       "to-dos",
+       "action items"
+      ]
+     },
+     {
+      "column_name": "OverdueTasks",
+      "description": [
+       "Open tasks past their due date (as of AsOfDate)."
+      ],
+      "synonyms": [
+       "overdue",
+       "late tasks",
+       "past due tasks"
+      ]
+     },
+     {
+      "column_name": "PendingAcknowledgements",
+      "description": [
+       "Coaching records waiting for the employee's acknowledgement."
+      ],
+      "synonyms": [
+       "unacknowledged coaching",
+       "pending acknowledgements"
+      ]
+     },
+     {
+      "column_name": "SuccessPlanStatus",
+      "description": [
+       "Status of the latest non-archived Success Plan (IDP)."
+      ],
+      "synonyms": [
+       "IDP status",
+       "development plan status"
+      ]
+     },
+     {
+      "column_name": "TotalLoans",
+      "description": [
+       "Number of loans booked in the month."
+      ],
+      "synonyms": [
+       "loans",
+       "loan count",
+       "units",
+       "deals"
+      ]
+     },
+     {
+      "column_name": "TotalVolumeDollars",
+      "description": [
+       "Total loan volume in US dollars for the month (higher is better)."
+      ],
+      "synonyms": [
+       "volume",
+       "dollar volume",
+       "production dollars",
+       "sales"
+      ]
+     },
+     {
+      "column_name": "UserTitle",
+      "description": [
+       "Job title."
+      ],
+      "synonyms": [
+       "position",
+       "role",
+       "title"
+      ]
+     },
+     {
+      "column_name": "VolumeRankInBranch",
+      "description": [
+       "Rank by volume within the branch for LatestKpiMonth (1 = highest)."
+      ],
+      "synonyms": [
+       "rank",
+       "ranking",
+       "standing"
+      ]
+     }
+    ]
+   },
+   {
+    "identifier": "workspace.c360_district.visit_followups",
+    "description": [
+     "Branch visits by topic with BranchName, discussion, action plan and the follow-up task's real status (FollowUpStatus, TaskStatus, TaskCompletedDate). Use this for visit briefs and follow-up status."
+    ],
+    "column_configs": [
+     {
+      "column_name": "BranchName",
+      "description": [
+       "Branch name as spelled in the directory."
+      ],
+      "synonyms": [
+       "branch",
+       "location"
+      ]
+     },
+     {
+      "column_name": "FollowUpRequired",
+      "description": [
+       "Whether the topic needed a follow-up. Not the status; use FollowUpStatus for status."
+      ],
+      "synonyms": [
+       "needs follow-up"
+      ]
+     },
+     {
+      "column_name": "FollowUpStatus",
+      "description": [
+       "Real follow-up status from the follow-up task: Completed, Open, In Progress, Overdue (as of AsOfDate), No task created or No follow-up needed."
+      ],
+      "synonyms": [
+       "follow-up status",
+       "action item status"
+      ]
+     },
+     {
+      "column_name": "TaskCompletedDate",
+      "description": [
+       "Date the follow-up task was completed."
+      ],
+      "synonyms": [
+       "completed on",
+       "completion date"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "instructions": {
+  "text_instructions": [
+   {
+    "id": "3c267cde3d2456bfb046037fbad2983e",
+    "content": [
+     "You help District Managers, AVPs and senior leaders oversee their districts: branch and district scorecards, turnover, coaching activity by branch, branch visits, accountability meetings, payout estimates and policy violations.\n",
+     "Tables contain only the branches and districts in this leader's scope. Compare branches by BranchName and districts by DistrictName.\n",
+     "Visit briefs: use visit_brief(branch name), which matches branch names exactly as the directory spells them. Follow-up status is FollowUpStatus (from the follow-up task), never FollowUpRequired.\n",
+     "Recognition notes: lead with the employee's headline KPIs, LPE and DACC loans, from team_scorecard (include last month's LPE and first lien).\n",
+     "Team scorecards: show the 'Branch total' row from team_scorecard as the branch line; exclude it when ranking or listing employees.\n",
+     "Branch visit planning: use branch_brief(branch name). District comparisons: district_comparison (DlqScore and RoaScore are scores where 100 = on goal). District manager visit cadence: dm_visit_cadence.\n",
+     "All rows are already limited to the signed-in person's scope by Unity Catalog. Never say data is hidden or filtered; answer from what the tables return.\n",
+     "If a query returns no rows, say there is no recorded data for that request in your scope. Never guess or invent values.\n",
+     "Months: 'last month', 'this month', 'latest' and no month at all mean data_status.LatestKpiMonth (the latest month with complete KPI data), never a month computed from today's date. The functions already default to it. Name the month in the answer.\n",
+     "Scorecards: use my_scorecard / team_scorecard / branch_scorecard. Goals come only from these functions (LPE goal 1.00, DACC loans goal 2 per month, delinquency goals from the KPI row, outbound call and contact goals from EmployeeGoals; see kpi_goals). Never infer, estimate or change a goal, and report Status values as returned.\n",
+     "Delinquency: always report both measures, labelled 'current month' and '30-89 day', each against its own goal. Dlq30To89Day and the source column DLQ3060DayPerc_Actual hold the 30-89 day rate despite the column name.\n",
+     "Overdue and day counts use the dataset as-of date (data_status.AsOfDate), never current_date().\n",
+     "A month applies to monthly measures (KPIs, scorecards, rankings) only. Never filter coaching records, acknowledgements, tasks, Success Plan approvals or visits by a month unless the question itself names a month for them.\n",
+     "Comparisons: 'last month' and 'year to date' come from the LastMonth / YearToDate columns of the scorecard functions; monthly trends from employee_kpi_trend. Do not compute them yourself. When saying whether a measure is above or below goal, also give last month's value.\n",
+     "Function values are already formatted (LPE 0.86, delinquency 4.57%, first lien 54.6%, scores 108.8). Return them unchanged; sort with the Rank columns.\n",
+     "DPR scorecard ratios are fractions (0.25 = 25%). Show them as percentages with at most one decimal place.\n",
+     "Delinquency (DLQ) measures and turnover are lower-is-better; production, volume, LPE, ROA and contact measures are higher-is-better (see kpi_definitions.IsHigherBetter).\n",
+     "Currency columns are US dollars; format with $ and thousands separators.\n",
+     "Coaching record Status values: Submitted, PendingAcknowledgement. Task Status: Open, In Progress, Escalated, Completed. Success Plan (IDP) Status: Active, Approved, Locked, Archived.\n",
+     "Policy violation Status values: Submitted, Acknowledged, CorrectiveActionInProgress, CorrectiveActionCompleted; 'open' means anything except CorrectiveActionCompleted.\n",
+     "Payout figures are estimates from the ACE incentive model, not final pay. Say so when you report them.\n",
+     "Do not expose SQL, table names or internal ids unless asked; use plain business names.\n",
+     "Keep results small: select only the columns the question needs and aggregate or LIMIT long lists.\n",
+     "Answer with one query. Prefer the trusted functions and the overview table (my_overview / team_overview): they already answer the common questions with names, branches and the latest month. Do not run exploratory or DESCRIBE queries first.\n",
+     "Month parameters of the functions are text: pass the month as 'YYYY-MM' (for example '2026-09'), or NULL for the latest month. A month named without a year means the most recent such month in the data.\n"
+    ]
+   }
+  ],
+  "sql_functions": [
+   {
+    "id": "04353e61ef65510eb9e00b8b52612f65",
+    "identifier": "workspace.c360_district.branch_scorecard"
+   },
+   {
+    "id": "1a14dc5676965fffa67e6d4f096867ed",
+    "identifier": "workspace.c360_district.coaching_history"
+   },
+   {
+    "id": "2309e5be29fd5488bfaed5788455a986",
+    "identifier": "workspace.c360_district.employee_kpi_trend"
+   },
+   {
+    "id": "2ed2962c93a2522d8b4a94e8869cf723",
+    "identifier": "workspace.c360_district.dm_visit_cadence"
+   },
+   {
+    "id": "35c01eaf4e9c5c12b26648f7bbb553ea",
+    "identifier": "workspace.c360_district.pending_acknowledgements"
+   },
+   {
+    "id": "3c0ea95e65b552fb8b75220cd2e05c2c",
+    "identifier": "workspace.c360_district.team_scorecard"
+   },
+   {
+    "id": "5aa2e990488654c19d41e74398fc4588",
+    "identifier": "workspace.c360_district.open_visit_followups"
+   },
+   {
+    "id": "865d1cb9df095096b99ab6ac56688492",
+    "identifier": "workspace.c360_district.team_success_plans"
+   },
+   {
+    "id": "8a60e5c07ae652fba0dd3562f1075802",
+    "identifier": "workspace.c360_district.branch_brief"
+   },
+   {
+    "id": "8dcdda68c36754de840dd27e21414c0a",
+    "identifier": "workspace.c360_district.plans_awaiting_approval"
+   },
+   {
+    "id": "9401a837a937524987868b2daf7bcdf7",
+    "identifier": "workspace.c360_district.district_comparison"
+   },
+   {
+    "id": "b2227afc11b457aa89fe62da4d490847",
+    "identifier": "workspace.c360_district.team_dpr_scorecard"
+   },
+   {
+    "id": "b4ab0fca181a5b03a0b6ed88c6c2b7d7",
+    "identifier": "workspace.c360_district.visit_brief"
+   },
+   {
+    "id": "cd07a4062d96533b8650a07a61057359",
+    "identifier": "workspace.c360_district.team_ranking"
+   },
+   {
+    "id": "f91fa2341ae25afabb29b526608f4ece",
+    "identifier": "workspace.c360_district.overdue_tasks"
+   }
+  ],
+  "example_question_sqls": [
+   {
+    "id": "0537488d52185e95b134563c61c3c825",
+    "question": [
+     "How is District 902 doing compared to the other districts in my region?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.district_comparison(NULL)"
+    ]
+   },
+   {
+    "id": "20b5a0bf1ca255bb8a8da6ed1b90c299",
+    "question": [
+     "Which branch has the highest delinquency?"
+    ],
+    "sql": [
+     "SELECT BranchName, DlqCurrentMonth, DlqCurrentMonthGoal, Dlq30To89Day, Dlq30To89DayGoal, Dlq30To89DayRank\n",
+     "FROM workspace.c360_district.branch_scorecard(NULL)\n",
+     "ORDER BY Dlq30To89DayRank DESC"
+    ]
+   },
+   {
+    "id": "2782936d9bac5eb98114ec05a3d21734",
+    "question": [
+     "How is my district scorecard trending?"
+    ],
+    "sql": [
+     "SELECT d.DistrictName, make_date(p.Year, p.Month, 1) AS month, p.DistrictLPE, p.TotalVolumeDollars, p.DLQ_CurrentMonth_Percentage, p.ROA_Percentage, p.TurnoverScore\n",
+     "FROM workspace.c360_district.district_monthly_performance p JOIN workspace.c360_district.districts d ON CAST(d.DistrictNumber AS INT) = p.DistrictNumber\n",
+     "ORDER BY d.DistrictName, month DESC"
+    ]
+   },
+   {
+    "id": "2889cee143d95eb794fc69fc653d01e8",
+    "question": [
+     "Open policy violations by branch and escalation level"
+    ],
+    "sql": [
+     "SELECT BranchName, EscalationLevel, COUNT(*) AS open_violations\n",
+     "FROM workspace.c360_district.policy_violations\n",
+     "WHERE Status <> 'CorrectiveActionCompleted'\n",
+     "GROUP BY BranchName, EscalationLevel\n",
+     "ORDER BY open_violations DESC"
+    ]
+   },
+   {
+    "id": "3c086a9254165299b6e15e9f71d2aae1",
+    "question": [
+     "Which branches have the most coaching records pending acknowledgement or open tasks?"
+    ],
+    "sql": [
+     "SELECT BranchName, SUM(PendingAcknowledgements) AS pending_acknowledgements, SUM(OpenTasks) AS open_tasks\n",
+     "FROM workspace.c360_district.team_overview\n",
+     "GROUP BY BranchName\n",
+     "ORDER BY pending_acknowledgements DESC, open_tasks DESC"
+    ]
+   },
+   {
+    "id": "3e7bf569d0bf5b72b0a14493beae1242",
+    "question": [
+     "Prepare a visit brief for Laurel Fork"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.visit_brief('Laurel Fork')"
+    ]
+   },
+   {
+    "id": "3f634abcb28c50ffbd36c744c0f4c4fa",
+    "question": [
+     "Which branch visit follow-ups are still open?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.open_visit_followups()"
+    ]
+   },
+   {
+    "id": "52e939238efb509c98c3bc96f575d11c",
+    "question": [
+     "Who are the branch managers in my area and how many employees does each branch have?"
+    ],
+    "sql": [
+     "SELECT b.BranchName, b.BMName, COUNT(m.UserDWID) AS active_employees\n",
+     "FROM workspace.c360_district.branches b\n",
+     "LEFT JOIN workspace.c360_district.team_members m ON m.BranchDWID = b.BranchDWID AND m.EmployeeActive\n",
+     "GROUP BY b.BranchName, b.BMName\n",
+     "ORDER BY b.BranchName"
+    ]
+   },
+   {
+    "id": "5321553eda295932af8b53e1e17468ab",
+    "question": [
+     "Give me an overview of the branches in my district"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.branch_scorecard(NULL)"
+    ]
+   },
+   {
+    "id": "6f7ff803ea9951439c7ac04bcbed793a",
+    "question": [
+     "Rank all employees in my district by volume last month"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.team_ranking(NULL)"
+    ]
+   },
+   {
+    "id": "7aca15d764785e64ba6490595222953d",
+    "question": [
+     "Help me plan my next visit to Laurel Fork. What should I know before I walk in?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.branch_brief('Laurel Fork')"
+    ]
+   },
+   {
+    "id": "857796f9e46256b492392f329f236881",
+    "question": [
+     "What is the trailing 12-month turnover for my districts?"
+    ],
+    "sql": [
+     "SELECT d.DistrictName, SUM(t.TurnoverScore) AS turnover_trailing_12m\n",
+     "FROM workspace.c360_district.district_turnover t\n",
+     "JOIN workspace.c360_district.districts d ON CAST(d.DistrictNumber AS INT) = t.DistrictNumber\n",
+     "WHERE make_date(t.Year, t.Month, 1) > add_months((SELECT max(make_date(Year, Month, 1)) FROM workspace.c360_district.district_turnover), -12)\n",
+     "GROUP BY d.DistrictName\n",
+     "ORDER BY turnover_trailing_12m DESC"
+    ]
+   },
+   {
+    "id": "88c7e7f1809f535bb0a094d96acef9fc",
+    "question": [
+     "Which coaching records are waiting for acknowledgement?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.pending_acknowledgements()"
+    ]
+   },
+   {
+    "id": "98af2b246eb75b948d16e51d0d8f3b31",
+    "question": [
+     "Which branches had a visit this quarter?"
+    ],
+    "sql": [
+     "SELECT b.BranchName, COUNT(v.BranchVisitId) AS visits, MAX(v.VisitDate) AS last_visit\n",
+     "FROM workspace.c360_district.branches b\n",
+     "LEFT JOIN workspace.c360_district.branch_visits v ON v.OrganizationalUnitId = b.BranchDWID\n",
+     "  AND v.VisitDate >= date_trunc('quarter', (SELECT AsOfDate FROM workspace.c360_district.data_status))\n",
+     "GROUP BY b.BranchName\n",
+     "ORDER BY visits, b.BranchName"
+    ]
+   },
+   {
+    "id": "c669d63f733b56a78278c8b6bfc3ce4a",
+    "question": [
+     "Are my district managers keeping up with branch visits?"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.dm_visit_cadence()"
+    ]
+   },
+   {
+    "id": "cc59d44feecd518f83468008c3de55e7",
+    "question": [
+     "Compare the branches in my district by volume last month"
+    ],
+    "sql": [
+     "SELECT * FROM workspace.c360_district.branch_scorecard(NULL)"
+    ]
+   },
+   {
+    "id": "d12c14d042465e89b092fafe7cc690e6",
+    "question": [
+     "Which branches have the most overdue tasks?"
+    ],
+    "sql": [
+     "SELECT BranchName, SUM(OverdueTasks) AS overdue_tasks\n",
+     "FROM workspace.c360_district.team_overview\n",
+     "GROUP BY BranchName\n",
+     "ORDER BY overdue_tasks DESC"
+    ]
+   },
+   {
+    "id": "daf486b38c9f58fd87d9019d168dabb8",
+    "question": [
+     "What is the AVP payout estimate for the latest month?"
+    ],
+    "sql": [
+     "SELECT d.DistrictName, p.REPORT_DATE, p.EstPayout\n",
+     "FROM workspace.c360_district.avp_payouts p\n",
+     "JOIN workspace.c360_district.districts d ON CAST(d.DistrictNumber AS INT) = CAST(p.districtnumber AS INT)\n",
+     "WHERE p.REPORT_DATE = (SELECT max(REPORT_DATE) FROM workspace.c360_district.avp_payouts)\n",
+     "ORDER BY p.EstPayout DESC"
+    ]
+   },
+   {
+    "id": "e1a51a7a4b085c4aa20898e2748ce11f",
+    "question": [
+     "How much coaching did each branch document in the last 90 days?"
+    ],
+    "sql": [
+     "SELECT BranchName, SUM(CoachingRecordsLast90Days) AS coaching_records\n",
+     "FROM workspace.c360_district.team_overview\n",
+     "GROUP BY BranchName\n",
+     "ORDER BY coaching_records"
+    ]
+   }
+  ],
+  "join_specs": [
+   {
+    "id": "1ec6f9d886df5e37a069c3d2fa4fd6c6",
+    "left": {
+     "identifier": "workspace.c360_district.employee_monthly_kpis"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.branches"
+    },
+    "sql": [
+     "employee_monthly_kpis.Branch = branches.BranchNumber",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee KPIs to branch"
+    ]
+   },
+   {
+    "id": "2211fc05b09b50a2a0c017a9c9aaab6d",
+    "left": {
+     "identifier": "workspace.c360_district.district_monthly_performance"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.districts"
+    },
+    "sql": [
+     "district_monthly_performance.DistrictNumber = CAST(districts.DistrictNumber AS INT)",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "District scorecard to district"
+    ]
+   },
+   {
+    "id": "2a49fc0b08405797a06fecf6e05ea8e2",
+    "left": {
+     "identifier": "workspace.c360_district.success_plans"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.team_members"
+    },
+    "sql": [
+     "success_plans.EmployeeId = team_members.UserDWID",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Success Plan to employee"
+    ]
+   },
+   {
+    "id": "97cb06df67b357e98b230350503451dd",
+    "left": {
+     "identifier": "workspace.c360_district.district_turnover"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.districts"
+    },
+    "sql": [
+     "district_turnover.DistrictNumber = CAST(districts.DistrictNumber AS INT)",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "District turnover to district"
+    ]
+   },
+   {
+    "id": "acf6f4a6e7d35ea3b15878cb7341a75e",
+    "left": {
+     "identifier": "workspace.c360_district.coaching_comments"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.coaching_records"
+    },
+    "sql": [
+     "coaching_comments.CoachingRecordId = coaching_records.CoachingRecordId",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Comment to coaching record"
+    ]
+   },
+   {
+    "id": "b24f13debf0c5ce091711443bc612844",
+    "left": {
+     "identifier": "workspace.c360_district.branches"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.districts"
+    },
+    "sql": [
+     "branches.DistrictDWID = districts.DistrictDWID",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Branch to district"
+    ]
+   },
+   {
+    "id": "b71021b7a6b4599bb75508a348266d6f",
+    "left": {
+     "identifier": "workspace.c360_district.accountability_participants"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.accountability_meetings"
+    },
+    "sql": [
+     "accountability_participants.AccountabilityMeetingId = accountability_meetings.AccountabilityMeetingId",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Participant to meeting"
+    ]
+   },
+   {
+    "id": "c15528a3cda254a8bc149f4b0959b1e0",
+    "left": {
+     "identifier": "workspace.c360_district.tasks"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.team_members"
+    },
+    "sql": [
+     "tasks.AssignedToEmployeeId = team_members.UserDWID",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Task to employee"
+    ]
+   },
+   {
+    "id": "e13b02b6860952649fcc506dc4da235a",
+    "left": {
+     "identifier": "workspace.c360_district.team_members"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.branches"
+    },
+    "sql": [
+     "team_members.BranchDWID = branches.BranchDWID",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Employee to branch"
+    ]
+   },
+   {
+    "id": "e463c837ee3851cf9f631caa4c9e013e",
+    "left": {
+     "identifier": "workspace.c360_district.coaching_records"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.team_members"
+    },
+    "sql": [
+     "coaching_records.EmployeeId = team_members.UserDWID",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Coaching record to employee"
+    ]
+   },
+   {
+    "id": "e67988763ccb596ebc2d5e64a3f4565d",
+    "left": {
+     "identifier": "workspace.c360_district.branch_visit_topics"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.branch_visits"
+    },
+    "sql": [
+     "branch_visit_topics.BranchVisitId = branch_visits.BranchVisitId",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Visit topic to visit"
+    ]
+   },
+   {
+    "id": "f3d2abb876d551fc8f47112a19cedcb2",
+    "left": {
+     "identifier": "workspace.c360_district.branch_monthly_performance"
+    },
+    "right": {
+     "identifier": "workspace.c360_district.branches"
+    },
+    "sql": [
+     "branch_monthly_performance.Branch = branches.BranchNumber",
+     "--rt=FROM_RELATIONSHIP_TYPE_MANY_TO_ONE--"
+    ],
+    "comment": [
+     "Branch scorecard to branch"
+    ]
+   }
+  ]
+ }
+}

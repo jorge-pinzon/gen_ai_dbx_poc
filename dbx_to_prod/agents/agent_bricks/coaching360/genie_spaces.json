@@ -1,0 +1,24 @@
+{
+ "warehouse": "the prod serverless SQL warehouse (WAREHOUSE_NAME in 00_config)",
+ "note": "One Genie space per Coaching360 level; each reads only its workspace.c360_<level> schema.",
+ "spaces": [
+  {
+   "level": "employee",
+   "title": "Coaching360 - My Development",
+   "description": "Coaching360 data for an employee (Account Representative, Assistant Branch Manager, Branch Manager Trainee): their own KPIs, DPR scorecard, calls, coaching records, Success Plans, tasks, ACE payout estimate and policy violations. Use only when the Coaching360 directive says level employee.",
+   "serialized_space_file": "genie_employee.json"
+  },
+  {
+   "level": "branch",
+   "title": "Coaching360 - Branch Leader",
+   "description": "Coaching360 data for a Branch Manager: team KPIs and rankings, branch scorecard, coaching records and comments, Success Plans, tasks, accountability meetings, branch visits, payout estimates and policy violations for their branches. Use only when the Coaching360 directive says level branch.",
+   "serialized_space_file": "genie_branch.json"
+  },
+  {
+   "level": "district",
+   "title": "Coaching360 - District and Above",
+   "description": "Coaching360 data for District Managers, AVPs and senior leaders: branch and district scorecards, turnover, coaching activity, branch visits, accountability meetings, payout estimates and policy violations for their districts. Use only when the Coaching360 directive says level district.",
+   "serialized_space_file": "genie_district.json"
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+ViolationTypeId,PolicyId,Code,Name,Description,IsActive,RequiresManagerAcknowledgement,RequiresAccountNumber,RequiresApplicationNumber,RequiresApplicationReceivedDate,RequiresGloOfferAmount,RequiresGloExpirationDate,RequiresDefermentsIn12Months,RequiresDefermentsLifetime,RequiresOptionalProductsPurchased,ModifiedDate
+1,1,VT-OPTIONALPRODUCTSOL-CC7D8894D4,Optional product sold without documented disclosure,Optional product sold without documented disclosure.,1,0,1,0,0,0,0,0,0,1,2025-05-01 13:00:00.000
+2,1,VT-OPTIONALPRODUCTADD-3B9EAF8E90,Optional product added without customer consent,Optional product added without customer consent.,1,1,1,0,0,0,0,0,0,1,2025-05-01 13:00:00.000
+3,2,VT-DEFERMENTGRANTEDBE-5E827904DB,Deferment granted beyond policy limit,Deferment granted beyond policy limit.,1,0,1,0,0,0,0,1,1,0,2025-05-01 13:00:00.000
+4,2,VT-DEFERMENTMISSINGAP-964F92780F,Deferment missing approval documentation,Deferment missing approval documentation.,1,0,1,0,0,0,0,0,0,0,2025-05-01 13:00:00.000
+5,3,VT-VAULTACCESSEDWITHO-BDCB0DCB40,Vault accessed without dual control,Vault accessed without dual control.,1,1,0,0,0,0,0,0,0,0,2025-05-01 13:00:00.000
+6,3,VT-CASHDRAWERVARIANCE-326C3B9043,Cash drawer variance not reported,Cash drawer variance not reported.,1,0,0,0,0,0,0,0,0,0,2025-05-01 13:00:00.000
+7,4,VT-MISSINGSIGNEDAPPLI-434EF1F27F,Missing signed application,Missing signed application.,1,0,0,1,1,0,0,0,0,0,2025-05-01 13:00:00.000
+8,4,VT-INCOMEVERIFICATION-5E55041FEB,Income verification not documented,Income verification not documented.,1,0,0,1,0,0,0,0,0,0,2025-05-01 13:00:00.000
+9,5,VT-GLOOFFERPROCESSEDA-6E0CA28B8C,GLO offer processed after expiration,GLO offer processed after expiration.,1,0,0,0,0,1,1,0,0,0,2025-05-01 13:00:00.000
+10,5,VT-GLOAMOUNTCHANGEDWI-3772555DEF,GLO amount changed without approval,GLO amount changed without approval.,1,0,0,0,0,1,0,0,0,0,2025-05-01 13:00:00.000
+11,6,VT-CUSTOMERDOCUMENTSL-4DBDF76036,Customer documents left unsecured,Customer documents left unsecured.,1,1,0,0,0,0,0,0,0,0,2025-05-01 13:00:00.000
+12,6,VT-ACCOUNTINFORMATION-32CD27FA32,Account information shared without verification,Account information shared without verification.,1,1,1,0,0,0,0,0,0,0,2025-05-01 13:00:00.000

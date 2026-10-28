@@ -1,0 +1,27 @@
+{
+  "name": "perf-policy-citations-dev",
+  "task": "agent/v1/responses",
+  "served_entities": [
+    {
+      "entity_name": "workspace.ask_mariner_perf_dev.perf_policy_citations_agent",
+      "entity_version": "2",
+      "workload_size": "Small",
+      "workload_type": "CPU",
+      "scale_to_zero_enabled": true,
+      "min_provisioned_concurrency": null,
+      "max_provisioned_concurrency": null,
+      "environment_variable_names": []
+    }
+  ],
+  "ai_gateway": {
+    "usage_tracking_config": {
+      "enabled": false
+    },
+    "inference_table_config": {
+      "catalog_name": "workspace",
+      "schema_name": "ai_monitoring",
+      "table_name_prefix": "perf_policy_citations_dev",
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,491 @@
+AuditLogId,ViolationId,ActionType,ActionBy,ActionDate,Details,LegacySource,LegacySourceId,CreatedDate
+1,1,Create,bholloway,2025-07-18 15:10:09.414,Violation entered.,,,2025-07-18 15:10:09.414
+2,1,ManagerAcknowledge,zlangford,2025-07-19 22:35:35.461,Manager acknowledged violation.,,,2025-07-19 22:35:35.461
+3,1,StatusChange,zlangford,2025-07-24 06:59:43.193,Status changed to CorrectiveActionCompleted.,,,2025-07-24 06:59:43.193
+4,2,Create,hpennington,2026-03-08 17:46:54.581,Violation entered.,,,2026-03-08 17:46:54.581
+5,2,ManagerAcknowledge,rblackwood,2026-03-12 03:21:29.203,Manager acknowledged violation.,,,2026-03-12 03:21:29.203
+6,3,Create,bholloway,2025-10-29 16:50:58.692,Violation entered.,,,2025-10-29 16:50:58.692
+7,4,Create,fvaldez,2026-09-02 19:25:35.508,Violation entered.,,,2026-09-02 19:25:35.508
+8,4,ManagerAcknowledge,ofenwick,2026-09-06 16:55:04.540,Manager acknowledged violation.,,,2026-09-06 16:55:04.540
+9,5,Create,bholloway,2026-05-26 19:28:16.555,Violation entered.,,,2026-05-26 19:28:16.555
+10,5,ManagerAcknowledge,rblackwood,2026-05-27 11:32:26.995,Manager acknowledged violation.,,,2026-05-27 11:32:26.995
+11,5,StatusChange,rblackwood,2026-05-31 22:57:02.782,Status changed to CorrectiveActionCompleted.,,,2026-05-31 22:57:02.782
+12,6,Create,hpennington,2026-07-06 17:48:20.680,Violation entered.,,,2026-07-06 17:48:20.680
+13,6,ManagerAcknowledge,rblackwood,2026-07-11 09:44:01.509,Manager acknowledged violation.,,,2026-07-11 09:44:01.509
+14,6,StatusChange,rblackwood,2026-07-15 06:00:36.215,Status changed to CorrectiveActionInProgress.,,,2026-07-15 06:00:36.215
+15,7,Create,fvaldez,2026-07-10 18:08:48.224,Violation entered.,,,2026-07-10 18:08:48.224
+16,7,ManagerAcknowledge,fumberto,2026-07-12 10:45:24.649,Manager acknowledged violation.,,,2026-07-12 10:45:24.649
+17,7,StatusChange,fumberto,2026-07-21 16:41:06.775,Status changed to CorrectiveActionCompleted.,,,2026-07-21 16:41:06.775
+18,8,Create,hpennington,2026-06-09 16:18:57.893,Violation entered.,,,2026-06-09 16:18:57.893
+19,8,ManagerAcknowledge,nokonkwo,2026-06-11 07:27:32.435,Manager acknowledged violation.,,,2026-06-11 07:27:32.435
+20,9,Create,fvaldez,2026-04-15 14:15:35.829,Violation entered.,,,2026-04-15 14:15:35.829
+21,9,ManagerAcknowledge,kgreenleaf,2026-04-18 14:43:29.024,Manager acknowledged violation.,,,2026-04-18 14:43:29.024
+22,9,StatusChange,kgreenleaf,2026-04-20 01:46:23.021,Status changed to CorrectiveActionInProgress.,,,2026-04-20 01:46:23.021
+23,10,Create,hpennington,2026-06-11 21:12:29.600,Violation entered.,,,2026-06-11 21:12:29.600
+24,11,Create,fvaldez,2025-11-29 16:49:17.448,Violation entered.,,,2025-11-29 16:49:17.448
+25,11,ManagerAcknowledge,clindqvist,2025-11-30 12:16:39.623,Manager acknowledged violation.,,,2025-11-30 12:16:39.623
+26,11,StatusChange,clindqvist,2025-12-17 08:31:38.589,Status changed to CorrectiveActionCompleted.,,,2025-12-17 08:31:38.589
+27,12,Create,fvaldez,2025-07-25 17:44:47.654,Violation entered.,,,2025-07-25 17:44:47.654
+28,12,ManagerAcknowledge,mvarga,2025-07-28 06:40:28.243,Manager acknowledged violation.,,,2025-07-28 06:40:28.243
+29,12,StatusChange,mvarga,2025-08-01 15:43:15.967,Status changed to CorrectiveActionCompleted.,,,2025-08-01 15:43:15.967
+30,13,Create,fvaldez,2025-09-11 21:47:22.875,Violation entered.,,,2025-09-11 21:47:22.875
+31,14,Create,fvaldez,2026-02-07 20:27:47.173,Violation entered.,,,2026-02-07 20:27:47.173
+32,14,ManagerAcknowledge,aeastwick,2026-02-09 00:37:03.761,Manager acknowledged violation.,,,2026-02-09 00:37:03.761
+33,14,StatusChange,aeastwick,2026-02-12 06:48:47.482,Status changed to CorrectiveActionCompleted.,,,2026-02-12 06:48:47.482
+34,15,Create,hpennington,2026-10-19 19:56:45.313,Violation entered.,,,2026-10-19 19:56:45.313
+35,16,Create,fvaldez,2026-08-27 16:07:31.552,Violation entered.,,,2026-08-27 16:07:31.552
+36,16,ManagerAcknowledge,tnakamura,2026-09-01 11:51:35.068,Manager acknowledged violation.,,,2026-09-01 11:51:35.068
+37,16,StatusChange,tnakamura,2026-09-14 05:35:54.204,Status changed to CorrectiveActionCompleted.,,,2026-09-14 05:35:54.204
+38,17,Create,hpennington,2025-11-12 14:17:51.832,Violation entered.,,,2025-11-12 14:17:51.832
+39,17,ManagerAcknowledge,labernathy,2025-11-17 15:32:48.513,Manager acknowledged violation.,,,2025-11-17 15:32:48.513
+40,17,StatusChange,labernathy,2025-11-29 02:30:29.915,Status changed to CorrectiveActionCompleted.,,,2025-11-29 02:30:29.915
+41,18,Create,hpennington,2025-11-07 15:40:52.052,Violation entered.,,,2025-11-07 15:40:52.052
+42,19,Create,fvaldez,2026-08-27 15:32:55.701,Violation entered.,,,2026-08-27 15:32:55.701
+43,19,ManagerAcknowledge,csherwood,2026-08-28 19:58:35.478,Manager acknowledged violation.,,,2026-08-28 19:58:35.478
+44,19,StatusChange,csherwood,2026-09-09 17:17:01.808,Status changed to CorrectiveActionInProgress.,,,2026-09-09 17:17:01.808
+45,20,Create,bholloway,2025-11-22 15:08:15.346,Violation entered.,,,2025-11-22 15:08:15.346
+46,20,ManagerAcknowledge,ookonkwo,2025-11-25 23:24:49.011,Manager acknowledged violation.,,,2025-11-25 23:24:49.011
+47,20,StatusChange,ookonkwo,2025-12-03 17:59:07.084,Status changed to CorrectiveActionCompleted.,,,2025-12-03 17:59:07.084
+48,21,Create,fvaldez,2026-06-03 13:28:46.275,Violation entered.,,,2026-06-03 13:28:46.275
+49,21,ManagerAcknowledge,zlangford,2026-06-04 07:56:17.247,Manager acknowledged violation.,,,2026-06-04 07:56:17.247
+50,21,StatusChange,zlangford,2026-06-16 16:22:13.983,Status changed to CorrectiveActionCompleted.,,,2026-06-16 16:22:13.983
+51,22,Create,bholloway,2026-03-29 16:57:58.206,Violation entered.,,,2026-03-29 16:57:58.206
+52,22,ManagerAcknowledge,wquarles,2026-04-01 19:38:44.382,Manager acknowledged violation.,,,2026-04-01 19:38:44.382
+53,22,StatusChange,wquarles,2026-04-09 15:31:49.439,Status changed to CorrectiveActionCompleted.,,,2026-04-09 15:31:49.439
+54,23,Create,fvaldez,2025-06-28 18:01:18.902,Violation entered.,,,2025-06-28 18:01:18.902
+55,23,ManagerAcknowledge,gcastellano,2025-07-03 00:29:23.300,Manager acknowledged violation.,,,2025-07-03 00:29:23.300
+56,23,StatusChange,gcastellano,2025-07-13 09:27:26.164,Status changed to CorrectiveActionCompleted.,,,2025-07-13 09:27:26.164
+57,24,Create,fvaldez,2025-09-14 18:05:44.016,Violation entered.,,,2025-09-14 18:05:44.016
+58,24,ManagerAcknowledge,tvarga,2025-09-18 22:59:37.524,Manager acknowledged violation.,,,2025-09-18 22:59:37.524
+59,25,Create,fvaldez,2026-01-28 20:45:29.194,Violation entered.,,,2026-01-28 20:45:29.194
+60,25,ManagerAcknowledge,tormsby,2026-01-31 11:41:01.187,Manager acknowledged violation.,,,2026-01-31 11:41:01.187
+61,26,Create,bholloway,2026-05-30 18:16:01.845,Violation entered.,,,2026-05-30 18:16:01.845
+62,26,ManagerAcknowledge,epemberton,2026-06-03 05:28:03.068,Manager acknowledged violation.,,,2026-06-03 05:28:03.068
+63,26,StatusChange,epemberton,2026-06-21 14:26:52.598,Status changed to CorrectiveActionCompleted.,,,2026-06-21 14:26:52.598
+64,27,Create,fvaldez,2025-08-18 18:51:29.728,Violation entered.,,,2025-08-18 18:51:29.728
+65,28,Create,hpennington,2026-01-20 18:00:50.203,Violation entered.,,,2026-01-20 18:00:50.203
+66,28,ManagerAcknowledge,wpemberton,2026-01-25 01:53:18.593,Manager acknowledged violation.,,,2026-01-25 01:53:18.593
+67,28,StatusChange,wpemberton,2026-02-03 02:31:16.243,Status changed to CorrectiveActionCompleted.,,,2026-02-03 02:31:16.243
+68,29,Create,bholloway,2025-07-03 18:59:07.832,Violation entered.,,,2025-07-03 18:59:07.832
+69,30,Create,fvaldez,2025-12-16 16:15:19.213,Violation entered.,,,2025-12-16 16:15:19.213
+70,30,ManagerAcknowledge,cbellweather,2025-12-18 08:07:55.645,Manager acknowledged violation.,,,2025-12-18 08:07:55.645
+71,30,StatusChange,cbellweather,2025-12-30 05:45:43.978,Status changed to CorrectiveActionCompleted.,,,2025-12-30 05:45:43.978
+72,31,Create,bholloway,2025-08-01 15:48:01.719,Violation entered.,,,2025-08-01 15:48:01.719
+73,31,ManagerAcknowledge,pwestbrook,2025-08-07 05:00:32.252,Manager acknowledged violation.,,,2025-08-07 05:00:32.252
+74,31,StatusChange,pwestbrook,2025-08-17 19:42:48.219,Status changed to CorrectiveActionCompleted.,,,2025-08-17 19:42:48.219
+75,32,Create,hpennington,2026-05-22 13:38:22.932,Violation entered.,,,2026-05-22 13:38:22.932
+76,32,ManagerAcknowledge,rblackwood,2026-05-25 00:24:06.221,Manager acknowledged violation.,,,2026-05-25 00:24:06.221
+77,32,StatusChange,rblackwood,2026-05-31 06:08:33.928,Status changed to CorrectiveActionCompleted.,,,2026-05-31 06:08:33.928
+78,33,Create,hpennington,2025-07-14 20:41:13.327,Violation entered.,,,2025-07-14 20:41:13.327
+79,33,ManagerAcknowledge,avaldez,2025-07-16 22:04:44.381,Manager acknowledged violation.,,,2025-07-16 22:04:44.381
+80,33,StatusChange,avaldez,2025-07-26 11:09:01.098,Status changed to CorrectiveActionInProgress.,,,2025-07-26 11:09:01.098
+81,34,Create,hpennington,2026-06-13 20:38:21.264,Violation entered.,,,2026-06-13 20:38:21.264
+82,35,Create,bholloway,2026-07-25 16:42:33.891,Violation entered.,,,2026-07-25 16:42:33.891
+83,35,ManagerAcknowledge,mzeller2,2026-07-27 12:48:46.325,Manager acknowledged violation.,,,2026-07-27 12:48:46.325
+84,36,Create,fvaldez,2025-10-26 20:25:20.325,Violation entered.,,,2025-10-26 20:25:20.325
+85,36,ManagerAcknowledge,fjessup,2025-10-30 15:10:44.838,Manager acknowledged violation.,,,2025-10-30 15:10:44.838
+86,36,StatusChange,fjessup,2025-11-16 18:48:07.126,Status changed to CorrectiveActionCompleted.,,,2025-11-16 18:48:07.126
+87,37,Create,bholloway,2026-08-09 18:29:30.209,Violation entered.,,,2026-08-09 18:29:30.209
+88,37,ManagerAcknowledge,tvarga,2026-08-10 15:13:33.674,Manager acknowledged violation.,,,2026-08-10 15:13:33.674
+89,37,StatusChange,tvarga,2026-08-28 15:11:34.564,Status changed to CorrectiveActionInProgress.,,,2026-08-28 15:11:34.564
+90,38,Create,hpennington,2026-04-17 15:48:14.698,Violation entered.,,,2026-04-17 15:48:14.698
+91,38,ManagerAcknowledge,fkincaid,2026-04-20 11:15:25.199,Manager acknowledged violation.,,,2026-04-20 11:15:25.199
+92,38,StatusChange,fkincaid,2026-05-04 10:22:17.212,Status changed to CorrectiveActionCompleted.,,,2026-05-04 10:22:17.212
+93,39,Create,hpennington,2026-06-08 14:51:38.960,Violation entered.,,,2026-06-08 14:51:38.960
+94,39,ManagerAcknowledge,onorthcott,2026-06-14 06:39:38.526,Manager acknowledged violation.,,,2026-06-14 06:39:38.526
+95,40,Create,hpennington,2025-10-06 13:39:46.240,Violation entered.,,,2025-10-06 13:39:46.240
+96,40,ManagerAcknowledge,ningram,2025-10-10 18:42:54.222,Manager acknowledged violation.,,,2025-10-10 18:42:54.222
+97,40,StatusChange,ningram,2025-10-27 02:33:32.636,Status changed to CorrectiveActionCompleted.,,,2025-10-27 02:33:32.636
+98,41,Create,hpennington,2025-10-20 18:29:47.562,Violation entered.,,,2025-10-20 18:29:47.562
+99,41,ManagerAcknowledge,onorthcott,2025-10-24 16:44:40.106,Manager acknowledged violation.,,,2025-10-24 16:44:40.106
+100,42,Create,hpennington,2025-10-24 18:15:07.630,Violation entered.,,,2025-10-24 18:15:07.630
+101,42,ManagerAcknowledge,thuxley,2025-10-29 21:18:18.832,Manager acknowledged violation.,,,2025-10-29 21:18:18.832
+102,43,Create,hpennington,2025-06-24 16:14:43.223,Violation entered.,,,2025-06-24 16:14:43.223
+103,43,ManagerAcknowledge,zlangford,2025-06-26 21:28:33.447,Manager acknowledged violation.,,,2025-06-26 21:28:33.447
+104,44,Create,bholloway,2026-08-05 14:20:05.592,Violation entered.,,,2026-08-05 14:20:05.592
+105,44,ManagerAcknowledge,lhuxley,2026-08-06 23:16:50.996,Manager acknowledged violation.,,,2026-08-06 23:16:50.996
+106,44,StatusChange,lhuxley,2026-08-11 12:48:14.604,Status changed to CorrectiveActionCompleted.,,,2026-08-11 12:48:14.604
+107,45,Create,bholloway,2025-09-12 20:01:20.948,Violation entered.,,,2025-09-12 20:01:20.948
+108,45,ManagerAcknowledge,dbellweather,2025-09-18 17:49:23.251,Manager acknowledged violation.,,,2025-09-18 17:49:23.251
+109,45,StatusChange,dbellweather,2025-09-22 02:26:34.557,Status changed to CorrectiveActionInProgress.,,,2025-09-22 02:26:34.557
+110,46,Create,fvaldez,2026-04-25 16:31:52.543,Violation entered.,,,2026-04-25 16:31:52.543
+111,46,ManagerAcknowledge,dormsby2,2026-04-28 19:44:57.944,Manager acknowledged violation.,,,2026-04-28 19:44:57.944
+112,46,StatusChange,dormsby2,2026-05-11 10:40:27.377,Status changed to CorrectiveActionInProgress.,,,2026-05-11 10:40:27.377
+113,47,Create,bholloway,2026-06-06 16:01:06.217,Violation entered.,,,2026-06-06 16:01:06.217
+114,47,ManagerAcknowledge,fumberto,2026-06-11 20:25:32.094,Manager acknowledged violation.,,,2026-06-11 20:25:32.094
+115,47,StatusChange,fumberto,2026-06-20 19:36:39.868,Status changed to CorrectiveActionCompleted.,,,2026-06-20 19:36:39.868
+116,48,Create,bholloway,2026-05-28 19:22:07.004,Violation entered.,,,2026-05-28 19:22:07.004
+117,48,ManagerAcknowledge,kfoxworth2,2026-06-02 13:16:48.690,Manager acknowledged violation.,,,2026-06-02 13:16:48.690
+118,49,Create,bholloway,2026-03-11 17:16:16.748,Violation entered.,,,2026-03-11 17:16:16.748
+119,49,ManagerAcknowledge,jwestbrook,2026-03-15 06:24:32.192,Manager acknowledged violation.,,,2026-03-15 06:24:32.192
+120,49,StatusChange,jwestbrook,2026-03-27 16:36:09.262,Status changed to CorrectiveActionCompleted.,,,2026-03-27 16:36:09.262
+121,50,Create,bholloway,2025-11-11 18:57:20.679,Violation entered.,,,2025-11-11 18:57:20.679
+122,50,ManagerAcknowledge,feastwick,2025-11-14 21:11:58.148,Manager acknowledged violation.,,,2025-11-14 21:11:58.148
+123,51,Create,bholloway,2026-03-03 16:22:50.958,Violation entered.,,,2026-03-03 16:22:50.958
+124,51,ManagerAcknowledge,zlangford,2026-03-09 01:49:25.554,Manager acknowledged violation.,,,2026-03-09 01:49:25.554
+125,51,StatusChange,zlangford,2026-03-22 07:56:42.133,Status changed to CorrectiveActionCompleted.,,,2026-03-22 07:56:42.133
+126,52,Create,bholloway,2026-08-14 17:55:04.512,Violation entered.,,,2026-08-14 17:55:04.512
+127,52,ManagerAcknowledge,ghuxley,2026-08-16 18:39:26.331,Manager acknowledged violation.,,,2026-08-16 18:39:26.331
+128,52,StatusChange,ghuxley,2026-09-05 15:38:33.006,Status changed to CorrectiveActionCompleted.,,,2026-09-05 15:38:33.006
+129,53,Create,hpennington,2026-06-10 16:32:56.738,Violation entered.,,,2026-06-10 16:32:56.738
+130,53,ManagerAcknowledge,jwestbrook,2026-06-14 09:58:40.982,Manager acknowledged violation.,,,2026-06-14 09:58:40.982
+131,54,Create,fvaldez,2026-01-24 17:54:37.668,Violation entered.,,,2026-01-24 17:54:37.668
+132,54,ManagerAcknowledge,jjennings,2026-01-27 19:06:06.364,Manager acknowledged violation.,,,2026-01-27 19:06:06.364
+133,54,StatusChange,jjennings,2026-02-15 05:18:50.588,Status changed to CorrectiveActionInProgress.,,,2026-02-15 05:18:50.588
+134,55,Create,bholloway,2025-08-14 15:40:23.531,Violation entered.,,,2025-08-14 15:40:23.531
+135,55,ManagerAcknowledge,zthornbury,2025-08-18 10:10:07.983,Manager acknowledged violation.,,,2025-08-18 10:10:07.983
+136,56,Create,hpennington,2026-02-14 19:47:23.052,Violation entered.,,,2026-02-14 19:47:23.052
+137,56,ManagerAcknowledge,nironside,2026-02-17 14:28:58.623,Manager acknowledged violation.,,,2026-02-17 14:28:58.623
+138,56,StatusChange,nironside,2026-02-26 19:13:07.429,Status changed to CorrectiveActionCompleted.,,,2026-02-26 19:13:07.429
+139,57,Create,hpennington,2026-07-11 20:10:58.619,Violation entered.,,,2026-07-11 20:10:58.619
+140,57,ManagerAcknowledge,onorthcott,2026-07-17 00:13:02.068,Manager acknowledged violation.,,,2026-07-17 00:13:02.068
+141,57,StatusChange,onorthcott,2026-08-03 22:43:59.057,Status changed to CorrectiveActionCompleted.,,,2026-08-03 22:43:59.057
+142,58,Create,bholloway,2025-09-17 21:36:11.479,Violation entered.,,,2025-09-17 21:36:11.479
+143,58,ManagerAcknowledge,dormsby2,2025-09-23 16:56:20.536,Manager acknowledged violation.,,,2025-09-23 16:56:20.536
+144,58,StatusChange,dormsby2,2025-10-09 04:13:24.938,Status changed to CorrectiveActionCompleted.,,,2025-10-09 04:13:24.938
+145,59,Create,fvaldez,2025-08-27 18:29:23.301,Violation entered.,,,2025-08-27 18:29:23.301
+146,59,ManagerAcknowledge,hfoxworth,2025-09-01 22:17:37.839,Manager acknowledged violation.,,,2025-09-01 22:17:37.839
+147,59,StatusChange,hfoxworth,2025-09-21 19:18:14.547,Status changed to CorrectiveActionCompleted.,,,2025-09-21 19:18:14.547
+148,60,Create,fvaldez,2026-05-05 18:04:00.579,Violation entered.,,,2026-05-05 18:04:00.579
+149,60,ManagerAcknowledge,rlindqvist,2026-05-08 16:15:12.885,Manager acknowledged violation.,,,2026-05-08 16:15:12.885
+150,60,StatusChange,rlindqvist,2026-05-17 17:49:37.617,Status changed to CorrectiveActionInProgress.,,,2026-05-17 17:49:37.617
+151,61,Create,bholloway,2026-09-24 21:59:54.885,Violation entered.,,,2026-09-24 21:59:54.885
+152,62,Create,fvaldez,2026-08-16 19:27:13.337,Violation entered.,,,2026-08-16 19:27:13.337
+153,62,ManagerAcknowledge,aeastwick,2026-08-19 23:22:45.302,Manager acknowledged violation.,,,2026-08-19 23:22:45.302
+154,62,StatusChange,aeastwick,2026-08-27 03:47:54.344,Status changed to CorrectiveActionInProgress.,,,2026-08-27 03:47:54.344
+155,63,Create,hpennington,2026-07-28 16:09:28.083,Violation entered.,,,2026-07-28 16:09:28.083
+156,63,ManagerAcknowledge,tvandermeer,2026-07-30 10:45:36.938,Manager acknowledged violation.,,,2026-07-30 10:45:36.938
+157,63,StatusChange,tvandermeer,2026-08-07 18:09:09.665,Status changed to CorrectiveActionCompleted.,,,2026-08-07 18:09:09.665
+158,64,Create,fvaldez,2025-09-29 16:36:53.793,Violation entered.,,,2025-09-29 16:36:53.793
+159,64,ManagerAcknowledge,labernathy,2025-10-02 21:01:39.989,Manager acknowledged violation.,,,2025-10-02 21:01:39.989
+160,64,StatusChange,labernathy,2025-10-16 08:42:10.379,Status changed to CorrectiveActionCompleted.,,,2025-10-16 08:42:10.379
+161,65,Create,fvaldez,2026-01-01 19:11:03.519,Violation entered.,,,2026-01-01 19:11:03.519
+162,65,ManagerAcknowledge,jjennings,2026-01-04 22:03:12.021,Manager acknowledged violation.,,,2026-01-04 22:03:12.021
+163,66,Create,bholloway,2025-07-13 15:02:33.048,Violation entered.,,,2025-07-13 15:02:33.048
+164,66,ManagerAcknowledge,mzeller2,2025-07-14 15:53:03.089,Manager acknowledged violation.,,,2025-07-14 15:53:03.089
+165,66,StatusChange,mzeller2,2025-07-28 17:04:16.975,Status changed to CorrectiveActionCompleted.,,,2025-07-28 17:04:16.975
+166,67,Create,fvaldez,2025-11-20 13:41:37.236,Violation entered.,,,2025-11-20 13:41:37.236
+167,67,ManagerAcknowledge,xjessup,2025-11-23 03:25:05.156,Manager acknowledged violation.,,,2025-11-23 03:25:05.156
+168,67,StatusChange,xjessup,2025-12-01 10:07:44.903,Status changed to CorrectiveActionCompleted.,,,2025-12-01 10:07:44.903
+169,68,Create,bholloway,2026-08-13 21:08:39.891,Violation entered.,,,2026-08-13 21:08:39.891
+170,68,ManagerAcknowledge,rumberto,2026-08-17 20:31:58.031,Manager acknowledged violation.,,,2026-08-17 20:31:58.031
+171,68,StatusChange,rumberto,2026-09-05 23:53:58.722,Status changed to CorrectiveActionInProgress.,,,2026-09-05 23:53:58.722
+172,69,Create,hpennington,2026-02-16 21:24:54.017,Violation entered.,,,2026-02-16 21:24:54.017
+173,69,ManagerAcknowledge,lhuxley,2026-02-18 18:25:12.012,Manager acknowledged violation.,,,2026-02-18 18:25:12.012
+174,70,Create,bholloway,2025-08-16 15:19:51.585,Violation entered.,,,2025-08-16 15:19:51.585
+175,70,ManagerAcknowledge,aeastwick,2025-08-19 02:38:11.651,Manager acknowledged violation.,,,2025-08-19 02:38:11.651
+176,70,StatusChange,aeastwick,2025-08-21 16:15:24.122,Status changed to CorrectiveActionCompleted.,,,2025-08-21 16:15:24.122
+177,71,Create,hpennington,2026-10-02 21:56:33.028,Violation entered.,,,2026-10-02 21:56:33.028
+178,71,ManagerAcknowledge,ghuxley,2026-10-05 00:51:17.378,Manager acknowledged violation.,,,2026-10-05 00:51:17.378
+179,71,StatusChange,ghuxley,2026-10-20 15:00:00.000,Status changed to CorrectiveActionInProgress.,,,2026-10-20 15:00:00.000
+180,72,Create,hpennington,2026-07-18 21:28:39.976,Violation entered.,,,2026-07-18 21:28:39.976
+181,72,ManagerAcknowledge,cdunmore,2026-07-23 23:19:55.082,Manager acknowledged violation.,,,2026-07-23 23:19:55.082
+182,72,StatusChange,cdunmore,2026-08-11 16:41:35.073,Status changed to CorrectiveActionCompleted.,,,2026-08-11 16:41:35.073
+183,73,Create,hpennington,2026-10-04 17:10:39.764,Violation entered.,,,2026-10-04 17:10:39.764
+184,73,ManagerAcknowledge,xjessup,2026-10-10 05:05:52.385,Manager acknowledged violation.,,,2026-10-10 05:05:52.385
+185,73,StatusChange,xjessup,2026-10-20 15:00:00.000,Status changed to CorrectiveActionCompleted.,,,2026-10-20 15:00:00.000
+186,74,Create,fvaldez,2026-10-06 17:53:42.286,Violation entered.,,,2026-10-06 17:53:42.286
+187,74,ManagerAcknowledge,nironside,2026-10-11 01:49:14.924,Manager acknowledged violation.,,,2026-10-11 01:49:14.924
+188,74,StatusChange,nironside,2026-10-12 03:53:44.359,Status changed to CorrectiveActionInProgress.,,,2026-10-12 03:53:44.359
+189,75,Create,hpennington,2026-01-02 13:28:45.719,Violation entered.,,,2026-01-02 13:28:45.719
+190,75,ManagerAcknowledge,jhuxley,2026-01-07 14:34:20.863,Manager acknowledged violation.,,,2026-01-07 14:34:20.863
+191,75,StatusChange,jhuxley,2026-01-08 18:22:20.938,Status changed to CorrectiveActionCompleted.,,,2026-01-08 18:22:20.938
+192,76,Create,fvaldez,2026-05-17 19:57:45.823,Violation entered.,,,2026-05-17 19:57:45.823
+193,76,ManagerAcknowledge,kfoxworth2,2026-05-20 14:43:40.738,Manager acknowledged violation.,,,2026-05-20 14:43:40.738
+194,76,StatusChange,kfoxworth2,2026-05-28 03:05:49.622,Status changed to CorrectiveActionCompleted.,,,2026-05-28 03:05:49.622
+195,77,Create,hpennington,2025-12-19 20:56:20.309,Violation entered.,,,2025-12-19 20:56:20.309
+196,77,ManagerAcknowledge,zlangford,2025-12-23 00:33:26.374,Manager acknowledged violation.,,,2025-12-23 00:33:26.374
+197,77,StatusChange,zlangford,2025-12-31 04:42:41.545,Status changed to CorrectiveActionInProgress.,,,2025-12-31 04:42:41.545
+198,78,Create,bholloway,2025-08-09 19:56:36.468,Violation entered.,,,2025-08-09 19:56:36.468
+199,78,ManagerAcknowledge,jzeller,2025-08-11 16:50:37.436,Manager acknowledged violation.,,,2025-08-11 16:50:37.436
+200,78,StatusChange,jzeller,2025-08-17 08:55:55.141,Status changed to CorrectiveActionCompleted.,,,2025-08-17 08:55:55.141
+201,79,Create,fvaldez,2025-11-06 16:21:39.279,Violation entered.,,,2025-11-06 16:21:39.279
+202,79,ManagerAcknowledge,pwestbrook,2025-11-09 05:48:37.039,Manager acknowledged violation.,,,2025-11-09 05:48:37.039
+203,79,StatusChange,pwestbrook,2025-11-22 19:26:12.999,Status changed to CorrectiveActionCompleted.,,,2025-11-22 19:26:12.999
+204,80,Create,hpennington,2026-06-17 18:28:05.698,Violation entered.,,,2026-06-17 18:28:05.698
+205,80,ManagerAcknowledge,mzeller,2026-06-20 10:13:53.069,Manager acknowledged violation.,,,2026-06-20 10:13:53.069
+206,80,StatusChange,mzeller,2026-07-05 07:49:16.986,Status changed to CorrectiveActionInProgress.,,,2026-07-05 07:49:16.986
+207,81,Create,fvaldez,2025-08-17 14:14:54.771,Violation entered.,,,2025-08-17 14:14:54.771
+208,81,ManagerAcknowledge,wpemberton,2025-08-20 05:47:48.290,Manager acknowledged violation.,,,2025-08-20 05:47:48.290
+209,81,StatusChange,wpemberton,2025-08-23 00:36:08.423,Status changed to CorrectiveActionInProgress.,,,2025-08-23 00:36:08.423
+210,82,Create,bholloway,2026-03-03 14:33:28.200,Violation entered.,,,2026-03-03 14:33:28.200
+211,82,ManagerAcknowledge,mvarga,2026-03-06 22:41:56.749,Manager acknowledged violation.,,,2026-03-06 22:41:56.749
+212,83,Create,hpennington,2025-12-05 20:04:22.991,Violation entered.,,,2025-12-05 20:04:22.991
+213,83,ManagerAcknowledge,iquimby,2025-12-08 16:38:05.207,Manager acknowledged violation.,,,2025-12-08 16:38:05.207
+214,83,StatusChange,iquimby,2025-12-10 13:14:53.565,Status changed to CorrectiveActionCompleted.,,,2025-12-10 13:14:53.565
+215,84,Create,hpennington,2026-03-29 18:48:14.895,Violation entered.,,,2026-03-29 18:48:14.895
+216,84,ManagerAcknowledge,ningram,2026-04-03 08:09:01.269,Manager acknowledged violation.,,,2026-04-03 08:09:01.269
+217,84,StatusChange,ningram,2026-04-16 14:47:21.388,Status changed to CorrectiveActionInProgress.,,,2026-04-16 14:47:21.388
+218,85,Create,fvaldez,2025-08-06 19:40:08.617,Violation entered.,,,2025-08-06 19:40:08.617
+219,85,ManagerAcknowledge,iquimby,2025-08-09 14:37:39.803,Manager acknowledged violation.,,,2025-08-09 14:37:39.803
+220,85,StatusChange,iquimby,2025-08-25 22:24:38.592,Status changed to CorrectiveActionCompleted.,,,2025-08-25 22:24:38.592
+221,86,Create,fvaldez,2025-07-23 20:52:53.959,Violation entered.,,,2025-07-23 20:52:53.959
+222,86,ManagerAcknowledge,uyardley,2025-07-24 16:59:53.965,Manager acknowledged violation.,,,2025-07-24 16:59:53.965
+223,86,StatusChange,uyardley,2025-08-08 05:38:10.090,Status changed to CorrectiveActionCompleted.,,,2025-08-08 05:38:10.090
+224,87,Create,fvaldez,2025-06-12 17:43:06.546,Violation entered.,,,2025-06-12 17:43:06.546
+225,87,ManagerAcknowledge,sfoxworth,2025-06-16 09:14:53.187,Manager acknowledged violation.,,,2025-06-16 09:14:53.187
+226,87,StatusChange,sfoxworth,2025-07-02 16:20:46.110,Status changed to CorrectiveActionInProgress.,,,2025-07-02 16:20:46.110
+227,88,Create,hpennington,2025-07-10 19:20:22.414,Violation entered.,,,2025-07-10 19:20:22.414
+228,88,ManagerAcknowledge,tvarga,2025-07-11 11:19:07.410,Manager acknowledged violation.,,,2025-07-11 11:19:07.410
+229,89,Create,fvaldez,2026-05-07 13:59:41.678,Violation entered.,,,2026-05-07 13:59:41.678
+230,89,ManagerAcknowledge,lwhitlock,2026-05-09 07:16:21.694,Manager acknowledged violation.,,,2026-05-09 07:16:21.694
+231,90,Create,fvaldez,2026-07-27 18:47:03.737,Violation entered.,,,2026-07-27 18:47:03.737
+232,90,ManagerAcknowledge,nironside,2026-08-02 06:46:03.249,Manager acknowledged violation.,,,2026-08-02 06:46:03.249
+233,90,StatusChange,nironside,2026-08-04 00:33:26.796,Status changed to CorrectiveActionCompleted.,,,2026-08-04 00:33:26.796
+234,91,Create,bholloway,2026-01-02 17:36:36.594,Violation entered.,,,2026-01-02 17:36:36.594
+235,91,ManagerAcknowledge,bnorwood,2026-01-04 15:17:05.417,Manager acknowledged violation.,,,2026-01-04 15:17:05.417
+236,91,StatusChange,bnorwood,2026-01-15 06:27:30.878,Status changed to CorrectiveActionCompleted.,,,2026-01-15 06:27:30.878
+237,92,Create,bholloway,2026-01-31 13:53:05.965,Violation entered.,,,2026-01-31 13:53:05.965
+238,92,ManagerAcknowledge,ucobbleston,2026-02-05 10:14:24.562,Manager acknowledged violation.,,,2026-02-05 10:14:24.562
+239,92,StatusChange,ucobbleston,2026-02-17 14:29:00.993,Status changed to CorrectiveActionCompleted.,,,2026-02-17 14:29:00.993
+240,93,Create,hpennington,2025-06-18 15:41:51.574,Violation entered.,,,2025-06-18 15:41:51.574
+241,93,ManagerAcknowledge,rquimby,2025-06-20 22:09:19.367,Manager acknowledged violation.,,,2025-06-20 22:09:19.367
+242,94,Create,bholloway,2026-09-24 17:38:54.699,Violation entered.,,,2026-09-24 17:38:54.699
+243,94,ManagerAcknowledge,jjennings,2026-09-25 23:51:48.413,Manager acknowledged violation.,,,2026-09-25 23:51:48.413
+244,94,StatusChange,jjennings,2026-09-27 11:09:46.475,Status changed to CorrectiveActionInProgress.,,,2026-09-27 11:09:46.475
+245,95,Create,hpennington,2025-06-16 13:28:08.699,Violation entered.,,,2025-06-16 13:28:08.699
+246,96,Create,hpennington,2026-03-29 17:47:10.293,Violation entered.,,,2026-03-29 17:47:10.293
+247,96,ManagerAcknowledge,lcarrington,2026-04-01 02:29:58.347,Manager acknowledged violation.,,,2026-04-01 02:29:58.347
+248,96,StatusChange,lcarrington,2026-04-13 14:09:16.707,Status changed to CorrectiveActionInProgress.,,,2026-04-13 14:09:16.707
+249,97,Create,bholloway,2025-12-30 21:23:46.344,Violation entered.,,,2025-12-30 21:23:46.344
+250,97,ManagerAcknowledge,jvaldez,2026-01-04 06:45:36.225,Manager acknowledged violation.,,,2026-01-04 06:45:36.225
+251,97,StatusChange,jvaldez,2026-01-09 13:15:36.356,Status changed to CorrectiveActionInProgress.,,,2026-01-09 13:15:36.356
+252,98,Create,bholloway,2026-07-21 14:56:11.887,Violation entered.,,,2026-07-21 14:56:11.887
+253,98,ManagerAcknowledge,lcarrington,2026-07-23 17:53:20.944,Manager acknowledged violation.,,,2026-07-23 17:53:20.944
+254,98,StatusChange,lcarrington,2026-08-09 13:50:19.386,Status changed to CorrectiveActionCompleted.,,,2026-08-09 13:50:19.386
+255,99,Create,hpennington,2026-03-18 16:56:07.992,Violation entered.,,,2026-03-18 16:56:07.992
+256,99,ManagerAcknowledge,dormsby2,2026-03-24 08:28:39.867,Manager acknowledged violation.,,,2026-03-24 08:28:39.867
+257,99,StatusChange,dormsby2,2026-04-10 21:51:10.739,Status changed to CorrectiveActionCompleted.,,,2026-04-10 21:51:10.739
+258,100,Create,fvaldez,2026-07-03 21:54:06.036,Violation entered.,,,2026-07-03 21:54:06.036
+259,101,Create,fvaldez,2026-09-03 19:49:37.250,Violation entered.,,,2026-09-03 19:49:37.250
+260,101,ManagerAcknowledge,ofenwick,2026-09-07 16:01:04.138,Manager acknowledged violation.,,,2026-09-07 16:01:04.138
+261,101,StatusChange,ofenwick,2026-09-24 22:36:04.162,Status changed to CorrectiveActionCompleted.,,,2026-09-24 22:36:04.162
+262,102,Create,hpennington,2026-05-20 15:43:10.383,Violation entered.,,,2026-05-20 15:43:10.383
+263,102,ManagerAcknowledge,lcarrington,2026-05-25 20:42:00.236,Manager acknowledged violation.,,,2026-05-25 20:42:00.236
+264,103,Create,bholloway,2025-09-12 15:53:57.672,Violation entered.,,,2025-09-12 15:53:57.672
+265,103,ManagerAcknowledge,dbellweather,2025-09-15 18:47:19.635,Manager acknowledged violation.,,,2025-09-15 18:47:19.635
+266,103,StatusChange,dbellweather,2025-10-01 18:36:08.783,Status changed to CorrectiveActionCompleted.,,,2025-10-01 18:36:08.783
+267,104,Create,hpennington,2026-01-13 14:05:58.723,Violation entered.,,,2026-01-13 14:05:58.723
+268,104,ManagerAcknowledge,fjessup,2026-01-16 08:22:54.348,Manager acknowledged violation.,,,2026-01-16 08:22:54.348
+269,105,Create,hpennington,2025-09-24 15:51:35.144,Violation entered.,,,2025-09-24 15:51:35.144
+270,105,ManagerAcknowledge,epemberton,2025-09-27 08:52:58.568,Manager acknowledged violation.,,,2025-09-27 08:52:58.568
+271,106,Create,bholloway,2025-09-25 17:23:52.842,Violation entered.,,,2025-09-25 17:23:52.842
+272,106,ManagerAcknowledge,ningram,2025-09-30 21:30:06.059,Manager acknowledged violation.,,,2025-09-30 21:30:06.059
+273,106,StatusChange,ningram,2025-10-09 02:48:08.683,Status changed to CorrectiveActionCompleted.,,,2025-10-09 02:48:08.683
+274,107,Create,hpennington,2026-03-11 16:10:35.955,Violation entered.,,,2026-03-11 16:10:35.955
+275,107,ManagerAcknowledge,mgalloway,2026-03-13 15:08:24.262,Manager acknowledged violation.,,,2026-03-13 15:08:24.262
+276,107,StatusChange,mgalloway,2026-03-16 06:16:17.112,Status changed to CorrectiveActionCompleted.,,,2026-03-16 06:16:17.112
+277,108,Create,bholloway,2026-03-22 20:10:06.122,Violation entered.,,,2026-03-22 20:10:06.122
+278,108,ManagerAcknowledge,ghuxley,2026-03-23 16:11:39.343,Manager acknowledged violation.,,,2026-03-23 16:11:39.343
+279,108,StatusChange,ghuxley,2026-04-12 10:11:31.035,Status changed to CorrectiveActionCompleted.,,,2026-04-12 10:11:31.035
+280,109,Create,hpennington,2025-12-16 14:07:22.019,Violation entered.,,,2025-12-16 14:07:22.019
+281,109,ManagerAcknowledge,csherwood,2025-12-21 10:51:30.035,Manager acknowledged violation.,,,2025-12-21 10:51:30.035
+282,110,Create,hpennington,2025-10-16 14:44:57.883,Violation entered.,,,2025-10-16 14:44:57.883
+283,110,ManagerAcknowledge,jalbright,2025-10-18 21:38:20.951,Manager acknowledged violation.,,,2025-10-18 21:38:20.951
+284,111,Create,bholloway,2026-02-25 18:14:04.776,Violation entered.,,,2026-02-25 18:14:04.776
+285,111,ManagerAcknowledge,ghuxley,2026-02-26 12:52:12.599,Manager acknowledged violation.,,,2026-02-26 12:52:12.599
+286,111,StatusChange,ghuxley,2026-03-08 22:25:56.425,Status changed to CorrectiveActionInProgress.,,,2026-03-08 22:25:56.425
+287,112,Create,fvaldez,2026-06-16 18:34:40.491,Violation entered.,,,2026-06-16 18:34:40.491
+288,112,ManagerAcknowledge,fnightingale,2026-06-19 17:08:11.475,Manager acknowledged violation.,,,2026-06-19 17:08:11.475
+289,112,StatusChange,fnightingale,2026-07-03 11:21:22.429,Status changed to CorrectiveActionCompleted.,,,2026-07-03 11:21:22.429
+290,113,Create,fvaldez,2025-08-05 13:11:18.485,Violation entered.,,,2025-08-05 13:11:18.485
+291,113,ManagerAcknowledge,rquimby,2025-08-07 22:36:43.793,Manager acknowledged violation.,,,2025-08-07 22:36:43.793
+292,113,StatusChange,rquimby,2025-08-20 09:42:10.491,Status changed to CorrectiveActionCompleted.,,,2025-08-20 09:42:10.491
+293,114,Create,fvaldez,2026-07-08 21:32:28.185,Violation entered.,,,2026-07-08 21:32:28.185
+294,114,ManagerAcknowledge,ofenwick,2026-07-12 03:59:46.165,Manager acknowledged violation.,,,2026-07-12 03:59:46.165
+295,114,StatusChange,ofenwick,2026-07-29 01:54:31.006,Status changed to CorrectiveActionCompleted.,,,2026-07-29 01:54:31.006
+296,115,Create,bholloway,2026-05-21 16:57:53.528,Violation entered.,,,2026-05-21 16:57:53.528
+297,115,ManagerAcknowledge,rblackwood,2026-05-22 19:52:47.901,Manager acknowledged violation.,,,2026-05-22 19:52:47.901
+298,116,Create,hpennington,2025-07-12 20:34:11.740,Violation entered.,,,2025-07-12 20:34:11.740
+299,116,ManagerAcknowledge,bingram,2025-07-15 16:49:21.310,Manager acknowledged violation.,,,2025-07-15 16:49:21.310
+300,116,StatusChange,bingram,2025-07-17 14:13:13.211,Status changed to CorrectiveActionCompleted.,,,2025-07-17 14:13:13.211
+301,117,Create,bholloway,2025-09-06 18:58:14.966,Violation entered.,,,2025-09-06 18:58:14.966
+302,117,ManagerAcknowledge,cbellweather,2025-09-07 10:02:57.143,Manager acknowledged violation.,,,2025-09-07 10:02:57.143
+303,117,StatusChange,cbellweather,2025-09-09 07:45:53.137,Status changed to CorrectiveActionInProgress.,,,2025-09-09 07:45:53.137
+304,118,Create,bholloway,2026-07-01 14:38:14.417,Violation entered.,,,2026-07-01 14:38:14.417
+305,118,ManagerAcknowledge,lhuxley,2026-07-06 23:25:20.450,Manager acknowledged violation.,,,2026-07-06 23:25:20.450
+306,118,StatusChange,lhuxley,2026-07-25 03:44:39.558,Status changed to CorrectiveActionInProgress.,,,2026-07-25 03:44:39.558
+307,119,Create,bholloway,2026-04-23 20:11:45.914,Violation entered.,,,2026-04-23 20:11:45.914
+308,119,ManagerAcknowledge,lcarrington,2026-04-26 10:26:51.180,Manager acknowledged violation.,,,2026-04-26 10:26:51.180
+309,119,StatusChange,lcarrington,2026-05-10 00:24:34.594,Status changed to CorrectiveActionCompleted.,,,2026-05-10 00:24:34.594
+310,120,Create,bholloway,2026-04-29 18:56:04.020,Violation entered.,,,2026-04-29 18:56:04.020
+311,120,ManagerAcknowledge,tnakamura,2026-05-02 20:04:25.711,Manager acknowledged violation.,,,2026-05-02 20:04:25.711
+312,121,Create,bholloway,2025-10-23 20:48:11.886,Violation entered.,,,2025-10-23 20:48:11.886
+313,121,ManagerAcknowledge,lhuxley,2025-10-29 10:20:26.553,Manager acknowledged violation.,,,2025-10-29 10:20:26.553
+314,122,Create,hpennington,2025-12-02 16:03:10.848,Violation entered.,,,2025-12-02 16:03:10.848
+315,122,ManagerAcknowledge,dbellweather,2025-12-04 10:37:08.525,Manager acknowledged violation.,,,2025-12-04 10:37:08.525
+316,122,StatusChange,dbellweather,2025-12-23 21:57:37.385,Status changed to CorrectiveActionInProgress.,,,2025-12-23 21:57:37.385
+317,123,Create,hpennington,2026-10-07 15:58:04.216,Violation entered.,,,2026-10-07 15:58:04.216
+318,123,ManagerAcknowledge,tabernathy,2026-10-12 06:20:27.881,Manager acknowledged violation.,,,2026-10-12 06:20:27.881
+319,123,StatusChange,tabernathy,2026-10-20 15:00:00.000,Status changed to CorrectiveActionCompleted.,,,2026-10-20 15:00:00.000
+320,124,Create,bholloway,2026-06-15 16:10:53.017,Violation entered.,,,2026-06-15 16:10:53.017
+321,124,ManagerAcknowledge,lsorensen,2026-06-20 13:07:13.379,Manager acknowledged violation.,,,2026-06-20 13:07:13.379
+322,125,Create,fvaldez,2026-05-22 17:25:59.505,Violation entered.,,,2026-05-22 17:25:59.505
+323,125,ManagerAcknowledge,aeastwick,2026-05-28 11:34:50.499,Manager acknowledged violation.,,,2026-05-28 11:34:50.499
+324,125,StatusChange,aeastwick,2026-06-17 08:57:44.073,Status changed to CorrectiveActionCompleted.,,,2026-06-17 08:57:44.073
+325,126,Create,bholloway,2026-01-21 21:03:37.947,Violation entered.,,,2026-01-21 21:03:37.947
+326,126,ManagerAcknowledge,zlangford,2026-01-26 06:00:34.122,Manager acknowledged violation.,,,2026-01-26 06:00:34.122
+327,127,Create,fvaldez,2026-03-05 15:45:47.607,Violation entered.,,,2026-03-05 15:45:47.607
+328,127,ManagerAcknowledge,avaldez,2026-03-07 19:42:31.853,Manager acknowledged violation.,,,2026-03-07 19:42:31.853
+329,127,StatusChange,avaldez,2026-03-27 02:39:55.948,Status changed to CorrectiveActionInProgress.,,,2026-03-27 02:39:55.948
+330,128,Create,hpennington,2026-02-19 20:23:11.107,Violation entered.,,,2026-02-19 20:23:11.107
+331,128,ManagerAcknowledge,izeller,2026-02-20 23:06:34.367,Manager acknowledged violation.,,,2026-02-20 23:06:34.367
+332,128,StatusChange,izeller,2026-03-01 13:10:21.758,Status changed to CorrectiveActionInProgress.,,,2026-03-01 13:10:21.758
+333,129,Create,hpennington,2025-07-15 16:37:14.938,Violation entered.,,,2025-07-15 16:37:14.938
+334,129,ManagerAcknowledge,nironside,2025-07-20 15:59:59.661,Manager acknowledged violation.,,,2025-07-20 15:59:59.661
+335,129,StatusChange,nironside,2025-07-24 10:10:30.207,Status changed to CorrectiveActionCompleted.,,,2025-07-24 10:10:30.207
+336,130,Create,hpennington,2025-08-24 16:12:17.405,Violation entered.,,,2025-08-24 16:12:17.405
+337,130,ManagerAcknowledge,pironside,2025-08-26 03:09:49.245,Manager acknowledged violation.,,,2025-08-26 03:09:49.245
+338,130,StatusChange,pironside,2025-09-01 17:09:53.687,Status changed to CorrectiveActionCompleted.,,,2025-09-01 17:09:53.687
+339,131,Create,hpennington,2026-01-18 18:27:58.291,Violation entered.,,,2026-01-18 18:27:58.291
+340,132,Create,hpennington,2026-06-26 16:23:41.527,Violation entered.,,,2026-06-26 16:23:41.527
+341,132,ManagerAcknowledge,ningram,2026-06-30 12:23:22.515,Manager acknowledged violation.,,,2026-06-30 12:23:22.515
+342,132,StatusChange,ningram,2026-07-12 19:41:33.612,Status changed to CorrectiveActionInProgress.,,,2026-07-12 19:41:33.612
+343,133,Create,fvaldez,2025-10-31 21:35:33.363,Violation entered.,,,2025-10-31 21:35:33.363
+344,133,ManagerAcknowledge,zlangford,2025-11-04 13:54:05.605,Manager acknowledged violation.,,,2025-11-04 13:54:05.605
+345,133,StatusChange,zlangford,2025-11-21 18:04:09.556,Status changed to CorrectiveActionCompleted.,,,2025-11-21 18:04:09.556
+346,134,Create,hpennington,2025-12-21 17:08:44.757,Violation entered.,,,2025-12-21 17:08:44.757
+347,134,ManagerAcknowledge,jvaldez,2025-12-26 16:05:29.751,Manager acknowledged violation.,,,2025-12-26 16:05:29.751
+348,134,StatusChange,jvaldez,2026-01-14 13:18:35.518,Status changed to CorrectiveActionInProgress.,,,2026-01-14 13:18:35.518
+349,135,Create,bholloway,2025-11-11 15:44:16.076,Violation entered.,,,2025-11-11 15:44:16.076
+350,135,ManagerAcknowledge,iquimby,2025-11-15 04:28:20.504,Manager acknowledged violation.,,,2025-11-15 04:28:20.504
+351,135,StatusChange,iquimby,2025-11-19 14:49:54.562,Status changed to CorrectiveActionInProgress.,,,2025-11-19 14:49:54.562
+352,136,Create,hpennington,2026-03-26 15:02:22.621,Violation entered.,,,2026-03-26 15:02:22.621
+353,136,ManagerAcknowledge,lwhitlock,2026-03-29 21:52:52.951,Manager acknowledged violation.,,,2026-03-29 21:52:52.951
+354,136,StatusChange,lwhitlock,2026-04-11 00:19:07.348,Status changed to CorrectiveActionInProgress.,,,2026-04-11 00:19:07.348
+355,137,Create,fvaldez,2026-06-14 15:07:20.187,Violation entered.,,,2026-06-14 15:07:20.187
+356,137,ManagerAcknowledge,csherwood,2026-06-19 16:50:04.313,Manager acknowledged violation.,,,2026-06-19 16:50:04.313
+357,137,StatusChange,csherwood,2026-07-06 05:48:26.032,Status changed to CorrectiveActionCompleted.,,,2026-07-06 05:48:26.032
+358,138,Create,bholloway,2026-02-02 16:18:11.401,Violation entered.,,,2026-02-02 16:18:11.401
+359,138,ManagerAcknowledge,aeastwick,2026-02-07 17:00:49.274,Manager acknowledged violation.,,,2026-02-07 17:00:49.274
+360,139,Create,hpennington,2026-03-21 16:36:58.891,Violation entered.,,,2026-03-21 16:36:58.891
+361,139,ManagerAcknowledge,nironside,2026-03-25 14:02:33.477,Manager acknowledged violation.,,,2026-03-25 14:02:33.477
+362,139,StatusChange,nironside,2026-04-07 03:21:57.747,Status changed to CorrectiveActionCompleted.,,,2026-04-07 03:21:57.747
+363,140,Create,hpennington,2026-06-04 13:02:29.943,Violation entered.,,,2026-06-04 13:02:29.943
+364,140,ManagerAcknowledge,fjessup,2026-06-07 01:52:50.712,Manager acknowledged violation.,,,2026-06-07 01:52:50.712
+365,141,Create,hpennington,2026-01-21 17:11:55.884,Violation entered.,,,2026-01-21 17:11:55.884
+366,141,ManagerAcknowledge,sfoxworth,2026-01-26 16:53:42.065,Manager acknowledged violation.,,,2026-01-26 16:53:42.065
+367,141,StatusChange,sfoxworth,2026-01-29 12:56:23.598,Status changed to CorrectiveActionCompleted.,,,2026-01-29 12:56:23.598
+368,142,Create,hpennington,2026-02-16 21:59:33.527,Violation entered.,,,2026-02-16 21:59:33.527
+369,142,ManagerAcknowledge,lradcliffe,2026-02-20 00:35:38.442,Manager acknowledged violation.,,,2026-02-20 00:35:38.442
+370,142,StatusChange,lradcliffe,2026-02-22 12:01:22.292,Status changed to CorrectiveActionCompleted.,,,2026-02-22 12:01:22.292
+371,143,Create,bholloway,2025-10-28 13:50:06.475,Violation entered.,,,2025-10-28 13:50:06.475
+372,143,ManagerAcknowledge,wpemberton,2025-11-02 01:07:16.279,Manager acknowledged violation.,,,2025-11-02 01:07:16.279
+373,144,Create,hpennington,2026-06-02 20:34:12.861,Violation entered.,,,2026-06-02 20:34:12.861
+374,144,ManagerAcknowledge,tnakamura,2026-06-08 14:23:25.154,Manager acknowledged violation.,,,2026-06-08 14:23:25.154
+375,144,StatusChange,tnakamura,2026-06-19 07:38:37.179,Status changed to CorrectiveActionInProgress.,,,2026-06-19 07:38:37.179
+376,145,Create,fvaldez,2026-10-07 15:48:51.685,Violation entered.,,,2026-10-07 15:48:51.685
+377,145,ManagerAcknowledge,nironside,2026-10-08 09:32:49.858,Manager acknowledged violation.,,,2026-10-08 09:32:49.858
+378,146,Create,hpennington,2026-07-02 13:14:16.804,Violation entered.,,,2026-07-02 13:14:16.804
+379,146,ManagerAcknowledge,wpemberton,2026-07-08 07:40:58.049,Manager acknowledged violation.,,,2026-07-08 07:40:58.049
+380,147,Create,hpennington,2026-03-29 18:45:51.079,Violation entered.,,,2026-03-29 18:45:51.079
+381,147,ManagerAcknowledge,kgreenleaf2,2026-04-01 03:29:58.569,Manager acknowledged violation.,,,2026-04-01 03:29:58.569
+382,147,StatusChange,kgreenleaf2,2026-04-20 16:02:16.190,Status changed to CorrectiveActionInProgress.,,,2026-04-20 16:02:16.190
+383,148,Create,fvaldez,2025-10-31 17:49:21.416,Violation entered.,,,2025-10-31 17:49:21.416
+384,148,ManagerAcknowledge,kgreenleaf2,2025-11-02 08:05:28.076,Manager acknowledged violation.,,,2025-11-02 08:05:28.076
+385,148,StatusChange,kgreenleaf2,2025-11-15 13:10:16.067,Status changed to CorrectiveActionInProgress.,,,2025-11-15 13:10:16.067
+386,149,Create,hpennington,2026-05-27 21:59:50.971,Violation entered.,,,2026-05-27 21:59:50.971
+387,149,ManagerAcknowledge,lradcliffe,2026-05-31 20:36:03.460,Manager acknowledged violation.,,,2026-05-31 20:36:03.460
+388,150,Create,fvaldez,2026-01-12 19:29:38.134,Violation entered.,,,2026-01-12 19:29:38.134
+389,150,ManagerAcknowledge,qnakamura,2026-01-14 11:36:19.609,Manager acknowledged violation.,,,2026-01-14 11:36:19.609
+390,150,StatusChange,qnakamura,2026-01-31 22:51:51.677,Status changed to CorrectiveActionCompleted.,,,2026-01-31 22:51:51.677
+391,151,Create,fvaldez,2026-01-11 14:02:43.787,Violation entered.,,,2026-01-11 14:02:43.787
+392,151,ManagerAcknowledge,lhuxley,2026-01-13 14:56:21.391,Manager acknowledged violation.,,,2026-01-13 14:56:21.391
+393,152,Create,bholloway,2025-08-17 17:07:31.035,Violation entered.,,,2025-08-17 17:07:31.035
+394,152,ManagerAcknowledge,tormsby,2025-08-23 11:53:23.066,Manager acknowledged violation.,,,2025-08-23 11:53:23.066
+395,152,StatusChange,tormsby,2025-09-02 18:10:09.724,Status changed to CorrectiveActionCompleted.,,,2025-09-02 18:10:09.724
+396,153,Create,bholloway,2026-05-01 15:40:04.656,Violation entered.,,,2026-05-01 15:40:04.656
+397,153,ManagerAcknowledge,rblackwood,2026-05-07 04:23:58.723,Manager acknowledged violation.,,,2026-05-07 04:23:58.723
+398,153,StatusChange,rblackwood,2026-05-20 04:08:46.362,Status changed to CorrectiveActionInProgress.,,,2026-05-20 04:08:46.362
+399,154,Create,hpennington,2026-09-14 19:32:24.659,Violation entered.,,,2026-09-14 19:32:24.659
+400,154,ManagerAcknowledge,gcastellano,2026-09-20 08:16:35.899,Manager acknowledged violation.,,,2026-09-20 08:16:35.899
+401,155,Create,fvaldez,2026-08-10 18:12:41.855,Violation entered.,,,2026-08-10 18:12:41.855
+402,155,ManagerAcknowledge,rblackwood,2026-08-14 06:06:36.177,Manager acknowledged violation.,,,2026-08-14 06:06:36.177
+403,155,StatusChange,rblackwood,2026-08-23 17:01:21.086,Status changed to CorrectiveActionInProgress.,,,2026-08-23 17:01:21.086
+404,156,Create,fvaldez,2025-08-31 16:31:26.272,Violation entered.,,,2025-08-31 16:31:26.272
+405,156,ManagerAcknowledge,lwhitlock,2025-09-03 08:02:42.906,Manager acknowledged violation.,,,2025-09-03 08:02:42.906
+406,156,StatusChange,lwhitlock,2025-09-05 14:13:37.673,Status changed to CorrectiveActionCompleted.,,,2025-09-05 14:13:37.673
+407,157,Create,bholloway,2026-09-18 16:51:56.578,Violation entered.,,,2026-09-18 16:51:56.578
+408,157,ManagerAcknowledge,pwestbrook,2026-09-21 21:42:57.439,Manager acknowledged violation.,,,2026-09-21 21:42:57.439
+409,157,StatusChange,pwestbrook,2026-10-09 21:39:51.449,Status changed to CorrectiveActionCompleted.,,,2026-10-09 21:39:51.449
+410,158,Create,fvaldez,2026-02-24 17:48:06.700,Violation entered.,,,2026-02-24 17:48:06.700
+411,158,ManagerAcknowledge,fnightingale,2026-02-27 22:07:37.738,Manager acknowledged violation.,,,2026-02-27 22:07:37.738
+412,158,StatusChange,fnightingale,2026-03-08 09:04:43.101,Status changed to CorrectiveActionCompleted.,,,2026-03-08 09:04:43.101
+413,159,Create,hpennington,2025-06-12 18:18:48.076,Violation entered.,,,2025-06-12 18:18:48.076
+414,159,ManagerAcknowledge,pironside,2025-06-17 20:29:28.866,Manager acknowledged violation.,,,2025-06-17 20:29:28.866
+415,159,StatusChange,pironside,2025-07-05 11:50:42.125,Status changed to CorrectiveActionCompleted.,,,2025-07-05 11:50:42.125
+416,160,Create,bholloway,2025-07-02 17:43:37.363,Violation entered.,,,2025-07-02 17:43:37.363
+417,160,ManagerAcknowledge,ucobbleston,2025-07-04 10:58:43.728,Manager acknowledged violation.,,,2025-07-04 10:58:43.728
+418,160,StatusChange,ucobbleston,2025-07-23 08:50:36.010,Status changed to CorrectiveActionInProgress.,,,2025-07-23 08:50:36.010
+419,161,Create,hpennington,2025-12-26 21:00:50.362,Violation entered.,,,2025-12-26 21:00:50.362
+420,162,Create,bholloway,2026-01-13 17:01:40.525,Violation entered.,,,2026-01-13 17:01:40.525
+421,163,Create,bholloway,2026-04-17 19:26:42.169,Violation entered.,,,2026-04-17 19:26:42.169
+422,163,ManagerAcknowledge,zthornbury,2026-04-21 12:34:55.626,Manager acknowledged violation.,,,2026-04-21 12:34:55.626
+423,163,StatusChange,zthornbury,2026-04-30 20:02:52.544,Status changed to CorrectiveActionCompleted.,,,2026-04-30 20:02:52.544
+424,164,Create,hpennington,2026-02-08 21:14:53.909,Violation entered.,,,2026-02-08 21:14:53.909
+425,164,ManagerAcknowledge,fjessup,2026-02-09 15:11:46.538,Manager acknowledged violation.,,,2026-02-09 15:11:46.538
+426,164,StatusChange,fjessup,2026-03-01 06:40:10.882,Status changed to CorrectiveActionInProgress.,,,2026-03-01 06:40:10.882
+427,165,Create,bholloway,2026-02-07 20:29:46.449,Violation entered.,,,2026-02-07 20:29:46.449
+428,165,ManagerAcknowledge,kgreenleaf,2026-02-13 20:05:54.919,Manager acknowledged violation.,,,2026-02-13 20:05:54.919
+429,165,StatusChange,kgreenleaf,2026-02-25 07:16:12.063,Status changed to CorrectiveActionCompleted.,,,2026-02-25 07:16:12.063
+430,166,Create,hpennington,2026-05-21 14:49:54.235,Violation entered.,,,2026-05-21 14:49:54.235
+431,166,ManagerAcknowledge,jwestbrook,2026-05-23 20:11:58.398,Manager acknowledged violation.,,,2026-05-23 20:11:58.398
+432,166,StatusChange,jwestbrook,2026-05-25 15:36:36.243,Status changed to CorrectiveActionInProgress.,,,2026-05-25 15:36:36.243
+433,167,Create,fvaldez,2026-02-14 17:26:22.190,Violation entered.,,,2026-02-14 17:26:22.190
+434,167,ManagerAcknowledge,ofenwick,2026-02-16 09:11:33.440,Manager acknowledged violation.,,,2026-02-16 09:11:33.440
+435,168,Create,fvaldez,2026-06-29 13:36:19.205,Violation entered.,,,2026-06-29 13:36:19.205
+436,168,ManagerAcknowledge,avaldez,2026-07-05 10:01:46.616,Manager acknowledged violation.,,,2026-07-05 10:01:46.616
+437,168,StatusChange,avaldez,2026-07-11 15:01:25.261,Status changed to CorrectiveActionInProgress.,,,2026-07-11 15:01:25.261
+438,169,Create,fvaldez,2026-02-09 17:25:16.351,Violation entered.,,,2026-02-09 17:25:16.351
+439,169,ManagerAcknowledge,kgreenleaf,2026-02-11 21:45:32.047,Manager acknowledged violation.,,,2026-02-11 21:45:32.047
+440,169,StatusChange,kgreenleaf,2026-02-19 14:52:05.619,Status changed to CorrectiveActionCompleted.,,,2026-02-19 14:52:05.619
+441,170,Create,fvaldez,2025-11-19 16:58:04.838,Violation entered.,,,2025-11-19 16:58:04.838
+442,170,ManagerAcknowledge,iquimby,2025-11-22 12:54:58.739,Manager acknowledged violation.,,,2025-11-22 12:54:58.739
+443,170,StatusChange,iquimby,2025-11-29 04:03:41.336,Status changed to CorrectiveActionCompleted.,,,2025-11-29 04:03:41.336
+444,171,Create,hpennington,2025-06-11 13:28:15.053,Violation entered.,,,2025-06-11 13:28:15.053
+445,172,Create,hpennington,2026-01-05 18:06:49.164,Violation entered.,,,2026-01-05 18:06:49.164
+446,172,ManagerAcknowledge,lhuxley,2026-01-08 00:07:48.046,Manager acknowledged violation.,,,2026-01-08 00:07:48.046
+447,172,StatusChange,lhuxley,2026-01-12 20:35:11.722,Status changed to CorrectiveActionInProgress.,,,2026-01-12 20:35:11.722
+448,173,Create,hpennington,2025-06-07 21:07:07.175,Violation entered.,,,2025-06-07 21:07:07.175
+449,173,ManagerAcknowledge,kgreenleaf,2025-06-09 03:15:52.640,Manager acknowledged violation.,,,2025-06-09 03:15:52.640
+450,174,Create,hpennington,2025-09-12 18:45:46.150,Violation entered.,,,2025-09-12 18:45:46.150
+451,174,ManagerAcknowledge,nironside,2025-09-18 15:22:48.141,Manager acknowledged violation.,,,2025-09-18 15:22:48.141
+452,175,Create,hpennington,2026-06-26 14:13:10.023,Violation entered.,,,2026-06-26 14:13:10.023
+453,176,Create,fvaldez,2026-05-05 20:25:44.080,Violation entered.,,,2026-05-05 20:25:44.080
+454,176,ManagerAcknowledge,onorthcott,2026-05-10 05:17:03.691,Manager acknowledged violation.,,,2026-05-10 05:17:03.691
+455,176,StatusChange,onorthcott,2026-05-22 18:30:23.756,Status changed to CorrectiveActionCompleted.,,,2026-05-22 18:30:23.756
+456,177,Create,bholloway,2025-12-21 16:02:21.056,Violation entered.,,,2025-12-21 16:02:21.056
+457,177,ManagerAcknowledge,cbellweather,2025-12-27 02:17:58.961,Manager acknowledged violation.,,,2025-12-27 02:17:58.961
+458,177,StatusChange,cbellweather,2026-01-08 01:17:43.983,Status changed to CorrectiveActionCompleted.,,,2026-01-08 01:17:43.983
+459,178,Create,fvaldez,2026-07-08 13:49:11.490,Violation entered.,,,2026-07-08 13:49:11.490
+460,179,Create,fvaldez,2025-10-05 19:30:28.383,Violation entered.,,,2025-10-05 19:30:28.383
+461,179,ManagerAcknowledge,sokafor,2025-10-06 18:41:09.068,Manager acknowledged violation.,,,2025-10-06 18:41:09.068
+462,179,StatusChange,sokafor,2025-10-11 01:20:29.989,Status changed to CorrectiveActionCompleted.,,,2025-10-11 01:20:29.989
+463,180,Create,fvaldez,2026-10-11 17:45:22.790,Violation entered.,,,2026-10-11 17:45:22.790
+464,180,ManagerAcknowledge,kgreenleaf,2026-10-14 00:00:20.044,Manager acknowledged violation.,,,2026-10-14 00:00:20.044
+465,181,Create,hpennington,2025-09-05 17:24:17.139,Violation entered.,,,2025-09-05 17:24:17.139
+466,181,ManagerAcknowledge,labernathy,2025-09-11 14:17:55.718,Manager acknowledged violation.,,,2025-09-11 14:17:55.718
+467,182,Create,hpennington,2026-10-06 13:28:20.342,Violation entered.,,,2026-10-06 13:28:20.342
+468,182,ManagerAcknowledge,qnakamura,2026-10-11 03:56:57.488,Manager acknowledged violation.,,,2026-10-11 03:56:57.488
+469,182,StatusChange,qnakamura,2026-10-20 15:00:00.000,Status changed to CorrectiveActionCompleted.,,,2026-10-20 15:00:00.000
+470,183,Create,bholloway,2025-09-25 18:57:46.595,Violation entered.,,,2025-09-25 18:57:46.595
+471,183,ManagerAcknowledge,aeastwick,2025-09-26 22:25:19.154,Manager acknowledged violation.,,,2025-09-26 22:25:19.154
+472,184,Create,bholloway,2025-10-26 19:27:28.714,Violation entered.,,,2025-10-26 19:27:28.714
+473,184,ManagerAcknowledge,gcastellano,2025-10-30 03:58:56.035,Manager acknowledged violation.,,,2025-10-30 03:58:56.035
+474,185,Create,fvaldez,2026-03-18 15:30:10.234,Violation entered.,,,2026-03-18 15:30:10.234
+475,185,ManagerAcknowledge,ningram,2026-03-23 02:01:51.634,Manager acknowledged violation.,,,2026-03-23 02:01:51.634
+476,185,StatusChange,ningram,2026-04-04 08:54:31.008,Status changed to CorrectiveActionCompleted.,,,2026-04-04 08:54:31.008
+477,186,Create,fvaldez,2026-01-01 17:37:00.591,Violation entered.,,,2026-01-01 17:37:00.591
+478,186,ManagerAcknowledge,clindqvist,2026-01-05 06:55:39.103,Manager acknowledged violation.,,,2026-01-05 06:55:39.103
+479,186,StatusChange,clindqvist,2026-01-09 15:30:56.091,Status changed to CorrectiveActionCompleted.,,,2026-01-09 15:30:56.091
+480,187,Create,bholloway,2025-06-18 14:03:26.594,Violation entered.,,,2025-06-18 14:03:26.594
+481,187,ManagerAcknowledge,fumberto,2025-06-23 07:48:02.960,Manager acknowledged violation.,,,2025-06-23 07:48:02.960
+482,187,StatusChange,fumberto,2025-07-04 16:59:08.730,Status changed to CorrectiveActionCompleted.,,,2025-07-04 16:59:08.730
+483,188,Create,hpennington,2025-07-31 14:01:34.619,Violation entered.,,,2025-07-31 14:01:34.619
+484,188,ManagerAcknowledge,epemberton,2025-08-05 03:51:16.263,Manager acknowledged violation.,,,2025-08-05 03:51:16.263
+485,189,Create,bholloway,2025-07-28 13:24:08.596,Violation entered.,,,2025-07-28 13:24:08.596
+486,189,ManagerAcknowledge,lhuxley,2025-07-29 21:10:58.476,Manager acknowledged violation.,,,2025-07-29 21:10:58.476
+487,189,StatusChange,lhuxley,2025-08-16 00:44:26.690,Status changed to CorrectiveActionInProgress.,,,2025-08-16 00:44:26.690
+488,190,Create,fvaldez,2025-12-27 20:02:18.257,Violation entered.,,,2025-12-27 20:02:18.257
+489,190,ManagerAcknowledge,scarrington,2025-12-30 12:59:50.169,Manager acknowledged violation.,,,2025-12-30 12:59:50.169
+490,190,StatusChange,scarrington,2026-01-10 17:13:31.126,Status changed to CorrectiveActionCompleted.,,,2026-01-10 17:13:31.126

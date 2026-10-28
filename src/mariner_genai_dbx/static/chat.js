@@ -2,6 +2,7 @@ const form = document.querySelector("#chat-form");
 const input = document.querySelector("#message");
 const messages = document.querySelector("#messages");
 const sendButton = document.querySelector("#send");
+const cancelButton = document.querySelector("#cancel");
 const statusText = document.querySelector("#status");
 const newChatButton = document.querySelector("#new-chat");
 const openDocumentsButton = document.querySelector("#open-documents");
@@ -9,6 +10,7 @@ const chatShell = document.querySelector(".chat-shell");
 const agentToggleButton = document.querySelector("#toggle-agents");
 const agentSidebarContent = document.querySelector("#agent-sidebar-content");
 const readyTopics = document.querySelectorAll(".topic-ready[data-command]");
+const coaching360Exit = document.querySelector("#coaching360-exit");
 const appLayout = document.querySelector("#app-layout");
 const sourceWorkspace = document.querySelector("#source-workspace");
 const citedSources = document.querySelector("#cited-sources");
@@ -28,6 +30,8 @@ const closeSourceButton = document.querySelector("#close-source");
 const initialMessage = "Ask a question about branch operations, employee policies, or benefits.";
 
 let conversationId = null;
+// Aborts the request in flight; the server sees the closed stream and logs it as cancelled.
+let activeRequest = null;
 let catalogsLoaded = false;
 let documentLoadVersion = 0;
 const conversationSources = new Map();
@@ -52,9 +56,31 @@ agentToggleButton.addEventListener("click", () => {
 });
 
 function populateCommand(topic) {
+  // Start/exit commands (Coaching 360) are sent at once; the others are added to the box.
+  if (topic.dataset.submit === "true") {
+    if (input.disabled) return;
+    input.value = topic.dataset.command;
+    form.requestSubmit();
+    return;
+  }
   input.value = `${topic.dataset.command} `;
   input.focus();
   input.setSelectionRange(input.value.length, input.value.length);
+}
+
+// Coaching 360 runs inside the conversation: show "Close Coaching 360" while it is open.
+function setCoaching360Active(active) {
+  if (coaching360Exit) coaching360Exit.hidden = !active;
+}
+
+function trackCoaching360(message) {
+  const [command, argument = ""] = message.trim().split(/\s+/);
+  if (command.toLowerCase() !== "/coaching360") return;
+  setCoaching360Active(argument.toLowerCase() !== "exit");
+}
+
+function trackCoaching360Reply(answer) {
+  if (typeof answer === "string" && answer.startsWith("You left Coaching360")) setCoaching360Active(false);
 }
 
 for (const topic of readyTopics) {
@@ -93,7 +119,15 @@ function rememberSource(source) {
 function addMessage(role, text, sources = []) {
   const article = document.createElement("article");
   article.className = `message ${role}-message`;
+  renderMessageText(article, role, text);
+  appendSources(article, sources);
+  messages.appendChild(article);
+  messages.scrollTo({ top: messages.scrollHeight, behavior: "smooth" });
+  return article;
+}
 
+function renderMessageText(article, role, text) {
+  article.replaceChildren();
   if (role === "assistant" && window.MarinerMarkdown) {
     window.MarinerMarkdown.render(article, text);
   } else {
@@ -101,7 +135,9 @@ function addMessage(role, text, sources = []) {
     paragraph.textContent = text;
     article.appendChild(paragraph);
   }
+}
 
+function appendSources(article, sources) {
   if (sources.length > 0) {
     const heading = document.createElement("h2");
     heading.textContent = "Sources";
@@ -136,8 +172,22 @@ function addMessage(role, text, sources = []) {
     article.appendChild(list);
   }
 
-  messages.appendChild(article);
-  messages.scrollTo({ top: messages.scrollHeight, behavior: "smooth" });
+}
+
+function setCitationStatus(article, state, text = "") {
+  let status = article.querySelector(".citation-status");
+  if (state === "complete") {
+    status?.remove();
+    return;
+  }
+  if (!status) {
+    status = document.createElement("p");
+    article.appendChild(status);
+  }
+  status.className = `citation-status citation-${state}`;
+  status.setAttribute("role", state === "failed" ? "alert" : "status");
+  status.setAttribute("aria-live", "polite");
+  status.textContent = text || "Waiting on citations… Sources are not yet verified.";
 }
 
 function setDocument(source) {
@@ -412,10 +462,58 @@ document.addEventListener("keydown", (event) => {
 
 addMessage("assistant", initialMessage);
 
+// Response timer: a live count in the status line while waiting, and the total
+// time (from Send to the finished answer) at the end of the answer.
+let statusBase = "";
+let timerStartedAt = null;
+let timerInterval = null;
+
+function renderStatus() {
+  if (timerStartedAt === null) {
+    statusText.textContent = statusBase;
+    return;
+  }
+  const seconds = ((performance.now() - timerStartedAt) / 1000).toFixed(1);
+  statusText.textContent = statusBase ? `${statusBase} ${seconds} s` : `${seconds} s`;
+}
+
+function setStatus(text) {
+  statusBase = text;
+  renderStatus();
+}
+
+function startTimer() {
+  timerStartedAt = performance.now();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(renderStatus, 100);
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerStartedAt = null;
+}
+
+function appendAnswerTime(article, startedAt) {
+  if (!article) return;
+  const note = document.createElement("p");
+  note.className = "answer-time";
+  note.textContent = `Answered in ${((performance.now() - startedAt) / 1000).toFixed(1)} s`;
+  article.appendChild(note);
+  messages.scrollTo({ top: messages.scrollHeight, behavior: "smooth" });
+}
+
 function setBusy(isBusy) {
   input.disabled = isBusy;
   sendButton.disabled = isBusy;
-  statusText.textContent = isBusy ? "Routing your question…" : "";
+  newChatButton.disabled = isBusy;
+  if (cancelButton) {
+    cancelButton.hidden = !isBusy;
+    cancelButton.disabled = !isBusy;
+  }
+  if (isBusy) startTimer();
+  else stopTimer();
+  setStatus(isBusy ? "Routing your question…" : "");
 }
 
 form.addEventListener("submit", async (event) => {
@@ -424,29 +522,117 @@ form.addEventListener("submit", async (event) => {
   if (!message) return;
 
   addMessage("user", message);
+  trackCoaching360(message);
   input.value = "";
   setBusy(true);
+  const startedAt = performance.now();
+  const controller = new AbortController();
+  activeRequest = controller;
 
   const payload = { message };
   if (conversationId) payload.conversationId = conversationId;
+  let draft = null;
+  let sourcesReceived = false;
+  // Checked live text shown while the answer is generated; the final
+  // "answer" event always replaces it.
+  let preview = null;
+  let previewText = "";
 
   try {
-    const response = await fetch("/api/v1/chat", {
+    const response = await fetch("/api/v1/chat/stream", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+      signal: controller.signal,
     });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error?.message || "The request failed.");
-
-    conversationId = data.conversationId;
-    addMessage("assistant", data.answer, data.sources || []);
+    const contentType = response.headers.get("Content-Type") || "";
+    if (!contentType.includes("text/event-stream")) {
+      if (!contentType.includes("application/json")) {
+        throw new Error("Unexpected response. Please sign in and try again.");
+      }
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error?.message || "The request failed.");
+      conversationId = data.conversationId;
+      appendAnswerTime(addMessage("assistant", data.answer, data.sources || []), startedAt);
+      trackCoaching360Reply(data.answer);
+    } else {
+      if (!response.ok) throw new Error("The request failed.");
+      await window.MarinerChatStream.consume(response, (event, data) => {
+        if (event === "status") {
+          setStatus("Preparing your answer…");
+        } else if (event === "progress") {
+          if (!draft && typeof data.message === "string") setStatus(data.message);
+        } else if (event === "delta") {
+          if (draft || typeof data.text !== "string") return;
+          previewText += data.text;
+          if (!preview) {
+            preview = addMessage("assistant", "");
+            preview.classList.add("streaming");
+          }
+          renderMessageText(preview, "assistant", previewText);
+          messages.scrollTo({ top: messages.scrollHeight, behavior: "smooth" });
+        } else if (event === "preview_reset") {
+          preview?.remove();
+          preview = null;
+          previewText = "";
+        } else if (event === "answer") {
+          trackCoaching360Reply(data.answer);
+          if (draft || typeof data.answer !== "string") throw new Error("Invalid answer event.");
+          conversationId = data.conversationId;
+          if (preview) {
+            renderMessageText(preview, "assistant", data.answer);
+            preview.classList.remove("streaming");
+            draft = preview;
+            preview = null;
+          } else {
+            draft = addMessage("assistant", data.answer);
+          }
+          if (data.citationStatus === "pending") {
+            setCitationStatus(draft, "pending");
+            setStatus("Waiting on citations…");
+          }
+        } else if (event === "sources") {
+          if (!draft || sourcesReceived || !Array.isArray(data.sources)) {
+            throw new Error("Invalid source event.");
+          }
+          appendSources(draft, data.sources);
+          setCitationStatus(draft, "complete");
+          sourcesReceived = true;
+        } else if (event === "done") {
+          if (!draft || !sourcesReceived) throw new Error("The response is incomplete.");
+          conversationId = data.conversationId;
+          appendAnswerTime(draft, startedAt);
+        }
+      });
+    }
   } catch (error) {
-    addMessage("error", error.message || "The request failed.");
+    // Never leave unfinished preview text on screen without its final checks.
+    preview?.remove();
+    if (controller.signal.aborted) {
+      if (draft) {
+        setCitationStatus(draft, "failed", "You cancelled this request before the sources were verified.");
+      } else {
+        addMessage("cancelled", "You cancelled this request.");
+      }
+    } else if (draft) {
+      setCitationStatus(draft, "failed", sourcesReceived
+        ? (error.message || "The response was interrupted.")
+        : `Sources are unverified. ${error.message || "The response was interrupted."}`);
+    } else {
+      addMessage("error", error.message || "The request failed.");
+    }
   } finally {
+    if (activeRequest === controller) activeRequest = null;
     setBusy(false);
     input.focus();
   }
+});
+
+cancelButton?.addEventListener("click", () => {
+  if (!activeRequest) return;
+  cancelButton.disabled = true;
+  setStatus("Cancelling…");
+  activeRequest.abort();
 });
 
 input.addEventListener("keydown", (event) => {
@@ -457,6 +643,7 @@ input.addEventListener("keydown", (event) => {
 
 newChatButton.addEventListener("click", () => {
   conversationId = null;
+  setCoaching360Active(false);
   conversationSources.clear();
   citedSources.replaceChildren();
   clearSourceSearchButton.click();

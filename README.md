@@ -7,12 +7,12 @@ This repository is a test/prototype application. Conversation state is process-l
 ## What the application does
 
 - Serves the ASK MARINER chat interface.
-- Sends ordinary questions to the Databricks Supervisor without application-level domain routing.
+- Sends ordinary questions to the Databricks Supervisor, with an optional POC performance workflow described below.
 - Supports explicit user-directed routes:
   - `/policy` → Branch Operations (`mariner-policy-assistant`)
   - `/handbook` → Employee Handbook (`mariner-handbook-assistant`)
   - `/benefits` → Employee Benefits
-  - `/coaching` → Employee Performance
+  - `/performance` → Employee Performance
   - `/benfits` remains as a compatibility alias for `/benefits`.
 - Keeps bounded conversation history in memory and sends it explicitly because the serving endpoint is treated as stateless.
 - Runs explicit slash commands without prior conversation history so an earlier domain cannot bias the selected specialist. The completed turn is still saved in the current conversation.
@@ -29,14 +29,90 @@ This repository is a test/prototype application. Conversation state is process-l
 1. Flask validates the JSON request, message length, and conversation ID. Password-mode authentication is enforced before protected routes are dispatched.
 2. Input guardrails inspect the message.
 3. The route resolves the local or forwarded user identity and rejects unauthenticated requests.
-4. Ordinary questions are forwarded unchanged to the Supervisor. Explicit slash commands are converted to authoritative specialist-routing instructions.
+4. Ordinary questions are forwarded unchanged to the Supervisor unless the optional POC performance workflow handles them. Explicit slash commands are converted to authoritative specialist-routing instructions.
 5. The app sends bounded conversation history for ordinary follow-up questions.
 6. The Supervisor may call its configured specialist agents. Only allowlisted approval requests are approved by the Flask transport, with a maximum of five approval rounds.
 7. The app selects the final Supervisor message and records specialist names reported in the response.
 8. Source labels are extracted from the final message. If the final message omits them, the app searches the grounded specialist messages in the complete Databricks response.
 9. Source labels are resolved through parameterized Databricks SQL queries.
 10. Output guardrails mask or replace unsafe output.
-11. The filtered answer and safe sources are saved to in-memory history, written to best-effort analytics, and returned to the browser.
+11. The filtered answer and safe sources are saved to in-memory history, queued for best-effort analytics, and returned to the browser.
+
+### Flask latency diagnostics
+
+The browser uses `POST /api/v1/chat/stream` for progressive delivery. After the
+Supervisor completes, Flask applies output guardrails and sends the answer with
+"Waiting on citations… Sources are not yet verified." Citation lookup runs next;
+validated source links are attached to that same message. Verification failures
+leave a visible warning, and failed/unverified turns are not saved to history.
+The stream does not expose raw model tokens or intermediate tool messages.
+Agent generation time remains unchanged; this removes the wait for citations
+before displaying the completed, checked answer.
+
+The existing `POST /api/v1/chat` API still waits for validated citations and
+returns its original JSON response. Compare completed answers, including sources,
+when measuring the full response-time target.
+
+Streaming events are `status`, `answer`, `sources`, and `done`, or `error`.
+Validation/authentication failures before streaming remain normal JSON HTTP
+errors. Once streaming starts, errors use an `error` event over HTTP 200. EOF
+without `done` is an incomplete response, never a successful completion.
+The route sets `X-Accel-Buffering: no` and private/no-store cache headers. Disable
+response buffering on any reverse proxy and allow sufficient idle time for
+Databricks generation; proxy-specific settings must be checked in deployment.
+
+- Citation document rows are cached in each resolver for 60 seconds, with a maximum
+  of 128 labels. Page selection runs separately for every answer. Employee data,
+  generated answers, and signed URLs are not cached. Document changes or permission
+  revocations can take up to 60 seconds to appear in citation lookups; restarting
+  workers clears the cache. Source downloads still enforce the existing checks.
+- Databricks analytics uses a lazy background thread per worker and a queue of at
+  most 256 pending events. SQL submission no longer blocks chat responses. Events
+  are best effort: queue overflow, SQL failures, and process exit can lose events.
+- INFO logs report `inference_ms` (including worker approval continuations) and
+  `citations_ms`. HTTP completion logs report total Flask duration and request ID.
+  JSON responses include `Server-Timing: app;dur=...`. Streams report
+  `app_headers` for header preparation, then log full duration when closed.
+- Flask duration starts when the worker receives a request; proxy or Gunicorn
+  queueing and browser rendering require separate end-to-end measurement.
+
+These changes remove avoidable application waits but do not establish a
+30-second response guarantee. Validate the six performance questions against the
+live application after deployment.
+
+### Optional structured citations
+
+The app also accepts a final assistant message containing a JSON object with
+`answer` and `citations`. Registry-backed citations include `document_id`,
+`document_version`, `chunk_id`, `document_title`, and an integer `page`.
+The public chat response remains unchanged; the UI still receives plain answer
+text and validated `Source` objects.
+
+The transport explicitly allows the read-only tool
+`endpoint-perf-policy-citations-dev` and can continue its MCP approval requests.
+Restart Flask/Gunicorn after updating this allowlist. Other unrecognized tools
+remain blocked; a different endpoint name requires its own reviewed entry.
+
+Follow [the deployment instructions](agent_descriptions/structured_citations.md)
+to create [the registry view](sql/create_citation_registry.sql), update retrieval
+and Supervisor output, and enable `DATABRICKS_CITATION_REGISTRY_TABLE`.
+The feature is disabled by default. `CITATION_REGISTRY_TTL_SECONDS` defaults to
+60 (allowed 1–3600); `CITATION_REGISTRY_TIMEOUT_SECONDS` defaults to 10 (1–30).
+
+Registry preload and refresh start lazily in a background thread alongside the
+first inference request. Cached references avoid request-path SQL; all cache
+misses in one answer use a single parameterized query. Every reference must
+match an approved document version, chunk, title, page range, and Volume root.
+Malformed structured responses are rejected before any draft is displayed.
+Invalid references fail validation; the progressive UI marks the draft unverified
+and does not save it. The JSON endpoint returns a citation error without an answer.
+Legacy Markdown/Source-line responses continue through the existing resolver.
+
+Metadata caches are local to each configured workspace principal and approved
+Volume set, expire after the configured TTL, and are limited to shared policy
+documents. They do not grant per-user access or verify claim-to-passage entailment.
+Document/permission changes can take up to the TTL to be reflected. See the
+deployment instructions for access boundaries, cache limits, and rollback.
 
 ## Application-layer guardrails
 
@@ -111,7 +187,7 @@ Citation behavior:
 - Canonical Handbook and Performance document fallbacks are used when those identified specialists omit or vary their source label.
 - When a document has chunks on multiple pages, the page is selected by meaningful-token overlap between the Supervisor answer and chunk text. The page may be omitted when support is ambiguous.
 - Model-emitted `Source:` lines are removed from the displayed answer after resolution because the UI renders a separate Sources list.
-- If one or more source labels are returned but none resolves to an approved document, the chat route returns `CITATIONS_UNAVAILABLE` instead of displaying the answer as verified policy.
+- If source labels do not resolve to an approved document, the JSON route returns `CITATIONS_UNAVAILABLE`. The progressive route marks its already displayed draft unverified, emits an error, and does not save the turn.
 - If the Supervisor and specialists return no source label at all, the response can be displayed without a source. The Flask layer does not perform full claim-to-chunk entailment validation.
 
 ## Document reader controls
@@ -190,7 +266,24 @@ Only allowlisted keys are read from `.env`. Process environment variables overri
 | `CHAT_SESSION_TTL_SECONDS` | `1800` | In-memory conversation inactivity lifetime. Minimum 60 seconds. |
 | `SOURCE_URL_TTL_SECONDS` | `300` | Signed document-link lifetime. Valid range: 60–900 seconds. |
 
-Gunicorn also reads `PORT`, `WEB_CONCURRENCY`, `WEB_THREADS`, and `GUNICORN_TIMEOUT_SECONDS`. Current defaults are port `8000`, two workers, four threads per worker, and a 660-second worker timeout.
+`DIRECT_SPECIALIST_ROUTES_JSON` maps `/policy`, `/handbook`, `/benefits` and
+`/performance` to their specialist endpoints, for example
+`{"/policy":{"endpoint":"ka-bad183de-endpoint","api":"responses","agent":"mariner-policy-assistant"}}`.
+A mapped command calls the specialist once instead of going through the
+Supervisor, with the same citation checks. Chart requests, unmapped commands and
+failed direct calls still use the Supervisor. The app identity needs `CAN_QUERY`
+on each mapped endpoint. An optional `"stream": true` streams a Responses agent's
+answer live; it is off by default because Knowledge Assistants send their text
+in one or two pieces at the end, so it adds no speed today.
+
+The `/api/v1/chat/stream` route sends `progress` events (a domain label such as
+"Checking the Employee Handbook…", never internal agent names) and `delta`
+events with a checked preview of the Supervisor's final answer. The preview
+releases whole lines only, at least 200 characters behind the model, after
+personal-data masking and the block checks; a block sends `preview_reset`. The
+`answer` event is still the fully checked final answer and replaces the preview.
+
+Gunicorn also reads `PORT`, `WEB_CONCURRENCY`, `WEB_THREADS`, and `GUNICORN_TIMEOUT_SECONDS`. Current defaults are port `8000`, two workers, 16 threads per worker, and a 180-second worker timeout. The Supervisor client retries once on HTTP 429/502/503/504 or a connection error, and uses a 10-second connect timeout.
 
 ## Local setup
 
@@ -240,13 +333,14 @@ The Docker image runs the same command as a non-root user and exposes port 8000.
 | `GET` | `/health` | Process liveness; returns `{"status":"ok"}`. |
 | `GET` | `/ready` | Cached construction-level readiness. It does not invoke the live Supervisor. |
 | `POST` | `/api/v1/chat` | Chat API. Accepts `message` and optional `conversationId`. |
+| `POST` | `/api/v1/chat/stream` | Same input; sends checked answer first, verified sources next using SSE. |
 | `GET` | `/api/v1/sources` | Lists configured source catalogs. |
 | `GET` | `/api/v1/sources/search?q=...` | Searches allowlisted PDF filenames and paths. |
 | `GET` | `/api/v1/sources/<catalog_id>/children` | Lists an allowlisted folder. |
 | `POST` | `/api/v1/sources/<catalog_id>/open` | Creates a user-bound document URL for a PDF path. |
 | `GET` | `/documents/<token>` | Validates the signed token and streams the PDF. |
 
-There is no `/api/chat` compatibility route in the current application; clients must use `/api/v1/chat`.
+There is no `/api/chat` compatibility route; clients use `/api/v1/chat` or `/api/v1/chat/stream`.
 
 ## Logging and analytics
 
@@ -306,3 +400,61 @@ The Python suite covers configuration, authentication, chat routing, guardrails,
 - Filename search does not search PDF contents.
 - Analytics writes are best-effort and depend on the destination table already existing.
 - The browser currently supports validated bar charts only.
+
+### Optional POC performance retrieval
+
+Set these values in the local `.env` and restart Flask to enable the bounded
+performance workflow:
+
+```dotenv
+PERFORMANCE_FAST_PATH_ENABLED=true
+PERFORMANCE_FAST_MODEL_ENDPOINT=databricks-gpt-5-4-mini
+PERFORMANCE_SYNTHESIS_MODEL_ENDPOINT=databricks-gpt-5-4-mini
+DATABRICKS_CITATION_REGISTRY_TABLE=workspace.default.app_citation_registry
+PERFORMANCE_VIEW_PREFIX=app_fast_
+```
+
+`PERFORMANCE_VIEW_PREFIX` chooses which views the fast path reads. `app_vw_`
+(the default) uses the live views; `app_fast_` uses the copies created by
+`sql/create_performance_fast_views.sql`: six materialized views refreshed daily
+plus a live `app_fast_review_compliance`, so "overdue" is always current. Run
+that script before switching to `app_fast_`, and refresh the materialized views
+(`REFRESH MATERIALIZED VIEW ...`) after loading new performance data if it
+cannot wait for the daily refresh.
+
+The app identity needs its existing warehouse access, `SELECT` on the approved
+`workspace.performance_test.app_vw_*` views and citation registry, and query
+permission on both model endpoints. This option uses the app identity's Unity
+Catalog visibility for this POC; it does not add per-manager access lists. It is
+disabled by default and rejected in production configuration.
+
+A small planner selects employee, branch, region and quarter filters. One
+parameterized SQL statement retrieves all selected employees and the needed
+ratings, production, goals, competencies, review-compliance or branch datasets.
+When policy is needed, that same statement retrieves performance policy passages
+and their authoritative citation metadata from the registry. No question text is
+executed as SQL. A single final model call combines the observed data and policy;
+code copies selected citations from retrieved records and validates them through
+the existing resolver. Existing output guardrails and progressive source delivery
+still apply. Employee results and answers are not cached.
+
+Future quarters remain explicitly missing. Planning requests also include bounded
+historical context, clearly marked separately from the requested period. Monetary
+amounts remain source values; attainment percentages are normalized from funded
+and target amounts to avoid confusing ratios with percentages. Duplicate employee
+names, oversized selections and truncated results require clarification.
+
+The implementation has no embedded employee names, branch names, particular
+quarter, or canned question responses. Explicit Branch Operations, Handbook and
+Benefits commands bypass it. Other topics and unsupported analysis continue
+through the existing Supervisor; those fallback requests can still take longer
+than 30 seconds. Performance requests require a known employee, branch or region
+for data reads. The POC policy context is bounded to ten passages and 100,000
+characters; exceeding it fails explicitly instead of silently dropping policy.
+
+Analytics identifies this local workflow as `performance-fast-path`, rather than
+claiming that a hosted specialist was called. Timing logs report `planner_ms`,
+`reads_ms`, and `total_ms`, without employee names
+or answer bodies. Measure complete source delivery, including cold warehouse
+starts, before treating 30 seconds as an operational guarantee. Disable
+`PERFORMANCE_FAST_PATH_ENABLED` and restart Flask to restore the original route.

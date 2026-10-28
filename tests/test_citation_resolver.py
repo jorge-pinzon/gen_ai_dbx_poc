@@ -1,3 +1,4 @@
+import time
 import unittest
 
 from mariner_genai_dbx.citation_resolver import (
@@ -36,6 +37,39 @@ def response(rows, state="SUCCEEDED"):
 
 
 class CitationResolverTests(unittest.TestCase):
+    def test_cache_reuses_rows_but_selects_page_for_each_answer_and_expires(self):
+        now = [0.0]
+        client = FakeWorkspaceClient(response([
+            ["Policy", "Guide", "/Volumes/main/docs/Guide.pdf", "1",
+             "Quarterly coaching meetings document feedback and development goals.", "2"],
+            ["Policy", "Guide", "/Volumes/main/docs/Guide.pdf", "2",
+             "Annual bonus eligibility depends on funded loan production targets.", "2"],
+        ]))
+        resolver = DatabricksCitationResolver(
+            workspace_client=client, warehouse_id="warehouse", tables=CITATION_TABLES,
+            clock=lambda: now[0], cache_ttl_seconds=60,
+        )
+        first = resolver.resolve_labels(
+            ("Guide",), "Quarterly coaching meetings document feedback and development goals."
+        )[0]
+        second = resolver.resolve_labels(
+            ("Guide",), "Annual bonus eligibility depends on funded loan production targets."
+        )[0]
+        self.assertEqual((first.page, second.page), (1, 2))
+        self.assertEqual(len(client.statement_execution.calls), 1)
+        now[0] = 61
+        resolver.resolve_labels(("Guide",))
+        self.assertEqual(len(client.statement_execution.calls), 2)
+
+    def test_missing_sources_are_not_cached(self):
+        client = FakeWorkspaceClient(response([]))
+        resolver = DatabricksCitationResolver(
+            workspace_client=client, warehouse_id="warehouse", tables=CITATION_TABLES,
+        )
+        resolver.resolve_labels(("Missing",))
+        resolver.resolve_labels(("Missing",))
+        self.assertEqual(len(client.statement_execution.calls), 2)
+
     def test_removes_plain_and_markdown_source_lines_from_display_answer(self):
         answer = (
             "Managers meet quarterly.\n\n"
@@ -423,6 +457,102 @@ class CitationResolverTests(unittest.TestCase):
 
         with self.assertRaises(CitationResolutionError):
             resolver.resolve_labels(("Record Retention",))
+
+
+
+class SequencedStatements:
+    def __init__(self, *responses):
+        self.responses = list(responses)
+        self.calls = []
+
+    def execute_statement(self, **kwargs):
+        self.calls.append(kwargs)
+        return self.responses.pop(0) if len(self.responses) > 1 else self.responses[0]
+
+
+def chunk_rows():
+    return [
+        ["Branch Operations", "BRANCH_OPERATIONS_RECORD_RETENTION",
+         "/Volumes/main/branch/BRANCH_OPERATIONS_RECORD_RETENTION.pdf", "4",
+         "Paid loan files must be retained for five years.", "1"],
+        ["Employee Handbook", "2026 Employee Handbook v1.pdf",
+         "/Volumes/main/handbook/2026 Employee Handbook v1.pdf", "45",
+         "Jury duty leave is paid for up to ten days.", "1"],
+        ["Employee Handbook", "2026 Employee Handbook v1.pdf",
+         "/Volumes/main/handbook/2026 Employee Handbook v1.pdf", "46",
+         "Bereavement leave covers immediate family members.", "1"],
+    ]
+
+
+class PreloadedChunkTests(unittest.TestCase):
+    def resolver(self, statements, **kwargs):
+        return DatabricksCitationResolver(
+            workspace_client=type("Client", (), {"statement_execution": statements})(),
+            warehouse_id="warehouse", tables=CITATION_TABLES, preload_chunks=True, **kwargs)
+
+    def test_resolves_many_labels_with_one_preload_query(self):
+        statements = SequencedStatements(response(chunk_rows()))
+        resolver = self.resolver(statements)
+
+        retention = resolver.resolve_labels(("Branch Record Retention Policy",))
+        handbook = resolver.resolve_labels(
+            ("Employee Handbook - Leave",), "Jury duty leave is paid for ten days.")
+        missing = resolver.resolve_labels(("Unknown Document",))
+
+        self.assertEqual(len(statements.calls), 1)
+        self.assertNotIn("WHERE", statements.calls[0]["statement"])
+        self.assertEqual(statements.calls[0]["parameters"], [])
+        self.assertEqual((retention[0].label, retention[0].page),
+                         ("BRANCH_OPERATIONS_RECORD_RETENTION", 4))
+        self.assertEqual((handbook[0].domain, handbook[0].page), ("Employee Handbook", 45))
+        self.assertEqual(missing, ())
+
+    def test_refreshes_in_background_when_older_than_ttl(self):
+        now = [0.0]
+        statements = SequencedStatements(response(chunk_rows()))
+        resolver = self.resolver(statements, clock=lambda: now[0], cache_ttl_seconds=60)
+        resolver.resolve_labels(("Record Retention",))
+        resolver.start_background_refresh()  # still fresh: no refresh
+        self.assertEqual(len(statements.calls), 1)
+
+        now[0] = 61
+        resolver.start_background_refresh()
+        for _ in range(100):
+            if len(statements.calls) == 2 and not resolver._chunks_refreshing:
+                break
+            time.sleep(0.01)
+        self.assertEqual(len(statements.calls), 2)
+        self.assertEqual(resolver._chunks_loaded_at, 61)
+
+    def test_reloads_synchronously_once_past_staleness_limit(self):
+        now = [0.0]
+        statements = SequencedStatements(response(chunk_rows()))
+        resolver = self.resolver(statements, clock=lambda: now[0], max_stale_seconds=600)
+        resolver.resolve_labels(("Record Retention",))
+        now[0] = 300
+        resolver.resolve_labels(("Record Retention",))  # stale but within the limit
+        self.assertEqual(len(statements.calls), 1)
+        now[0] = 601
+        resolver.resolve_labels(("Record Retention",))
+        self.assertEqual(len(statements.calls), 2)
+
+    def test_falls_back_to_per_label_query_when_preload_fails(self):
+        statements = SequencedStatements(
+            response([], state="FAILED"),
+            response([chunk_rows()[0]]),
+        )
+        resolver = self.resolver(statements)
+        with self.assertLogs("mariner_genai_dbx.citation_resolver", level="WARNING"):
+            sources = resolver.resolve_labels(("Record Retention",))
+        self.assertEqual(sources[0].page, 4)
+        self.assertIn(":source_label", statements.calls[1]["statement"])
+
+    def test_falls_back_when_tables_exceed_preload_capacity(self):
+        statements = SequencedStatements(response(chunk_rows()), response([chunk_rows()[0]]))
+        resolver = self.resolver(statements, preload_max_rows=2)
+        with self.assertLogs("mariner_genai_dbx.citation_resolver", level="WARNING"):
+            resolver.resolve_labels(("Record Retention",))
+        self.assertIn(":source_label", statements.calls[1]["statement"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,7 @@
+Branch,District,ReportDate,ReviewType,ExclusionComment,IsExcluded
+8046,907,2026-04-01,Branch,Weather closure; month excluded from rolling averages.,1
+8040,906,2026-04-01,Branch,Branch closed for renovation part of month.,1
+8004,901,2025-10-01,Branch,Weather closure; month excluded from rolling averages.,1
+8035,906,2026-07-01,Branch,System conversion month; production not comparable.,1
+8026,905,2026-06-01,Branch,Weather closure; month excluded from rolling averages.,1
+8030,905,2026-05-01,Branch,Weather closure; month excluded from rolling averages.,1

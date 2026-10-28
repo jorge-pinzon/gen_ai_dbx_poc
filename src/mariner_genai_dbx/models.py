@@ -7,6 +7,16 @@ from datetime import datetime
 
 
 @dataclass(frozen=True)
+class DirectRoute:
+    """A slash command answered by its specialist endpoint without the Supervisor."""
+
+    endpoint: str
+    api: str  # "responses" (Responses API agents) or "chat" (ChatAgent endpoints)
+    agent: str  # name recorded in agents_used and used for fallback source labels
+    stream: bool = False  # stream the answer live (Responses agents that support streaming)
+
+
+@dataclass(frozen=True)
 class SupervisorConfig:
     workspace_host: str = field(repr=False)
     endpoint_name: str
@@ -14,6 +24,7 @@ class SupervisorConfig:
     client_id: str | None = field(default=None, repr=False)
     client_secret: str | None = field(default=None, repr=False)
     request_timeout_seconds: int = 60
+    direct_routes: tuple[tuple[str, DirectRoute], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -58,6 +69,24 @@ class AgentAnswer:
     sources: tuple[Source, ...] = ()
     usage: TokenUsage = field(default_factory=TokenUsage)
     agents_used: tuple[str, ...] = ()
+    inference_ms: int | None = None
+    citations_ms: int | None = None
+
+
+@dataclass(frozen=True)
+class PendingAgentAnswer:
+    """Completed model text with references still awaiting source validation."""
+
+    answer: str
+    source_labels: tuple[str, ...] = ()
+    citation_references: tuple[dict, ...] | None = None
+    usage: TokenUsage = field(default_factory=TokenUsage)
+    agents_used: tuple[str, ...] = ()
+    inference_ms: int = 0
+
+    @property
+    def citations_pending(self) -> bool:
+        return bool(self.source_labels or self.citation_references)
 
 
 @dataclass(frozen=True)

@@ -1,0 +1,13 @@
+{
+  "name": "mariner-handbook-assistant",
+  "description": "This is the handbook agent",
+  "instructions_file": "handbook_instructions.md",
+  "knowledge_source": {
+    "name": "employee_handbook_new_index",
+    "description": "Managed Vector Index with Delta Sync",
+    "index": "workspace.default.employee_handbook_new_index",
+    "text_col": "embedding_text",
+    "doc_uri_col": "document_title"
+  },
+  "trial_endpoint_name": "ka-56b296c2-endpoint"
+}

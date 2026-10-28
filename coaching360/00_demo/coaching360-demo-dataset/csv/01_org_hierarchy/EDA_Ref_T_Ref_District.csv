@@ -1,0 +1,11 @@
+DistrictDWID,RegionDWID,DistrictNumber,DistrictName,DMUsername,DMName,DMEmail
+200,100,900,Corporate Support,qfairbanks,Quinn Fairbanks,qfairbanks@demo.example.com
+201,101,901,Chesapeake,ningram,Nolan Ingram,ningram@demo.example.com
+202,101,902,Shenandoah,fumberto,Felicia Umberto,fumberto@demo.example.com
+203,101,903,Susquehanna,onorthcott,Olivia Northcott,onorthcott@demo.example.com
+204,102,904,Piedmont,bnorwood,Blake Norwood,bnorwood@demo.example.com
+205,102,905,Lowcountry,nironside,Nadia Ironside,nironside@demo.example.com
+206,102,906,Peachtree,lhuxley,Logan Huxley,lhuxley@demo.example.com
+207,103,907,Cumberland,aeastwick,Avery Eastwick,aeastwick@demo.example.com
+208,103,908,Gulf Coast,rblackwood,Rashad Blackwood,rblackwood@demo.example.com
+209,103,909,Hill Country,kgreenleaf,Kara Greenleaf,kgreenleaf@demo.example.com

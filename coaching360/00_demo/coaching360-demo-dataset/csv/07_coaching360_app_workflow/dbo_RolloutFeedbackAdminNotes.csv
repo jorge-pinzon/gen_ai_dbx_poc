@@ -1,0 +1,81 @@
+RolloutFeedbackAdminNoteId,RolloutFeedbackItemId,Body,CreatedByUserName,CreatedUtc
+1,1,Reproducing in QA.,fvaldez,2026-09-08 04:01:43.378
+2,1,Logged as COACH-330.,fvaldez,2026-09-09 16:21:27.538
+3,2,Reproducing in QA.,fvaldez,2026-07-19 20:42:20.863
+4,2,Logged as COACH-370.,fvaldez,2026-07-22 03:17:42.338
+5,2,Working as designed; explained to submitter.,fvaldez,2026-07-24 12:08:24.618
+6,3,Fixed in latest release.,fvaldez,2026-10-20 05:41:02.825
+7,5,Reproducing in QA.,fvaldez,2026-09-30 05:30:15.957
+8,5,Logged as COACH-397.,fvaldez,2026-10-02 17:27:54.420
+9,6,Reproducing in QA.,fvaldez,2026-10-19 12:18:43.179
+10,7,Reproducing in QA.,fvaldez,2026-10-17 14:32:54.781
+11,8,Reproducing in QA.,fvaldez,2026-09-18 07:43:53.236
+12,8,Logged as COACH-416.,fvaldez,2026-09-22 21:01:50.890
+13,9,Duplicate.,fvaldez,2026-08-20 14:37:46.494
+14,10,Working as designed; explained to submitter.,fvaldez,2026-09-05 11:36:03.746
+15,11,Reproducing in QA.,fvaldez,2026-09-15 23:17:45.765
+16,11,Logged as COACH-412.,fvaldez,2026-09-16 03:35:52.476
+17,11,Duplicate.,fvaldez,2026-09-16 09:11:48.300
+18,12,Reproducing in QA.,fvaldez,2026-08-12 07:57:19.257
+19,13,Reproducing in QA.,fvaldez,2026-10-02 19:35:28.377
+20,13,Logged as COACH-364.,fvaldez,2026-10-04 05:05:43.391
+21,13,Duplicate.,fvaldez,2026-10-06 08:01:03.190
+22,14,Reproducing in QA.,fvaldez,2026-07-22 23:36:21.082
+23,14,Logged as COACH-385.,fvaldez,2026-07-27 06:31:57.332
+24,14,Fixed in latest release.,fvaldez,2026-07-31 03:06:28.045
+25,15,Reproducing in QA.,fvaldez,2026-09-22 06:00:54.742
+26,15,Logged as COACH-324.,fvaldez,2026-09-25 22:33:05.274
+27,15,Duplicate.,fvaldez,2026-09-29 23:28:37.353
+28,17,Reproducing in QA.,fvaldez,2026-10-15 05:42:44.685
+29,18,Reproducing in QA.,fvaldez,2026-08-11 16:58:18.553
+30,18,Logged as COACH-383.,fvaldez,2026-08-13 16:47:14.359
+31,18,Duplicate.,fvaldez,2026-08-14 22:10:38.406
+32,19,Reproducing in QA.,fvaldez,2026-07-29 04:57:14.690
+33,19,Logged as COACH-415.,fvaldez,2026-08-01 05:20:35.177
+34,19,Duplicate.,fvaldez,2026-08-04 12:19:53.323
+35,20,Reproducing in QA.,fvaldez,2026-07-24 09:17:30.082
+36,20,Logged as COACH-376.,fvaldez,2026-07-29 05:37:46.635
+37,20,Working as designed; explained to submitter.,fvaldez,2026-07-30 09:11:37.104
+38,21,Reproducing in QA.,fvaldez,2026-10-05 16:16:45.638
+39,21,Logged as COACH-391.,fvaldez,2026-10-09 18:22:42.638
+40,22,Reproducing in QA.,fvaldez,2026-07-17 22:00:09.783
+41,22,Logged as COACH-335.,fvaldez,2026-07-20 19:53:21.273
+42,22,Duplicate.,fvaldez,2026-07-25 07:55:30.135
+43,23,Reproducing in QA.,fvaldez,2026-10-09 17:50:24.562
+44,23,Logged as COACH-356.,fvaldez,2026-10-09 23:41:01.585
+45,24,Reproducing in QA.,fvaldez,2026-09-23 18:08:22.599
+46,24,Logged as COACH-335.,fvaldez,2026-09-27 05:18:45.142
+47,25,Reproducing in QA.,fvaldez,2026-08-26 03:39:45.828
+48,25,Logged as COACH-416.,fvaldez,2026-08-28 20:20:36.657
+49,25,Duplicate.,fvaldez,2026-08-31 00:50:00.261
+50,26,Reproducing in QA.,fvaldez,2026-08-06 08:28:12.516
+51,26,Logged as COACH-324.,fvaldez,2026-08-09 08:02:05.463
+52,26,Fixed in latest release.,fvaldez,2026-08-13 14:53:46.111
+53,27,Fixed in latest release.,fvaldez,2026-08-09 23:06:25.875
+54,28,Reproducing in QA.,fvaldez,2026-08-15 12:56:40.981
+55,28,Logged as COACH-324.,fvaldez,2026-08-18 10:23:23.902
+56,30,Reproducing in QA.,fvaldez,2026-08-03 02:36:12.862
+57,31,Reproducing in QA.,fvaldez,2026-09-08 14:57:35.961
+58,33,Reproducing in QA.,fvaldez,2026-08-03 14:36:04.808
+59,34,Reproducing in QA.,fvaldez,2026-10-06 05:23:13.931
+60,34,Logged as COACH-404.,fvaldez,2026-10-08 12:35:41.317
+61,35,Reproducing in QA.,fvaldez,2026-09-16 11:02:22.115
+62,35,Logged as COACH-350.,fvaldez,2026-09-21 03:18:19.497
+63,35,Working as designed; explained to submitter.,fvaldez,2026-09-22 22:27:16.437
+64,36,Reproducing in QA.,fvaldez,2026-07-22 10:08:37.991
+65,36,Logged as COACH-337.,fvaldez,2026-07-26 08:34:24.730
+66,38,Reproducing in QA.,fvaldez,2026-10-10 10:09:47.880
+67,38,Logged as COACH-417.,fvaldez,2026-10-14 10:23:23.626
+68,39,Fixed in latest release.,fvaldez,2026-09-16 14:40:24.847
+69,40,Reproducing in QA.,fvaldez,2026-10-16 22:15:24.803
+70,41,Reproducing in QA.,fvaldez,2026-07-16 08:51:21.404
+71,43,Reproducing in QA.,fvaldez,2026-09-17 06:15:22.678
+72,44,Working as designed; explained to submitter.,fvaldez,2026-08-06 12:13:08.218
+73,45,Duplicate.,fvaldez,2026-07-18 09:47:06.591
+74,46,Reproducing in QA.,fvaldez,2026-07-26 03:16:58.314
+75,46,Logged as COACH-331.,fvaldez,2026-07-27 23:41:23.988
+76,47,Reproducing in QA.,fvaldez,2026-09-03 20:00:29.915
+77,47,Logged as COACH-404.,fvaldez,2026-09-05 04:34:45.833
+78,48,Reproducing in QA.,fvaldez,2026-08-16 19:15:51.971
+79,48,Logged as COACH-367.,fvaldez,2026-08-20 03:02:17.061
+80,48,Working as designed; explained to submitter.,fvaldez,2026-08-22 21:53:19.999

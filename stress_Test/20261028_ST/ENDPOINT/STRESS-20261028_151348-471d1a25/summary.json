@@ -1,0 +1,179 @@
+{
+  "run_status": "COMPLETE",
+  "measurement_complete": true,
+  "target_seconds": 60.0,
+  "deadline_seconds": 180.0,
+  "required_reliability_percent": 99.0,
+  "reliability_percent": 55.30434782608695,
+  "passed": false,
+  "workflows_started": 575,
+  "outcomes": {
+    "SUCCESS_WITHIN_TARGET": 318,
+    "FAILED": 257
+  },
+  "successful_latency_seconds": {
+    "count": 318,
+    "mean": 16.259335144494518,
+    "p50": 15.969290042005014,
+    "p95": 20.599045082984958,
+    "p99": 23.681588750012452,
+    "max": 26.03577041599783
+  },
+  "failed_latency_seconds": {
+    "count": 257,
+    "mean": 4.113190502303961,
+    "p50": 3.7439780839777086,
+    "p95": 6.912392833008198,
+    "p99": 8.80521133300499,
+    "max": 12.296435874974122
+  },
+  "completed_workflows_per_second_including_drain": 1.8211540618212698,
+  "successful_workflows_per_second_including_drain": 1.007177376798546,
+  "invocation_outcomes": {
+    "SUCCESS": 318,
+    "FAILED": 257
+  },
+  "invocation_success_percent": 55.30434782608695,
+  "http_attempt_outcomes": {
+    "SUCCESS": 318,
+    "FAILED": 257
+  },
+  "successful_invocation_latency_seconds": {
+    "count": 318,
+    "mean": 16.245125042948924,
+    "p50": 15.962622458988335,
+    "p95": 20.58032212499529,
+    "p99": 23.678871457988862,
+    "max": 26.01994604198262
+  },
+  "failed_invocation_latency_seconds": {
+    "count": 257,
+    "mean": 4.09990322857856,
+    "p50": 3.7309498749964405,
+    "p95": 6.902139833982801,
+    "p99": 8.793610333988909,
+    "max": 12.2734667090117
+  },
+  "failure_categories": {
+    "STREAM_ERROR": 24,
+    "CLIENT_ERROR": 232,
+    "NETWORK_TIMEOUT": 1
+  },
+  "failure_details": {
+    "The Databricks Supervisor returned no usable streamed response": 232,
+    "Endpoint reported a stream failure: type=error code=": 24,
+    "The Databricks Supervisor request failed": 1
+  },
+  "per_minute_start_cohorts": [
+    {
+      "minute": 0,
+      "started": 104,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 75,
+        "FAILED": 29
+      },
+      "successful_latency_seconds": {
+        "count": 75,
+        "mean": 16.905855517148737,
+        "p50": 16.45896783299395,
+        "p95": 21.99282462502015,
+        "p99": 26.03577041599783,
+        "max": 26.03577041599783
+      }
+    },
+    {
+      "minute": 1,
+      "started": 116,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 63,
+        "FAILED": 53
+      },
+      "successful_latency_seconds": {
+        "count": 63,
+        "mean": 15.789230665921451,
+        "p50": 15.767499999987194,
+        "p95": 19.23005695801112,
+        "p99": 21.68335029098671,
+        "max": 21.68335029098671
+      }
+    },
+    {
+      "minute": 2,
+      "started": 120,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 58,
+        "FAILED": 62
+      },
+      "successful_latency_seconds": {
+        "count": 58,
+        "mean": 16.465728028758193,
+        "p50": 16.18285412498517,
+        "p95": 20.97774341600598,
+        "p99": 23.681588750012452,
+        "max": 23.681588750012452
+      }
+    },
+    {
+      "minute": 3,
+      "started": 110,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 62,
+        "FAILED": 48
+      },
+      "successful_latency_seconds": {
+        "count": 62,
+        "mean": 16.108790263485712,
+        "p50": 15.844645709003089,
+        "p95": 19.925317415996687,
+        "p99": 20.725427416997263,
+        "max": 20.725427416997263
+      }
+    },
+    {
+      "minute": 4,
+      "started": 125,
+      "outcomes": {
+        "SUCCESS_WITHIN_TARGET": 60,
+        "FAILED": 65
+      },
+      "successful_latency_seconds": {
+        "count": 60,
+        "mean": 15.900844303432677,
+        "p50": 15.55264458298916,
+        "p95": 19.757465917005902,
+        "p99": 22.03159070800757,
+        "max": 22.03159070800757
+      }
+    }
+  ],
+  "phases": [
+    {
+      "phase": "preflight",
+      "submission_window_seconds": 16.147113665996585,
+      "elapsed_with_drain_seconds": 16.147114249994047,
+      "started": 1
+    },
+    {
+      "phase": "warmup",
+      "submission_window_seconds": 60.0,
+      "elapsed_with_drain_seconds": 74.33957737497985,
+      "started": 85
+    },
+    {
+      "phase": "measurement",
+      "submission_window_seconds": 300.0,
+      "elapsed_with_drain_seconds": 315.7338591250009,
+      "started": 575
+    }
+  ],
+  "notes": [
+    "One persistent process/session/token cache per concurrent client.",
+    "Inference includes authentication, retries and approval continuations; citations are separate.",
+    "Deadline termination stops local work; remote operations may continue.",
+    "Agent/source flags are observations, not proof of grounded answer quality.",
+    "Endpoint capacity/configuration and background traffic must be recorded externally.",
+    "Interrupted runs preserve outcomes but have no passing reliability verdict."
+  ],
+  "run_error": null,
+  "finished_at": "2026-10-28T15:20:36.336643+00:00"
+}

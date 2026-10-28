@@ -1,0 +1,61 @@
+# Databricks Apps manifest for the Flask app (copy to the app's source folder root).
+# Resources: add them in the app's Configure page with these keys, then the values below resolve.
+#   sql-warehouse        -> prod serverless SQL warehouse (Can use)
+#   supervisor-endpoint  -> the Supervisor serving endpoint from notebook 06 (Can query)
+# Also give the app's service principal Can query on the Knowledge Assistant and
+# perf-policy-citations endpoints, and Can run on the Genie spaces (notebooks 05 and 06 do this when APP_SP is set).
+command:
+  - gunicorn
+  - --config
+  - gunicorn.conf.py
+  - mariner_genai_dbx.web:create_app()
+
+env:
+  - name: PYTHONPATH
+    value: src
+  - name: APP_ENV
+    value: production
+  - name: AUTH_MODE
+    value: databricks
+  - name: SUPERVISOR_MODE
+    value: databricks
+  - name: LOG_LEVEL
+    value: INFO
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql-warehouse
+  - name: DATABRICKS_SUPERVISOR_ENDPOINT
+    valueFrom: supervisor-endpoint
+  - name: DATABRICKS_LOG_TABLE
+    value: workspace.default.flask_app_logs
+  - name: DATABRICKS_CITATION_REGISTRY_TABLE
+    value: workspace.default.app_citation_registry
+  - name: PERFORMANCE_VIEW_PREFIX
+    value: app_fast_
+  - name: PERFORMANCE_FAST_PATH_ENABLED
+    value: "false"
+  - name: REQUEST_TIMEOUT_SECONDS
+    value: "180"
+  - name: GUNICORN_TIMEOUT_SECONDS
+    value: "180"
+  - name: WEB_CONCURRENCY
+    value: "2"
+  - name: WEB_THREADS
+    value: "16"
+  - name: SESSION_SECRET_KEY
+    valueFrom: session-secret          # an app resource of type Secret
+  # Per-stage timings in flask_app_logs.stage_timings_json (the column is in sql/06_app_tables.sql).
+  - name: ANALYTICS_STAGE_TIMINGS
+    value: "true"
+  # Coaching360 (/coaching360). Off until the shared demo persona is replaced (guide, section 11):
+  # today any user can pick any person, and all users share the service principal's user_map row.
+  - name: COACHING360_ENABLED
+    value: "false"
+  - name: COACHING360_TIMEOUT_SECONDS
+    value: "120"                       # keep at or below GUNICORN_TIMEOUT_SECONDS
+  # Paste the values printed by notebook 06:
+  - name: DIRECT_SPECIALIST_ROUTES_JSON
+    value: '<line printed by notebook 06>'
+  - name: VOLUME_CATALOGS_JSON
+    value: '[{"id":"branch-operations","label":"Branch Operations","volumePath":"/Volumes/workspace/default/branch_operations_docs"},{"id":"employee-handbook","label":"Employee Handbook","volumePath":"/Volumes/workspace/default/employee_handbook_docs"},{"id":"employee-benefits","label":"Employee Benefits","volumePath":"/Volumes/workspace/default/benefits_docs"},{"id":"performance-policy","label":"Employee Performance Policy","volumePath":"/Volumes/workspace/performance_test/data"},{"id":"coaching360","label":"Coaching360","volumePath":"/Volumes/workspace/coaching360demo/coaching360_docs"}]'
+  # DATABRICKS_HOST: the app needs the https:// workspace URL. If the platform-provided value
+  # has no scheme, set it explicitly here: https://<prod-workspace>.cloud.databricks.com

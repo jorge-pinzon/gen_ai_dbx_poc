@@ -1,0 +1,17 @@
+{
+  "name": "mas-53dbd2d7-endpoint",
+  "task": "agent/v1/responses",
+  "served_entities": [
+    {
+      "entity_name": null,
+      "entity_version": null,
+      "workload_size": null,
+      "workload_type": null,
+      "scale_to_zero_enabled": null,
+      "min_provisioned_concurrency": null,
+      "max_provisioned_concurrency": null,
+      "environment_variable_names": []
+    }
+  ],
+  "ai_gateway": null
+}
