@@ -33,5 +33,9 @@ class SourceCatalogError(Exception):
     """The approved document catalog is unavailable."""
 
 
+class SourceDocumentNotFoundError(SourceCatalogError):
+    """The requested document, or its PDF copy, does not exist in the Volume."""
+
+
 class InvalidSourcePathError(ValueError):
     """A document path is invalid or outside its approved root."""

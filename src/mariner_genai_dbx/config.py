@@ -377,6 +377,7 @@ def _volume_catalogs(raw_value: str) -> tuple[VolumeCatalog, ...]:
         catalog_id = record.get("id")
         label = record.get("label")
         volume_path = record.get("volumePath")
+        rendition_path = record.get("renditionPath")
         if not isinstance(catalog_id, str) or not re.fullmatch(
             r"[a-z0-9][a-z0-9-]{1,39}", catalog_id
         ):
@@ -387,7 +388,14 @@ def _volume_catalogs(raw_value: str) -> tuple[VolumeCatalog, ...]:
             raise ConfigurationError("Volume catalog labels must be 1-80 characters")
         if not isinstance(volume_path, str) or not volume_path.startswith("/Volumes/"):
             raise ConfigurationError("Volume catalog paths must start with /Volumes/")
-        catalogs.append(VolumeCatalog(catalog_id, label.strip(), volume_path.rstrip("/")))
+        if rendition_path is not None and (
+            not isinstance(rendition_path, str) or not rendition_path.startswith("/Volumes/")
+        ):
+            raise ConfigurationError("Volume catalog rendition paths must start with /Volumes/")
+        catalogs.append(VolumeCatalog(
+            catalog_id, label.strip(), volume_path.rstrip("/"),
+            rendition_path.rstrip("/") if rendition_path else None,
+        ))
         seen_ids.add(catalog_id)
     return tuple(catalogs)
 

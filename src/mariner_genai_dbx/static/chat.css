@@ -200,10 +200,36 @@ textarea {
   display: block;
 }
 
-.source-result-catalog {
-  margin-top: 0.1rem;
-  color: rgb(255 255 255 / 62%);
-  font-size: 0.65rem;
+.source-search-section {
+  margin: 0.6rem 0 0.2rem;
+  padding: 0.3rem 0.25rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--mariner-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.source-search-section:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.source-result-snippet {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.source-result-snippet mark {
+  padding: 0 0.1em;
+  color: inherit;
+  background: rgba(254, 189, 16, 0.45);
+  border-radius: 2px;
 }
 
 .source-list,

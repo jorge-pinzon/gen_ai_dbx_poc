@@ -26,6 +26,7 @@ const documentTitle = document.querySelector("#document-title");
 let documentViewer = document.querySelector("#document-viewer");
 const documentPlaceholder = document.querySelector("#document-placeholder");
 const openSourceTab = document.querySelector("#open-source-tab");
+const downloadSource = document.querySelector("#download-source");
 const closeSourceButton = document.querySelector("#close-source");
 const initialMessage = "Ask a question about branch operations, employee policies, or benefits.";
 
@@ -36,6 +37,8 @@ let catalogsLoaded = false;
 let documentLoadVersion = 0;
 const conversationSources = new Map();
 const catalogNodes = new Map();
+// Catalog ids in sidebar order; search results are grouped in the same order.
+const catalogOrder = [];
 
 function setAgentPanelExpanded(expanded) {
   chatShell.classList.toggle("agent-panel-collapsed", !expanded);
@@ -99,6 +102,23 @@ function sourceKey(source) {
   return source.url || `${source.number}:${source.label}`;
 }
 
+function documentKind(source) {
+  if (source.kind) return source.kind;
+  const name = source.catalog?.path || source.label || "";
+  if (/\.pdf$/i.test(name)) return "pdf";
+  if (/\.docx?$/i.test(name)) return "word";
+  if (/\.xlsx?$/i.test(name)) return "excel";
+  return null;
+}
+
+// Spreadsheet citations point at a sheet (numbered like pages) instead of a page.
+function sourceLocation(source) {
+  if (!source.page) return source.label;
+  return documentKind(source) === "excel"
+    ? `${source.label} — sheet ${source.page}`
+    : `${source.label} — page ${source.page}`;
+}
+
 function rememberSource(source) {
   const key = sourceKey(source);
   if (conversationSources.has(key)) return;
@@ -108,9 +128,7 @@ function rememberSource(source) {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "source-list-button";
-  button.textContent = source.page
-    ? `${source.label} — page ${source.page}`
-    : source.label;
+  button.textContent = sourceLocation(source);
   button.addEventListener("click", () => openSource(source));
   item.appendChild(button);
   citedSources.appendChild(item);
@@ -153,9 +171,7 @@ function appendSources(article, sources) {
         link.href = source.url || "#";
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = source.page
-          ? `${source.label} — page ${source.page}`
-          : source.label;
+        link.textContent = sourceLocation(source);
         link.addEventListener("click", (event) => {
           if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           event.preventDefault();
@@ -163,9 +179,7 @@ function appendSources(article, sources) {
         });
         item.appendChild(link);
       } else {
-        item.textContent = source.page
-          ? `${source.label} — page ${source.page}`
-          : source.label;
+        item.textContent = sourceLocation(source);
       }
       list.appendChild(item);
     }
@@ -193,15 +207,24 @@ function setCitationStatus(article, state, text = "") {
 function setDocument(source) {
   const loadVersion = ++documentLoadVersion;
   const documentUrl = new URL(source.url, window.location.href);
-  if (source.page) documentUrl.hash = `page=${encodeURIComponent(source.page)}`;
+  const kind = documentKind(source);
+  if (source.page) {
+    documentUrl.hash = kind === "excel"
+      ? `sheet-${encodeURIComponent(source.page)}`
+      : `page=${encodeURIComponent(source.page)}`;
+  }
   const viewerUrl = documentUrl.href;
-  documentTitle.textContent = source.page
-    ? `${source.label} — page ${source.page}`
-    : source.label;
+  documentTitle.textContent = sourceLocation(source);
   openSourceTab.href = viewerUrl;
   openSourceTab.hidden = false;
+  if (source.downloadUrl) {
+    downloadSource.href = source.downloadUrl;
+    downloadSource.hidden = false;
+  } else {
+    downloadSource.hidden = true;
+  }
 
-  const embeddable = source.embeddable !== false && /\.pdf$/i.test(source.label);
+  const embeddable = source.embeddable !== false && kind !== null;
   if (embeddable) {
     documentViewer.hidden = true;
     documentPlaceholder.hidden = false;
@@ -272,7 +295,10 @@ async function loadCatalogs() {
       return;
     }
     sourceTreeStatus.textContent = "";
-    for (const catalog of data.catalogs) renderCatalog(catalog);
+    for (const catalog of data.catalogs) {
+      catalogOrder.push(catalog.id);
+      renderCatalog(catalog);
+    }
   } catch (error) {
     catalogsLoaded = false;
     sourceTreeStatus.textContent = error.message || "Folders are unavailable.";
@@ -294,34 +320,115 @@ sourceSearchForm.addEventListener("submit", async (event) => {
     const response = await fetch(`/api/v1/sources/search?${parameters}`);
     const data = await response.json();
     if (!response.ok) throw new Error(data.error?.message || "Search is unavailable.");
-    for (const result of data.results) {
+    const contentResults = data.contentResults || [];
+    for (const group of groupByCatalog(data.results, contentResults)) {
       const item = document.createElement("li");
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "source-list-button source-search-result";
-      const name = document.createElement("span");
-      name.textContent = result.name;
-      const catalog = document.createElement("span");
-      catalog.className = "source-result-catalog";
-      catalog.textContent = result.catalogLabel;
-      button.append(name, catalog);
-      button.addEventListener("click", () =>
-        openCatalogDocument(result.catalogId, result.path),
-      );
-      item.appendChild(button);
+      const details = document.createElement("details");
+      details.className = "source-search-group";
+      const summary = document.createElement("summary");
+      summary.className = "source-search-section";
+      summary.textContent = `${group.label} (${group.names.length + group.texts.length})`;
+      const list = document.createElement("ul");
+      list.className = "source-list";
+      for (const result of group.names) list.appendChild(renderNameMatch(result));
+      for (const result of group.texts) list.appendChild(renderTextMatch(result, data.query));
+      details.append(summary, list);
+      item.appendChild(details);
       sourceSearchList.appendChild(item);
     }
-    if (data.results.length === 0) {
-      sourceSearchStatus.textContent = `No documents match “${data.query}”.`;
-    } else if (data.truncated) {
-      sourceSearchStatus.textContent = "Showing the first 50 matches.";
-    } else {
-      sourceSearchStatus.textContent = `${data.results.length} document${data.results.length === 1 ? "" : "s"} found.`;
-    }
+    const nameCount = `${data.results.length} name match${data.results.length === 1 ? "" : "es"}${data.truncated ? " (first 50)" : ""}`;
+    const textCount = data.contentUnavailable
+      ? "document text search is unavailable"
+      : `${contentResults.length} text match${contentResults.length === 1 ? "" : "es"}`;
+    sourceSearchStatus.textContent =
+      data.results.length === 0 && contentResults.length === 0 && !data.contentUnavailable
+        ? `No documents match “${data.query}”.`
+        : `${nameCount}, ${textCount}.`;
   } catch (error) {
     sourceSearchStatus.textContent = error.message || "Search is unavailable.";
   }
 });
+
+// One group per catalog (agent), in sidebar order: file-name matches, then text matches.
+function groupByCatalog(nameResults, textResults) {
+  const groups = new Map();
+  const groupFor = (result) => {
+    if (!groups.has(result.catalogId)) {
+      groups.set(result.catalogId, {
+        id: result.catalogId,
+        label: result.catalogLabel || result.catalogId,
+        names: [],
+        texts: [],
+      });
+    }
+    return groups.get(result.catalogId);
+  };
+  for (const result of nameResults) groupFor(result).names.push(result);
+  for (const result of textResults) groupFor(result).texts.push(result);
+  const position = (group) => {
+    const index = catalogOrder.indexOf(group.id);
+    return index === -1 ? catalogOrder.length : index;
+  };
+  return [...groups.values()].sort(
+    (a, b) => position(a) - position(b) || a.label.localeCompare(b.label),
+  );
+}
+
+function renderNameMatch(result) {
+  const item = document.createElement("li");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "source-list-button source-search-result";
+  button.textContent = result.name;
+  button.addEventListener("click", () =>
+    openCatalogDocument(result.catalogId, result.path),
+  );
+  item.appendChild(button);
+  return item;
+}
+
+function renderTextMatch(result, query) {
+  const item = document.createElement("li");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "source-list-button source-search-result";
+  const name = document.createElement("span");
+  name.textContent = sourceLocation({
+    label: result.name,
+    page: result.page,
+    kind: result.kind,
+  });
+  const snippet = document.createElement("span");
+  snippet.className = "source-result-snippet";
+  appendHighlighted(snippet, result.snippet, query);
+  button.append(name, snippet);
+  button.addEventListener("click", () =>
+    openCatalogDocument(result.catalogId, result.path, result.page || null),
+  );
+  item.appendChild(button);
+  return item;
+}
+
+// Adds text to the element, wrapping each query word (2+ letters) in <mark>.
+function appendHighlighted(element, text, query) {
+  const words = (query.toLowerCase().match(/[\p{L}\p{N}_]+/gu) || []).filter((w) => w.length > 1);
+  if (words.length === 0) {
+    element.textContent = text;
+    return;
+  }
+  const escaped = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const pattern = new RegExp(`(${escaped.join("|")})`, "giu");
+  for (const part of text.split(pattern)) {
+    if (!part) continue;
+    if (words.includes(part.toLowerCase())) {
+      const mark = document.createElement("mark");
+      mark.textContent = part;
+      element.appendChild(mark);
+    } else {
+      element.appendChild(document.createTextNode(part));
+    }
+  }
+}
 
 clearSourceSearchButton.addEventListener("click", () => {
   sourceSearchInput.value = "";
@@ -439,6 +546,8 @@ async function openCatalogDocument(catalogId, path, page = null) {
       label: data.label,
       url: data.url,
       embeddable: data.embeddable,
+      ...(data.kind ? { kind: data.kind } : {}),
+      ...(data.downloadUrl ? { downloadUrl: data.downloadUrl } : {}),
       catalog: { catalogId, path },
       ...(page ? { page } : {}),
     };
@@ -447,6 +556,7 @@ async function openCatalogDocument(catalogId, path, page = null) {
   } catch (error) {
     documentTitle.textContent = "Document unavailable";
     openSourceTab.hidden = true;
+    downloadSource.hidden = true;
     documentPlaceholder.textContent = error.message || "Document unavailable.";
   }
 }

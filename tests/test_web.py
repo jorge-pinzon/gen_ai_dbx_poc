@@ -7,7 +7,11 @@ from uuid import UUID
 from werkzeug.security import generate_password_hash
 
 from mariner_genai_dbx.config import Settings
-from mariner_genai_dbx.errors import CitationResolutionError, SupervisorInvocationError
+from mariner_genai_dbx.errors import (
+    CitationResolutionError,
+    SourceDocumentNotFoundError,
+    SupervisorInvocationError,
+)
 from mariner_genai_dbx.models import AgentAnswer, ReadinessResult, Source
 from mariner_genai_dbx.web import ReadinessCache, create_app, start_warm_up
 
@@ -128,6 +132,150 @@ class SignedSourceCatalog(FakeSourceCatalog):
             "content_length": 9,
             "last_modified": None,
         }
+
+
+def workbook_bytes():
+    from openpyxl import Workbook
+
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "Attorneys"
+    sheet.append(["Name", "State"])
+    sheet.append(["<script>alert(1)</script>", "TN"])
+    workbook.create_sheet("Fees").append(["Fee", "Amount"])
+    buffer = io.BytesIO()
+    workbook.save(buffer)
+    return buffer.getvalue()
+
+
+class OfficeSourceCatalog(SignedSourceCatalog):
+    """Serves a PDF copy for Word files and real workbook bytes for Excel files."""
+
+    def __init__(self, rendition_exists=True):
+        self.rendition_exists = rendition_exists
+
+    def open_document(self, catalog_id, path):
+        kind = {"docx": "word", "xlsx": "excel"}.get(path.rsplit(".", 1)[-1], "pdf")
+        return {**super().open_document(catalog_id, path), "kind": kind}
+
+    def download_document(self, catalog_id, path):
+        data = workbook_bytes() if path.endswith(".xlsx") else b"original-bytes"
+        return {"contents": io.BytesIO(data), "content_length": len(data), "last_modified": None}
+
+    def download_rendition(self, catalog_id, path):
+        if not self.rendition_exists:
+            raise SourceDocumentNotFoundError("missing")
+        return {"contents": io.BytesIO(b"%PDF-copy"), "content_length": 9, "last_modified": None}
+
+
+class OfficeDocumentTests(unittest.TestCase):
+    def open(self, path, catalog=None):
+        app = create_app(
+            Settings(app_env="test", session_secret_key="test-session-secret-key-with-32-characters"),
+            supervisor_service=FakeSupervisor(),
+            source_catalog_service=catalog or OfficeSourceCatalog(),
+            identity_provider=lambda: "user-one",
+        )
+        client = app.test_client()
+        payload = client.post("/api/v1/sources/branch/open", json={"path": path}).get_json()
+        return client, payload
+
+    def test_word_document_is_viewed_as_its_pdf_copy_and_downloaded_as_docx(self):
+        client, payload = self.open("Collections/Policy.docx")
+
+        view = client.get(payload["url"])
+        download = client.get(payload["downloadUrl"])
+
+        self.assertEqual(payload["kind"], "word")
+        self.assertEqual(view.mimetype, "application/pdf")
+        self.assertEqual(view.data, b"%PDF-copy")
+        self.assertEqual(download.data, b"original-bytes")
+        self.assertEqual(
+            download.mimetype,
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        )
+        self.assertIn("attachment", download.headers["Content-Disposition"])
+        self.assertIn("Policy.docx", download.headers["Content-Disposition"])
+
+    def test_word_document_without_pdf_copy_offers_download(self):
+        client, payload = self.open("Policy.docx", OfficeSourceCatalog(rendition_exists=False))
+
+        view = client.get(payload["url"])
+
+        self.assertEqual(view.mimetype, "text/html")
+        self.assertIn("not available yet", view.get_data(as_text=True))
+        self.assertIn(payload["downloadUrl"], view.get_data(as_text=True))
+
+    def test_spreadsheet_is_rendered_as_escaped_html_and_downloaded_as_xlsx(self):
+        client, payload = self.open("Legal/Attorneys.xlsx")
+
+        view = client.get(payload["url"])
+        download = client.get(payload["downloadUrl"])
+        html = view.get_data(as_text=True)
+
+        self.assertEqual(view.mimetype, "text/html")
+        self.assertIn("default-src 'none'", view.headers["Content-Security-Policy"])
+        self.assertIn('id="sheet-1"', html)
+        self.assertIn('id="sheet-2"', html)
+        self.assertIn("&lt;script&gt;alert(1)&lt;/script&gt;", html)
+        self.assertNotIn("<script>", html)
+        self.assertTrue(download.data.startswith(b"PK"))  # the original .xlsx (zip) bytes
+        self.assertEqual(
+            download.mimetype,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
+
+    def test_download_link_is_bound_to_the_user(self):
+        _client, payload = self.open("Policy.docx")
+        other_app = create_app(
+            Settings(app_env="test", session_secret_key="test-session-secret-key-with-32-characters"),
+            supervisor_service=FakeSupervisor(),
+            source_catalog_service=OfficeSourceCatalog(),
+            identity_provider=lambda: "user-two",
+        )
+
+        response = other_app.test_client().get(payload["downloadUrl"])
+
+        self.assertEqual(response.status_code, 403)
+
+
+class DocumentTextSearchRouteTests(unittest.TestCase):
+    class Search:
+        def __init__(self, error=None):
+            self.error = error
+
+        def search(self, query):
+            if self.error:
+                raise self.error
+            return [
+                {"volumePath": "/Volumes/main/hr/handbook/policy.pdf", "title": "policy",
+                 "page": 4, "snippet": "…the leave policy…"},
+                {"volumePath": "/Volumes/other/secret.pdf", "title": "secret",
+                 "page": 1, "snippet": "outside the catalogs"},
+            ]
+
+    def search(self, document_search):
+        app = create_app(test_settings(), supervisor_service=FakeSupervisor(),
+                         source_catalog_service=FakeSourceCatalog(),
+                         document_search_service=document_search)
+        return app.test_client().get("/api/v1/sources/search?q=leave policy").get_json()
+
+    def test_text_matches_are_returned_for_approved_catalogs_only(self):
+        payload = self.search(self.Search())
+
+        self.assertEqual(payload["contentResults"], [{
+            "catalogId": "handbook", "catalogLabel": "Employee handbook",
+            "path": "policy.pdf", "name": "policy.pdf", "kind": "pdf",
+            "page": 4, "snippet": "…the leave policy…",
+        }])
+        self.assertNotIn("/Volumes/", json.dumps(payload["contentResults"]))
+
+    def test_name_results_still_return_when_text_search_fails(self):
+        payload = self.search(self.Search(error=RuntimeError("warehouse down")))
+
+        self.assertEqual(len(payload["results"]), 1)
+        self.assertEqual(payload["contentResults"], [])
+        self.assertTrue(payload["contentUnavailable"])
 
 
 class WebApplicationTests(unittest.TestCase):

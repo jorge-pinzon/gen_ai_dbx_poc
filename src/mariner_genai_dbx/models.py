@@ -32,6 +32,9 @@ class VolumeCatalog:
     id: str
     label: str
     volume_path: str = field(repr=False)
+    # Volume holding PDF copies of Word documents at the same relative path,
+    # e.g. Lending/Loan Policy.docx -> <rendition_path>/Lending/Loan Policy.docx.pdf
+    rendition_path: str | None = field(default=None, repr=False)
 
 
 @dataclass(frozen=True)

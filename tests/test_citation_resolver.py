@@ -142,7 +142,7 @@ class CitationResolverTests(unittest.TestCase):
         self.assertIn("'\\\\s+v[0-9]+'", call["statement"])
         self.assertIn("'[_()-]+'", call["statement"])
         self.assertIn("policy$", call["statement"])
-        self.assertIn("LOWER(TRIM(:source_label)), '\\\\.pdf', ''", call["statement"])
+        self.assertIn("LOWER(TRIM(:source_label)), '\\\\.(pdf|docx?|xlsx?)', ''", call["statement"])
         self.assertIn("workspace`.`default`.`branch_operations_chunks", call["statement"])
         self.assertIn(
             "workspace`.`performance_test`.`app_policy_chunks", call["statement"]

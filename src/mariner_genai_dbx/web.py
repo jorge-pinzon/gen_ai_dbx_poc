@@ -37,6 +37,7 @@ from .bootstrap import (
     create_analytics_service,
     create_coaching360_service,
     create_conversation_persistence,
+    create_document_search_service,
     create_source_catalog_service,
     create_supervisor_service,
     shared_workspace_client,
@@ -50,11 +51,20 @@ from .errors import (
     InvalidSourcePathError,
     ReadinessCheckError,
     SourceCatalogError,
+    SourceDocumentNotFoundError,
     SupervisorInvocationError,
+)
+from .document_views import (
+    CONTENT_SECURITY_POLICY,
+    SpreadsheetError,
+    read_workbook,
+    render_message,
+    render_workbook,
 )
 from .models import AgentAnswer, ConversationHistory, ConversationTurn
 from .live_preview import LivePreview, tidy_table
 from .logging_config import configure_logging
+from .source_catalog import document_kind, document_media_type
 
 
 MAX_REQUEST_BYTES = 16 * 1024
@@ -62,6 +72,7 @@ READINESS_CACHE_SECONDS = 30
 # Static URLs carry a content hash, so browsers may keep them for a year and
 # still fetch a new file as soon as a deploy changes it.
 STATIC_MAX_AGE_SECONDS = 365 * 24 * 60 * 60
+MAX_SPREADSHEET_PREVIEW_BYTES = 20 * 1024 * 1024
 LOCAL_USER_ID = "local-development-user"
 logger = logging.getLogger(__name__)
 BRANCH_OPERATIONS_SPECIALIST = (
@@ -279,6 +290,7 @@ def create_app(
     supervisor_service=None,
     conversation_persistence=None,
     source_catalog_service=None,
+    document_search_service=None,
     analytics_service=None,
     identity_provider=None,
     readiness_cache: ReadinessCache | None = None,
@@ -302,6 +314,11 @@ def create_app(
     catalog_service = source_catalog_service
     if catalog_service is None:
         catalog_service = create_source_catalog_service(
+            application_settings, workspace_client_factory=client_factory
+        )
+    document_search = document_search_service
+    if document_search is None and catalog_service is not None:
+        document_search = create_document_search_service(
             application_settings, workspace_client_factory=client_factory
         )
     if identity_provider is None:
@@ -877,6 +894,28 @@ def create_app(
                 request_id,
                 503,
             )
+        result["contentResults"] = []
+        if document_search is not None:
+            try:
+                hits = document_search.search(result["query"])
+            except Exception as error:
+                # File-name results still work when the document text cannot be loaded.
+                logger.warning("Document text search failed; error_type=%s", type(error).__name__)
+                result["contentUnavailable"] = True
+            else:
+                labels = {catalog["id"]: catalog["label"] for catalog in catalog_service.catalogs()}
+                for hit in hits:
+                    reference = catalog_service.reference_for_location(hit["volumePath"])
+                    if not reference:
+                        continue
+                    result["contentResults"].append({
+                        **reference,
+                        "catalogLabel": labels.get(reference["catalogId"], ""),
+                        "name": PurePosixPath(reference["path"]).name,
+                        "kind": document_kind(reference["path"]),
+                        **({"page": hit["page"]} if hit["page"] else {}),
+                        "snippet": hit["snippet"],
+                    })
         return jsonify(result)
 
     @app.get("/api/v1/sources/<catalog_id>/children")
@@ -946,6 +985,7 @@ def create_app(
         public_result = {
             "label": result["label"],
             "embeddable": bool(result.get("embeddable")),
+            **({"kind": result["kind"]} if result.get("kind") else {}),
         }
         if result.get("url"):
             public_result["url"] = result["url"]
@@ -958,66 +998,115 @@ def create_app(
                 }
             )
             public_result["url"] = url_for("view_source_document", token=token)
+            public_result["downloadUrl"] = url_for("download_source_document", token=token)
         return jsonify(public_result)
 
-    @app.get("/documents/<token>")
-    def view_source_document(token):
+    def signed_document_reference(token):
+        """Return (reference, None) for a valid link, or (None, error response)."""
         user_id = identity_provider()
         if not user_id:
-            return Response("Authentication is required.", status=401)
+            return None, Response("Authentication is required.", status=401)
         if catalog_service is None:
-            return Response("The source catalog is not configured.", status=404)
+            return None, Response("The source catalog is not configured.", status=404)
         try:
             reference = source_link_serializer.loads(
                 token,
                 max_age=application_settings.source_url_ttl_seconds,
             )
         except SignatureExpired:
-            return Response("This document link has expired.", status=410)
+            return None, Response("This document link has expired.", status=410)
         except BadSignature:
-            return Response("Invalid document link.", status=400)
+            return None, Response("Invalid document link.", status=400)
         if (
             not isinstance(reference, dict)
             or reference.get("userId") != user_id
             or not isinstance(reference.get("catalogId"), str)
             or not isinstance(reference.get("path"), str)
         ):
-            return Response("Document access is denied.", status=403)
+            return None, Response("Document access is denied.", status=403)
+        return reference, None
+
+    def fetch_document(download_method, reference, not_found=None):
+        """Return (download, None), or (None, error response)."""
         try:
-            download = catalog_service.download_document(
-                reference["catalogId"], reference["path"]
-            )
-            contents = _field(download, "contents")
-            if contents is None:
+            download = download_method(reference["catalogId"], reference["path"])
+            if _field(download, "contents") is None:
                 raise SourceCatalogError("Databricks returned an empty document")
         except InvalidSourcePathError:
-            return Response("Invalid document.", status=400)
+            return None, Response("Invalid document.", status=400)
         except DatabricksAuthenticationError:
-            return Response("Document access is denied.", status=403)
+            return None, Response("Document access is denied.", status=403)
+        except SourceDocumentNotFoundError:
+            return None, not_found or Response("Document not found.", status=404)
         except SourceCatalogError:
-            return Response("Document temporarily unavailable.", status=502)
+            return None, Response("Document temporarily unavailable.", status=502)
+        return download, None
 
-        def stream_file():
-            try:
-                while chunk := contents.read(64 * 1024):
-                    yield chunk
-            finally:
-                contents.close()
+    @app.get("/documents/<token>")
+    def view_source_document(token):
+        reference, error = signed_document_reference(token)
+        if error:
+            return error
+        path = reference["path"]
+        name = PurePosixPath(path).name
+        kind = document_kind(path)
+        download_url = url_for("download_source_document", token=token)
 
-        response = Response(stream_file(), mimetype="application/pdf")
-        response.headers.set(
-            "Content-Disposition",
-            "inline",
-            filename=PurePosixPath(reference["path"]).name,
+        if kind == "word":
+            # Word documents are shown from their PDF copy, so cited pages match.
+            download, error = fetch_document(
+                catalog_service.download_rendition,
+                reference,
+                not_found=_html_response(render_message(
+                    name,
+                    "A preview of this Word document is not available yet.",
+                    download_url,
+                )),
+            )
+            if error:
+                return error
+            return _file_response(download, "application/pdf", "inline", f"{name}.pdf")
+
+        download, error = fetch_document(catalog_service.download_document, reference)
+        if error:
+            return error
+        if kind != "excel":
+            return _file_response(download, "application/pdf", "inline", name)
+
+        contents = _field(download, "contents")
+        try:
+            data = contents.read(MAX_SPREADSHEET_PREVIEW_BYTES + 1)
+        finally:
+            contents.close()
+        if len(data) > MAX_SPREADSHEET_PREVIEW_BYTES:
+            return _html_response(render_message(
+                name, "This workbook is too large to preview.",
+                download_url,
+            ))
+        try:
+            sheets = read_workbook(data, PurePosixPath(path).suffix)
+        except SpreadsheetError:
+            logger.warning("Spreadsheet preview failed", exc_info=True)
+            return _html_response(render_message(
+                name, "This workbook could not be previewed.",
+                download_url,
+            ))
+        return _html_response(render_workbook(name, sheets, download_url))
+
+    @app.get("/documents/<token>/download")
+    def download_source_document(token):
+        reference, error = signed_document_reference(token)
+        if error:
+            return error
+        download, error = fetch_document(catalog_service.download_document, reference)
+        if error:
+            return error
+        return _file_response(
+            download,
+            document_media_type(reference["path"]),
+            "attachment",
+            PurePosixPath(reference["path"]).name,
         )
-        content_length = _field(download, "content_length")
-        if content_length is not None:
-            response.content_length = content_length
-        last_modified = _field(download, "last_modified")
-        if last_modified:
-            response.headers["Last-Modified"] = str(last_modified)
-        response.headers["Cache-Control"] = "private, no-store"
-        return response
 
     @app.errorhandler(RequestEntityTooLarge)
     def request_too_large(_error):
@@ -1285,6 +1374,36 @@ def _reported_usage(usage):
     if usage.input_tokens or usage.output_tokens or usage.total_tokens:
         return usage
     return None
+
+
+def _file_response(download, mimetype: str, disposition: str, filename: str) -> Response:
+    contents = _field(download, "contents")
+
+    def stream_file():
+        try:
+            while chunk := contents.read(64 * 1024):
+                yield chunk
+        finally:
+            contents.close()
+
+    response = Response(stream_file(), mimetype=mimetype)
+    response.headers.set("Content-Disposition", disposition, filename=filename)
+    content_length = _field(download, "content_length")
+    if content_length is not None:
+        response.content_length = content_length
+    last_modified = _field(download, "last_modified")
+    if last_modified:
+        response.headers["Last-Modified"] = str(last_modified)
+    response.headers["Cache-Control"] = "private, no-store"
+    return response
+
+
+def _html_response(html: str) -> Response:
+    response = Response(html, mimetype="text/html")
+    response.headers["Content-Security-Policy"] = CONTENT_SECURITY_POLICY
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Cache-Control"] = "private, no-store"
+    return response
 
 
 def _field(value, name):

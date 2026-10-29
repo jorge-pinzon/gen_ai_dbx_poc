@@ -157,6 +157,13 @@ class DatabricksCitationResolver:
         with self._chunks_lock:
             return self._chunks
 
+    def chunk_rows(self):
+        """Return the preloaded rows: (domain, title, volume path, page, chunk text, count)."""
+        chunks = self._preloaded_chunks()
+        if chunks is None:
+            raise CitationResolutionError("Document text is unavailable")
+        return [row for _title, _short_title, row in chunks]
+
     def resolve_citations(self, citations):
         if self._registry is None:
             if citations:
@@ -318,14 +325,14 @@ def _resolution_statement(tables: tuple[CitationTableConfig, ...]) -> str:
             "REGEXP_REPLACE("
             "REGEXP_REPLACE("
             f"REGEXP_REPLACE(LOWER(TRIM(`{table.document_title_column}`)), "
-            "'\\\\.pdf$', ''), "
+            "'\\\\.(pdf|docx?|xlsx?)$', ''), "
             "'[0-9]{4}\\\\s+', ''), "
             "'\\\\s+v[0-9]+', '')"
         )
         label_without_metadata = (
             "REGEXP_REPLACE("
             "REGEXP_REPLACE("
-            "REGEXP_REPLACE(LOWER(TRIM(:source_label)), '\\\\.pdf', ''), "
+            "REGEXP_REPLACE(LOWER(TRIM(:source_label)), '\\\\.(pdf|docx?|xlsx?)', ''), "
             "'[0-9]{4}\\\\s+', ''), "
             "'\\\\s+v[0-9]+', '')"
         )
@@ -378,8 +385,8 @@ def _resolution_statement(tables: tuple[CitationTableConfig, ...]) -> str:
 
 # Python equivalents of the SQL normalization above, for preloaded chunk rows.
 # re.ASCII keeps \s identical to Spark's Java regex whitespace class.
-_TITLE_PDF_SUFFIX = re.compile(r"\.pdf$")
-_LABEL_PDF = re.compile(r"\.pdf")
+_TITLE_PDF_SUFFIX = re.compile(r"\.(pdf|docx?|xlsx?)$")
+_LABEL_PDF = re.compile(r"\.(pdf|docx?|xlsx?)")
 _YEAR = re.compile(r"[0-9]{4}\s+", re.ASCII)
 _VERSION = re.compile(r"\s+v[0-9]+", re.ASCII)
 _SEPARATORS = re.compile(r"[_()-]+")

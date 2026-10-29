@@ -1,4 +1,4 @@
-"""Minimal PDF uploader and vector index refresh for the document volumes.
+"""Document uploader and vector index refresh for the document volumes.
 
 Reads credentials and VOLUME_CATALOGS_JSON from the repo-root .env, writes
 files with the Databricks Files API, and rebuilds the chunk tables and Vector
@@ -6,8 +6,12 @@ Search indexes that the Knowledge Assistants read from. Run with:
 python simple_upload/app.py
 """
 
+import hashlib
 import json
 import os
+import subprocess
+import sys
+import tempfile
 import threading
 import time
 from datetime import datetime
@@ -18,6 +22,10 @@ import requests
 from flask import Flask, redirect, render_template_string, request, url_for
 
 ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
+# Spreadsheets are read with the Ask Mariner reader's code, so sheet numbers
+# in citations match the sheet tabs the reader shows.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+from mariner_genai_dbx.document_views import SpreadsheetError, read_workbook  # noqa: E402
 
 
 def load_env(path):
@@ -36,6 +44,9 @@ HOST = env["DATABRICKS_HOST"].rstrip("/")
 WAREHOUSE_ID = env.get("DATABRICKS_WAREHOUSE_ID")
 VOLUMES = {v["id"]: v for v in json.loads(env["VOLUME_CATALOGS_JSON"])}
 DEFAULT_VOLUME = "branch-operations"
+UPLOAD_EXTENSIONS = (".pdf", ".doc", ".docx", ".xls", ".xlsx")
+WORD_EXTENSIONS = (".doc", ".docx")
+SOFFICE = env.get("SOFFICE_PATH", "/Applications/LibreOffice.app/Contents/MacOS/soffice")
 
 # Same pipeline as the RAG_Pipeline_Auto_Refresh notebook, but pointing at the
 # indexes the Knowledge Assistants actually use.
@@ -43,6 +54,10 @@ PIPELINES = {
     "branch_operations": {
         "label": "Branch Operations (mariner-policy-assistant)",
         "volume": "/Volumes/workspace/default/branch_operations_docs/",
+        # PDF copies of Word documents at the same relative path, e.g.
+        # Lending/Policy.docx -> <renditions>/Lending/Policy.docx.pdf
+        "renditions": "/Volumes/workspace/default/branch_operations_renditions/",
+        "spreadsheets": True,
         "index": "workspace.default.branch_ops_index",
         "chunks": "workspace.default.branch_operations_chunks", "embedding_col": "embedding_text",
         "file_col": "file_name", "time_col": "created_at",
@@ -76,6 +91,8 @@ PIPELINES = {
         "file_col": "document_name", "time_col": "processed_timestamp",
     },
 }
+# Word uploads to Branch Operations get a PDF copy here, at the same folder path.
+RENDITIONS = PIPELINES["branch_operations"]["renditions"].rstrip("/")
 # Used to recreate an index when it no longer exists.
 INDEX_ENDPOINT = "mariner-bot-endpoint"
 EMBEDDING_MODEL = "databricks-qwen3-embedding-0-6b"
@@ -124,11 +141,88 @@ def upload_to_volume(volume_path, filename, data):
     return target
 
 
-def run_sql(statement):
+def volume_folders(root):
+    """List relative folder paths, including nested folders and paginated results."""
+    root = root.rstrip("/")
+    found, pending = {""}, [root]
+    while pending:
+        folder, page_token = pending.pop(), None
+        while True:
+            listing = databricks(
+                "GET", f"/api/2.0/fs/directories{quote(folder)}", "files",
+                params={"page_token": page_token} if page_token else None,
+            )
+            for entry in listing.get("contents", []):
+                if entry.get("is_directory"):
+                    path = entry["path"].rstrip("/")
+                    if not path.startswith(root + "/"):
+                        continue
+                    relative = path[len(root) + 1:]
+                    if relative not in found:
+                        found.add(relative)
+                        pending.append(path)
+            page_token = listing.get("next_page_token")
+            if not page_token:
+                break
+    return sorted(found, key=str.casefold)
+
+
+def folder_path(root, relative):
+    """Keep user-supplied folder paths inside the configured volume."""
+    if relative and ("\\" in relative or any(
+        part in ("", ".", "..") or any(ord(c) < 32 for c in part)
+        for part in relative.split("/")
+    )):
+        raise ValueError("Choose a valid folder inside Branch Operations.")
+    return f"{root.rstrip('/')}/{relative}".rstrip("/")
+
+
+def convert_to_pdf(name, data):
+    """Convert a Word document to PDF with headless LibreOffice and return the PDF bytes."""
+    with tempfile.TemporaryDirectory() as folder:
+        source = Path(folder) / name
+        source.write_bytes(data)
+        # A private profile per conversion, so conversions never share LibreOffice state.
+        profile = (Path(folder) / "profile").as_uri()
+        try:
+            subprocess.run(
+                [SOFFICE, "--headless", "--norestore", f"-env:UserInstallation={profile}",
+                 "--convert-to", "pdf", "--outdir", folder, str(source)],
+                capture_output=True, timeout=120, check=True,
+            )
+        except FileNotFoundError:
+            raise RuntimeError(f"LibreOffice was not found at {SOFFICE}. Install it or set SOFFICE_PATH in .env.")
+        except subprocess.TimeoutExpired:
+            raise RuntimeError("LibreOffice took longer than 2 minutes.")
+        except subprocess.CalledProcessError as error:
+            detail = (error.stderr or error.stdout or b"").decode(errors="replace").strip()
+            raise RuntimeError(f"LibreOffice failed: {detail[:300] or f'exit code {error.returncode}'}")
+        pdf = source.with_suffix(".pdf")
+        if not pdf.exists():
+            raise RuntimeError("LibreOffice did not produce a PDF.")
+        return pdf.read_bytes()
+
+
+def create_folder(path):
+    """Create a volume folder and any missing parents; existing folders are left as they are."""
+    databricks("PUT", f"/api/2.0/fs/directories{quote(path)}", "files")
+
+
+def upload_rendition(relative_folder, name, data):
+    """Save the PDF copy of a Word document at the same folder path in the renditions volume."""
+    pdf = convert_to_pdf(name, data)
+    folder = folder_path(RENDITIONS, relative_folder)
+    create_folder(folder)
+    return upload_to_volume(folder, f"{name}.pdf", pdf)
+
+
+def run_sql(statement, parameters=None):
     """Run a statement on the SQL warehouse and wait for it, however long parsing takes."""
     result = databricks("POST", "/api/2.0/sql/statements", "sql", json={
         "warehouse_id": WAREHOUSE_ID, "statement": statement,
         "wait_timeout": "30s", "on_wait_timeout": "CONTINUE",
+        **({"parameters": [{"name": k, "value": v, "type": "STRING"}
+                           for k, v in parameters.items()]} if parameters else {}),
     })
     while result["status"]["state"] in ("PENDING", "RUNNING"):
         time.sleep(5)
@@ -197,11 +291,37 @@ def pipeline_steps(domain, config):
                     "pathGlobFilter => '*.pdf', recursiveFileLookup => 'true')")
     if domain == "performance":
         return performance_steps(volume_files)
+    if config.get("renditions"):
+        # Word documents are parsed from their PDF copy but recorded under the
+        # original .docx path, so citations and the reader open the Word file.
+        # A copy whose Word document was deleted is ignored.
+        prefix = len(f"dbfs:{config['renditions']}")
+        volume_files = f"""(
+            SELECT path, content, length, modificationTime FROM {volume_files}
+            UNION ALL
+            SELECT * FROM (
+                SELECT concat('dbfs:{config['volume']}',
+                              substr(path, {prefix + 1}, length(path) - {prefix + 4})) AS path,
+                       content, length, modificationTime
+                FROM read_files('{config['renditions']}', format => 'binaryFile',
+                                pathGlobFilter => '*.pdf', recursiveFileLookup => 'true')
+            ) WHERE path IN (
+                SELECT path FROM read_files('{config['volume']}', format => 'binaryFile',
+                                            pathGlobFilter => '*.{{doc,docx}}', recursiveFileLookup => 'true'))
+        ) AS source_files"""
+    sheet_rows = ""
+    if config.get("spreadsheets"):
+        sheet_rows = f"""
+            UNION ALL
+            SELECT document_id, '{domain}', source_path, file_name,
+                   regexp_replace(file_name, '(?i)\\\\.xlsx?$', ''), sheet_number, row_number,
+                   CAST(NULL AS DOUBLE), content, sheet_name
+            FROM workspace.default.{domain}_sheet_elements"""
     return [
         # A file is new when its content or its location is new. A moved or
         # renamed PDF keeps its earlier parse, so it is not parsed again and its
         # chunks (and chunk ids) stay the same; only the path changes.
-        ("Parse new, changed or moved PDFs", f"""
+        ("Parse new, changed or moved PDFs and Word copies", f"""
         INSERT INTO {parsed}
             (document_id, domain, source_path, file_name, file_size_bytes,
              source_modified_at, parsed_content, parsed_at)
@@ -245,7 +365,7 @@ def pipeline_steps(domain, config):
         extracted AS (
             SELECT
                 p.document_id, p.domain, p.source_path, p.file_name,
-                regexp_replace(p.file_name, '(?i)\\\\.pdf$', '') AS document_title,
+                regexp_replace(p.file_name, '(?i)\\\\.(pdf|docx?)$', '') AS document_title,
                 e.pos AS element_position,
                 try_variant_get(e.value, '$.id', 'bigint') AS element_id,
                 try_variant_get(e.value, '$.type', 'string') AS element_type,
@@ -284,17 +404,25 @@ def pipeline_steps(domain, config):
         """),
         # Truncate + insert keeps the Change Data Feed the index sync relies on.
         ("Clear chunk table", f"TRUNCATE TABLE {chunks}"),
+        # Spreadsheet rows (one element per row, one "page" per visible sheet)
+        # are chunked with the document elements. PDF and Word chunks keep the
+        # same text, ids and labels as before.
         ("Rebuild chunks", f"""
         INSERT INTO {chunks}
-        WITH ordered_elements AS (
+        WITH document_rows AS (
+            SELECT document_id, domain, source_path, file_name, document_title, page_number,
+                   element_position, confidence, cleaned_content, CAST(NULL AS STRING) AS sheet_name
+            FROM {elements}
+            WHERE is_retrievable = true AND page_number IS NOT NULL{sheet_rows}
+        ),
+        ordered_elements AS (
             SELECT *,
                 sum(length(cleaned_content) + 2) OVER (
                     PARTITION BY document_id, page_number
                     ORDER BY element_position
                     ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
                 ) AS cumulative_chars
-            FROM {elements}
-            WHERE is_retrievable = true AND page_number IS NOT NULL
+            FROM document_rows
         ),
         bucketed AS (
             SELECT *, cast(floor((cumulative_chars - 1) / 3500) AS int) AS chunk_number
@@ -304,7 +432,7 @@ def pipeline_steps(domain, config):
             SELECT
                 document_id, domain, source_path,
                 regexp_replace(source_path, '^dbfs:', '') AS volume_path,
-                file_name, document_title, page_number, chunk_number,
+                file_name, document_title, page_number, chunk_number, sheet_name,
                 min(element_position) AS first_element_position,
                 max(element_position) AS last_element_position,
                 min(confidence) AS minimum_confidence,
@@ -312,9 +440,20 @@ def pipeline_steps(domain, config):
                     transform(array_sort(collect_list(
                         named_struct('element_position', element_position, 'content', cleaned_content)
                     )), x -> x.content)
-                ) AS chunk_text
+                ) AS body
             FROM bucketed
-            GROUP BY document_id, domain, source_path, file_name, document_title, page_number, chunk_number
+            GROUP BY document_id, domain, source_path, file_name, document_title, page_number,
+                     chunk_number, sheet_name
+        ),
+        labeled AS (
+            SELECT *,
+                CASE WHEN sheet_name IS NULL THEN body
+                     ELSE concat('Sheet: ', sheet_name, '\\n\\n', body) END AS chunk_text,
+                CASE WHEN sheet_name IS NULL THEN concat('Page: ', cast(page_number AS string))
+                     ELSE concat('Sheet: ', sheet_name) END AS location,
+                CASE WHEN sheet_name IS NULL THEN concat(' - page ', cast(page_number AS string))
+                     ELSE concat(' - sheet ', sheet_name) END AS label_suffix
+            FROM aggregated
         )
         SELECT
             sha2(concat_ws('||', document_id, cast(page_number AS string), cast(chunk_number AS string)), 256) AS chunk_id,
@@ -323,14 +462,59 @@ def pipeline_steps(domain, config):
             chunk_number + 1 AS page_chunk_number,
             first_element_position, last_element_position, minimum_confidence,
             chunk_text,
-            concat('Document: ', document_title, '\\nPage: ', cast(page_number AS string), '\\n\\n', chunk_text) AS embedding_text,
+            concat('Document: ', document_title, '\\n', location, '\\n\\n', body) AS embedding_text,
             length(chunk_text) AS character_count,
-            concat(document_title, ' - page ', cast(page_number AS string)) AS citation_label,
+            concat(document_title, label_suffix) AS citation_label,
             current_timestamp() AS created_at
-        FROM aggregated
-        WHERE length(trim(chunk_text)) > 0
+        FROM labeled
+        WHERE length(trim(body)) > 0
         """),
     ]
+
+
+def extract_spreadsheets(domain, config):
+    """Write one row per spreadsheet data row to {domain}_sheet_elements.
+
+    Each row becomes "Header: value; Header: value". The first non-empty row of
+    a sheet is its header; a blank header cell, or a column past the last
+    header, uses the header to its left, which is how merged header cells read.
+    """
+    rows = []
+    for entry in volume_listing(config["volume"]):
+        name = entry["name"]
+        if not name.lower().endswith((".xlsx", ".xls")) or name.startswith("~$"):
+            continue
+        data = download_from_volume(entry["path"])
+        try:
+            sheets = read_workbook(data, Path(name).suffix)
+        except SpreadsheetError as error:
+            raise RuntimeError(f"Could not read {entry['path']}: {error.__cause__ or error}")
+        document_id = hashlib.sha256(data).hexdigest()
+        for sheet_number, sheet in enumerate(sheets, start=1):
+            if not sheet.rows:
+                continue
+            headers, previous = [], ""
+            for index, cell in enumerate(sheet.rows[0][1]):
+                previous = cell or previous or f"Column {index + 1}"
+                headers.append(previous)
+            for row_number, cells in sheet.rows[1:]:
+                pairs = [
+                    f"{headers[min(i, len(headers) - 1)]}: {value}"
+                    for i, value in enumerate(cells) if value
+                ]
+                if pairs:
+                    rows.append({
+                        "document_id": document_id, "source_path": f"dbfs:{entry['path']}",
+                        "file_name": name, "sheet_number": sheet_number,
+                        "sheet_name": sheet.name, "row_number": row_number,
+                        "content": "; ".join(pairs),
+                    })
+    run_sql(f"""
+        CREATE OR REPLACE TABLE workspace.default.{domain}_sheet_elements AS
+        SELECT inline(from_json(:rows,
+            'ARRAY<STRUCT<document_id: STRING, source_path: STRING, file_name: STRING, '
+            'sheet_number: INT, sheet_name: STRING, row_number: INT, content: STRING>>'))
+        """, {"rows": json.dumps(rows)})
 
 
 def refresh_index(domain):
@@ -350,6 +534,8 @@ def refresh_index(domain):
             "'delta.enableChangeDataFeed' = 'true', "
             "'delta.deletedFileRetentionDuration' = 'interval 90 days', "
             "'delta.logRetentionDuration' = 'interval 90 days')"))
+        if config.get("spreadsheets"):
+            step("Read spreadsheet rows", lambda: extract_spreadsheets(domain, config))
         for label, statement in pipeline_steps(domain, config):
             step(label, lambda statement=statement: run_sql(statement))
         try:
@@ -453,9 +639,9 @@ def index_status(index_name):
         return f"unavailable: {error}"
 
 
-def volume_pdfs(path):
-    """Return {file name: last modified ms} for every PDF under a volume folder."""
-    files, folders = {}, [path]
+def volume_listing(path):
+    """Yield every file entry (path, name, last_modified) under a volume folder."""
+    folders = [path]
     while folders:
         folder, page_token = folders.pop(), None
         while True:
@@ -464,12 +650,31 @@ def volume_pdfs(path):
             for entry in listing.get("contents", []):
                 if entry.get("is_directory"):
                     folders.append(entry["path"])
-                elif entry["name"].lower().endswith(".pdf"):
-                    files[entry["name"]] = entry.get("last_modified", 0)
+                else:
+                    yield entry
             page_token = listing.get("next_page_token")
             if not page_token:
                 break
-    return files
+
+
+def download_from_volume(path):
+    response = requests.get(
+        f"{HOST}/api/2.0/fs/files{quote(path)}",
+        headers={"Authorization": f"Bearer {access_token('files')}"},
+        timeout=300,
+    )
+    if not response.ok:
+        raise RuntimeError(f"{response.status_code}: {response.text[:500]}")
+    return response.content
+
+
+def volume_documents(path, extensions):
+    """Return {file name: last modified ms} for the indexable files under a volume folder."""
+    return {
+        entry["name"]: entry.get("last_modified", 0)
+        for entry in volume_listing(path)
+        if entry["name"].lower().endswith(extensions) and not entry["name"].startswith("~$")
+    }
 
 
 def document_coverage():
@@ -485,7 +690,10 @@ def document_coverage():
         indexed[domain][name] = int(chunked_at or 0)
     coverage = {}
     for domain, config in PIPELINES.items():
-        in_volume, in_chunks = volume_pdfs(config["volume"]), indexed[domain]
+        extensions = (".pdf", ".doc", ".docx") if config.get("renditions") else (".pdf",)
+        if config.get("spreadsheets"):
+            extensions += (".xls", ".xlsx")
+        in_volume, in_chunks = volume_documents(config["volume"], extensions), indexed[domain]
         coverage[domain] = {
             "volume": len(in_volume),
             "indexed": len(in_volume.keys() & in_chunks.keys()),
@@ -505,24 +713,72 @@ app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024
 @app.route("/", methods=["GET", "POST"])
 def index():
     results = []
-    selected = request.form.get("volume", DEFAULT_VOLUME)
-    if request.method == "POST":
-        volume = VOLUMES.get(selected)
+    selected = request.values.get("volume", DEFAULT_VOLUME)
+    selected_folder = request.form.get("folder", "") if selected == DEFAULT_VOLUME else ""
+    volume = VOLUMES.get(selected)
+    folders, folder_error, target = [], None, None
+    if volume:
+        try:
+            target = folder_path(volume["volumePath"], selected_folder)
+            if selected == DEFAULT_VOLUME:
+                folders = volume_folders(volume["volumePath"])
+                if selected_folder not in folders:
+                    raise ValueError("The selected folder no longer exists. Choose another folder.")
+        except Exception as error:
+            folder_error = str(error)
+            target = None
+    if request.method == "POST" and request.form.get("action") == "create_folder":
+        name = request.form.get("new_folder", "").strip()
+        try:
+            if selected != DEFAULT_VOLUME or not volume:
+                raise ValueError("Folder creation is available for Branch Operations.")
+            if not target:
+                raise ValueError(folder_error or "Choose a valid folder first.")
+            if not name or "/" in name or "\\" in name:
+                raise ValueError("Enter a folder name without slashes.")
+            relative = f"{selected_folder}/{name}" if selected_folder else name
+            create_folder(folder_path(volume["volumePath"], relative))
+            folders = sorted(set(folders + [relative]), key=str.casefold)
+            selected_folder = relative
+            # Keep the renditions volume's folders the same as the documents volume's.
+            try:
+                create_folder(folder_path(RENDITIONS, relative))
+                results.append((name, True, "Folder ready and selected for upload."))
+            except Exception as error:
+                results.append((name, False, "Folder created and selected for upload, but the "
+                                f"matching folder in the renditions volume failed: {error}"))
+        except Exception as error:
+            results.append((name or "Folder", False, str(error)))
+    elif request.method == "POST":
         for file in request.files.getlist("files"):
             # Keep the original name (spaces included) so re-uploads replace existing documents.
             name = Path((file.filename or "").replace("\\", "/")).name.strip()
             if not volume:
                 results.append((name, False, "Unknown volume"))
-            elif not name.lower().endswith(".pdf"):
-                results.append((name or "(empty)", False, "Only .pdf files are allowed"))
+            elif not target:
+                results.append((name, False, folder_error))
+            elif not name.lower().endswith(UPLOAD_EXTENSIONS):
+                results.append((name or "(empty)", False,
+                                "Allowed files: PDF (.pdf), Word (.doc, .docx), and Excel (.xls, .xlsx)."))
             else:
                 try:
-                    path = upload_to_volume(volume["volumePath"], name, file.read())
-                    results.append((name, True, f"Uploaded to {path}"))
+                    data = file.read()
+                    path = upload_to_volume(target, name, data)
                 except Exception as error:
                     results.append((name, False, str(error)))
+                    continue
+                if selected != DEFAULT_VOLUME or not name.lower().endswith(WORD_EXTENSIONS):
+                    results.append((name, True, f"Uploaded to {path}"))
+                    continue
+                try:
+                    copy = upload_rendition(selected_folder, name, data)
+                    results.append((name, True, f"Uploaded to {path}. PDF copy saved to {copy}"))
+                except Exception as error:
+                    results.append((name, False, f"Uploaded to {path}. PDF copy failed: {error}"))
     return render_template_string(PAGE, tab="upload", volumes=VOLUMES.values(),
-                                  selected=selected, results=results)
+                                  selected=selected, results=results, folders=folders,
+                                  selected_folder=selected_folder, folder_error=folder_error,
+                                  branch_volume=DEFAULT_VOLUME)
 
 
 @app.route("/indexes", methods=["GET", "POST"])
@@ -599,9 +855,10 @@ PAGE = """<!doctype html>
   form.upload { display: grid; gap: 1rem; max-width: 640px; }
   label { display: grid; gap: .35rem; color: var(--mariner-navy); font-size: .82rem; font-weight: 700;
     letter-spacing: .06em; text-transform: uppercase; }
-  select, input[type=file] { width: 100%; padding: .7rem .8rem; color: #333333; background: var(--surface);
+  select, input[type=file], input[type=text] { width: 100%; padding: .7rem .8rem; color: #333333; background: var(--surface);
     border: 1px solid var(--line); border-radius: 8px; font-size: .95rem; letter-spacing: 0; text-transform: none; font-weight: 400; }
-  select:focus, input[type=file]:focus { outline: 2px solid var(--mariner-gold); outline-offset: 1px; }
+  select:focus, input:focus { outline: 2px solid var(--mariner-gold); outline-offset: 1px; }
+  .folder-tools { display: grid; gap: .7rem; }
   input[type=file]::file-selector-button { margin-right: .8rem; padding: .45rem .9rem; color: #ffffff;
     background: var(--mariner-blue); border: 0; border-radius: 4px; font-weight: 700; cursor: pointer; }
   button { justify-self: start; min-width: 112px; padding: .72rem 1.2rem; color: #333333; background: var(--mariner-gold);
@@ -647,7 +904,7 @@ PAGE = """<!doctype html>
 <header class="app-header">
   <p class="eyebrow">Document library</p>
   <h1>Ask Mariner documents</h1>
-  <p class="header-description">Upload PDFs to the document volumes, then refresh the indexes the Knowledge Assistants search.</p>
+  <p class="header-description">Upload PDF, Word, and Excel files to the document volumes. Refresh the indexes to make them searchable by the Knowledge Assistants.</p>
   <nav>
     <a href="/" class="{{ 'active' if tab == 'upload' }}">Upload</a>
     <a href="/indexes" class="{{ 'active' if tab == 'indexes' }}">Update index</a>
@@ -660,20 +917,39 @@ PAGE = """<!doctype html>
 {% endfor %}
 </div>{% endif %}
 {% if tab == 'upload' %}
-<h2>Upload PDFs to a volume</h2>
-<p class="lead">Files keep their original names, so uploading a file with the same name replaces the earlier version.</p>
+<h2>Upload documents to a volume</h2>
+<p class="lead">Files keep their original names, so uploading a file with the same name in the same folder replaces the earlier version.</p>
+<p class="lead">Branch Operations indexes PDF, Word, and Excel files. Word files are converted to PDF automatically and the copy is saved at the same folder path in the renditions volume (<code>&lt;file&gt;.docx.pdf</code>). Other volumes index PDFs only.</p>
 <form class="upload" method="post" enctype="multipart/form-data">
   <label>Volume
-    <select name="volume">
+    <select name="volume" onchange="window.location.href = '/?volume=' + encodeURIComponent(this.value)">
       {% for v in volumes %}
         <option value="{{ v.id }}" {% if v.id == selected %}selected{% endif %}>{{ v.label }} ({{ v.volumePath }})</option>
       {% endfor %}
     </select>
   </label>
-  <label>PDF files
-    <input type="file" name="files" accept="application/pdf,.pdf" multiple required>
+  {% if selected == branch_volume %}
+  <div class="folder-tools">
+    {% if folder_error %}<p class="result err" role="alert">Could not load folders: {{ folder_error }}</p>{% endif %}
+    <label>Folder
+      <select name="folder" {% if folder_error %}disabled{% endif %}>
+        {% for folder in folders %}
+        <option value="{{ folder }}" {% if folder == selected_folder %}selected{% endif %}>{{ folder or 'Main folder (volume root)' }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    {% if folders|length == 1 %}<small>No subfolders yet. Create one below or upload to the main folder.</small>{% endif %}
+    <label>New folder name
+      <input type="text" name="new_folder" placeholder="e.g. Loan Policies" {% if folder_error %}disabled{% endif %}>
+    </label>
+    <small>Creates a folder inside the selected folder and selects it for upload.</small>
+    <button type="submit" name="action" value="create_folder" formnovalidate {% if folder_error %}disabled{% endif %}>Create folder</button>
+  </div>
+  {% endif %}
+  <label>PDF, Word, or Excel files
+    <input type="file" name="files" accept=".pdf,.doc,.docx,.xls,.xlsx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple required>
   </label>
-  <button>Upload</button>
+  <button type="submit" name="action" value="upload" {% if folder_error %}disabled{% endif %}>Upload</button>
 </form>
 {% else %}
 <h2>Update vector index</h2>
@@ -687,13 +963,15 @@ Knowledge Assistant searches. Parsing takes a few minutes per new document.</p>
     <tr><td><b>{{ p.label }}</b><br><small>{{ p.volume }}</small></td><td>{{ p.index }}</td>
       <td>{{ statuses[domain] }}</td>
       <td>{% set c = coverage.get(domain) %}{% if c %}
-        <span class="{{ 'ok' if not (c.missing or c.changed or c.removed) }}">{{ c.indexed }} of {{ c.volume }} PDFs indexed</span>
+        <span class="{{ 'ok' if not (c.missing or c.changed or c.removed) }}">{{ c.indexed }} of {{ c.volume }} documents indexed</span>
         {% for n in c.missing %}<br><span class="err">missing: {{ n }}</span>{% endfor %}
         {% for n in c.changed %}<br><span class="warn">changed since indexed: {{ n }}</span>{% endfor %}
         {% for n in c.removed %}<br><span class="warn">no longer in volume: {{ n }}</span>{% endfor %}
       {% endif %}</td>
-      <td><form method="post"><input type="hidden" name="domain" value="{{ domain }}">
-        <button {% if runs.get(domain, {}).running %}disabled{% endif %}>Update</button></form></td></tr>
+      <td>{% if c and (c.missing or c.changed or c.removed) %}
+        <form method="post"><input type="hidden" name="domain" value="{{ domain }}">
+        <button {% if runs.get(domain, {}).running %}disabled{% endif %}>Update</button></form>
+      {% endif %}</td></tr>
   {% endfor %}
   </tbody>
 </table></div>

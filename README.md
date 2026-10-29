@@ -259,7 +259,7 @@ Only allowlisted keys are read from `.env`. Process environment variables overri
 | `SUPERVISOR_ENDPOINT` | unset | Compatibility fallback when `DATABRICKS_SUPERVISOR_ENDPOINT` is absent. |
 | `DATABRICKS_WAREHOUSE_ID` | unset | Enables citation SQL and Databricks analytics. |
 | `DATABRICKS_LOG_TABLE` | `workspace.default.flask_app_logs` | Fully qualified analytics table. It must already exist with the expected schema. |
-| `VOLUME_CATALOGS_JSON` | `[]` | Approved source catalogs as JSON objects containing `id`, `label`, and `volumePath`. |
+| `VOLUME_CATALOGS_JSON` | `[]` | Approved source catalogs as JSON objects containing `id`, `label`, `volumePath`, and optionally `renditionPath` (Volume holding PDF copies of Word documents at the same relative path, named `<file>.docx.pdf`). |
 | `REQUEST_TIMEOUT_SECONDS` | `60` | Supervisor request timeout and citation-query deadline. |
 | `MAX_MESSAGE_CHARACTERS` | `4000` | Maximum trimmed chat-message length. |
 | `CHAT_HISTORY_LIMIT` | `20` | Maximum turns retained per in-memory conversation. |

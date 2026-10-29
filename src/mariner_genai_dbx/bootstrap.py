@@ -117,6 +117,20 @@ def create_coaching360_service(settings: Settings, *, workspace_client_factory=N
     )
 
 
+def create_document_search_service(settings: Settings, *, workspace_client_factory=None):
+    """Keyword search inside the approved chunk tables, for the document reader."""
+    if not settings.volume_catalogs or not settings.databricks_warehouse_id:
+        return None
+    from .document_search import DocumentTextSearch
+    return DocumentTextSearch(DatabricksCitationResolver(
+        workspace_client=_client_factory(settings, workspace_client_factory)(),
+        warehouse_id=settings.databricks_warehouse_id,
+        tables=settings.citation_tables,
+        timeout_seconds=settings.request_timeout_seconds,
+        preload_chunks=True,
+    ))
+
+
 def create_source_catalog_service(settings: Settings, *, workspace_client_factory=None):
     if not settings.volume_catalogs:
         return None

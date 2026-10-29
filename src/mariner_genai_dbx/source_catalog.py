@@ -1,4 +1,4 @@
-"""Allowlisted Unity Catalog Volume browsing and PDF access."""
+"""Allowlisted Unity Catalog Volume browsing and document access."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ from .errors import (
     DatabricksAuthenticationError,
     InvalidSourcePathError,
     SourceCatalogError,
+    SourceDocumentNotFoundError,
 )
 from .models import VolumeCatalog
 
@@ -16,6 +17,31 @@ from .models import VolumeCatalog
 MAX_DIRECTORY_ENTRIES = 1000
 MAX_SEARCH_OBJECTS = 5000
 MAX_SEARCH_RESULTS = 50
+# Word documents are shown from a PDF copy; spreadsheets are rendered as HTML.
+DOCUMENT_KINDS = {
+    ".pdf": "pdf",
+    ".doc": "word",
+    ".docx": "word",
+    ".xls": "excel",
+    ".xlsx": "excel",
+}
+DOCUMENT_MEDIA_TYPES = {
+    ".pdf": "application/pdf",
+    ".doc": "application/msword",
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".xls": "application/vnd.ms-excel",
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+}
+
+
+def document_kind(path: str) -> str | None:
+    return DOCUMENT_KINDS.get(PurePosixPath(path).suffix.lower())
+
+
+def document_media_type(path: str) -> str:
+    return DOCUMENT_MEDIA_TYPES.get(
+        PurePosixPath(path).suffix.lower(), "application/octet-stream"
+    )
 
 
 class DatabricksVolumeCatalogService:
@@ -94,16 +120,28 @@ class DatabricksVolumeCatalogService:
             "catalogId": catalog.id,
             "path": relative_path,
             "label": PurePosixPath(relative_path).name,
+            "kind": document_kind(relative_path),
             "embeddable": True,
         }
 
     def download_document(self, catalog_id: str, path: str):
         catalog = self._catalog(catalog_id)
         relative_path = self._relative_path(path, folder=False)
+        return self._download(self._absolute_path(catalog, relative_path))
+
+    def download_rendition(self, catalog_id: str, path: str):
+        """Return the PDF copy of a Word document from the catalog's rendition Volume."""
+        catalog = self._catalog(catalog_id)
+        relative_path = self._relative_path(path, folder=False)
+        if document_kind(relative_path) != "word":
+            raise InvalidSourcePathError("Only Word documents have a PDF copy")
+        if not catalog.rendition_path:
+            raise SourceDocumentNotFoundError("This catalog has no PDF copies")
+        return self._download(f"{catalog.rendition_path}/{relative_path}.pdf")
+
+    def _download(self, absolute_path: str):
         try:
-            return self._workspace_client.files.download(
-                file_path=self._absolute_path(catalog, relative_path)
-            )
+            return self._workspace_client.files.download(file_path=absolute_path)
         except Exception as error:
             self._raise_safe_error(error)
 
@@ -138,14 +176,19 @@ class DatabricksVolumeCatalogService:
                     continue
                 relative_path = self._strip_root(catalog, item_path)
                 is_directory = bool(_field(item, "is_directory"))
-                if not is_directory and PurePosixPath(relative_path).suffix.lower() != ".pdf":
+                name = PurePosixPath(relative_path).name
+                # "~$" files are Office lock files left next to open documents.
+                if not is_directory and (
+                    document_kind(relative_path) is None or name.startswith("~$")
+                ):
                     continue
                 entries.append(
                     {
                         "type": "folder" if is_directory else "document",
-                        "name": PurePosixPath(relative_path).name,
+                        "name": name,
                         "path": relative_path,
                         "embeddable": not is_directory,
+                        **({} if is_directory else {"kind": document_kind(relative_path)}),
                     }
                 )
         except Exception as error:
@@ -166,10 +209,8 @@ class DatabricksVolumeCatalogService:
         normalized = path.strip("/")
         if "//" in path or any(part in {".", ".."} for part in normalized.split("/")):
             raise InvalidSourcePathError("Invalid source path")
-        if not folder and (
-            not normalized or PurePosixPath(normalized).suffix.lower() != ".pdf"
-        ):
-            raise InvalidSourcePathError("A PDF document path is required")
+        if not folder and (not normalized or document_kind(normalized) is None):
+            raise InvalidSourcePathError("A PDF, Word, or Excel document path is required")
         return normalized
 
     @staticmethod
@@ -190,14 +231,26 @@ class DatabricksVolumeCatalogService:
     @staticmethod
     def _raise_safe_error(error: Exception):
         status_code = getattr(error, "status_code", None)
+        # Databricks SDK errors carry error_code (e.g. PERMISSION_DENIED), not status_code.
+        error_code = str(getattr(error, "error_code", "") or "").upper()
         text = f"{type(error).__name__} {error}".casefold()
-        if status_code in {401, 403} or any(
-            marker in text
-            for marker in ("401", "403", "unauthenticated", "permission denied")
+        if (
+            status_code in {401, 403}
+            or error_code in {"PERMISSION_DENIED", "UNAUTHENTICATED"}
+            or any(
+                marker in text
+                for marker in ("401", "403", "unauthenticated", "permission denied")
+            )
         ):
             raise DatabricksAuthenticationError(
                 "Databricks denied access to the approved Volume"
             ) from error
+        if (
+            status_code == 404
+            or error_code in {"NOT_FOUND", "RESOURCE_DOES_NOT_EXIST"}
+            or type(error).__name__ == "NotFound"
+        ):
+            raise SourceDocumentNotFoundError("The document is not in the Volume") from error
         raise SourceCatalogError("The approved Volume is temporarily unavailable") from error
 
 
